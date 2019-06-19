@@ -1,6 +1,6 @@
 # Teaching and Learning with Jupyter Book Review
 
-:+1:
+__Good stuff__
 
 * Description of the use cases
 * Screenshots of examples of activities/questions in notebooks (e.g. in Section [2](https://jupyter4edu.github.io/jupyter-edu-book/why-we-use-jupyter-notebooks.html#why-do-we-use-jupyter).3.22.
@@ -10,7 +10,7 @@
 * Different ways of running Jupyter w/ pros and cons. Useful for educators to know ahead of time
 
 
-:-1:
+__Stuff I don't like as much__
 
 * Needs way more color, pictures, graphics. I think there is too much text for this to be an effective way of "selling" the notebooks. You have to read a lot of prefaces before you get to the practical implementations and concrete examples.
 * Tone is kinda dry
