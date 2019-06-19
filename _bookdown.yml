@@ -4,4 +4,4 @@ language:
   ui:
     chapter_name: "Section " # e.g. "Chapter ", note the space
 new_session: yes # Each chapter is knitted as its own Rmd file
-rmd_files: ["index.Rmd", "02-learner_personas.Rmd", "01-intro.Rmd", "03-questions.Rmd", "04-outline.Rmd", "05-timeline.Rmd", "06-references.Rmd"]
+rmd_files: ["index.Rmd", "01-intro.Rmd", "02-learner_personas.Rmd", "jupyter-book-review.Rmd", 03-questions.Rmd", "04-outline.Rmd", "05-timeline.Rmd", "06-references.Rmd"]
