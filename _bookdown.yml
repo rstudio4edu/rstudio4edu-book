@@ -1,0 +1,7 @@
+book_filename: "rstudio4edu-book"
+delete_merged_file: true
+language: 
+  ui:
+    chapter_name: "Section " # e.g. "Chapter ", note the space
+new_session: yes # Each chapter is knitted as its own Rmd file
+rmd_files: ["index.Rmd", "02-learner_personas.Rmd", "01-intro.Rmd", "03-questions.Rmd", "04-outline.Rmd", "05-timeline.Rmd", "06-references.Rmd"]
