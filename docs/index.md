@@ -3,7 +3,7 @@ title: "rstudio4edu Book"
 author: 
 - "Alison Hill" 
 - "Desirée De Leon"
-date: "2019-06-19"
+date: "2019-06-20"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
