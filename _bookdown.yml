@@ -1,4 +1,5 @@
 book_filename: "rstudio4edu-book"
+output_dir: "docs"
 delete_merged_file: true
 language: 
   ui:
