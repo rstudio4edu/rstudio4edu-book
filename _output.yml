@@ -6,12 +6,12 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">rstudio4edu Book</a></li>
+        <li><a href="./">rstudio4edu</a></li>
       after: |
-        <li><a href="https://github.com/rstudio4edu/book" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
     download: ["rmd"]
     edit:
-      link: https://github.com/rstudio4edu/book/edit/master/%s
+      link: https://github.com/rstudio4edu/rstudio4edu-book/edit/master/%s
       text: "Suggest an edit"
 bookdown::pdf_book:
   includes:
