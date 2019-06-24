@@ -1,23 +1,54 @@
-# Outline of Deliverables
+# Outline of Content & Deliverables
 
-## How to make packages
-  * [Demo package](https://github.com/rstudio4edu/testpackage)
-  * Companion tutorial [site](https://rstudio4edu.github.io/firstclasspackage/) and [repo](https://github.com/rstudio4edu/firstclasspackage)
+## Works in Progress
+  
+```{r library, message=FALSE, warning=FALSE, include=FALSE}
+library(DT)
+library(tidyverse)
+```
+
+```{r create_tbl, include=FALSE}
+tbl <- 
+  tibble::tribble(
+    ~Tool,        ~Tutorial,         ~'Demo Site',          ~Repo,
+    #-----------|---------------------|--------------------|-------------------------------------------------
+    "Package",  "How to make a package", "NA",              '<a href= "https://github.com/rstudio4edu/testpackage">test package</a>',
+    "RMD site", "Basic Fundamentals",    "NA",              "TBA", 
+    "RMD site",  "Custom: Workshop",   '<a href="https://rstudio4edu.github.io/rmd-bare-demo-workshop/">Custom Workshop site</a>', '<a href="https://github.com/rstudio4edu/rmd-bare-demo-workshop">rmd-bare-demo-workshop</a>',
+    "RMD site",  "Custom: Course",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-site">basic-course-site</a>',
+    "RMD site ",  "Fancy: Workshop",   '<a href="https://rstudio4edu.github.io/fancy-workshop-site/">Fancy Workshop site</a>', '<a href="https://github.com/rstudio4edu/fancy-workshop-site" >fancy-workshop-site</a>',
+    "RMD site",   "Fancy: Course",    "TBA",                    "TBA")
+```
+
+
+```{r use_dt, echo=FALSE}
+tbl %>% DT::datatable(escape = FALSE, options=list(dom ="t"))
+```
+
+## Tutorial Descriptions
+
+### Package
+
+* Most basic package will start right off the bat with data. 
+
    
-## How to make an R Markdown site / Distill
-  * Bare bones demo site - workshop
-  * Blinged out demo site - workshop
-  * Companion tutorial site - workshop
-    + Divided into two parts, for bare bones with add-on for "blinged out" version?
+### R Markdown Basic Fundamentals
+
+* Alison
+* Single page tutorial
+* Review syntax
+      + See: [items to include](https://github.com/rstudio4edu/rmd-tutorial-workshop/issues/5)    
+      
+### Custom R Markdown Site
+* Applies to both workshops and courses
+* Customization within YAML including [these items](https://github.com/rstudio4edu/rmd-tutorial-workshop/issues/5)
+* In two parts (chapters?): 
+  + How to Build it 
+  + What to include in it (could be its own chapter-- or two?): content to be tailored for Workshop use and Courses use
+      
+### Add-on: How to Build a Fancy R Markdown Site
+  + Applies to both workshops and courses
+  + Covers anything that would require CSS
+     
     
-    
-  * Bare bones demo site - course
-  * Blinged out demo site - course
-  * Compantion tutorial site - course
-  
-## Deliverable 
-
-## Deliverable
-  
-
-
+### 

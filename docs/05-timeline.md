@@ -20,7 +20,7 @@ Week 6 (July 12):
 
 Week 5 (July 5):
 
-Week 4 (June 28):
+Week 4 (June 28): Outlining RMD tutorial
 
 Week 3 (June 21):
 
