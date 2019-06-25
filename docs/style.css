@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Karla:400,400i,700,700i|Lora:400,400i,700,700i&display=swap');
+
 p.caption {
   color: #777;
   margin-top: 10px;
@@ -26,6 +28,7 @@ pre code {
   position: fixed;
   z-index:1;
 }
+
 .image-descript {
   margin-top: 50px;
   margin-bottom: 44px;
@@ -34,4 +37,75 @@ pre code {
 
 .big_image {
   width: 100%;
+}
+
+
+.book .book-body .page-wrapper .page-inner section.normal a {
+  color: #15afc5;
+}
+
+
+.book.font-family-1 {
+  font-family: 'Karla', arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Lora', arial, sans-serif;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1, .book .book-body .page-wrapper .page-inner section.normal h2, .book .book-body .page-wrapper .page-inner section.normal h3, .book .book-body .page-wrapper .page-inner section.normal h4, .book .book-body .page-wrapper .page-inner section.normal h5, .book .book-body .page-wrapper .page-inner section.normal h6 {
+    margin-top: 2.275em;
+    margin-bottom: 1em;
+}
+
+.title {
+  font-family: 'Lora';
+  font-size: 4em !important;
+  color: #3fb5bd;
+  margin-top: 0.275em !important;
+  margin-bottom: 0.35em !important;
+}
+
+.subtitle {
+  font-family: 'Lora';
+  color: #0b8d96;
+}
+  
+
+
+p:nth-child(2):first-letter {
+  color: #3fb5bd;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 7em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+
+
+/* TOC */
+
+.book .book-summary {
+  background: white;
+  border-right: none;
+}
+
+.summary{
+  font-family: 'Karla', sans-serif;
+}
+
+.summary a:hover {
+  color: #bbe0e2 !important;
+} 
+
+.book .book-summary ul.summary li.active>a {
+  color: #379fa7 !important;
+} 
+
+ul.summary > li > a { /* The > selects all the li's which are immediately within the class summary*/
+  font-family: 'Karla', sans-serif;
+  text-transform: uppercase;
 }

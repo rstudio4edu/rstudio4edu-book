@@ -1,5 +1,8 @@
 # Teaching and Learning with Jupyter Book Review
 
+Here is my impression of the Jupyter Book. 
+
+
 __Good stuff__
 
 * Description of the use cases

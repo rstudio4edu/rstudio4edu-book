@@ -1,6 +1,8 @@
 # Outline of Content & Deliverables
 
 ## Works in Progress
+
+The table below shows the tutorials that are in progress or soon-to-be in progress.
   
   [WHAT IS THE BEST WAY TO MAKE/ CODE THIS TABLE? ]
   
@@ -9,8 +11,8 @@
 
 
 
-<!--html_preserve--><div id="htmlwidget-fe823f01f3a744046ac7" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-fe823f01f3a744046ac7">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["Package","RMD site","RMD site","RMD site","RMD site ","RMD site"],["How to make a package","Basic Fundamentals","Custom Site Tutorial","Custom Site Tutorial","Fancy R Markdown Sites","Fancy R Markdown Sites"],["NA","NA","<a href=\"https://rstudio4edu.github.io/basic-workshop-site/\">Custom Workshop site<\/a>","<a href=\"https://rstudio4edu.github.io/basic-course-website/\"> Custom Course site<\/a>","<a href=\"https://rstudio4edu.github.io/fancy-workshop-site/\">Fancy Workshop site<\/a>","<a href=\"https://rstudio4edu.github.io/fancy-course-site\"> Fancy Course Site<\/a>"],["<a href= \"https://github.com/rstudio4edu/testpackage\">test package<\/a>","TBA","<a href=\"https://github.com/rstudio4edu/basic-workshop=site\">basic-workshop-site<\/a>","<a href=\"https://github.com/rstudio4edu/basic-course-site\">basic-course-site<\/a>","<a href=\"https://github.com/rstudio4edu/fancy-workshop-site\" >fancy-workshop-site<\/a>","<a href=\"https://github.com/rstudio4edu/fancy-course-site\">fancy-course-site<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Tool<\/th>\n      <th>Tutorial<\/th>\n      <th>Demo Site<\/th>\n      <th>Repo<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div id="htmlwidget-bb37175f2a0397c741d4" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bb37175f2a0397c741d4">{"x":{"filter":"none","data":[["1","2","3","4","5","6"],["Package","RMD site","RMD site","RMD site","RMD site ","RMD site"],["How to make a package","Basic Fundamentals","Custom Site Tutorial","Custom Site Tutorial","Fancy R Markdown Sites","Fancy R Markdown Sites"],["NA","NA","<a href=\"https://rstudio4edu.github.io/basic-workshop-site/\">Custom Workshop site<\/a>","<a href=\"https://rstudio4edu.github.io/basic-course-website/\"> Custom Course site<\/a>","<a href=\"https://rstudio4edu.github.io/fancy-workshop-site/\">Fancy Workshop site<\/a>","<a href=\"https://rstudio4edu.github.io/fancy-course-site\"> Fancy Course Site<\/a>"],["<a href= \"https://github.com/rstudio4edu/testpackage\">test package<\/a>","TBA","<a href=\"https://github.com/rstudio4edu/basic-workshop=site\">basic-workshop-site<\/a>","<a href=\"https://github.com/rstudio4edu/basic-course-site\">basic-course-site<\/a>","<a href=\"https://github.com/rstudio4edu/fancy-workshop-site\" >fancy-workshop-site<\/a>","<a href=\"https://github.com/rstudio4edu/fancy-course-site\">fancy-course-site<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Tool<\/th>\n      <th>Tutorial<\/th>\n      <th>Demo Site<\/th>\n      <th>Repo<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"columnDefs":[{"orderable":false,"targets":0}]}},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 <br>
 

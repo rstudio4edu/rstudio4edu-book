@@ -2,6 +2,9 @@
 
 
 ## Is this tutorial for you?
+
+This tutorial is intended for educators who would like to learn to make a package in torder to distribute materials to their learners easily. 
+
 **Pre-requisites:**
 
 1) You have a GitHub account
