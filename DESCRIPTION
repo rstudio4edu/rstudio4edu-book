@@ -12,7 +12,8 @@ Imports:
     tidyverse,
     roxygen2 (>= 6.1.1.9000),
     usethis,
-    rmarkdown
+    rmarkdown,
+    DT
 Remotes:
     r-lib/fs,
     r-lib/usethis,
