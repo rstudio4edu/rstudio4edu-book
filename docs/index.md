@@ -4,7 +4,7 @@ subtitle: "A Handbook for Teaching and Learning with RStudio"
 author: 
 - "Alison Hill" 
 - "Desirée De Leon"
-date: "2019-06-24"
+date: "2019-06-25"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]

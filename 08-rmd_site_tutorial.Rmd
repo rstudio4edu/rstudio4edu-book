@@ -1,9 +1,6 @@
 # R Markdown Custom Site Tutorial
 <br>
 
-
-## Hello! Do you need to make a workshop or course site?
-
 This is a tutorial intended for folks who would like to put together a site to help them organize and deliver their teaching materials to their participants. 
 
 Using R Markdown, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo R Markdown site. You can follow along with this tutorial, or if you'd like to get up and running as quickly as possible, you you can download the repository containing the demo site and modify it as much as you'd like. 

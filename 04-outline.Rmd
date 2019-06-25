@@ -2,6 +2,8 @@
 
 ## Works in Progress
   
+  [WHAT IS THE BEST WAY TO MAKE CODE THIS TABLE?]
+  
 ```{r library, message=FALSE, warning=FALSE, include=FALSE}
 library(DT)
 library(tidyverse)
@@ -14,15 +16,71 @@ tbl <-
     #-----------|---------------------|--------------------|-------------------------------------------------
     "Package",  "How to make a package", "NA",              '<a href= "https://github.com/rstudio4edu/testpackage">test package</a>',
     "RMD site", "Basic Fundamentals",    "NA",              "TBA", 
-    "RMD site",  "Custom: Workshop",   '<a href="https://rstudio4edu.github.io/rmd-bare-demo-workshop/">Custom Workshop site</a>', '<a href="https://github.com/rstudio4edu/rmd-bare-demo-workshop">rmd-bare-demo-workshop</a>',
-    "RMD site",  "Custom: Course",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-site">basic-course-site</a>',
-    "RMD site ",  "Fancy: Workshop",   '<a href="https://rstudio4edu.github.io/fancy-workshop-site/">Fancy Workshop site</a>', '<a href="https://github.com/rstudio4edu/fancy-workshop-site" >fancy-workshop-site</a>',
-    "RMD site",   "Fancy: Course",    "TBA",                    "TBA")
+    "RMD site",  "Custom Site Tutorial",   '<a href="https://rstudio4edu.github.io/basic-workshop-site/">Custom Workshop site</a>', '<a href="https://github.com/rstudio4edu/basic-workshop=site">basic-workshop-site</a>',
+    "RMD site",  "Custom Site Tutorial",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-site">basic-course-site</a>',
+    "RMD site ",  "Fancy R Markdown Sites",   '<a href="https://rstudio4edu.github.io/fancy-workshop-site/">Fancy Workshop site</a>', '<a href="https://github.com/rstudio4edu/fancy-workshop-site" >fancy-workshop-site</a>',
+    "RMD site",   "Fancy R Markdown Sites",    '<a href="https://rstudio4edu.github.io/fancy-course-site"> Fancy Course Site</a>',                    '<a href="https://github.com/rstudio4edu/fancy-course-site">fancy-course-site</a>')
 ```
 
 
 ```{r use_dt, echo=FALSE}
 tbl %>% DT::datatable(escape = FALSE, options=list(dom ="t"))
+```
+
+```{r, echo = FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+tbl <- tibble(Tool = c("Package", rep("RMD site", 5)),
+              `Tutorial` = c("How to Make a Package",
+                                 "Basic Fundamentals", 
+                                 rep("Custom Site Tutorial", 2), 
+                                 rep("Fancy R Markdown Sites", 2)),
+              `Demo site` = c(NA,
+                              NA,
+                              "Custom Workshop Site",
+                              "Custom Course Site",
+                              "Fancy Workshop Site", 
+                              "Fancy Course Site"),
+              `GitHub repo` = c("testpackage",
+                                NA,
+                                "basic-workshop-site",
+                                "basic-course-site",
+                                "fancy-workshop-site",
+                                "fancy-course-site")
+              )
+
+tutorial_url <- c("07-package-tutorial.html",
+              "Basic Fundamentals", 
+              "08-rmd_site_tutorial.html",
+              "08-rmd_site_tutorial.html",
+              "10-fancy-rmd.html",
+              "10-fancy-rmd.html")
+
+demo_url <- c(NA,
+              NA, 
+              "https://rstudio4edu.github.io/basic-workshop-site/",
+              "https://rstudio4edu.github.io/basic-course-website/",
+              "https://rstudio4edu.github.io/fancy-workshop-site/",
+              "https://rstudio4edu.github.io/fancy-course-site")
+
+repo_url <- c("https://github.com/rstudio4edu/testpackage",
+              NA,
+              "https://github.com/rstudio4edu/basic-workshop-site",
+              "https://github.com/rstudio4edu/basic-course-site",
+              "https://github.com/rstudio4edu/fancy-workshop-site",
+              "https://github.com/rstudio4edu/fancy-course-site")
+
+ tbl %>% 
+  mutate(
+    Tutorial = cell_spec(`Tutorial`, "html", link = tutorial_url),
+    `Demo site` = cell_spec(`Demo site`, "html", link = demo_url),
+    `GitHub repo` = cell_spec(`GitHub repo`, "html", link = repo_url)) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("hover")) 
+
+
 ```
 
 ## Tutorial Descriptions
