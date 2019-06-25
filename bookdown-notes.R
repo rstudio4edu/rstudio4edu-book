@@ -38,3 +38,6 @@ browse_travis(ext = "com")
 .Ruserdata
 _book
 _bookdown_files
+
+# commit and push
+usethis::browse_travis(ext="com")

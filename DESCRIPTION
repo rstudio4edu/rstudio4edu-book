@@ -7,4 +7,14 @@ Imports:
     dplyr,
     ggplot2,
     kableExtra,
-    tibble
+    bookdown,
+    gapminder,
+    tidyverse,
+    roxygen2 (>= 6.1.1.9000),
+    usethis,
+    rmarkdown
+Remotes:
+    r-lib/fs,
+    r-lib/usethis,
+    r-lib/devtools,
+    klutometis/roxygen
