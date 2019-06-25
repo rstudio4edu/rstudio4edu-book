@@ -1,0 +1,609 @@
+# Package Tutorial
+
+
+## Is this tutorial for you?
+
+This tutorial is intended for educators who would like to learn to make a package in torder to distribute materials to their learners easily. 
+
+**Pre-requisites:**
+
+1) You have a GitHub account
+2) You are comfortable with the basics of using R and RStudio
+3) You understand how R projects work
+4) You understand the difference between a regular R script and an R Markdown document
+
+**What you'll learn:**
+
+1) How to make a package that your students can download and install from GitHub
+2) How to include a raw data set in your package
+3) How to create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.
+4) How to give your students access to a custom interactive tutorial/lesson
+
+<br>
+
+## Why make a package?
+
+<center>![](images/pkg/Box.jpg){width=600px}</center>
+
+<br>
+
+As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn't have to be on CRAN, and it doesn't have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown "worksheets" that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.
+
+<br>
+
+## PART 1: Creating bare bones package structure
+
+<center>![](images/pkg/barebones.jpg){width=350px}</center>
+
+Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is "downloadable" by your students which means this package needs to have a GitHub repository so that it can be easily shared.
+
+<br>
+
+### Step 1: Make a GitHub repo for the package
+
+If you're a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
+
+<br>
+<div class= "alert alert-note">
+> **What's in a name?** It'll be easiest if you give your GitHub repository the same name that you'd like to give your package. It will make things less confusing. As such, the name you choose must 1) include only letters, numbers, or `.`, 2) start with a letter, and 3) not end with a `.` Optionally, you can also consider the naming tips [here](https://r-pkgs.org/package-structure.html).
+
+> **Where to put this project directory?** Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.
+
+</div>
+
+<br>
+
+### Step 2: Create the package in RStudio
+
+Below, we distill the more comprehensive resource [R packages](https://r-pkgs.org/whole-game.html) down to the basics. Now that your GitHub-connected project has been created, it's time to put in the scaffolding for our bare-minimum package, which will primarily consist of the addition of specific folders and files to our project directory. 
+
+Though we could do this manually, it's much easier to rely on helper functions from the `usethis` package to do this for us. 
+
+
+```r
+#install.packages("usethis")
+library(usethis)
+```
+
+Specifically, we use the `create_package()` function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we'd like to use, we can replace the path with `getwd()`: 
+
+[IS THIS HACKY?]
+
+
+```r
+create_package(getwd())
+```
+
+The console output will ask if you'd like to overwrite the pre-existing R project. Select No. 
+
+<br>
+
+<center> ![](images/pkg/create_package_ss.png){width=500px}</center>
+
+<br>
+
+A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a `Build` tab in the  pane which also has the tabs `Environment`, `History`, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.
+
+<br>
+
+<center> ![](images/pkg/build_tab.png){width=500px} </center>
+
+<br>
+
+You can now confirm that `create_package()` has created some new files which we see in our `Files` pane:
+
+<br>
+
+<center> ![](images/pkg/cp_files.png){width=500px}</center>
+
+<br>
+
+It is a good idea to  commit to GitHub at this point. 
+
+<br>
+
+### Step 3: (Optionally) Edit DESCRIPTION file
+
+You can also edit the `DESCRIPTION` file to fill in the author (your) info and other descriptive info about the package:
+
+<br>
+
+<center>![](images/pkg/description.png){width=500px}</center>
+
+<br>
+
+[Commit again]
+  
+<br>
+
+<div class= "alert alert-note">
+>**FYI**: At this point in package-making is when you could begin to create custom functions if you wanted to (e.g. [as described here](https://r-pkgs.org/whole-game.html#write-the-first-function) and [here](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/), but this is not a goal of the present tutorial).
+
+</div>
+
+<br>
+
+### Step 4: Build!
+
+<center>![](images/pkg/Build.jpg){width=400px}</center>
+
+[SHOULD WE IGNORE THE CHECK STEP FOR NOW?]
+
+[IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]
+
+The minimum package structure is in place, and now we go to `Build` > `Install and Restart` to make the package "official". And you're done!...well, kind of. Your package doesn't have anything useful in it (yet), but it does exist.
+
+[BETTER TO FIRST SUGGEST "LOAD ALL"?]
+
+<br>
+
+### Step 5: Deliver
+
+Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:
+
+
+```r
+# install.packages("remotes")
+remotes::install_github("rstudio4edu/testpackage")
+```
+
+<br>
+
+We next demonstrate how to include custom data in package.
+
+<br>
+
+## PART 2: Including data sets
+Assuming you have followed the previous steps for building the basic structure of a package, we now demonstrate how to package up some data for your students. 
+
+<br>
+
+### Why do this?
+What if you'd like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.
+
+<br>
+
+<br>
+
+### Step 1: Add raw data file
+
+* Call `usethis::use_data_raw` to create a folder called `data-raw`. We will use this folder as a general storage space for any raw data files, data pre-processing scripts, etc. that we don't want to be built into our final package.
+
+
+```r
+use_data_raw()
+```
+  
+This new folder houses a `DATASET.R` script. 
+  
+  <center>![](images/pkg/datasetr.png){width=500px}</center>
+  
+<br>
+
+* Add your raw data file to the `data-raw` folder. I am adding a `.csv` file called `aggression_behavior.csv`. 
+ 
+ <center>![](images/pkg/data-raw.png){width=500px}</center>
+ 
+<br>
+
+<div class= "alert alert-note">
+>**Note**: It's always a good idea to start with the most unprocessed, messy version of the data in the `data-raw` folder along with scripts to clean it up, so that your workflow is reproducible. 
+
+</div>
+
+<br>
+
+ 
+### Step 2: Save clean data to `data/`
+
+Edit the `DATASET.R` script:
+
+* Read in the `.csv` file containing our raw data.
+* Include any code necessary for processing or cleaning to ready the data set as you'd like it to be presented in the package.
+* Run `usethis::use_data()` which will export an `.rda`-formatted data file to a new folder, `data`. Any data in this folder will be accessible to the user.
+
+[SHOULD WE MENTION ANYTHING ABOUT HERE::HERE?] 
+
+
+```r
+## code to prepare `DATASET` dataset goes here
+
+# Read in your .csv file
+aggression_behavior <- readr::read_csv(here::here("data-raw", "aggression_behavior.csv"))
+
+# Include any processing steps here as well
+
+# Export to `data/` as .rda file
+usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option
+```
+
+<br>
+
+<center> ![](images/pkg/rdafile.png){width=500px}</center>
+
+<br>
+
+
+<div class= "alert alert-note">
+>**FYI**: The reason .rda (also called .RData) files are use in packaged data sets is because this data file format is much faster to read in than .csv files.
+
+</div>
+
+<br>
+
+Your data is now callable! Check that you can access your data.
+
+* Click `Build` > `Load All`
+* Print your data set object:
+
+
+```r
+aggression_behavior
+
+# A tibble: 214 x 11
+   focal compound birthyr obyear  rank `infant?` attack_all chase_all threatcontact_a…
+   <chr> <chr>      <dbl>  <dbl> <dbl> <chr>          <dbl>     <dbl>            <dbl>
+ 1 bs9   a1          2003   2008     3 N                  0         0            0    
+ 2 gk3   a1          1991   2007     1 Y                  0         0            0    
+ 3 se8   a1          2001   2008     1 N                  0         0            0    
+ 4 qq8   a1          2001   2008     3 N                  0         0            2.23 
+ 5 vd8   a1          2001   2008     3 Y                  0         0            0.998
+ 6 qv5   a1          1996   2008     3 Y                  0         0            0    
+ 7 sr8   a1          2001   2008     2 N                  0         0            0    
+ 8 pk8   a1          2001   2008     2 Y                  0         0            0    
+ 9 oz4   a1          1994   2008     1 N                  0         0            0    
+10 hv5   a1          1996   2007     2 N                  0         0            0    
+# … with 204 more rows, and 2 more variables: threatnocontact_all <dbl>, agg_in <dbl>
+> 
+```
+
+<br>
+
+<div class= "alert alert-note">
+
+>**Note**: If you later decide to update the underlying raw .csv file, you will have to manually run the script in Step 2 again before re-building, loading, installing the package. The reason is that when packages are built, loaded, installed, etc., any contents in data-raw/ are ignored by default.
+
+</div>
+
+<br>
+
+### Step 3: Document the data set
+Because this will be a data set that is shared with others, it's important to add reference documentation for it.
+
+* Use `usethis::use_r()` with your data set name in quotes.
+
+
+```r
+use_r("aggression_behavior")
+```
+
+This generates a `.R` script that lives in the `R/ folder`. 
+
+<br>
+
+<center> ![](images/pkg/Rfiledataset.png){width=500px}</center>
+
+<br>
+
+Add information about the data set:
+
+- In the .R file, add the name of the data set object in quotes. 
+- Above the quoted object name, paste in specially-formatted comments (see the example below), called Roxygen comments.
+- Manually edit the information to reflect the columns in your data set.
+
+
+This is what will become our documentation. 
+
+
+```r
+#' Data of aggression behaviors observed in rhesus macaques
+#'
+#'
+#'
+#' @format A data frame with 214 rows representing individual "focal" rhesus and 11 variables:
+#' \describe{
+#'   \item{focal}{character denoting the subject ID of the rhesus}
+#'   \item{compound}{a character indicating the social group the focal belongs to}
+#'   \item{birthyr}{dbl denoting focal's year of birth}
+#'   \item{obyear}{dbl denoting year of behavioral observation when data were collected on the focal}
+#'   \item{rank}{dbl denoting high, middle, or low social rank of the focal (1, 2, or 3)}
+#'   \item{infant?}{character denoting whether or not the focal had an infant less than 1 year old during time of observation}
+#'   \item{attack_all}{average number of times an attack was intitiated by the }
+#'   \item{chase_all}{a character string giving given name}
+#'   \item{threatcontact_all}{a character string giving given name}
+#'   \item{agg_in}{number of times aggression was initiated by the focal}
+#' }
+#' @source aggression_behavior.csv file
+"aggression_behavior"
+```
+
+<br> 
+
+<div class= "alert alert-note">
+>**Note:** To read more about Roxygen comments, check out [6.3 Roxygen Comments, R Packages](images/pkg/https://r-pkgs.org/man.html).
+
+</div>
+
+
+* Use `devtools::document()` to make the roxygen comments "concrete". 
+
+
+```r
+#install.packages(c("devtools", "roxygen2"))
+library(roxygen2)
+library(devtools)
+
+document()
+```
+
+This generates a `.Rd` file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated `man/` folder.
+
+<br>
+
+<center>![](images/pkg/manfolder.png){width=500px}</center>
+
+<br>
+
+Now we can check that our documentation works:
+
+* Call `? aggression_behavior`, substituting the name of your data set.
+* If everything looks good, then you're done! If not, edit the roxygen-style comments in the .R file and `document()` again until you're satisfied.
+
+<br>
+
+<center>![](images/pkg/datadoc.png){width=500px}</center>
+
+<br>
+
+
+
+### Step 4:  Build and install
+
+* As before, click on `Install and Restart` under the Build tab.
+
+Here's a review of all the data package steps so far:
+
+![](images/pkg/datapackagemap.jpg)
+
+<br>
+
+Congratulations, your package now includes a documented data set! It can be downloaded and installed as recommeded in **Step 5: Deliver** of **Part 1**. 
+
+If you'd like to create a worksheet-like component for your package, continue with **Part 3**. Otherwise, skip to **Final Steps** for some recommendations on a couple final (and optional) package components.
+
+<br>
+
+
+## PART 3: Including "worksheets" or report templates with R Markdown 
+
+### Why do this?
+
+An .Rmd template is essentially the replacement for a worksheet. It is a partially-filled out R Markdown file that you can create. You can create a template for every homework assignment or exercise that you want your students to work through. And they can access all of these templates easily when they go to `File` > `New File` > `R Markdown`. And then select `From Template` from the dialogue box menu. Your custom R Markdown template will appear there. 
+
+
+You can make a couple templates for general use cases (e.g. "Homework", "Reports", "Final Project") or you can make as many very specific templates populated with questions or tailored excercies  (e.g. "Lesson 1 Excerices", "Problem Set 2").
+
+
+As a rough outline, to make your first template you will:
+
+1) Use a usethis function `use_rmarkdown_template()` to create the necessary directory and file structure within your package.
+2) Modify the template.
+3) Save, Build, Install, and Restart.
+
+[DESCRIBING THE SPECIFICS OF RMARKDOWN BASICS IS OUTSIDE OF THE SCOPE OF THIS TUTORIAL. NEED TO LINK TO GOOD BASIC RESOURCE FOR THIS]
+
+<br>
+
+### Step 1: Create files and folders
+
+I assume you have already created the basic package infrastructure from Part 1.
+
+* Run `use_rmarkdown_template(template_name = "<your-template-name")`
+
+
+```r
+use_rmarkdown_template(template_name = "Worksheet1")
+
+✔ Setting active project to '/Users/desiree/Documents/New R Projects/testpackage'
+✔ Creating 'inst/rmarkdown/templates/worksheet1/skeleton/'
+✔ Writing 'inst/rmarkdown/templates/worksheet1/template.yaml'
+✔ Writing 'inst/rmarkdown/templates/worksheet1/skeleton/skeleton.Rmd'
+> 
+```
+
+This creates a new folder in the root package directory `inst/` with several subdirectories. 
+
+[](images/pkg/skeletonss.png){width=500px}
+
+<br>
+
+
+### Step 2: Create your template
+
+* Edit `skeleton.Rmd` inside `inst/rmarkdown/templates/<your-template-name>/skeleton/`. This is what you're users will see.
+  consider what you'd like the [output format to be](https://bookdown.org/yihui/rmarkdown/output-formats.html).
+  + To see some examples of how  [here](https://github.com/dr-harper/example-rmd-templates).
+  
+* You can also include a description of your template in the `template.yaml` file in the parent directory `skeleton/`. But this is not critical to getting the template into the package.
+* Save, `Build` > `Install and Restart`
+
+<center>![](images/pkg/template_example.png){width=500px}</center>
+
+<br>
+
+You can get ideas for how minimal `.Rmd` templates can be customized by checkout out a few example templates [here](https://github.com/dr-harper/example-rmd-templates).
+
+<br>
+
+
+### Step 3: Confirm that your template is accessible
+
+* Once your R session has been restarted, navigate to `File` > `New File` > `R Markdown`. Select `From Template` from the dialogue box menu. Your custom R Markdown template will appear there. Voilà!
+
+<center> ![](images/pkg/dialogue_box.png){width=500px} </center>
+
+<br>
+
+<div class= "alert alert-note">
+>**Tip**: You can continue to add new .Rmd templates to your package throughout your course. When you do, ask students to update the package, and they will access to the new templates. 
+
+[INSERT DAVID MEZA QUOTE]
+
+</div>
+
+<br>
+
+
+We next show you how you can introduce a special type of .Rmd document in your package: a LearnR tutorial.
+
+<br>
+
+## PART 4: Including a [LearnR](https://blog.rstudio.com/2017/07/11/introducing-learnr/) tutorial
+
+### Why do this?
+
+LearnR tutorials are interactive R Markdown documents that allow you to incorporate code exercises as well as elements like videos and quizzes. There are many possibilities, and we point you to other [resources](https://rstudio.github.io/learnr/index.html) to see various examples of these tutorials in action. The nice thing about this tool is that students can play around with code and preview various concepts outside of the RStudio IDE. One possible use case would be when you would like to introduce broader concepts in an interactive way before students begin focusing on the programming and coding aspects of the concepts within a regular `.Rmd` document. 
+
+<br>
+
+
+### Step 1: Create files and directories
+
+As before, I assume you have at a minimum created the basic package structure from Part 1. 
+
+* Install the `learnr` package
+* Run `use_tutorial("<name-of-tutorial-file>", "<title-you'd-like-the-user-to-see>", open = interactive())` 
+
+
+```r
+remotes::install_github("rstudio/learnr")
+
+use_tutorial("Lesson1", "My Title", open = interactive())
+```
+
+<br>
+
+This adds a `tutorial` folder to the `inst` directory.
+
+<br>
+
+
+### Step 2: Customize your tutorial
+
+* The `.Rmd` file inside the `tutorial` folder is automatically opened. Edit it to customize your tutorial content. 
+
+<center>![](images/pkg/tutorial_ss.png)</center>
+
+* Click `Run Document` next to the little green arrow in the toolbar of the `.Rmd` file.
+  + This will generate a `.html` file in the same directory as the tutorial `.Rmd` file and also run your tutorial locally.
+
+<br> 
+
+### Step 3: Add additional subdirectory
+
+At the time of writing, there is one additional folder that needs to be added, which `use_tutorial` did not create for us. 
+
+* Within the subdirectory `tutorials/`, add a new folder with the same name as your `.Rmd` tutorial file.
+* Move your tutorial `.Rmd` file and the `.html` for your tutorial into this new folder.
+* `Build` > `Install and Restart`
+
+<center>![](images/pkg/folders.png){width=300px}</center>
+
+<br>
+
+### Step 4: Run your tutorial
+* Run your tutorial with `run_tutorial("<tutorial-name>", "<package-name>")`. 
+
+
+```r
+learnr::run_tutorial("Lesson1", "testpackage")
+```
+
+
+The above line of code is also how your users will be able to run your tutorial once they have installed your package.
+
+If you get errors, double check that your structure for the tutorial folders and files matches that of those in the `testpackage` [repository](https://github.com/rstudio4edu/testpackage).  Make sure you Build, Install, and Restart before trying again. 
+
+
+<br>
+
+<br>
+
+## PART 5: FINAL STEPS: 
+
+### (Optionally) Document the package as a whole
+
+We created documentation for the data set, but not for the package overall. To do so: 
+
+* Run `usethis::use_package_doc()`
+* Edit the associated .R script that is generated in `R/` with roxygen-style comments
+  + See [section 6.6 here](https://r-pkgs.org/man.html) and [here](https://stat545.com/packages05_foofactors-package-02.html#document-the-package-as-whole) for examples of what to include.
+* Don't forget to run `document()` to update the documentation
+
+
+
+```r
+#install.packages(c("devtools", "roxygen2"))
+library(roxygen2)
+library(devtools)
+
+document()
+```
+
+* Re-Build and install your package
+* Check that package documentation works by typing `? <package-name>` substituting your own package name.
+
+<br>
+
+### Create a README.Rmd file
+
+You can include additional information in a `README.Rmd` file for your package. At a minimum, you should include a line about how to install, using the guidelines from **Part 1: Deliver**.
+
+* Run `use_readme_rmd()`
+
+
+```r
+> use_readme_rmd()
+✔ Writing 'README.Rmd'
+✔ Adding '^README\\.Rmd$' to '.Rbuildignore'
+● Modify 'README.Rmd'
+✔ Writing '.git/hooks/pre-commit'
+```
+
+* Edit to meet your needs.
+* Click `Knit`, so that it updates the corresponding README.md file
+* Commit and push.
+
+<br>
+
+## Troubleshooting
+If you run into rough patches, here are some common pitfalls that might be resulting in errors:
+
+* Do you have most up-to-date version of your packages? Try installing the development version of the package from github. Here's an example of what that looks like for the `usethis` package.
+
+
+```r
+# install.packages("devtools")
+devtools::install_github("r-lib/usethis")
+```
+
+* Are you running the most current version of R and/or RStudio?
+* Did you install R via homebrew? --> Uninstall and install from CRAN!
+
+<br>
+
+## Miscellaneous / Nice to Know
+
+* If you didn't start with a repo, then you should use `usethis::use_github()`
+* Licensing educational materials [ASK GREG]
+
+<br>
+
+## Other community resources on package-making:
+
+You can find a diversity of additional helpful resources and tutorials on making R packages. We list a few below:
+
+* [Hilary Parker on basic package functions](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/): bare-bones function making
+* [Writing an R package from scratch](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/) : Follows up on Hilary's but incorporates usethis()
+* [Taking your data to Go](https://www.davekleinschmidt.com/r-packages/): Straightforward, concise tutorial on data packages
+* [R Package Primer](https://kbroman.org/pkg_primer/)

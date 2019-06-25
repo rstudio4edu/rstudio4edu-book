@@ -1,0 +1,16 @@
+language: R
+cache:                        
+  packages: true                # optional
+  directories: _bookdown_files  # optional
+pandoc_version: 2.3.1
+
+script:
+- Rscript -e 'bookdown::render_book("index.Rmd")'
+
+deploy:
+  provider: pages
+  local_dir: _book
+  skip_cleanup: true
+  github-token: $GITHUB_PAT    # Set in the settings page 
+  on:
+    branch: master

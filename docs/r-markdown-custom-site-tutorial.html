@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Section 6 R Markdown Custom Site Tutorial | rstudio4edu</title>
+  <meta name="description" content="A work-in-progress" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Section 6 R Markdown Custom Site Tutorial | rstudio4edu" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/books.jpg" />
+  <meta property="og:description" content="A work-in-progress" />
+  <meta name="github-repo" content="Section 6 R Markdown Custom Site Tutorial | rstudio4edu/rstudio4edu-bookb" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Section 6 R Markdown Custom Site Tutorial | rstudio4edu" />
+  
+  <meta name="twitter:description" content="A work-in-progress" />
+  <meta name="twitter:image" content="images/books.jpg" />
+
+<meta name="author" content="Alison Hill" />
+<meta name="author" content="Desirée De Leon" />
+
+
+<meta name="date" content="2019-06-25" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="package-tutorial.html">
+<link rel="next" href="r-markdown-workshop-sites.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.7/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+</head>
+        
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+
+<div class="navbar-extension"> </div>
+<div class="image-descript"> 
+  <img class="big_image" src="images/books.jpg">
+</div>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">rstudio4edu</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li><a href="index.html#why-rstudio4edu">Why <code>rstudio4edu</code>?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-you"><i class="fa fa-check"></i>Who are you?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-we"><i class="fa fa-check"></i>Who are we?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing"><i class="fa fa-check"></i>Contributing</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="teaching-and-learning-with-jupyter-book-review.html"><a href="teaching-and-learning-with-jupyter-book-review.html"><i class="fa fa-check"></i><b>2</b> Teaching and Learning with Jupyter Book Review</a></li>
+<li class="chapter" data-level="3" data-path="general-bookdown-questions.html"><a href="general-bookdown-questions.html"><i class="fa fa-check"></i><b>3</b> General Bookdown Questions</a></li>
+<li class="chapter" data-level="4" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html"><i class="fa fa-check"></i><b>4</b> Outline of Content &amp; Deliverables</a><ul>
+<li class="chapter" data-level="4.1" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#works-in-progress"><i class="fa fa-check"></i><b>4.1</b> Works in Progress</a></li>
+<li class="chapter" data-level="4.2" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#tutorial-descriptions"><i class="fa fa-check"></i><b>4.2</b> Tutorial Descriptions</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#package"><i class="fa fa-check"></i><b>4.2.1</b> Package</a></li>
+<li class="chapter" data-level="4.2.2" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#r-markdown-basic-fundamentals"><i class="fa fa-check"></i><b>4.2.2</b> R Markdown Basic Fundamentals</a></li>
+<li class="chapter" data-level="4.2.3" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#custom-r-markdown-site"><i class="fa fa-check"></i><b>4.2.3</b> Custom R Markdown Site</a></li>
+<li class="chapter" data-level="4.2.4" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#add-on-how-to-build-a-fancy-r-markdown-site"><i class="fa fa-check"></i><b>4.2.4</b> Add-on: How to Build a Fancy R Markdown Site</a></li>
+<li class="chapter" data-level="4.2.5" data-path="outline-of-content-deliverables.html"><a href="outline-of-content-deliverables.html#section"><i class="fa fa-check"></i><b>4.2.5</b> </a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="package-tutorial.html"><a href="package-tutorial.html"><i class="fa fa-check"></i><b>5</b> Package Tutorial</a><ul>
+<li class="chapter" data-level="5.1" data-path="package-tutorial.html"><a href="package-tutorial.html#is-this-tutorial-for-you"><i class="fa fa-check"></i><b>5.1</b> Is this tutorial for you?</a></li>
+<li class="chapter" data-level="5.2" data-path="package-tutorial.html"><a href="package-tutorial.html#why-make-a-package"><i class="fa fa-check"></i><b>5.2</b> Why make a package?</a></li>
+<li class="chapter" data-level="5.3" data-path="package-tutorial.html"><a href="package-tutorial.html#part-1-creating-bare-bones-package-structure"><i class="fa fa-check"></i><b>5.3</b> PART 1: Creating bare bones package structure</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="package-tutorial.html"><a href="package-tutorial.html#step-1-make-a-github-repo-for-the-package"><i class="fa fa-check"></i><b>5.3.1</b> Step 1: Make a GitHub repo for the package</a></li>
+<li class="chapter" data-level="5.3.2" data-path="package-tutorial.html"><a href="package-tutorial.html#step-2-create-the-package-in-rstudio"><i class="fa fa-check"></i><b>5.3.2</b> Step 2: Create the package in RStudio</a></li>
+<li class="chapter" data-level="5.3.3" data-path="package-tutorial.html"><a href="package-tutorial.html#step-3-optionally-edit-description-file"><i class="fa fa-check"></i><b>5.3.3</b> Step 3: (Optionally) Edit DESCRIPTION file</a></li>
+<li class="chapter" data-level="5.3.4" data-path="package-tutorial.html"><a href="package-tutorial.html#step-4-build"><i class="fa fa-check"></i><b>5.3.4</b> Step 4: Build!</a></li>
+<li class="chapter" data-level="5.3.5" data-path="package-tutorial.html"><a href="package-tutorial.html#step-5-deliver"><i class="fa fa-check"></i><b>5.3.5</b> Step 5: Deliver</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="package-tutorial.html"><a href="package-tutorial.html#part-2-including-data-sets"><i class="fa fa-check"></i><b>5.4</b> PART 2: Including data sets</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="package-tutorial.html"><a href="package-tutorial.html#why-do-this"><i class="fa fa-check"></i><b>5.4.1</b> Why do this?</a></li>
+<li class="chapter" data-level="5.4.2" data-path="package-tutorial.html"><a href="package-tutorial.html#step-1-add-raw-data-file"><i class="fa fa-check"></i><b>5.4.2</b> Step 1: Add raw data file</a></li>
+<li class="chapter" data-level="5.4.3" data-path="package-tutorial.html"><a href="package-tutorial.html#step-2-save-clean-data-to-data"><i class="fa fa-check"></i><b>5.4.3</b> Step 2: Save clean data to <code>data/</code></a></li>
+<li class="chapter" data-level="5.4.4" data-path="package-tutorial.html"><a href="package-tutorial.html#step-3-document-the-data-set"><i class="fa fa-check"></i><b>5.4.4</b> Step 3: Document the data set</a></li>
+<li class="chapter" data-level="5.4.5" data-path="package-tutorial.html"><a href="package-tutorial.html#step-4-build-and-install"><i class="fa fa-check"></i><b>5.4.5</b> Step 4: Build and install</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="package-tutorial.html"><a href="package-tutorial.html#part-3-including-worksheets-or-report-templates-with-r-markdown"><i class="fa fa-check"></i><b>5.5</b> PART 3: Including “worksheets” or report templates with R Markdown</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="package-tutorial.html"><a href="package-tutorial.html#why-do-this-1"><i class="fa fa-check"></i><b>5.5.1</b> Why do this?</a></li>
+<li class="chapter" data-level="5.5.2" data-path="package-tutorial.html"><a href="package-tutorial.html#step-1-create-files-and-folders"><i class="fa fa-check"></i><b>5.5.2</b> Step 1: Create files and folders</a></li>
+<li class="chapter" data-level="5.5.3" data-path="package-tutorial.html"><a href="package-tutorial.html#step-2-create-your-template"><i class="fa fa-check"></i><b>5.5.3</b> Step 2: Create your template</a></li>
+<li class="chapter" data-level="5.5.4" data-path="package-tutorial.html"><a href="package-tutorial.html#step-3-confirm-that-your-template-is-accessible"><i class="fa fa-check"></i><b>5.5.4</b> Step 3: Confirm that your template is accessible</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="package-tutorial.html"><a href="package-tutorial.html#part-4-including-a-learnr-tutorial"><i class="fa fa-check"></i><b>5.6</b> PART 4: Including a <span>LearnR</span> tutorial</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="package-tutorial.html"><a href="package-tutorial.html#why-do-this-2"><i class="fa fa-check"></i><b>5.6.1</b> Why do this?</a></li>
+<li class="chapter" data-level="5.6.2" data-path="package-tutorial.html"><a href="package-tutorial.html#step-1-create-files-and-directories"><i class="fa fa-check"></i><b>5.6.2</b> Step 1: Create files and directories</a></li>
+<li class="chapter" data-level="5.6.3" data-path="package-tutorial.html"><a href="package-tutorial.html#step-2-customize-your-tutorial"><i class="fa fa-check"></i><b>5.6.3</b> Step 2: Customize your tutorial</a></li>
+<li class="chapter" data-level="5.6.4" data-path="package-tutorial.html"><a href="package-tutorial.html#step-3-add-additional-subdirectory"><i class="fa fa-check"></i><b>5.6.4</b> Step 3: Add additional subdirectory</a></li>
+<li class="chapter" data-level="5.6.5" data-path="package-tutorial.html"><a href="package-tutorial.html#step-4-run-your-tutorial"><i class="fa fa-check"></i><b>5.6.5</b> Step 4: Run your tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="package-tutorial.html"><a href="package-tutorial.html#part-5-final-steps"><i class="fa fa-check"></i><b>5.7</b> PART 5: FINAL STEPS:</a><ul>
+<li class="chapter" data-level="5.7.1" data-path="package-tutorial.html"><a href="package-tutorial.html#optionally-document-the-package-as-a-whole"><i class="fa fa-check"></i><b>5.7.1</b> (Optionally) Document the package as a whole</a></li>
+<li class="chapter" data-level="5.7.2" data-path="package-tutorial.html"><a href="package-tutorial.html#create-a-readme.rmd-file"><i class="fa fa-check"></i><b>5.7.2</b> Create a README.Rmd file</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="package-tutorial.html"><a href="package-tutorial.html#troubleshooting"><i class="fa fa-check"></i><b>5.8</b> Troubleshooting</a></li>
+<li class="chapter" data-level="5.9" data-path="package-tutorial.html"><a href="package-tutorial.html#miscellaneous-nice-to-know"><i class="fa fa-check"></i><b>5.9</b> Miscellaneous / Nice to Know</a></li>
+<li class="chapter" data-level="5.10" data-path="package-tutorial.html"><a href="package-tutorial.html#other-community-resources-on-package-making"><i class="fa fa-check"></i><b>5.10</b> Other community resources on package-making:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html"><i class="fa fa-check"></i><b>6</b> R Markdown Custom Site Tutorial</a><ul>
+<li class="chapter" data-level="6.1" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#is-this-tutorial-for-you-1"><i class="fa fa-check"></i><b>6.1</b> Is this tutorial for you?</a></li>
+<li class="chapter" data-level="6.2" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#mental-framework-what-are-we-going-to-make-here"><i class="fa fa-check"></i><b>6.2</b> Mental framework: what are we going to make here?</a></li>
+<li class="chapter" data-level="6.3" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#part-1-getting-set-up"><i class="fa fa-check"></i><b>6.3</b> Part 1: Getting Set up</a><ul>
+<li class="chapter" data-level="6.3.1" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#two-getting-started-workflows"><i class="fa fa-check"></i><b>6.3.1</b> Two getting-started workflows:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#part-2-create-your-content"><i class="fa fa-check"></i><b>6.4</b> Part 2: Create your content</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#make-some-changes-and-push-to-github"><i class="fa fa-check"></i><b>6.4.1</b> Make some changes and push to GitHub</a></li>
+<li class="chapter" data-level="6.4.2" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#add-additional-r-markdown-documents"><i class="fa fa-check"></i><b>6.4.2</b> Add additional R Markdown documents</a></li>
+<li class="chapter" data-level="6.4.3" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#stitch-it-together"><i class="fa fa-check"></i><b>6.4.3</b> Stitch it together</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#part-3-dress-it-up"><i class="fa fa-check"></i><b>6.5</b> Part 3: Dress it up!</a><ul>
+<li class="chapter" data-level="6.5.1" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#theme-and-code-highlighting"><i class="fa fa-check"></i><b>6.5.1</b> Theme and Code Highlighting</a></li>
+<li class="chapter" data-level="6.5.2" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#create-a-table-of-contents"><i class="fa fa-check"></i><b>6.5.2</b> Create a Table of Contents</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#part-5-make-it-a-living-breathing-shareable-site"><i class="fa fa-check"></i><b>6.6</b> Part 5: Make it a living, breathing, shareable site!</a></li>
+<li class="chapter" data-level="6.7" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#workflow-for-maintenance"><i class="fa fa-check"></i><b>6.7</b> Workflow for maintenance</a></li>
+<li class="chapter" data-level="6.8" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#pros-and-cons-of-using-r-markdown-sites"><i class="fa fa-check"></i><b>6.8</b> Pros and Cons of using R Markdown sites</a></li>
+<li class="chapter" data-level="6.9" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#community-resources"><i class="fa fa-check"></i><b>6.9</b> Community Resources:</a><ul>
+<li class="chapter" data-level="6.9.1" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#existing-tutorials"><i class="fa fa-check"></i><b>6.9.1</b> Existing tutorials:</a></li>
+<li class="chapter" data-level="6.9.2" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#general-set-up"><i class="fa fa-check"></i><b>6.9.2</b> General set up:</a></li>
+<li class="chapter" data-level="6.9.3" data-path="r-markdown-custom-site-tutorial.html"><a href="r-markdown-custom-site-tutorial.html#formatting"><i class="fa fa-check"></i><b>6.9.3</b> Formatting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html"><i class="fa fa-check"></i><b>7</b> R Markdown Workshop Sites</a><ul>
+<li class="chapter" data-level="7.0.1" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-1"><i class="fa fa-check"></i><b>7.0.1</b> Thing 1</a></li>
+<li class="chapter" data-level="7.0.2" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-2"><i class="fa fa-check"></i><b>7.0.2</b> Thing 2</a></li>
+<li class="chapter" data-level="7.0.3" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-3"><i class="fa fa-check"></i><b>7.0.3</b> Thing 3</a></li>
+<li class="chapter" data-level="7.1" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#some-extra-cool-stuff-weve-seen"><i class="fa fa-check"></i><b>7.1</b> Some extra cool stuff we’ve seen</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-1-1"><i class="fa fa-check"></i><b>7.1.1</b> Thing 1</a></li>
+<li class="chapter" data-level="7.1.2" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-2-1"><i class="fa fa-check"></i><b>7.1.2</b> Thing 2</a></li>
+<li class="chapter" data-level="7.1.3" data-path="r-markdown-workshop-sites.html"><a href="r-markdown-workshop-sites.html#thing-3-1"><i class="fa fa-check"></i><b>7.1.3</b> Thing 3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="some-extra-cool-stuff-weve-seen-1.html"><a href="some-extra-cool-stuff-weve-seen-1.html"><i class="fa fa-check"></i><b>8</b> Some extra cool stuff we’ve seen</a></li>
+<li class="chapter" data-level="9" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html"><i class="fa fa-check"></i><b>9</b> Fancy R Markdown Sites</a><ul>
+<li class="chapter" data-level="9.1" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#going-further-with-customization"><i class="fa fa-check"></i><b>9.1</b> Going further with customization</a></li>
+<li class="chapter" data-level="9.2" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#anatomy-of-a-blinged-out-r-markdown-page."><i class="fa fa-check"></i><b>9.2</b> Anatomy of a blinged out R Markdown page.</a></li>
+<li class="chapter" data-level="9.3" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#css-crash-course"><i class="fa fa-check"></i><b>9.3</b> CSS crash course</a><ul>
+<li class="chapter" data-level="9.3.1" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#how-do-you-find-out-an-elements-category"><i class="fa fa-check"></i><b>9.3.1</b> How do you find out an element’s category?</a></li>
+<li class="chapter" data-level="9.3.2" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#inspector-tool"><i class="fa fa-check"></i><b>9.3.2</b> Inspector tool</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#navigation-bar-related-stuff"><i class="fa fa-check"></i><b>9.4</b> Navigation Bar related stuff</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#add-a-logo"><i class="fa fa-check"></i><b>9.4.1</b> Add a logo</a></li>
+<li class="chapter" data-level="9.4.2" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#add-a-drop-down-menu"><i class="fa fa-check"></i><b>9.4.2</b> Add a drop down menu</a></li>
+<li class="chapter" data-level="9.4.3" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#tab-sets"><i class="fa fa-check"></i><b>9.4.3</b> Tab sets?</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#add-a-hero-image-banner-image"><i class="fa fa-check"></i><b>9.5</b> Add a hero image (banner image)</a></li>
+<li class="chapter" data-level="9.6" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#global-aesthetics"><i class="fa fa-check"></i><b>9.6</b> Global Aesthetics</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#customize-your-fonts-with-google-fonts"><i class="fa fa-check"></i><b>9.6.1</b> Customize your fonts with Google Fonts</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="fancy-r-markdown-sites.html"><a href="fancy-r-markdown-sites.html#customize-your-link-appearance"><i class="fa fa-check"></i><b>9.7</b> Customize your link appearance</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="backlog.html"><a href="backlog.html"><i class="fa fa-check"></i><b>10</b> Backlog</a></li>
+<li class="chapter" data-level="11" data-path="timeline.html"><a href="timeline.html"><i class="fa fa-check"></i><b>11</b> Timeline</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rstudio4edu</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="r-markdown-custom-site-tutorial" class="section level1">
+<h1><span class="header-section-number">Section 6</span> R Markdown Custom Site Tutorial</h1>
+<p><br></p>
+<p>This is a tutorial intended for folks who would like to put together a site to help them organize and deliver their teaching materials to their participants.</p>
+<p>Using R Markdown, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo R Markdown site. You can follow along with this tutorial, or if you’d like to get up and running as quickly as possible, you you can download the repository containing the demo site and modify it as much as you’d like.</p>
+<p><br></p>
+<div id="is-this-tutorial-for-you-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Is this tutorial for you?</h2>
+<p><strong>Pre-requisites:</strong></p>
+<ol style="list-style-type: decimal">
+<li>You have a <a href="https://github.com/">GitHub account</a></li>
+<li>You are comfortable with the basics of using R and RStudio</li>
+<li>You understand how R projects work</li>
+<li>You understand the difference between a regular R script and an R Markdown document</li>
+</ol>
+<p><strong>What you’ll learn:</strong></p>
+<ol style="list-style-type: decimal">
+<li>How to compile multiple R Markdown websites into an R Markdown site</li>
+<li>How to add basic customization through themes using built in options</li>
+<li>How to publish your R Markdown pages for free via GitHub Pages</li>
+</ol>
+<p><br></p>
+</div>
+<div id="mental-framework-what-are-we-going-to-make-here" class="section level2">
+<h2><span class="header-section-number">6.2</span> Mental framework: what are we going to make here?</h2>
+<p>We’re about to make a website out of R Markdown documents. There are a few key pieces of magic that separate a regular collection of R Markdown documents from a living, breathing website:</p>
+<ul>
+<li>A <code>_site.yml</code> text file that will stitch your <code>.Rmd</code> documents together and place an official-looking navigation bar at the top of them.</li>
+<li>An R Markdown file with the name <code>index.Rmd</code> file, which will become your site’s homepage.</li>
+<li>After we’ve pushed all our files to GitHub, we turn on GitHub Pages with the click of a button to make our work go live!</li>
+</ul>
+<p>Let’s get started!</p>
+<p><br></p>
+</div>
+<div id="part-1-getting-set-up" class="section level2">
+<h2><span class="header-section-number">6.3</span> Part 1: Getting Set up</h2>
+<p>We’ll use the <code>usethis</code> package:</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages(&quot;usethis&quot;)</span>
+<span class="kw">library</span>(usethis)</code></pre>
+<p><br></p>
+<div id="two-getting-started-workflows" class="section level3">
+<h3><span class="header-section-number">6.3.1</span> Two getting-started workflows:</h3>
+<p>We recommend following the tips on <a href="INSERT%20LINK">Happy Git with R</a> and starting in GitHub before switching to RStudio:</p>
+<ol style="list-style-type: decimal">
+<li>Create a GitHub repo for your work.</li>
+<li>Check <strong>Initialize this repository with a README</strong>.</li>
+<li>In the dropdown menu <strong>Add .gitignore: </strong> choose <strong>R</strong> [CAN PROBABLY REMOVE]</li>
+<li>Click the green <strong>Clone or Download</strong> button, and copy the URL.</li>
+<li>Open RStudio. Click <code>File</code> &gt; <code>New Project</code> &gt; <code>Version Control</code>&gt; <code>Git</code>. Paste the copied URL.</li>
+<li>Click Create Project.</li>
+<li>Use <code>rmarkdown:::site_skeleton(getwd())</code> (note that we use <code>:::</code> here, with three colons!) to generate important infrasctructure files we need.</li>
+</ol>
+<p><br></p>
+<p>Though we recommend a “GitHub first” workflow, it is possible to start with RStudio project wizard to create a new R Markdown site and then move to GitHub:</p>
+<ol style="list-style-type: decimal">
+<li>Click <code>File</code> &gt; <code>New Project</code> &gt; <code>New Directory</code>.</li>
+<li>Scroll down and select <code>Simple R Markdown Website</code>.</li>
+<li>Then, optionally:</li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r">usethis<span class="op">::</span><span class="kw">use_git</span>()
+usethis<span class="op">::</span><span class="kw">use_github</span>() <span class="co"># you have to have a PAT setup</span></code></pre>
+<p>[NEED TO FILL IN ^ DETAILS]</p>
+<p>Regardless of which workflow you choose, you will end up with the following files in your working directory. The only critical ones are the <code>index.Rmd</code> and the <code>_site.yml</code>.</p>
+<center>
+<img src="rmd_tutorial.png" width="300" />
+<center>
+<p>[DO WE SAY RENDER SITE NOW? BUT THEN WILL LATER NEED TO TELL FOLKS TO DELETE SITE FOLDER?]</p>
+</div>
+</div>
+<div id="part-2-create-your-content" class="section level2">
+<h2><span class="header-section-number">6.4</span> Part 2: Create your content</h2>
+<p><br></p>
+<div id="make-some-changes-and-push-to-github" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Make some changes and push to GitHub</h3>
+<ol style="list-style-type: decimal">
+<li>Open <code>_site.yml</code> and add the <code>output_dir: &quot;docs&quot;</code> on its own line, under <code>name:</code>. Save.</li>
+<li>Optionally, open <code>index.Rmd</code> and add some more text to the body of the document. Click <code>Knit</code> to preview your page locally. This will become the “landing page” of your site.</li>
+<li>Locate the RStudio pane that has a tab labelled <code>Git</code>, and click on it.</li>
+<li>Check the box(es) under the “Staged” column, click <code>Commit</code>.</li>
+<li>Add a commit message, and then click <code>Push</code>.</li>
+</ol>
+<center>
+<img src="images/rmd_custom/git1.png" width="400" />
+<center>
+<p><br></p>
+</div>
+<div id="add-additional-r-markdown-documents" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Add additional R Markdown documents</h3>
+<p>Let’s create at least one other R Markdown document, so that we have more content we can compile in our website. We’re going a bit above and beyond here since the minimally-viable R Markdown site can me made with a just a single <code>.Rmd</code> plus a <code>_site.yml</code> file (which we’ll set up in the next section).</p>
+<ol style="list-style-type: decimal">
+<li>Add additional R Markdown documents (<code>File</code>&gt; <code>New File</code> &gt; <code>R Markdown</code>), and you can save your <code>.Rmd</code> file with whatever file name you’d like (we recommend avoiding using spaces).</li>
+</ol>
+<ul>
+<li>For this tutorial, I’m going to name my additional<code>.Rmd</code> file <code>materials.Rmd</code>.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Stage, Commit, and Push to GitHub.</li>
+<li>You can repeat this process, adding as many new <code>.Rmd</code> files as you’d like.</li>
+</ol>
+<p><br></p>
+</div>
+<div id="stitch-it-together" class="section level3">
+<h3><span class="header-section-number">6.4.3</span> Stitch it together</h3>
+<p>[MODIFY TO ACCOUNT FOR ABOUT PAGE/ USE_SKELETON SEQUENCE]</p>
+<p>Now we’ll modify the YAML (i.e.<code>_site.yml</code>) file, which is what will allow all of our R Markdown page(s) to be pulled together as a site. Instead of each of our individual R Markdown documents needing their own YAML header at the top, we will put all of the YAML info that all our pages shared in common (e.g. <code>output: html_document</code>) into our <code>_site.yml page</code>– one YAML to rule them all.</p>
+<p>Through this YAML, we’ll also add the navigation bar to the site, which will have a link to each <code>.Rmd</code> document.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>In the <code>.yml</code> file, copy and paste what you see below, paying careful attention to the indentations and spaces. YAMLs are fussy about this, and this is often the source of many ERRORS!</li>
+<li>Edit the navigation bar (a.k.a. navbar).</li>
+</ol>
+<ul>
+<li>For each link you would like in your navbar, create one <code>- text:</code> and <code>href:</code> pair.</li>
+<li>The <code>- text:</code> part is what the link name that the user will see; it can be called whatever you want</li>
+<li>The <code>href:</code> part must be the file name you want to link to with the <code>.html</code> file extension.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Add additional <code>- text:</code> and <code>href:</code> pairs if you have more R Markdown pages that you want in the navbar.</li>
+<li><p>Aaaand ACTION! Type <code>rmarkdown::render_site()</code> in the Rstudio console. This stitches everything together and allows you to view the site on your locally (it’s not live yet). <code>render_site()</code> is basically the same thing as clicking <code>Knit</code> on all of your R Markdown documents simultaneously.</p>
+<ul>
+<li>If the rendered site does not open up automatically in a new window, you can go to the <code>docs/</code> folder in your project, click on the <code>index.html</code> file, and <code>View it in Web Browser</code>.</li>
+</ul></li>
+<li><p>It’s a good idea to stage, commit, and push to GitHub at this point.</p></li>
+</ol>
+<p><br></p>
+<pre class="sourceCode r"><code class="sourceCode r">name<span class="op">:</span><span class="st"> &quot;My 1st Workshop Site&quot;</span>
+output_dir<span class="op">:</span><span class="st"> &quot;docs&quot;</span>
+navbar<span class="op">:</span>
+<span class="st">  </span>title<span class="op">:</span><span class="st"> &quot;My Website&quot;</span>
+  left<span class="op">:</span>
+<span class="st">    </span><span class="op">-</span><span class="st"> </span>text<span class="op">:</span><span class="st"> &quot;Home&quot;</span>
+      href<span class="op">:</span><span class="st"> </span>index.html
+    <span class="op">-</span><span class="st"> </span>text<span class="op">:</span><span class="st"> &quot;Materials&quot;</span>
+      href<span class="op">:</span><span class="st"> </span>materials.html
+output<span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>html_document<span class="op">:</span></code></pre>
+<p><br></p>
+<blockquote>
+<p><strong>FYI</strong>: When we <code>knit</code> or <code>render_site()</code>, R Markdown’s deliverable to us is going to be an HTML file for every <code>.Rmd</code> file in our R Project. The <code>output_dir: &quot;docs&quot;</code> line is important because it tells R Markdown where to put all of our freshly minted HTML files and any extras the HTMLs will need (images we include, etc.). In this case, it’s a <code>docs/</code> folder. I kind of think of this folder as the boarding and gate areas of an airport–contents of this folder have gone through security clearance (<code>rmarkdown::render_site()</code>), ridden of items not approved for flight (<code>.Rmd</code> files), and are awaiting takeoff (getting rendered as a live site). You cannot skip airport-security to get to your gate, and similarly, we should not put files in the <code>docs/</code> folder ourselves.</p>
+</blockquote>
+<p><br></p>
+</div>
+</div>
+<div id="part-3-dress-it-up" class="section level2">
+<h2><span class="header-section-number">6.5</span> Part 3: Dress it up!</h2>
+<p>Optionally, you can easily change the way your site looks and feels by adding a few things to the YAML section, e.g. template themes and highlight styles (for highlighting code). We preview some below, but you can read about a few more <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">here</a>. Let’s try some out.</p>
+<div id="theme-and-code-highlighting" class="section level3">
+<h3><span class="header-section-number">6.5.1</span> Theme and Code Highlighting</h3>
+<center>
+<img src="images/rmd_custom/dressup1.jpg" width="800" />
+</center>
+<ol style="list-style-type: decimal">
+<li>Open the <code>_site.yml</code> file.</li>
+<li>Add the following on their own lines underneath <code>html_document:</code> and indent them twice:</li>
+</ol>
+<ul>
+<li><strong>Change the theme:</strong> <code>theme: &lt;insert-theme-name&gt;</code>
+<ul>
+<li>Theme options: <code>default</code>, <code>cerulean</code>, <code>journal</code>, <code>flatly</code>, <code>darkly</code>, <code>readable</code>, <code>spacelab</code>, <code>united</code>, <code>cosmo</code>, <code>lumen</code>, <code>paper</code>, <code>sandstone</code>, <code>simplex</code>, and <code>yeti</code>.</li>
+</ul></li>
+<li><strong>Change the highlight style:</strong> <code>highlight: &lt;insert-style-name&gt;</code>
+<ul>
+<li>Highlight styles: <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, and <code>textmate</code>.</li>
+</ul>
+[INCLUDE PREVIEW OF EACH OF THESE OR LINK OUT]</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Run <code>render_site()</code> to see your changes.</li>
+</ol>
+</div>
+<div id="create-a-table-of-contents" class="section level3">
+<h3><span class="header-section-number">6.5.2</span> Create a Table of Contents</h3>
+<p>[Before and After Example]</p>
+<ol style="list-style-type: decimal">
+<li>In the <code>_site.yml</code> file, add a <a href="https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents">table of contents</a> sidebar:** <code>toc: true</code></li>
+</ol>
+<p>Your dressed up <code>_site.yml</code> file should look something like this:</p>
+<pre class="sourceCode r"><code class="sourceCode r">name<span class="op">:</span><span class="st"> &quot;My 1st Workshop Site&quot;</span>
+output_dir<span class="op">:</span><span class="st"> &quot;docs&quot;</span>
+navbar<span class="op">:</span>
+<span class="st">  </span>title<span class="op">:</span><span class="st"> &quot;My Website&quot;</span>
+  left<span class="op">:</span>
+<span class="st">    </span><span class="op">-</span><span class="st"> </span>text<span class="op">:</span><span class="st"> &quot;Home&quot;</span>
+      href<span class="op">:</span><span class="st"> </span>index.html
+    <span class="op">-</span><span class="st"> </span>text<span class="op">:</span><span class="st"> &quot;Materials&quot;</span>
+      href<span class="op">:</span><span class="st"> </span>materials.html
+output<span class="op">:</span><span class="st"> </span>
+<span class="st">  </span>html_document<span class="op">:</span>
+<span class="st">    </span>theme<span class="op">:</span><span class="st"> </span>flatly
+    highlight<span class="op">:</span><span class="st"> </span>tango
+    toc<span class="op">:</span><span class="st"> </span>true
+    toc_float<span class="op">:</span><span class="st"> </span>true</code></pre>
+<p>With these YAML settings, after executing <code>rmarkdown::render_site()</code>, your site should look something like this:</p>
+<div class="figure">
+<img src="images/rmd_custom/theme.jpg" alt="INSERT SCREEN SHOT" />
+<p class="caption">INSERT SCREEN SHOT</p>
+</div>
+<p>Many other customizations can be handled within the body of the R Markdown documents themselves. Here are some ways you can do that:</p>
+<ol start="3" style="list-style-type: decimal">
+<li><p><strong>Add white space in between sections</strong>. I usually include additional line breaks in the body of every of my R Markdown documents before each of my section headers. This is done with a <code>&lt;br&gt;</code> on its own line before every header. Note that each <code>&lt;br&gt;</code> has to be followed by a blank line for the <code>&lt;br&gt;</code> to work. I find that this improves readability, helps give the page more “breathing room”, and in general makes the page feel less weighed down by sections that are squished up against one another.</p></li>
+<li><p>You can tweak your current site endlessly at this stage by adding more content, code chunks, or <a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">formatting text</a>.</p></li>
+</ol>
+<p>Don’t forget to push to GitHub!</p>
+<p><br></p>
+</div>
+</div>
+<div id="part-5-make-it-a-living-breathing-shareable-site" class="section level2">
+<h2><span class="header-section-number">6.6</span> Part 5: Make it a living, breathing, shareable site!</h2>
+<p>Now we’ll go back to GitHub and tell it where to find our website-ready files:</p>
+<ol style="list-style-type: decimal">
+<li>Back on GitHub, click the <code>Settings</code> tab of your repository.</li>
+<li>Scroll down until you get to “GitHub Pages”, and select “master branch/docs folder”.</li>
+</ol>
+<center>
+<img src="images/rmd_custom/githubpages.png" width="600" />
+</center>
+<p><br></p>
+</div>
+<div id="workflow-for-maintenance" class="section level2">
+<h2><span class="header-section-number">6.7</span> Workflow for maintenance</h2>
+<p>Once you have the website in place, it’s likely that you will want to update it periodically or add new pages. Here’s what that workflow looks like for me:</p>
+<ol style="list-style-type: decimal">
+<li>Open my existing site RStudio project</li>
+<li>Run <code>rmarkdown::render_site</code> to inspect the site in its current state and see where I’ve left off.</li>
+<li>Create a new .Rmd document and add any new content.</li>
+<li>Delete redundant YAML information from this new .Rmd (i.e. <code>output:</code>). Knit this document to make sure everything looks good.</li>
+<li>Open <code>_site.yml</code> and add my new document to the navbar. <strong>Note: It’s very easy to forget this step!!</strong></li>
+<li>Run <code>rmarkdown::render_site</code> to stitch everything together.</li>
+<li>Push all changes to GitHub.</li>
+</ol>
+<p><br></p>
+</div>
+<div id="pros-and-cons-of-using-r-markdown-sites" class="section level2">
+<h2><span class="header-section-number">6.8</span> Pros and Cons of using R Markdown sites</h2>
+<p><strong>Pros:</strong></p>
+<ul>
+<li>Simple structure that allows you to put something content together pretty quickly.</li>
+<li>Minimal additions (really, just 2 files) are needed to go from a collection of regular R Markdown documents to a site.</li>
+<li>Ideal for setting up sites that do not need complex organization or many pages (i.e. for workshops).</li>
+<li>Easy to customize without any knowledge of web design or CSS if you’re okay sticking to the templates.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li>The simple structure of RMarkdown websites can make building more complexly organized sites more challenging (i.e. there is not a way to organize files so that they fall under the umbrella of a more overarching page. All R Markdown docs and pages will be on the same “level” or website organization). As the number of pages you want to build increases, your project directory will become increasingly crowded.</li>
+<li>Customizing beyond the boundaries of the built-in templates means your going to have to play around with some CSS. Depending on what you enjoy–this might not actually be a con.</li>
+</ul>
+</div>
+<div id="community-resources" class="section level2">
+<h2><span class="header-section-number">6.9</span> Community Resources:</h2>
+<p><br></p>
+<div id="existing-tutorials" class="section level3">
+<h3><span class="header-section-number">6.9.1</span> Existing tutorials:</h3>
+<ul>
+<li><a href="https://debruine.github.io/tutorials/webpages.html">Chapter 5, Webpages</a>: Includes some overview of adding images, changing global style settings, etc.</li>
+<li><a href="https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html#r_markdown_website_basics">Creating Website in R</a>: Includes description of how to add a personal domain name.</li>
+<li><a href="https://jules32.github.io/rmarkdown-website-tutorial/index.html">Making free websites with RStudio’d R Markdown</a>: A how to that also includes descriptions of the RStudio GUI layout and an overview of Markdown syntax.</li>
+<li><a href="http://nickstrayer.me/RMarkdown_Sites_tutorial/">Personal Website tutorial</a></li>
+</ul>
+</div>
+<div id="general-set-up" class="section level3">
+<h3><span class="header-section-number">6.9.2</span> General set up:</h3>
+<ul>
+<li><p><a href="https://resources.github.com/whitepapers/github-and-rstudio/">GitHub and Rstudio</a>: Step-by-step guide on publishing <code>.Rmd</code> docs to GitHub, includes working with local branches and using the terminal tab within R.</p></li>
+<li><p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a>: The official, very thorough but often technial, resource for R Markdown. Treat this as more of a reference text.</p></li>
+</ul>
+<p><br></p>
+</div>
+<div id="formatting" class="section level3">
+<h3><span class="header-section-number">6.9.3</span> Formatting</h3>
+<ul>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf">R Markdown cheatsheet</a></li>
+<li><a href="https://holtzy.github.io/Pimp-my-rmd/#equations">Pimp my RMD</a>: smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.</li>
+</ul>
+<p><br></p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="package-tutorial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-markdown-workshop-sites.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio4edu/rstudio4edu-book/edit/master/08-rmd_site_tutorial.Rmd",
+"text": "Suggest an edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["https://github.com/rstudio4edu/rstudio4edu-book/raw/master/08-rmd_site_tutorial.Rmd"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
