@@ -2,7 +2,7 @@
 
 ## Works in Progress
   
-  [WHAT IS THE BEST WAY TO MAKE CODE THIS TABLE?]
+  [WHAT IS THE BEST WAY TO MAKE/ CODE THIS TABLE? ]
   
 ```{r library, message=FALSE, warning=FALSE, include=FALSE}
 library(DT)
@@ -27,11 +27,20 @@ tbl <-
 tbl %>% DT::datatable(escape = FALSE, options=list(dom ="t"))
 ```
 
-```{r, echo = FALSE}
+<br>
+
+Now, coding the table a second way, so as not to use HTML explicitly. But now everything is a link.
+
+<br>
+
+
+```{r, echo = FALSE, message = FALSE}
 library(dplyr)
 library(knitr)
 library(kableExtra)
+```
 
+```{r, echo = FALSE}
 tbl <- tibble(Tool = c("Package", rep("RMD site", 5)),
               `Tutorial` = c("How to Make a Package",
                                  "Basic Fundamentals", 
@@ -53,10 +62,10 @@ tbl <- tibble(Tool = c("Package", rep("RMD site", 5)),
 
 tutorial_url <- c("07-package-tutorial.html",
               "Basic Fundamentals", 
-              "08-rmd_site_tutorial.html",
-              "08-rmd_site_tutorial.html",
-              "10-fancy-rmd.html",
-              "10-fancy-rmd.html")
+              "r-markdown-custom-site-tutorial.html",
+              "r-markdown-custom-site-tutorial",
+              "fancy-rmarkdown-sites.html",
+              "fancy-rmarkdown-sites.html")
 
 demo_url <- c(NA,
               NA, 
