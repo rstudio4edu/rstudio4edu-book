@@ -19,5 +19,5 @@ Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
-    klutometis/roxygen
+    klutometis/roxygen,
     RLesur/klippy
