@@ -109,3 +109,17 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   font-family: 'Karla', sans-serif;
   text-transform: uppercase;
 }
+
+
+
+/* source code copy button */
+.copy {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+}
+
