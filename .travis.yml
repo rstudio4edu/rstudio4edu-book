@@ -1,4 +1,5 @@
 language: R
+cran: https://cran.rstudio.com
 cache:                        
   packages: true                # optional
   directories: _bookdown_files  # optional
