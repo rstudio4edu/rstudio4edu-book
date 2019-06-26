@@ -13,9 +13,11 @@ Imports:
     roxygen2 (>= 6.1.1.9000),
     usethis,
     rmarkdown,
-    DT
+    DT,
+    klippy
 Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
     klutometis/roxygen
+    RLesur/klippy
