@@ -140,6 +140,17 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   text-transform: uppercase;
 }
 
+/* The next two rules make the horizontal line go straight across in top navbar */
+
+.summary > li:first-child {
+	height: 50px;
+	padding-top: 10px;
+	border-bottom: 1px solid rgba(0,0,0,.07);
+}
+
+.book .book-summary ul.summary li.divider {
+	height: 0px;
+}
 
 
 /* source code copy button */
@@ -152,4 +163,6 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   font-size: 60%;
   padding: 4px 4px 4px 4px;
 }
+
+
 
