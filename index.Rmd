@@ -12,7 +12,8 @@ biblio-style: apalike
 link-citations: yes
 cover-image: images/books.jpg
 description: "A work-in-progress"
-github-repo: rstudio4edu/rstudio4edu-bookb
+github-repo: rstudio4edu/rstudio4edu-book
+always_allow_html: yes
 ---
 
 # Preface {-}
