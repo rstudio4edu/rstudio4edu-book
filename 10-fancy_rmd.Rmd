@@ -1,64 +1,148 @@
 # Fancy R Markdown Sites
 ## Going further with customization
 
-Once you've built the basic structure for your R Markdown site, if you'd like to customize it even further, here are a handful of things you can add!
-
-
-We'll go over 
-
-
+Once you've built the basic structure for your R Markdown site, if you'd like to customize it even further, here are a handful of things you can add. 
 
 The steps below involve a little bit of HTML and CSS work, but you don't have to have much experience in these methods to be able to build something cool. 
 
 
-## Anatomy of a blinged out R Markdown page.
+## Anatomy of a fancy R Markdown page.
 
-[INSERT ANNOTATED SCREENSHOT OF BLINGED OUT R MARKDOWN PAGE. ANNOTATIONS CORRESPOND TO SECTION HEADERS]
-
+![](images/anatomy.jpg)
 <br>
 
 ## CSS crash course
 Every element of a website that you see, from links to pictures to paragraphs, has a category label. These labels can be tags (for example, all links on websites have `a` tags, all big headers have `h1` tags), or they can be IDs or classes (described later).  If you know the label for something on a website, then you can style its appearance by using a `.css` file. In a CSS file, you write style rules that will apply to all elements of the same category. This is a very useful thing to be able to do because it allows you to break free from the limitations of built-in templates and themes that come with R Markdown.
 
-Below is a quick example of CSS that would change all link colors to white and all link text from being uppercase:
+Below is a quick example of some CSS that would change all link colors to the color "orchid" and all link text from being uppercase:
 
-```{r, eval=FALSE}
-
+```
 a {
-  color: white;
+  color: orchid;
   text-transform: uppercase;
 }
+```
+
+You begin with the element's "label" (technically called a *selector*). Within curly braces, `{ }`, you can include as many different style properties as you'd like for that element. Each new property must end with a `;`.  What are your options for properties to style? [There are many](https://www.w3schools.com/cssref/), but don't feel overwhelmed-- just pick one or two things to change as you start out.
+
+### Determining the right selector
+
+How could you have known that the selector for links was an `a`? The answer is by opening up your existing website, and right-clicking anywhere on the page and clicking on *Inspect* (in Chrome browsers) or *Inspect Element* (in Firefox).
+
+<center> ![](images/inspect.png){width=300px} </center>
+
+Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") [IS THIS ACTUALLY THE RIGHT NAME?], and these give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
+
+In the lower left pane of the subwindow, click on the icon of a rectangle with an arrow. Now as you hover and then click on anything in your website, you will see the contents of the developer tools change. The pane on the right shows the CSS styles that are applied. 
+
+<br>
+
+![](images/inspect2.png)
+<br>
+
+Taking a closer look at the CSS pane, we can see that the link we are hovering over does indeed have an `a` as its selector. 
+
+<br>
+
+![](images/closer.png)
+
+<br>
+
+
+One neat thing about the developer tools, is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, youur edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
+
+[ALSO ADD TEXTTRANSFORM IN SCREENSHOT TO MATCH ABOVE EXAMPLE]
+
+<br>
+
+![](images/orchid.png)
+
+### Adding custom CSS to your site
+
+You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
+
+```
+output: 
+  html_document:
+    includes:
+    css: style.css
+    theme: yeti
+    highlight: zenburn
+    toc: true
+    toc_float: true
+    code_download: true
 
 ```
 
-### How do you find out an element's category?
+We'll now make a CSS file, by going to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `style.css`. 
 
-Using a browser's developer tools, 
+<br>
 
-### Inspector tool
+### 1. Navigation Bar Color
+
+<br>
+
+### 2. Customize your link appearance
+
+<br>
+
+### 3. Remove Table of Contents Border
+
+<br> 
+
+### 4. Customize your fonts with Google Fonts
+To change any of the fonts on your site to be a Google Font, 
+
+Once you've selected the Google Fonts you want to use, open up your `style.css` file and paste in the line of code from Google at the top of it. 
+
+```
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap');
+
+```
+
+<br>
+
+### 5. Add a hero image (banner image at the top)
+
+To add the big image at the top of page (a.k.a hero image), we need to make an `.html` file containing our image.  
+
+Go to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.  
+
+Copy as paste the HTML code below into this file.
+
+```
+<link href="style.css" rel="stylesheet">
+
+<div class="image-descript"> 
+	<img class="big_image" src="https://images.unsplash.com/photo-1515194674751-901bf97f123b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
+  <div class="image-text">
+		<div class="big-image-text"><strong>YUM-101 Delicious Foods</strong></div>
+  </div>
+</div>
+```
+
+Here's what each of these lines is doing:
+
+![](images/annotate_hero.jpg)
 
 
-## Navigation Bar related stuff
+
+We'll insert our `.html` file in the header of our site page by adjusting the YAML for the R Markdown page where we'd like the image to appear. It's possible to add the same hero image to all pages by modifying the `_site.yml` page instead, but hero images are usually best reserved for welcoming visitors to your home page. We add the following to the YAML of the `index.Rmd`:
+
+```
+---
+title: "YUM-101 Delicious Foods"
+output:
+  html_document:
+    includes:
+      in_header: hero-image.html
+---
+```
+
+<br>
+
+
 ### Add a logo
-### Add a drop down menu
-### Tab sets?
 
 <br>
 
-
-## Add a hero image (banner image)
-
-
-
-<br>
-
-
-## Global Aesthetics
-### Customize your fonts with Google Fonts
-
-
-
-<br>
-
-
-## Customize your link appearance
