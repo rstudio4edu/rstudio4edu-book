@@ -5,13 +5,28 @@ Once you've built the basic structure for your R Markdown site, if you'd like to
 
 The steps below involve a little bit of HTML and CSS work, but you don't have to have much experience in these methods to be able to build something cool. 
 
+In this section, we'll walk you through the non-YAML "add ons" to our custom course demo site.
+
 
 ## Anatomy of a fancy R Markdown page.
 
-![](images/anatomy.jpg)
+Here's what we're starting with:
+
+![](images/before_course.png){width=700px}
+
+<br>
+
+And here's where we're going: 
+
+![](images/anatomy.jpg){width=700px}
+<br>
+
+We'll go through how to do each of the numbered add-ons below, but first let's get a little more context for what CSS is. 
+
 <br>
 
 ## CSS crash course
+
 Every element of a website that you see, from links to pictures to paragraphs, has a category label. These labels can be tags (for example, all links on websites have `a` tags, all big headers have `h1` tags), or they can be IDs or classes (described later).  If you know the label for something on a website, then you can style its appearance by using a `.css` file. In a CSS file, you write style rules that will apply to all elements of the same category. This is a very useful thing to be able to do because it allows you to break free from the limitations of built-in templates and themes that come with R Markdown.
 
 Below is a quick example of some CSS that would change all link colors to the color "orchid" and all link text from being uppercase:
@@ -31,16 +46,18 @@ How could you have known that the selector for links was an `a`? The answer is b
 
 <center> ![](images/inspect.png){width=300px} </center>
 
-Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") [IS THIS ACTUALLY THE RIGHT NAME?], and these give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
+Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") [IS THIS ACTUALLY THE RIGHT NAME? I PERSONALLY CALL THIS THE INSPECTOR, BUT MAYBE I MADE THAT UP], and these give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
 
 In the lower left pane of the subwindow, click on the icon of a rectangle with an arrow. Now as you hover and then click on anything in your website, you will see the contents of the developer tools change. The pane on the right shows the CSS styles that are applied. 
 
+
+[NEED TO SWITCH TO SCREENSHOT WITH COURSE DEMO SITE]
 <br>
 
 ![](images/inspect2.png)
 <br>
 
-Taking a closer look at the CSS pane, we can see that the link we are hovering over does indeed have an `a` as its selector. 
+Taking a closer look at the CSS pane on the right, we can see that the link we are hovering over does indeed have an `a` as its selector. 
 
 <br>
 
@@ -49,13 +66,21 @@ Taking a closer look at the CSS pane, we can see that the link we are hovering o
 <br>
 
 
-One neat thing about the developer tools, is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, youur edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
+One neat thing about the developer tools is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, youur edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
 
 [ALSO ADD TEXTTRANSFORM IN SCREENSHOT TO MATCH ABOVE EXAMPLE]
 
 <br>
 
 ![](images/orchid.png)
+<br>
+
+There's a lot more we could say about CSS here. But it's faster and more rewarding to learn via real examples. Let's start tinkering!
+
+[OTHER TOPICS TO MENTION:]
+[1. EXAMPLES OF CLASSES AS CSS SELECTORS. (WHY DO SOME SELECTORS BEGIN WITH . AND OTHERS DON'T?)]
+[2. MULTIPLE ATTRIBUTES. COMBINING THEM WITH `.` vs separated by spaces ]
+
 
 ### Adding custom CSS to your site
 
@@ -74,11 +99,28 @@ output:
 
 ```
 
-We'll now make a CSS file, by going to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `style.css`. 
+We'll now make a CSS file, by going to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `style.css`. We're going to add some styles to this file. We're going to want to keep a rendered version of our custom course site pulled up in a separate window. 
 
 <br>
 
 ### 1. Navigation Bar Color
+
+Let's make the navigation bar a different color. We'll use the developer tools to try out different options in real time.
+
+1. Pull up your site and right click to open the developer tools. 
+2. When we click on the navigation bar, we see that it highlights a certain line of HTML in the left pane of the developer tools. Look for anything that says `class = `. The values that follow `class` are the CSS selectors that are currently styling our navigation bar. 
+
+In this case, our navbar has three classes `navbar`, `navbar-default`, and `navbar-fixed-top`. 
+
+![](images/navbar.png)
+
+<br>
+
+In the righthand pane of the developer tools. we see these classes being used in the CSS (notice that a class needs to have a `.` before it in when it's a selector--but a tag, like the link example above, does not). [SAY SOMETHING ABOUT THE ORDER EACH ARE LISTED?]
+
+3. Let's choose the first CSS selector `.navbar` and play around with it in this pane to decide what color we'd like. Type `background-color:` followed by any [HEX code or rgb code](https://www.google.com/search?q=color+picker) and press `Enter`. You can also click on the small color square to use sliders to set the color and transparency of your navigation bar. I'm selecting 
+
+![](images/color_picker.png){width=300px}
 
 <br>
 

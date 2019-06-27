@@ -72,8 +72,10 @@ h1, h2, h3 {
 }
   
 
+/* DROP CAPS*/
 
-p:nth-child(2):first-letter {
+
+/*p:nth-child(2):first-letter {   /* /* DROP-CAP FOR FIRST P BENEATH EACH H1 OR H2*/ /*
   color: #3fb5bd;
   float: left;
   font-family: 'Abril Fatface', serif;
@@ -84,6 +86,34 @@ p:nth-child(2):first-letter {
   padding-left: 3px;
   margin-bottom: 9px;
 }
+*/
+
+
+.section.level1 > p:first-of-type:first-letter { /*drop cap for first p beneath level 1 headers only within class .section*/
+  color: #3fb5bd;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 7em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+
+.section.level2:first-of-type > p:first-of-type:first-letter { /*drop cap for first p beneath first level 2 section*/
+  color: #3fb5bd;
+  float: left;
+  font-family: 'Abril Fatface', serif;
+  font-size: 7em;
+  line-height: 65px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-left: 3px;
+  margin-bottom: 9px;
+}
+
+
 
 
 /* TOC */

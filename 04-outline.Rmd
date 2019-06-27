@@ -18,8 +18,8 @@ tbl <-
     #-----------|---------------------|--------------------|-------------------------------------------------
     "Package",  "How to make a package", "NA",              '<a href= "https://github.com/rstudio4edu/testpackage">test package</a>',
     "RMD site", "Basic Fundamentals",    "NA",              "TBA", 
-    "RMD site",  "Custom Site Tutorial",   '<a href="https://rstudio4edu.github.io/basic-workshop-site/">Custom Workshop site</a>', '<a href="https://github.com/rstudio4edu/basic-workshop=site">basic-workshop-site</a>',
-    "RMD site",  "Custom Site Tutorial",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-site">basic-course-site</a>',
+    "RMD site",  "Custom Site Tutorial",   '<a href="https://rstudio4edu.github.io/basic-workshop-site/">Custom Workshop site</a>', '<a href="https://rstudio4edu.github.io/basic-workshop-site/">basic-workshop-site</a>',
+    "RMD site",  "Custom Site Tutorial",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-website">basic-course-website</a>',
     "RMD site ",  "Fancy R Markdown Sites",   '<a href="https://rstudio4edu.github.io/fancy-workshop-site/">Fancy Workshop site</a>', '<a href="https://github.com/rstudio4edu/fancy-workshop-site" >fancy-workshop-site</a>',
     "RMD site",   "Fancy R Markdown Sites",    '<a href="https://rstudio4edu.github.io/fancy-course-site"> Fancy Course Site</a>',                    '<a href="https://github.com/rstudio4edu/fancy-course-site">fancy-course-site</a>')
 ```
@@ -57,7 +57,7 @@ tbl <- tibble(Tool = c("Package", rep("RMD site", 5)),
               `GitHub repo` = c("testpackage",
                                 NA,
                                 "basic-workshop-site",
-                                "basic-course-site",
+                                "basic-course-website",
                                 "fancy-workshop-site",
                                 "fancy-course-site")
               )
@@ -79,7 +79,7 @@ demo_url <- c(NA,
 repo_url <- c("https://github.com/rstudio4edu/testpackage",
               NA,
               "https://github.com/rstudio4edu/basic-workshop-site",
-              "https://github.com/rstudio4edu/basic-course-site",
+              "https://github.com/rstudio4edu/basic-course-website",
               "https://github.com/rstudio4edu/fancy-workshop-site",
               "https://github.com/rstudio4edu/fancy-course-site")
 
