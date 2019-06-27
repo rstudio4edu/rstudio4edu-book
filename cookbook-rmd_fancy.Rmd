@@ -1,4 +1,5 @@
-# Fancy R Markdown Sites
+# Make it fancier
+
 ## Going further with customization
 
 Once you've built the basic structure for your R Markdown site, if you'd like to customize it even further, here are a handful of things you can add. 

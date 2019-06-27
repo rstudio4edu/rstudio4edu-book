@@ -1,0 +1,48 @@
+# (PART) Creating educational content {-}
+
+# Introduction {-}
+
+Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
+
+This will be for static edu materials (as opposed to interactive- i.e., learnR)
+
+# Do you need R Markdown?
+
+Maybe not, can do .R scripts, knitr::spin to GitHub
+
+# Using single R Markdown files 
+
+why, how, common workflows, getting fancy with nice HTML options
+
+## Formatting code
+
++ [verbatim code chunks](https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/)
++ `knitr` code chunk options (like eval vs echo vs [include](https://yihui.name/en/2017/11/knitr-include-false/))
++ `knitr` [ref.label](https://yihui.name/knitr/demo/reference/) to reuse code chunks
++ the `fig.path` thing: https://yihui.name/knitr/options/#plots
+
+## Styling output
+
+HTML output options like floating toc, numbering, code folding, code download (requires theme)
+
+   
+## Sharing
+
+
+
++ https://rmarkdown.rstudio.com/docs/reference/github_document.html
+
++ GitHub + ghpages
+      
+   
+## Troubleshooting
+
+[Mine's troubleshooting tips:](https://mine-cetinkaya-rundel.github.io/teach-data-sci-icots2018/01-03-rmarkdown/01-03-rmarkdown.html#30)
+
+
+
++ Make sure RStudio and the rmarkdown package (and its dependencies) are up-to-date.
+
++ Set a global option for error = TRUE (or for a given chunk) so that your document renders even when there are errors.
+
++ Don’t try to change working directory within an R Markdown document. (If you do still decide to use setwd in a code chunk, beware that the new working directory will only apply to that specific code chunk, and any following code chunks will revert back to use the original working directory.)

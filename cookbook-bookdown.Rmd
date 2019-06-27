@@ -1,0 +1,13 @@
+# (PART) Cookbook: Bookdown book {-}
+
+# Introduction to bookdown {-}
+
+Overview- this is a section filled with recipes for making common types of educational content...
+
+# Make a book
+
+# Make a book for a workshop
+
+# Make a book for a course
+
+# Make it fancier

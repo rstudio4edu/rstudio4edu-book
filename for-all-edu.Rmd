@@ -1,0 +1,20 @@
+# (PART) For all educators {-#for-all}
+
+# Teaching with RStudio {#teach-rstudio}
+
+IDE stuff
+Cloud stuff
+
+
+# Teaching with data {#teach-data}
+
+tips/tricks for logistics (use_course, etc)
+
+# What to do on day 1 {#teach-day1}
+
+- Link to mine's eat cake first stuff.
+- start with a data package (if you can); caveat: you are teaching importing data.
+- link to mine's dsinabox, perhaps garrett's latest repro research stuff
+- orient to IDE (great tip by kierisi: play with RStudio IDE themes?)
+- start with Rmd (if you can)- you can teach minimal markdown etc.
+

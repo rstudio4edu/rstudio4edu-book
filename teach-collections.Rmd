@@ -1,0 +1,21 @@
+# (PART) Collections of educational content {-}
+
+# Introduction {-}
+
+Can just deploy single Rmds to website via GitHub pages- easiest
+
+Can use same strategy for rendering multiple files. 
+
+But you probably want a way to bundle up your collection...
+
+# Types of R Markdown collections
+
+(why, how, pros and cons of each)
+   - distill
+   - R Markdown sites
+   - bookdown
+   - blogdown
+   
+# Choose your collections wisely
+
+pros/cons of each of above, specifically from educational standpoint.
