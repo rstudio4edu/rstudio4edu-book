@@ -9,9 +9,19 @@ script:
 - Rscript -e 'bookdown::render_book("index.Rmd")'
 
 deploy:
-  provider: pages
-  local_dir: _book
-  skip_cleanup: true
-  github-token: $GITHUB_PAT    # Set in the settings page 
-  on:
-    branch: master
+  - provider: pages
+    target_branch: gh-pages
+    local_dir: _book
+    skip_cleanup: true
+    github-token: $GITHUB_PAT    # Set in the settings page 
+    on:
+      branch: master
+  - provider: pages
+    target_branch: book_draft
+    local_dir: _book
+    skip_cleanup: true
+    github-token: $GITHUB_PAT    # Set in the settings page 
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH != "master"
+      
