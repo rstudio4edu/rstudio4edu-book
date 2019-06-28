@@ -14,3 +14,8 @@ bookdown::gitbook:
     edit:
       link: https://github.com/rstudio4edu/rstudio4edu-book/edit/master/%s
       text: "Suggest an edit"
+    sharing:
+      github: yes
+      facebook: no
+      twitter: yes
+      all: no
