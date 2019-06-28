@@ -164,6 +164,8 @@ Here is a list of items that would be cool to include, but are lower priority.
 
 * [timer function for workshops]
 
+* Continuous integration? https://github.com/chris-prener/travis-test
+
 # Teaching and Learning with Jupyter Book Review
 
 Here is Desiree's impression of the Jupyter Book. 
