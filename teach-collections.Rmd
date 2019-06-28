@@ -1,12 +1,14 @@
-# (PART) Collections of educational content {-}
+# (PART\*) Creating educational projects {-}
 
-# Introduction {-}
+# Introduction {-#intro-collections}
 
 Can just deploy single Rmds to website via GitHub pages- easiest
 
 Can use same strategy for rendering multiple files. 
 
 But you probably want a way to bundle up your collection...
+
+You need a project to house your collections of multiple Rmd documents
 
 # Types of R Markdown collections
 

@@ -1,6 +1,6 @@
 # (PART) Cookbook: Distill sites {-}
 
-# Introduction to distill {-}
+# Introduction {-#intro-distill}
 
 Overview- this is a section filled with recipes for making common types of educational content...
 
