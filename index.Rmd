@@ -2,8 +2,8 @@
 title: "rstudio4edu"
 subtitle: "A Handbook for Teaching and Learning with RStudio"
 author: 
-- "Alison Hill" 
-- "Desirée De Leon"
+- Desirée De Leon^[RStudio, https://desiree.rbind.io/]
+- Alison Hill^[RStudio, https://alison.rbind.io/]
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -64,3 +64,11 @@ This
 ## Contributing {-}
 
 I love this resource: https://edav.info/contribute.html
+
+:::rstudio-tip
+Through the book, we highlight specific ways that RStudio can expedite your package development workflow, in specially formatted sections like this.
+:::
+
+:::tip
+RStudio exposes `load_all()` in the *Build* menu, in the *Build* pane via *More > Load All*, and in keyboard shortcuts Ctrl + Shift + L (Windows & Linux) or Cmd + Shift + L (macOS).
+:::
