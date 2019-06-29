@@ -138,3 +138,9 @@ Also see:
 + https://rmd4sci.njtierney.com/common-problems-with-rmarkdown-and-some-solutions.html
 + https://happygitwithr.com/rmd-test-drive.html#rmd-troubleshooting
 + switch latex engines (do a screenshot here)
++ consider printing out your `sessionInfo()` [for pro-level, use DT]
+
+```{r}
+DT::datatable(devtools::session_info()$packages)
+```
+
