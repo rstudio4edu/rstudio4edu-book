@@ -24,6 +24,7 @@ also include how to leave invisible notes to yourself `<!--- your comment --->`
 
 + Using RStudio projects (why)
     + https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
+    + in RStudio, from git adds .gitignore for you
 + file paths using `here::here()`
     + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
 
@@ -136,3 +137,4 @@ Also see:
 
 + https://rmd4sci.njtierney.com/common-problems-with-rmarkdown-and-some-solutions.html
 + https://happygitwithr.com/rmd-test-drive.html#rmd-troubleshooting
++ switch latex engines (do a screenshot here)
