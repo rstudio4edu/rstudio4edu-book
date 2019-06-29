@@ -56,6 +56,34 @@ In short, if you are a person who needs or wants to create educational materials
 
 1. **Ona**: Ona heads a team that assists researchers and organizations design and track their project progress. She needs to train up her team of employess who have different R skill levels (sometimes none). Ona knows R but would not call herself a programmer, and she essentially knows nothing about web development. She has been emailing R files back-and-forth with team members as a means of sharing results and analysis, but she knows there has to be a better way to compile these materials and train her team, but isn't sure how to begin navigating new resources to learn to do this. Additionally, her team is limited in budget and time and does not have enough time or energy to read R-related books.
 
+## What is in this handbook? {-}
+
+Some high-level organizational highlights, like:
+
++ The first section "For all educators" includes blah. 
+
++ The next section on "Creating educational content" goes deeper into the R Markdown package, including complementary packages, tools, and worflows, for making new educational content using R and RStudio.
+
++ In "Creating educational projects", we provide a roadmap for navigating some of the R Markdown extension packages that are designed for projects with collections of R Markdown documents (as opposed to a single document). We offer some perspectives specific to educators to help you decide which projects work when. 
+    + Note: we provide step-by-step guidance for how to actually use these packages in the "Cookbooks" sections later in the book.
+  
+...
+
++ The last sections of the book are our cookbooks for educators. Although learning materials for many of these recipes already exist in various palaces, they are often difficult to discover and not designed with educators in mind. We aimed to highlight the most useful features, using input from R and RStudio educators with years of teaching experience.
+
+Finally, we want to point out a few pragmatic features (could include a diagram here to help aid usability?):
+
+1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button in the upper toolbar. 
+
+1. The button to the left allows you to edit (say more about how this works). 
+
+1. Clicking on the GitHub icon on the far right takes you to the source repository for this book. 
+
+1. How to search within this book: https://github.com/rstudio/bookdown/issues/216
+
+## What did we leave out? {-}
+
+on purpose
 
 ## Who are we? {-}
 
