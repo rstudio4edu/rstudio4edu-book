@@ -16,13 +16,14 @@ As a rough outline, to make your first template you will:
 2) Modify the template.
 3) Save, Build, Install, and Restart.
 
-[DESCRIBING THE SPECIFICS OF RMARKDOWN BASICS IS OUTSIDE OF THE SCOPE OF THIS TUTORIAL. NEED TO LINK TO GOOD BASIC RESOURCE FOR THIS]
-
+:::tip
+If you're unfamiliar with the basics of RMarkdown and need to learn the syntax, then first you will want to check-out the resources and tutorials we've compiled [here](#intro-content).
+:::
 <br>
 
 ## Step 1: Create files and folders
 
-I assume you have already created the basic package infrastructure from Part 1.
+I assume you have already created the basic package infrastructure from [Part 1](#data-pkg).
 
 * Run `use_rmarkdown_template(template_name = "<your-template-name")`
 
@@ -51,7 +52,7 @@ This creates a new folder in the root package directory `inst/` with several sub
   + To see some examples of how  [here](https://github.com/dr-harper/example-rmd-templates).
   
 * You can also include a description of your template in the `template.yaml` file in the parent directory `skeleton/`. But this is not critical to getting the template into the package.
-* Save, `Build` > `Install and Restart`
+* Save, *Build* > *Install and Restart*
 
 <center>![](images/pkg/template_example.png){width=500px}</center>
 
@@ -70,12 +71,11 @@ You can get ideas for how minimal `.Rmd` templates can be customized by checkout
 
 <br>
 
-<div class= "alert alert-note">
->**Tip**: You can continue to add new .Rmd templates to your package throughout your course. When you do, ask students to update the package, and they will access to the new templates. 
+:::tip
+**Tip**: You can continue to add new .Rmd templates to your package throughout your course. When you do, ask students to update the package, and they will access to the new templates. 
 
 [INSERT DAVID MEZA QUOTE]
-
-</div>
+:::
 
 <br>
 

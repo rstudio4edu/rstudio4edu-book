@@ -46,12 +46,19 @@ Here we will make a bare bones package that is educator-ready. The final goal wi
 If you're a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
 
 <br>
-<div class= "alert alert-note">
-> **What's in a name?** It'll be easiest if you give your GitHub repository the same name that you'd like to give your package. It will make things less confusing. As such, the name you choose must 1) include only letters, numbers, or `.`, 2) start with a letter, and 3) not end with a `.` Optionally, you can also consider the naming tips [here](https://r-pkgs.org/package-structure.html).
 
-> **Where to put this project directory?** Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.
+:::tip
+**What's in a name?** It'll be easiest if you give your GitHub repository the same name that you'd like to give your package. It will make things less confusing. As such, the name you choose must:
 
-</div>
+* Include only letters, numbers, or `.`
+* Start with a letter
+* Not end with a `.` 
+* Optionally, consider the naming tips [here](https://r-pkgs.org/package-structure.html)
+:::
+
+:::tip
+**Where to put this project directory?** Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.
+:::
 
 <br>
 
@@ -68,8 +75,6 @@ library(usethis)
 
 Specifically, we use the `create_package()` function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we'd like to use, we can replace the path with `getwd()`: 
 
-[IS THIS HACKY?]
-
 ```{r, eval=FALSE}
 create_package(getwd())
 ```
@@ -82,7 +87,7 @@ The console output will ask if you'd like to overwrite the pre-existing R projec
 
 <br>
 
-A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a `Build` tab in the  pane which also has the tabs `Environment`, `History`, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.
+A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a *Build* tab in the  pane which also has the tabs *Environment*, *History*, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.
 
 <br>
 
@@ -116,10 +121,9 @@ You can also edit the `DESCRIPTION` file to fill in the author (your) info and o
   
 <br>
 
-<div class= "alert alert-note">
->**FYI**: At this point in package-making is when you could begin to create custom functions if you wanted to (e.g. [as described here](https://r-pkgs.org/whole-game.html#write-the-first-function) and [here](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/), but this is not a goal of the present tutorial).
-
-</div>
+:::tip
+**FYI**: At this point in package-making is when you could begin to create custom functions if you wanted to (e.g. [as described here](https://r-pkgs.org/whole-game.html#write-the-first-function) and [here](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/), but this is not a goal of the present tutorial).
+:::
 
 <br>
 
@@ -185,10 +189,10 @@ This new folder houses a `DATASET.R` script.
  
 <br>
 
-<div class= "alert alert-note">
->**Note**: It's always a good idea to start with the most unprocessed, messy version of the data in the `data-raw` folder along with scripts to clean it up, so that your workflow is reproducible. 
+:::tip
+**Note**: It's always a good idea to start with the most unprocessed, messy version of the data in the `data-raw` folder along with scripts to clean it up, so that your workflow is reproducible. 
+:::
 
-</div>
 
 <br>
 
@@ -222,10 +226,10 @@ usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option
 <br>
 
 
-<div class= "alert alert-note">
->**FYI**: The reason .rda (also called .RData) files are use in packaged data sets is because this data file format is much faster to read in than .csv files.
+:::tip
+**FYI**: The reason .rda (also called .RData) files are use in packaged data sets is because this data file format is much faster to read in than .csv files.
+:::
 
-</div>
 
 <br>
 
@@ -259,7 +263,9 @@ aggression_behavior
 
 <div class= "alert alert-note">
 
->**Note**: If you later decide to update the underlying raw .csv file, you will have to manually run the script in Step 2 again before re-building, loading, installing the package. The reason is that when packages are built, loaded, installed, etc., any contents in data-raw/ are ignored by default.
+:::
+**Note**: If you later decide to update the underlying raw .csv file, you will have to manually run the script in Step 2 again before re-building, loading, installing the package. The reason is that when packages are built, loaded, installed, etc., any contents in data-raw/ are ignored by default.
+:::
 
 </div>
 
@@ -316,10 +322,9 @@ This is what will become our documentation.
 
 <br> 
 
-<div class= "alert alert-note">
->**Note:** To read more about Roxygen comments, check out [6.3 Roxygen Comments, R Packages](images/pkg/https://r-pkgs.org/man.html).
-
-</div>
+:::tip
+**Note:** To read more about Roxygen comments, check out [6.3 Roxygen Comments, R Packages](images/pkg/https://r-pkgs.org/man.html).
+:::
 
 
 * Use `devtools::document()` to make the roxygen comments "concrete". 
@@ -355,7 +360,7 @@ Now we can check that our documentation works:
 
 ### Step 4:  Build and install
 
-* As before, click on `Install and Restart` under the Build tab.
+* As before, click on *Install and Restart* under the Build tab.
 
 Here's a review of all the data package steps so far:
 

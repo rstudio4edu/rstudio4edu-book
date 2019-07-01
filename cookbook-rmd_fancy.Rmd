@@ -67,7 +67,7 @@ Taking a closer look at the CSS pane on the right, we can see that the link we a
 <br>
 
 
-One neat thing about the developer tools is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, youur edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
+One neat thing about the developer tools is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, your edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
 
 [ALSO ADD TEXTTRANSFORM IN SCREENSHOT TO MATCH ABOVE EXAMPLE]
 
@@ -149,7 +149,7 @@ Once you've selected the Google Fonts you want to use, open up your `style.css` 
 
 To add the big image at the top of page (a.k.a hero image), we need to make an `.html` file containing our image.  
 
-Go to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.  
+Go to *File* > *New File* > *Text File*. Go ahead and save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.  
 
 Copy as paste the HTML code below into this file.
 

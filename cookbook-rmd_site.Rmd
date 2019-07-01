@@ -282,7 +282,7 @@ Once you have the website in place, it's likely that you will want to update it 
 
 * [GitHub and Rstudio](https://resources.github.com/whitepapers/github-and-rstudio/): Step-by-step guide on publishing `.Rmd` docs to GitHub, includes working with local branches and using the terminal tab within R. 
 
-* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/): The official, very thorough but often technial, resource for R Markdown. Treat this as more of a reference text.
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/): The official, very thorough but often technical, resource for R Markdown. Treat this as more of a reference text.
 
 <br>
 

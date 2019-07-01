@@ -31,5 +31,3 @@ Here's a link to a bare bones demo workshop site that we've made and it's reposi
 
 Here's a link to a bare bones demo workshop site that we've made and it's repository.
 
-### Some extra cool stuff we've seen
-

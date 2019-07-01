@@ -11,7 +11,7 @@ LearnR tutorials are interactive R Markdown documents that allow you to incorpor
 
 ### Step 1: Create files and directories
 
-As before, I assume you have at a minimum created the basic package structure from Part 1. 
+As before, I assume you have at a minimum created the basic package structure from [Part 1](#data-pkg). 
 
 * Install the `learnr` package
 * Run `use_tutorial("<name-of-tutorial-file>", "<title-you'd-like-the-user-to-see>", open = interactive())` 
@@ -35,7 +35,7 @@ This adds a `tutorial` folder to the `inst` directory.
 
 <center>![](images/pkg/tutorial_ss.png)</center>
 
-* Click `Run Document` next to the little green arrow in the toolbar of the `.Rmd` file.
+* Click *Run Document* next to the little green arrow in the toolbar of the `.Rmd` file.
   + This will generate a `.html` file in the same directory as the tutorial `.Rmd` file and also run your tutorial locally.
 
 <br> 
@@ -46,7 +46,7 @@ At the time of writing, there is one additional folder that needs to be added, w
 
 * Within the subdirectory `tutorials/`, add a new folder with the same name as your `.Rmd` tutorial file.
 * Move your tutorial `.Rmd` file and the `.html` for your tutorial into this new folder.
-* `Build` > `Install and Restart`
+* *Build* > *Install and Restart*
 
 <center>![](images/pkg/folders.png){width=300px}</center>
 
