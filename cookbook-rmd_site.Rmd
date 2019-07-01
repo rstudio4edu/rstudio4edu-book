@@ -1,4 +1,4 @@
-# R Markdown Custom Site Tutorial
+# Make a site
 
 This is a tutorial intended for folks who would like to put together a site to help them organize and deliver their teaching materials to their participants. 
 
@@ -55,15 +55,11 @@ library(usethis)
 
 
 ### Two getting-started workflows:
-We recommend following the tips on [Happy Git with R](INSERT LINK) and starting in GitHub before switching to RStudio:
 
-1. Create a GitHub repo for your work.
-2. Check **Initialize this repository with a README**.
-3. In the dropdown menu **Add .gitignore: ** choose **R** [CAN PROBABLY REMOVE]
-4. Click the green **Clone or Download** button, and copy the URL.
-5. Open RStudio. Click `File` > `New Project` > `Version Control`> `Git`. Paste the copied URL.
-6. Click Create Project.
-7. Use `rmarkdown:::site_skeleton(getwd())` (note that we use `:::` here, with three colons!) to generate important infrasctructure files we need. 
+```{r child = 'modules/github-first-project.Rmd'}
+
+```
+
 
 <br>
 

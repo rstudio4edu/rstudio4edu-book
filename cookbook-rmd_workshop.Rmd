@@ -1,4 +1,4 @@
-# R Markdown Workshop Sites
+# Make a site for a workshop
 
 Here are some components that your workshop site should have. 
 
@@ -29,7 +29,7 @@ Here's a link to a bare bones demo workshop site that we've made and it's reposi
 
 Here's a link to a bare bones demo workshop site that we've made and it's repository.
 
-## Some extra cool stuff we've seen
+### Some extra cool stuff we've seen
 
 [Having the Schedule times determined by a script](https://github.com/rstudio-education/deep-teaching/blob/master/course-planning/outline.Rmd)
 

@@ -1,0 +1,146 @@
+# (PART\*) Creating educational content {-}
+
+# Introduction {-#intro-content}
+
+Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
+
+This will be for static edu materials (as opposed to interactive- i.e., learnR)
+
+# Do you need R Markdown?
+
+Maybe not, can do .R scripts, knitr::spin to GitHub
+
+# R Markdown in practice
+
+examples:
+
++ https://bbc.github.io/rcookbook/
+
+why, how
+
+also include how to leave invisible notes to yourself `<!--- your comment --->`
+
+## R Markdown Workflows
+
++ Using RStudio projects (why)
+    + https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
+    + in RStudio, from git adds .gitignore for you
++ file paths using `here::here()`
+    + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
+
+# Design for teaching
+
+## Formatting code
+
+Useful patterns:
+
++ Just show me the code
+
++ Just show me the output
+
++ Just show me the plots
+
++ [verbatim code chunks](https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/)
++ `knitr` code chunk options (like eval vs echo vs [include](https://yihui.name/en/2017/11/knitr-include-false/))
++ `knitr` [ref.label](https://yihui.name/knitr/demo/reference/) to reuse code chunks
++ the `fig.path` thing: https://yihui.name/knitr/options/#plots (see also: name your code chunks!)
++ making sure that your package warnings/messages don't print!
++ how to control numbers of digits that print 
++ control significance stars
+
+```{r}
+options(
+  show.signif.stars = FALSE,     
+  digits = 2
+  )
+```
+
+
+## Styling output
+
+HTML output options like floating toc, numbering, code folding, code download (requires theme)
+
+- [ ] [tabsets](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections)
+         - think about good use cases
+- [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
+- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
+- [ ] spacing with `<br>`
+- [ ] highlight
+- [ ] themes (plus `type: inverse`) 
+- [ ] [toc / toc floating](https://rmarkdown-docs.netlify.com/reference/html_document.html) 
+
+- [breadcrumbs](https://bootswatch.com/flatly/)
+
+# Sharing 
+
+## Share data
+
+For html output formats only:
+
+1. `xfun::embed_file()` [link](https://yihui.name/en/2018/07/embed-file/)
+
+1. DT buttons [link](https://rstudio.github.io/DT/003-tabletools-buttons.html)
+
+```{r eval = FALSE}
+library(DT)
+datatable(payroll, extensions = 'Buttons', options = list(
+    dom = 'Bfrtip',
+    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+  )
+)
+```
+
+
+## Share source code
+
++ first, know the knitr code chunk options, and remember about code folding.
+
++ GitHub to view source (but not very readable, see next section)
+
+- [ ] [code download](https://rmarkdown-docs.netlify.com/reference/html_document.html)
+
+## Share readable output
+
++ .R -> GitHub
+
+  ```yaml
+  #' ---
+  #' output: github_document
+  #' ---
+  ```
+
+  + https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.R
+
++ Rmd -> GitHub
+
+   + https://rmarkdown.rstudio.com/docs/reference/github_document.html
+   + https://github.com/jennybc/lotr-tidy
+
++ GitHub + ghpages
+
+Can also export to pdf as attachments
+      
+   
+# Troubleshooting
+
+[Mine's troubleshooting tips:](https://mine-cetinkaya-rundel.github.io/teach-data-sci-icots2018/01-03-rmarkdown/01-03-rmarkdown.html#30)
+
+
+
++ Make sure RStudio and the rmarkdown package (and its dependencies) are up-to-date.
+
++ Set a global option for error = TRUE (or for a given chunk) so that your document renders even when there are errors.
+
++ Don’t try to change working directory within an R Markdown document. (If you do still decide to use setwd in a code chunk, beware that the new working directory will only apply to that specific code chunk, and any following code chunks will revert back to use the original working directory.)
+
+Also see: 
+
++ https://rmd4sci.njtierney.com/common-problems-with-rmarkdown-and-some-solutions.html
++ https://happygitwithr.com/rmd-test-drive.html#rmd-troubleshooting
++ switch latex engines (do a screenshot here)
++ consider printing out your `sessionInfo()` [for pro-level, use DT]
+
+```{r}
+DT::datatable(devtools::session_info()$packages)
+```
+

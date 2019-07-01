@@ -1,0 +1,76 @@
+# (PART\*) For all educators {-#for-all}
+
+# Teaching with RStudio {#teach-rstudio}
+
+## IDE stuff
+
+Best analogy ever: https://moderndive.com/2-getting-started.html#r-rstudio
+
+## RStudio.cloud
+
+## Connect, Server Pro, etc.
+
+
+# Teaching with data {#teach-data}
+
+tips/tricks for logistics (use_course, etc)
+
+good clean data packages
+
++ [fivethirtyeight](https://fivethirtyeight-r.netlify.com/)
++ gapminder
++ babynames
++ not a package but https://github.com/rfordatascience/tidytuesday
++ for tidying: 
+    + https://github.com/jennybc/lotr
+    + Most raw data from gapminder: https://www.gapminder.org/data/
+    + https://www.jvcasillas.com/untidydata/
++ https://simplystatistics.org/2018/01/22/the-dslabs-package-provides-datasets-for-teaching-data-science/
++ https://github.com/rstudio-education/dsbox
++ https://kieranhealy.org/blog/archives/2018/12/12/teaching-and-learning-materials-for-data-visualization/
+
+see data package for your own
+
+# Teaching with GitHub {#teach-github}
+
+Make sure to mention Mine's ghclass package
+
+Happy Git with R for yourself and your students
+
+GitHub Classroom is also a good option to consider
+
+https://happygitwithr.com/classroom-overview.html
+
+# Teaching learners {#teach-learners}
+
++ teaching to make reprexes
+
++ teaching about community/SO/etc
+
+# What to do on day 1 {#teach-day1}
+
+See: https://github.com/rstudio-education/datascience-box/issues/47
+
+- Link to mine's eat cake first stuff.
+- start with a data package (if you can); caveat: you are teaching importing data.
+- link to mine's dsinabox, perhaps garrett's latest repro research stuff
+- orient to IDE (great tip by kierisi: play with RStudio IDE themes?)
+- start with Rmd (if you can)- you can teach minimal markdown etc.
+
+# Licensing your content
+
+Some opinionated guidance
+
+# Remixing licensed content
+
+Recommended ways to offer attribution
+
+If you are reusing others' content in say a workshop with slides, add your attributions on the last slide, and include an "Attributions" section in the repository's READ ME file.
+
+So if it’s a workshop, once on the last slide + in the repo readme. 
+
+If it’s a semester long course, just somewhere on the course website
+
+# Community
+
+https://community.rstudio.com/c/teaching

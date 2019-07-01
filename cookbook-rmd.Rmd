@@ -1,0 +1,5 @@
+# (PART) Cookbook: R Markdown sites {-}
+
+# Introduction {-#intro-rmd}
+
+Overview- this is a section filled with recipes for making common types of educational content...

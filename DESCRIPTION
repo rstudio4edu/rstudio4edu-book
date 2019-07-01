@@ -14,7 +14,8 @@ Imports:
     usethis,
     rmarkdown,
     DT,
-    klippy
+    klippy,
+    devtools
 Remotes:
     r-lib/fs,
     r-lib/usethis,

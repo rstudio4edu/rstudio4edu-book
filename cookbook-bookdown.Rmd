@@ -1,0 +1,16 @@
+# (PART) Cookbook: Bookdown book {-}
+
+# Introduction {-#intro-bookdown}
+
+Overview- this is a section filled with recipes for making common types of educational content...
+
+# Make a book
+
+- re-explain search here https://github.com/rstudio/bookdown/issues/216
+
+# Make a book for a workshop
+
+# Make a book for a course
+
+# Make it fancier
+

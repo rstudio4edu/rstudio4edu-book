@@ -1,4 +1,5 @@
-#R Markdown Course Sites
+# Make a site for a course
+
 Here are some components that your course site should have. 
 
 1) Course Overview
@@ -30,5 +31,5 @@ Here's a link to a bare bones demo workshop site that we've made and it's reposi
 
 Here's a link to a bare bones demo workshop site that we've made and it's repository.
 
-# Some extra cool stuff we've seen
+### Some extra cool stuff we've seen
 
