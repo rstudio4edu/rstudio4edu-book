@@ -39,12 +39,10 @@ Or the classroom can be a virtual one, where learners interact asynchronously wi
 
 Finally, there are temporary classrooms- those that pop up like food truck pods. Learners pick a truck to decide what they want to learn, they get served up some educational materials and enjoy it in real-time with an instructor and other learners. The hope is that they pack up some knowledge "to go boxes" that they will put into practice when the instructor is long gone.
 
-We know that people in fields like ecology, sociology, digital history, psychology, biology, genetics, neuroscience, pharmacology, and bioinformatics for education- not just those who teach data science or statistics.
+We know that [this is the case for] people in fields like ecology, sociology, digital history, psychology, biology, genetics, neuroscience, pharmacology, and bioinformatics for education- not just those who teach data science or statistics.
 
 
 ## Who are you? {-}
-
-TO DO: shorten to be more like [Greg's](http://teachtogether.tech/#s:intro-audience)
 
 Who did we make this handbook for? We envision that this handbook is for all end-user teachers: teaching may or may not be part of your formal job description, you may not have formal training in how to teach, and you may teach in a formal classroom setting, but you may also teach virtually (via webinars or online tutorials), or perhaps you teach in short but intense bursts like in-person workshops and small-group trainings. 
 

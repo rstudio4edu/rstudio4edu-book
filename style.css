@@ -17,7 +17,7 @@ pre code {
 
 /*  Desiree custom css  */
 
-.navbar-extension{
+/*.navbar-extension{
   display: block;
   width: 100%;
   background-color: rgba(255,255,255);
@@ -27,17 +27,30 @@ pre code {
   height: 50px;
   position: fixed;
   z-index:1;
+} */
+
+/* next 3 rules for setting large image at top of each page and pushing book content to appear beneath that */
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 390px;
+  /*background-image: url("images/books.jpg");*/
+  background-color: #3fb5bd;
 }
 
-.image-descript {
-  margin-top: 50px;
-  margin-bottom: 44px;
-  position: relative;
-}
-
-.big_image {
+.hero-image {
   width: 100%;
+  height: 390px;
+  object-fit: cover;
 }
+
+.page-inner {
+  padding-top: 440px !important;
+}
+
 
 
 .book .book-body .page-wrapper .page-inner section.normal a {
@@ -139,9 +152,20 @@ h1, h2, h3 {
   color: #379fa7 !important;
 } 
 
+.book .book-summary ul.summary li span { /* for Parts */
+  color: black;
+  opacity: .9;
+  text-transform: uppercase;
+}
+
+/*
+.part {
+  text-transform: uppercase !important; 
+}
+*/
+
 ul.summary > li > a { /* The > selects all the li's which are immediately within the class summary*/
   font-family: 'Karla', sans-serif;
-  text-transform: uppercase;
 }
 
 /* The next two rules make the horizontal line go straight across in top navbar */
@@ -172,23 +196,25 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 /* from r-pkgs.org*/
 
 div.rstudio-tip, div.tip {
-  border: 4px solid #ddd;
-  border-radius: 5px;
+  border-left: 4px solid #c8e2e4;
   padding: 1em;
   margin: 1em 0;
-  padding-left: 80px;
+  padding-left: 100px;
   background-size: 70px;
   background-repeat: no-repeat;
-  background-position: 5px center;
+  background-position: 15px center;
   min-height: 120px;
+  color: #2ea8b3;
 }
 
 div.rstudio-tip {
   background-image: url("images/rstudio.png");
+  background-color: #aed6d963;
 }
 
 div.tip {
   background-image: url("images/lightbulb.png");
+  background-color: #aed6d963;
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed

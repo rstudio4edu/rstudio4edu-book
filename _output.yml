@@ -1,7 +1,7 @@
 bookdown::gitbook:
-  css: style.css # !
+  css: style.css
   includes:
-    in_header: big-image.html
+    before_body: big-image.html
   hightlight: tango
   config:
     toc:

@@ -3,15 +3,13 @@ title: "Untitled"
 output: html_document
 ---
 
-We recommend following the tips on [Happy Git with R](INSERT LINK) and starting in GitHub before switching to RStudio:
+We recommend following the tips on [Happy Git with R](https://happygitwithr.com/new-github-first.html) and starting in GitHub before switching to RStudio:
 
 1. Create a GitHub repo for your work.
-2. Check **Initialize this repository with a README**.
-3. In the dropdown menu **Add .gitignore: ** choose **R** [CAN PROBABLY REMOVE]
-4. Click the green **Clone or Download** button, and copy the URL.
-5. Open RStudio. Click `File` > `New Project` > `Version Control`> `Git`. Paste the copied URL.
-6. Click Create Project.
-7. Use: 
+2. Click the green **Clone or Download** button, and copy the URL.
+3. Open RStudio. Click *File* > *New Project* > *Version Control*> *Git*. Paste the copied URL.
+4. Click Create Project.
+5. Use: 
 
 ```{r eval = FALSE}
 rmarkdown:::site_skeleton(getwd())
