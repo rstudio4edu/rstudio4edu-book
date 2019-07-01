@@ -3,7 +3,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## Is this tutorial for you?
+## Is this tutorial for you? {-}
 
 This tutorial is intended for educators who would like to learn to make a package in order to distribute materials to their learners easily. 
 
@@ -23,7 +23,7 @@ This tutorial is intended for educators who would like to learn to make a packag
 
 <br>
 
-## Why make a package?
+## Why make a package? {-}
 
 <center>![](images/pkg/Box.jpg){width=600px}</center>
 
@@ -33,7 +33,7 @@ As an educator you can use a package to easily deliver the contents of your less
 
 <br>
 
-## PART 1: Creating bare bones package structure
+## PART 1: Creating bare bones package structure {-}
 
 <center>![](images/pkg/barebones.jpg){width=350px}</center>
 
@@ -41,7 +41,7 @@ Here we will make a bare bones package that is educator-ready. The final goal wi
 
 <br>
 
-### Step 1: Make a GitHub repo for the package
+### Step 1: Make a GitHub repo for the package {-}
 
 If you're a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
 
@@ -62,7 +62,7 @@ If you're a beginner when it comes to integrating RStudio and Git, then the clea
 
 <br>
 
-### Step 2: Create the package in RStudio
+### Step 2: Create the package in RStudio {-}
 
 Below, we distill the more comprehensive resource [R packages](https://r-pkgs.org/whole-game.html) down to the basics. Now that your GitHub-connected project has been created, it's time to put in the scaffolding for our bare-minimum package, which will primarily consist of the addition of specific folders and files to our project directory. 
 
@@ -107,7 +107,7 @@ It is a good idea to  commit to GitHub at this point.
 
 <br>
 
-### Step 3: (Optionally) Edit DESCRIPTION file
+### Step 3: (Optionally) Edit DESCRIPTION file {-}
 
 You can also edit the `DESCRIPTION` file to fill in the author (your) info and other descriptive info about the package:
 
@@ -127,7 +127,7 @@ You can also edit the `DESCRIPTION` file to fill in the author (your) info and o
 
 <br>
 
-### Step 4: Build!
+### Step 4: Build! {-}
 
 <center>![](images/pkg/Build.jpg){width=400px}</center>
 
@@ -141,7 +141,7 @@ The minimum package structure is in place, and now we go to `Build` > `Install a
 
 <br>
 
-### Step 5: Deliver
+### Step 5: Deliver {-}
 
 Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:
 
@@ -157,19 +157,19 @@ We next demonstrate how to include custom data in package.
 
 <br>
 
-## PART 2: Including data sets
+## PART 2: Including data sets {-}
 Assuming you have followed the previous steps for building the basic structure of a package, we now demonstrate how to package up some data for your students. 
 
 <br>
 
-### Why do this?
+### Why do this? {-}
 What if you'd like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.
 
 <br>
 
 <br>
 
-### Step 1: Add raw data file
+### Step 1: Add raw data file {-}
 
 * Call `usethis::use_data_raw` to create a folder called `data-raw`. We will use this folder as a general storage space for any raw data files, data pre-processing scripts, etc. that we don't want to be built into our final package.
 
@@ -197,7 +197,7 @@ This new folder houses a `DATASET.R` script.
 <br>
 
  
-### Step 2: Save clean data to `data/`
+### Step 2: Save clean data to `data/` {-}
 
 Edit the `DATASET.R` script:
 
@@ -235,7 +235,7 @@ usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option
 
 Your data is now callable! Check that you can access your data.
 
-* Click `Build` > `Load All`
+* Click *Build* > *Load All*
 * Print your data set object:
 
 ```{r, eval=FALSE}
@@ -271,7 +271,7 @@ aggression_behavior
 
 <br>
 
-### Step 3: Document the data set
+### Step 3: Document the data set {-}
 Because this will be a data set that is shared with others, it's important to add reference documentation for it.
 
 * Use `usethis::use_r()` with your data set name in quotes.
@@ -358,9 +358,9 @@ Now we can check that our documentation works:
 
 
 
-### Step 4:  Build and install
+### Step 4:  Build and install {-}
 
-* As before, click on *Install and Restart* under the Build tab.
+* As before, click on *Install and Restart* under the *Build* tab.
 
 Here's a review of all the data package steps so far:
 
