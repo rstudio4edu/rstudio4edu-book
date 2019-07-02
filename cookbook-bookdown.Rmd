@@ -65,21 +65,76 @@ usethis::use_git()
 usethis::use_github() # you have to have a PAT setup
 ```
 
+### Rendering a skeletal book
+
+Regardless of which workflow you used, you should now have a directory structure with contents like these:
+![](INSERT SCREEN SHOT)
+
+These files here are enough to create a skeleton of a book. Let's render it!
+
+:::rstudio-tip
+Do not click on *Knit* to render your book! **[WHY?]** If you've already knit, then just clear out the `_book` folder. 
+:::
+
+* In the RStudio toolbar menu, click on *Addins* > *Preview Book*
+
+![INSERT SCREEN SHOT of addins]()
+
+But you can also render it these other ways instead:
+
+* 1)  The line below does the exact same thing as *Preview Book*:
+```{r, eval=FALSE}
+bookdown::render_book('index.Rmd')
+```
+
+* 2) Or you can use:
+```{r, eval=FALSE}
+bookdown::serve_book()
+```
+
+
+
+### Three kinds of YAMLs
+
+In RStudio navigate to... 
+
+`index.Rmd` is going to be Chapter 1.
+
 ## Part 2: Create your content {-}
+
+
+### Structure
+
+#### Files to change
+#### What not to touch
+
+#### Figures and Tables
+#### Cross References
+#### Citations
+#### References
 
 ## Part 3: Dress it up {-}
 
+### Highlight options
+Possible styles are `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, and `haddock`.
 ### Chapters or...? {-}
 ### Numbered or Not {-}
 
-## Part 4: Put your book online! {-}
+
+
+## Part 4: Put your book out there! {-}
+
+### Online
+### As a PDF
+### As....
+
 
 ## Workflow for maintenance {-}
 
-Once you have the website in place, it’s likely that you will want to update it periodically or add new pages. Here’s what that workflow looks like for me:  
+Once you have the website in place, it’s likely that you will want to update it periodically or add new pages. Here’s what that workflow looks like for us:  
 
 1. Open my existing site RStudio project
-2. 
+2. Go to *Addins* > *Preview Book* to render the book
 3. 
 4. 
 5. 
@@ -88,6 +143,11 @@ Once you have the website in place, it’s likely that you will want to update i
 
 (Or call this section, Notes for using your book once it's made)
 
+- We've already covered not knitting when rendering your book.
+- All chapter `.Rmd` files MUST begin with # Level 1 Header no matter what. Any content before that will not appear.
+- Making sure your book contents are put together in the right order: For this to happen automatically, you would need to create .Rmd file names that start with 01, 02, etc. This seems fine and dandy, but think of how annoying it would be if you decided to switch around the order of all your chapters--you would have to rename multiple files (ugh!). So, it is recommended to instead go to the `_bookdown.yml` and set the chapter order there. This is kind of like the bookdown builder's instruction manual for chapter order. Swap around your chapters as much as you'd like in this single file and be done.
+- In `_bookdown.yml`, when you fill out `chapter_name`: What follows should include a space after it, within the quotes!
+- Explain the never-ending loop of book-rendering [Would be good to get some more context into what sorts of things trigger this behavior.] Common problem! Exit out of this by going to *Session* > *Terminate R...*.
 - re-explain search here https://github.com/rstudio/bookdown/issues/216
 
 ## Bookdown resources
