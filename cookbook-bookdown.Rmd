@@ -4,18 +4,110 @@
 
 Overview- this is a section filled with recipes for making common types of educational content...
 
+
 # Make a book
 
-This cookbook is intended for educators who would like to make a "book" to organize their educational content for their learners. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth of materials in a bookdown. 
+This cookbook is intended for educators who would like to make a "book" to organize their educational content for their learners. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
+
+Plus, you can also easily:
+
+* Cross-reference
+* Number figures, equations, and tables
+* Distribute your book as a PDF, an HTML website, etc.
 
 Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
 
+## Mental Framework: what are we going to make here? {-}
+
+If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files and some more rigid rules about what can start each document. 
+
+
+
+## Part 1: Getting set up {-}
+
+We'll use the following packages:
+
+```{r, eval=FALSE}
+#install.packages("bookdown")
+
+#install.packages("usethis")
+library(usethis)
+```
+
+### Two getting-started workflows:
+
+```{r child = modules/github-first-project}
+```
+
+```
+bookdown:::bookdown_skeleton(getwd())
+```
+
+(note that we use ::: here, with three colons!) to generate important infrasctructure files we need.
+
+Though we recommend a “GitHub first” workflow, it is possible to start with RStudio project wizard to create a new R book project and then move to GitHub:
+
+1. Click *File* > *New Project* > *New Directory*
+2. Scroll down and select: *Book Project using bookdown*
+
+## Part 2: Create your content {-}
+
+## Part 3: Dress it up {-}
+
+### Chapters or...? {-}
+### Numbered or Not {-}
+
+## Part 4: Put your book online! {-}
+
+## Workflow for maintenance {-}
+
+Once you have the website in place, it’s likely that you will want to update it periodically or add new pages. Here’s what that workflow looks like for me:  
+
+1. Open my existing site RStudio project
+2. 
+3. 
+4. 
+5. 
+
+## Gotchas to watch out for
+
+(Or call this section, Notes for using your book once it's made)
 
 - re-explain search here https://github.com/rstudio/bookdown/issues/216
+
+## Bookdown resources
+[https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/)
+
 
 # Make a book for a workshop
 
 # Make a book for a course
 
 # Make it fancier
+
+Once you’ve built the basic structure for your book, if you’d like to customize it even further, we can do a little bit of HTML and CSS work to add-on some fancy features.  
+
+## Anatomy of a fancy book 
+Here's where we're starting: 
+
+[SCREENSHOT OF PLAIN BOOK]
+
+And here's where we're going:
+
+[SCREENSHOT OF FANCY BOOK, ANNOTATED]
+
+**Link back to CSS Crash Course** 
+
+## Add Google Fonts {-}
+## Add hero image {-}
+## Table of contents
+### Hierarchy styling
+### Background
+## Add a logo
+## Sidebar Divs
+## Drop Caps
+## Copy to Clipboard
+
+
+
 
