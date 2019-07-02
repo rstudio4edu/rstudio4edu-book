@@ -48,7 +48,7 @@ library(usethis)
 <br>
 
 
-### Two getting-started workflows:
+### Two getting-started workflows: {-}
 
 ```{r child = 'modules/github-first-project.Rmd'}
 
@@ -64,9 +64,10 @@ rmarkdown:::site_skeleton(getwd())
 
 Though we recommend a "GitHub first" workflow, it is possible to start with RStudio project wizard to create a new R Markdown site and then move to GitHub:
 
-1. Click `File` > `New Project` > `New Directory`.
-2. Scroll down and select `Simple R Markdown Website`.
+1. Click *File* > *New Project* > *New Directory*
+2. Scroll down and select *Simple R Markdown Website*
 3. Then, optionally: 
+
 ```{r, eval=FALSE}
 usethis::use_git()
 usethis::use_github() # you have to have a PAT setup
@@ -244,7 +245,7 @@ Once you have the website in place, it's likely that you will want to update it 
 3. Create a new .Rmd document and add any new content. 
 4. Delete redundant YAML information from this new .Rmd (i.e. `output:`). Knit this document to make sure everything looks good.
 5. Open `_site.yml` and add my new document to the navbar. **Note: It's very easy to forget this step!!**
-6. Run `rmarkdown::render_site` to stitch everything together.
+6. Run `rmarkdown::render_site()` to stitch everything together.
 7. Push all changes to GitHub.
 
 <br>
@@ -268,8 +269,6 @@ Once you have the website in place, it's likely that you will want to update it 
 
 ## Community Resources: {-}
 
-<br>
-
 ### Existing tutorials: {-}
 
 * [Chapter 5, Webpages](https://debruine.github.io/tutorials/webpages.html): Includes some overview of adding images, changing global style settings, etc.
@@ -277,7 +276,7 @@ Once you have the website in place, it's likely that you will want to update it 
 * [Making free websites with RStudio'd R Markdown](https://jules32.github.io/rmarkdown-website-tutorial/index.html): A how to that also includes descriptions of the RStudio GUI layout and an overview of Markdown syntax.
 * [Personal Website tutorial](http://nickstrayer.me/RMarkdown_Sites_tutorial/)
 
-### General set up: {-}
+### General setup: {-}
 
 * [GitHub and Rstudio](https://resources.github.com/whitepapers/github-and-rstudio/): Step-by-step guide on publishing `.Rmd` docs to GitHub, includes working with local branches and using the terminal tab within R. 
 
