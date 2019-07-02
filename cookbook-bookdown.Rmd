@@ -6,6 +6,11 @@ Overview- this is a section filled with recipes for making common types of educa
 
 # Make a book
 
+This cookbook is intended for educators who would like to make a "book" to organize their educational content for their learners. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth of materials in a bookdown. 
+
+Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
+
+
 - re-explain search here https://github.com/rstudio/bookdown/issues/216
 
 # Make a book for a workshop

@@ -9,19 +9,13 @@ Using R Markdown, you can put together a bare-bones site in no time at all. Here
 
 ## Is this tutorial for you? {-}
 
-**Pre-requisites:**
+```{r child ="modules/is-this-tutorial-for-you"}
 
-1) You have a [GitHub account](https://github.com/)
-2) You are comfortable with the basics of using R and RStudio
-3) You understand how R projects work
-4) You understand the difference between a regular R script and an R Markdown document
+```
 
-
-**What you’ll learn:**
-
-1) How to compile multiple R Markdown websites into an R Markdown site
-2) How to add basic customization through themes using built in options
-3) How to publish your R Markdown pages for free via GitHub Pages
+* How to compile multiple R Markdown websites into an R Markdown site
+* How to add basic customization through themes using built in options
+* How to publish your R Markdown pages for free via GitHub Pages
 
 
 <br>

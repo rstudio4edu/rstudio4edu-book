@@ -11,19 +11,14 @@ This tutorial is intended for educators who would like to learn to make a packag
 
 <br>
 
-**Pre-requisites:**
+```{r child="is-this-tutorial-for-you"}
 
-1) You have a GitHub account
-2) You are comfortable with the basics of using R and RStudio
-3) You understand how R projects work
-4) You understand the difference between a regular R script and an R Markdown document
+```
 
-**What you'll learn:**
-
-1) How to make a package that your students can download and install from GitHub
-2) How to include a raw data set in your package
-3) How to create a custom template in your package that your learners can use for worksheets, training materials, assignment templates, etc.
-4) How to give your students access to a custom interactive tutorial/lesson
+* How to make a package that your students can download and install from GitHub
+* How to include a raw data set in your package
+* How to create a custom template in your package that your learners can use for worksheets, training materials, assignment templates, etc.
+* How to give your students access to a custom interactive tutorial/lesson
 
 <br>
 

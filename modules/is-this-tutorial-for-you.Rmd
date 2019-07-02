@@ -1,0 +1,14 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+**Pre-requisites:**
+
+* You have a [GitHub account](https://github.com/)
+* You are comfortable with the basics of using R and RStudio
+* You understand how R projects work
+* You understand the difference between a regular R script and an R Markdown document
+
+
+**What you'll learn:**
