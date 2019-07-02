@@ -19,7 +19,8 @@ Here, we'll guide you through creating an out-of-the-box bookdown book with basi
 
 ## Mental Framework: what are we going to make here? {-}
 
-If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files and some more rigid rules about what can start each document. 
+If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files (there are THREE total) and some more rigid rules about what can start each document. 
+
 
 
 
@@ -39,7 +40,7 @@ library(usethis)
 ```{r child = modules/github-first-project}
 ```
 
-```
+```{r, eval=FALSE}
 bookdown:::bookdown_skeleton(getwd())
 ```
 
