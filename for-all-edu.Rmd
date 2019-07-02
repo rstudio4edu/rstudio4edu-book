@@ -15,7 +15,7 @@ Needless to say, right now the example below is yucky, too small, and incomplete
 
 ## IDE stuff
 
-Best analogy ever: https://moderndive.com/2-getting-started.html#r-rstudio
+You can use only R, but using RStudio can save you a lot of headache and a lot of time! Best analogy ever: https://moderndive.com/2-getting-started.html#r-rstudio
 
 ## RStudio.cloud
 
@@ -40,7 +40,7 @@ good clean data packages
 + https://github.com/rstudio-education/dsbox
 + https://kieranhealy.org/blog/archives/2018/12/12/teaching-and-learning-materials-for-data-visualization/
 
-see data package for your own
+see [data package](#data-pkg) for your own
 
 # Teaching with GitHub {#teach-github}
 
@@ -70,7 +70,9 @@ See: https://github.com/rstudio-education/datascience-box/issues/47
 
 # Licensing your content
 
-Some opinionated guidance
+Some opinionated guidance.
+
+Does it make sense to move the Licensing section closer to the end of the book-- after they've created new content (or remixed ours or others') with the cookbooks?
 
 # Remixing licensed content
 
