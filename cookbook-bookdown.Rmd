@@ -18,7 +18,7 @@ Plus, you can also easily:
 Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
 
 
-## Is this tutorial for you?
+## Is this tutorial for you? {-}
 
 ```{r child= "modules/is-this-tutorial-for-you.Rmd"}
 ```
