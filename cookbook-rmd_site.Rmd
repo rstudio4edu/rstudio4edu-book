@@ -9,7 +9,7 @@ Using R Markdown, you can put together a bare-bones site in no time at all. Here
 
 ## Is this tutorial for you? {-}
 
-```{r child ="modules/is-this-tutorial-for-you"}
+```{r child ="modules/is-this-tutorial-for-you.Rmd"}
 
 ```
 

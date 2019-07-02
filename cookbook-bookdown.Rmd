@@ -7,7 +7,7 @@ Overview- this is a section filled with recipes for making common types of educa
 
 # Make a book
 
-This cookbook is intended for educators who would like to make a "book" to organize their educational content for their learners. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
+This cookbook is intended for educators who would like to make a "book" to organize their educational content for their audience. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
 
 Plus, you can also easily:
 
@@ -17,11 +17,19 @@ Plus, you can also easily:
 
 Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
 
+
+## Is this tutorial for you?
+
+```{r child= "modules/is-this-tutorial-for-you.Rmd"}
+```
+
+* How to compile multiple R Markdown files into a Bookdown book
+* How to add basic customization through themes using built in options
+* How to publish your Bookdown for free via GitHub Pages
+
 ## Mental Framework: what are we going to make here? {-}
 
 If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files (there are THREE total) and some more rigid rules about what can start each document. 
-
-
 
 
 ## Part 1: Getting set up {-}
@@ -37,7 +45,7 @@ library(usethis)
 
 ### Two getting-started workflows:
 
-```{r child = modules/github-first-project}
+```{r child = "modules/github-first-project.Rmd"}
 ```
 
 ```{r, eval=FALSE}
@@ -50,6 +58,12 @@ Though we recommend a “GitHub first” workflow, it is possible to start with 
 
 1. Click *File* > *New Project* > *New Directory*
 2. Scroll down and select: *Book Project using bookdown*
+3. Then, optionally, to connect to GitHub:
+
+```{r, eval=FALSE}
+usethis::use_git()
+usethis::use_github() # you have to have a PAT setup
+```
 
 ## Part 2: Create your content {-}
 

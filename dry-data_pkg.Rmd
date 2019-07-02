@@ -11,7 +11,7 @@ This tutorial is intended for educators who would like to learn to make a packag
 
 <br>
 
-```{r child="is-this-tutorial-for-you"}
+```{r child="modules/is-this-tutorial-for-you.Rmd"}
 
 ```
 
