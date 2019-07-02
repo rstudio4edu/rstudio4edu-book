@@ -56,6 +56,8 @@ bookdown:::bookdown_skeleton(getwd())
 Note that we use ::: here (with three colons!) to generate important infrastructure files we need.
 :::
 
+<br>
+
 Though we recommend a “GitHub first” workflow, it is possible to start with RStudio project wizard to create a new R book project and then move to GitHub:
 
 1. Click *File* > *New Project* > *New Directory*
