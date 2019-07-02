@@ -1,5 +1,13 @@
 # (PART\*) For all educators {-#for-all}
 
+# What's on offer {#teach-offer}
+
+I think that quite early on in this book, we should try to answer the question "I'm an educator...what should/can I make here?". I'm not sure whether that should be here or in the preface. Below is just a *very rough* conceptual sketch of how a flowchart here might be a fun way to give users a visual map of where they could end up after using the rstudio4edu resource (the idea I'm riffing off of is . Needless to say, right now the example below is yucky, too small, and incomplete. But if we make it nicer, would this be the spot for it? (Could alternatively right before the cookbooks--and only include cookbook content (ie. leave out stuff like Connect)).
+
+![](images/flowchart.jpg)
+
+
+
 # Teaching with RStudio {#teach-rstudio}
 
 ## IDE stuff

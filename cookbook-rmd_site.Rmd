@@ -7,7 +7,7 @@ Using R Markdown, you can put together a bare-bones site in no time at all. Here
 <br>
 
 
-## Is this tutorial for you?
+## Is this tutorial for you? {-}
 
 **Pre-requisites:**
 
@@ -27,7 +27,7 @@ Using R Markdown, you can put together a bare-bones site in no time at all. Here
 <br>
 
 
-## Mental framework: what are we going to make here?
+## Mental framework: what are we going to make here? {-}
 
 We're about to make a website out of R Markdown documents. There are a few key pieces of magic that separate a regular collection of R Markdown documents from a living, breathing website: 
 
@@ -42,7 +42,7 @@ Let's get started!
 <br>
 
 
-## Part 1: Getting Set up
+## Part 1: Getting Set up {-}
 
 We'll use the `usethis` package:
 
@@ -60,6 +60,11 @@ library(usethis)
 
 ```
 
+```{r eval = FALSE}
+rmarkdown:::site_skeleton(getwd())
+```
+
+(note that we use `:::` here, with three colons!) to generate important infrasctructure files we need. 
 
 <br>
 
@@ -83,12 +88,12 @@ Regardless of which workflow you choose, you will end up with the following file
 
 [DO WE SAY RENDER SITE NOW? BUT THEN WILL LATER NEED TO TELL FOLKS TO DELETE SITE FOLDER?]
 
-## Part 2: Create your content
+## Part 2: Create your content {-}
 
 <br>
 
 
-### Make some changes and push to GitHub
+### Make some changes and push to GitHub {-}
 
 1. Open `_site.yml` and add the `output_dir: "docs"` on its own line, under `name:`. Save.
 2. Optionally, open `index.Rmd` and add some more text to the body of the document. Click `Knit` to preview your page locally. This will become the "landing page" of your site.
@@ -101,7 +106,7 @@ Regardless of which workflow you choose, you will end up with the following file
 <br>
 
 
-### Add additional R Markdown documents
+### Add additional R Markdown documents {-}
 
 Let's create at least one other R Markdown document, so that we have more content we can compile in our website. We're going a bit above and beyond here since the minimally-viable R Markdown site can me made with a just a single `.Rmd`  plus a `_site.yml` file (which we'll set up in the next section).
 
@@ -114,7 +119,7 @@ Let's create at least one other R Markdown document, so that we have more conten
 
 <br>
 
-### Stitch it together
+### Stitch it together {-}
 
 [MODIFY TO ACCOUNT FOR ABOUT PAGE/ USE_SKELETON SEQUENCE]
 
@@ -160,10 +165,10 @@ output:
 
 <br>
 
-## Part 3: Dress it up!
+## Part 3: Dress it up! {-}
 Optionally, you can easily change the way your site looks and feels by adding a few things to the YAML section, e.g. template themes and highlight styles (for highlighting code). We preview some below, but you can read about a few more [here](https://bookdown.org/yihui/rmarkdown/html-document.html). Let's try some out.
 
-### Theme and Code Highlighting
+### Theme and Code Highlighting {-}
 
 <center>![](images/rmd_custom/dressup1.jpg){width=800px}</center>
 
@@ -180,7 +185,7 @@ Optionally, you can easily change the way your site looks and feels by adding a 
 3. Run `render_site()` to see your changes.
 
 
-### Create a Table of Contents
+### Create a Table of Contents {-}
 
 [Before and After Example]
 
@@ -225,7 +230,7 @@ Don't forget to push to GitHub!
 
 <br>
 
-## Part 5: Make it a living, breathing, shareable site!
+## Part 5: Make it a living, breathing, shareable site! {-}
 Now we'll go back to GitHub and tell it where to find our website-ready files:
 
 1. Back on GitHub, click the `Settings` tab of your repository.
@@ -236,7 +241,7 @@ Now we'll go back to GitHub and tell it where to find our website-ready files:
 <br>
 
 
-## Workflow for maintenance
+## Workflow for maintenance {-}
 
 Once you have the website in place, it's likely that you will want to update it periodically or add new pages. Here's what that workflow looks like for me:
 
@@ -251,7 +256,7 @@ Once you have the website in place, it's likely that you will want to update it 
 <br>
 
 
-## Pros and Cons of using R Markdown sites
+## Pros and Cons of using R Markdown sites {-}
 
 **Pros:**
 
@@ -267,18 +272,18 @@ Once you have the website in place, it's likely that you will want to update it 
 
 
 
-## Community Resources:
+## Community Resources: {-}
 
 <br>
 
-### Existing tutorials:
+### Existing tutorials: {-}
 
 * [Chapter 5, Webpages](https://debruine.github.io/tutorials/webpages.html): Includes some overview of adding images, changing global style settings, etc.
 * [Creating Website in R](https://www.emilyzabor.com/tutorials/rmarkdown_websites_tutorial.html#r_markdown_website_basics): Includes description of how to add a personal domain name.
 * [Making free websites with RStudio'd R Markdown](https://jules32.github.io/rmarkdown-website-tutorial/index.html): A how to that also includes descriptions of the RStudio GUI layout and an overview of Markdown syntax.
 * [Personal Website tutorial](http://nickstrayer.me/RMarkdown_Sites_tutorial/)
 
-### General set up:
+### General set up: {-}
 
 * [GitHub and Rstudio](https://resources.github.com/whitepapers/github-and-rstudio/): Step-by-step guide on publishing `.Rmd` docs to GitHub, includes working with local branches and using the terminal tab within R. 
 
@@ -286,7 +291,7 @@ Once you have the website in place, it's likely that you will want to update it 
 
 <br>
 
-### Formatting
+### Formatting {-}
 
 * [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 * [Pimp my RMD](https://holtzy.github.io/Pimp-my-rmd/#equations): smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.

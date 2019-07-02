@@ -1,5 +1,5 @@
-# (PART\*) Do not repeat yourself {-}
+# (PART) Cookbook: Packages, Templates, Tutorials {-}
 
 # Introduction {-#intro-dry}
 
-Overview- this is a section about how not to repeat yourself as an educator. define the DRY principle from software standpoint, then talk about ways to reduce repeating yourself as an educator. Namely, we see templates and data packages as a nice way to do this.
+Overview- this is a section about how not to repeat yourself as an educator. define the DRY principle from software standpoint, then talk about ways to reduce repeating yourself as an educator. Namely, we see templates and data packages as a nice way to do this.  

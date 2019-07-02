@@ -7,6 +7,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This tutorial is intended for educators who would like to learn to make a package in order to distribute materials to their learners easily. 
 
+<br>
+
+<br>
+
 **Pre-requisites:**
 
 1) You have a GitHub account
@@ -18,7 +22,7 @@ This tutorial is intended for educators who would like to learn to make a packag
 
 1) How to make a package that your students can download and install from GitHub
 2) How to include a raw data set in your package
-3) How to create a custom template in your package that your learners can use for worksheets, training materials, assigment templates, etc.
+3) How to create a custom template in your package that your learners can use for worksheets, training materials, assignment templates, etc.
 4) How to give your students access to a custom interactive tutorial/lesson
 
 <br>
@@ -37,13 +41,23 @@ As an educator you can use a package to easily deliver the contents of your less
 
 <center>![](images/pkg/barebones.jpg){width=350px}</center>
 
-Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is "downloadable" by your students which means this package needs to have a GitHub repository so that it can be easily shared.
+Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is "downloadable" by your students, which means this package needs to have a GitHub repository so that it can be easily shared.
 
 <br>
 
 ### Step 1: Make a GitHub repo for the package {-}
 
-If you're a beginner when it comes to integrating RStudio and Git, then the clearest way to begin making our package is by creating a GitHub repository for our package-to-be and then creating our project in RStudio afterwards. Follow the instructions in the ["New project, GitHub first" chapter of Happy Git with R](https://happygitwithr.com/new-github-first.html) to link your new repo with RStudio, and keep in mind the following as you do so:
+Our package-making begins when we set up a project repository. See our tips below for what to name your repository.
+
+
+```{r child = 'modules/github-first-project.Rmd'}
+
+```
+
+```{r, eval=FALSE}
+create_package(getwd())
+```
+
 
 <br>
 
@@ -53,7 +67,7 @@ If you're a beginner when it comes to integrating RStudio and Git, then the clea
 * Include only letters, numbers, or `.`
 * Start with a letter
 * Not end with a `.` 
-* Optionally, consider the naming tips [here](https://r-pkgs.org/package-structure.html)
+* Optionally, consider the naming tips <strong>[here](https://r-pkgs.org/package-structure.html)</strong>
 :::
 
 :::tip

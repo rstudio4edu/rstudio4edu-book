@@ -10,9 +10,3 @@ We recommend following the tips on [Happy Git with R](https://happygitwithr.com/
 3. Open RStudio. Click *File* > *New Project* > *Version Control*> *Git*. Paste the copied URL.
 4. Click Create Project.
 5. Use: 
-
-```{r eval = FALSE}
-rmarkdown:::site_skeleton(getwd())
-```
-
-(note that we use `:::` here, with three colons!) to generate important infrasctructure files we need. 
