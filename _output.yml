@@ -2,7 +2,7 @@ bookdown::gitbook:
   css: style.css
   includes:
     before_body: big-image.html
-  hightlight: tango
+  highlight: tango
   config:
     toc:
       collapse: section
