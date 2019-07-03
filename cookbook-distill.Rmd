@@ -4,7 +4,107 @@
 
 Overview- this is a section filled with recipes for making common types of educational content...
 
+## Distill vs RMarkdown site
+
+Since the RMarkdown .Rmd file is essentially the fundamental unit of most of these sites, it makes sense to compare the other rstudio4edu tools to it. Here we cover Distill. Distill is basically a slightly souped up R Markdown document with some built-in features that would otherwise need to be included more manually into a regular Rmd.
+
+[Venn Diagram?]
+
+**Similarities**
+
+* Distill and R Markdown can both exist as single pages
+* Collections can be combined into a set to create a website
+* `rmarkdown::render_site()` or *Build Website* within RStudio will build your site
+* Same core website features and configurations for YAML apply
+* Messy-ish directories (compared to blogdown where you can bundle things) ?
+* `styles.css` can be added to both in the YAML, indented under the output type.
+
+
+**Unique to Distill**
+
+* `create_website(dir = "<your-directory-name>", title = "<your-site-name>")`
+    ** Is `library(distill)` necessary prior to running?
+* Allows blog posts to be put into a posts sub-directory?
+* Built-in options for a logo [Can this not be done in regular R Markdown?] within the YAML
+* Add a footer to all pages with the inclusion of a `_footer.html` to your main project folder
+* Built-in option to include Google Analytics 
+* Built-in options for creating a little appendix (with optional Licensing and "Corrections" links)
+    ** [https://rstudio.github.io/distill/website.html#site_metadata](https://rstudio.github.io/distill/website.html#site_metadata)
+* Built-in way to specify a custom favicon (the little icon for your site that shows up in your browser tab)
+* Built-in option for sharing twitter
+* `output: distill::distill_article`
+
+**Unique to R Markdown**
+
+* `rmarkdown:::site_skeleton(getwd())`
+* What happens to Rmd's in subdirectories?
+    ** They're still knit...but not compiled in an automatic and *smart* way?
+* [Is Logo only added with CSS?]
+* Footer must be constructed using HTML/CSS manually with `includes....` in YAML
+* Google analytics need to be inserted manually within HTML file and `includes.. before body` in YAML
+* Appendix not an option unless manually built into footer.
+* Can you not do this in r Markdown within the YAML?
+* `output: html_document`....or whatever else you want.
+
 # Make a site
+
+
+## Install the `distill` package from GitHub
+```{r, eval=FALSE}
+
+remotes::install_github("rstudio/distill")
+
+```
+
+
+
+## Dress it up!
+
+```{r, eval=FALSE}
+---
+name: "distill"
+title: "Distill for R Markdown"
+navbar:
+  logo:
+    image: images/logo.png
+    href: https://www.rstudio.com
+  right:
+    - text: "Figures"
+      href: figures.html
+    - text: "Tables"
+      href: tables.html
+    - text: "Citations"
+      href: citations.html
+    - text: "Publish"
+      menu:
+        - text: "Publishing Articles"
+          href: publish_article.html
+        - text: "Publishing a Website"
+          href: publish_website.html
+        - text: "---"
+        - text: "Article Metadata"
+          href: metadata.html
+    - icon: fab fa-github
+      href: https://github.com/rstudio/distill
+output: distill::distill_article
+___
+```
+
+
+### Site footer
+
+Create and save a file in your root directory called `_footer.html`. It's contents will be used as a footer for each of your distill pages.
+
+For example, contents could be something like this:
+
+```
+© Copyright 2018 [The Distill Template Authors]
+(https://github.com/distillpub/template/blob/master/AUTHORS) 
+and [RStudio, Inc](https://www.rstudio.com).
+
+Software licensed under the [Apache License, v2.0]
+(https://www.apache.org/licenses/LICENSE-2.0).
+```
 
 # Make a site for a workshop
 
