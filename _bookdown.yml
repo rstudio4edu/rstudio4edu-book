@@ -5,6 +5,7 @@ language:
   ui:
     chapter_name: "Chapter " # note the space
 new_session: yes # Each chapter is knitted as its own Rmd file
+#rmd_subdir: ["", "",""]
 rmd_files: ["index.Rmd", 
 "for-all-edu.Rmd", 
 "teach-rmd.Rmd",
