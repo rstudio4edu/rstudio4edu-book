@@ -4,9 +4,9 @@
 
 Overview- this is a section filled with recipes for making common types of educational content...
 
-## Distill vs RMarkdown site
+## Distill vs R Markdown site
 
-Since the RMarkdown .Rmd file is essentially the fundamental unit of most of these sites, it makes sense to compare the other rstudio4edu tools to it. Here we cover Distill. Distill is basically a slightly souped up R Markdown document with some built-in features that would otherwise need to be included more manually into a regular Rmd.
+Since the R Markdown .Rmd file is essentially the fundamental unit of most of these sites, it makes sense to compare the other rstudio4edu tools to it. Here we cover Distill. Distill is basically a slightly souped up R Markdown document with some built-in features that would otherwise need to be included more manually into a regular Rmd.
 
 [Venn Diagram?]
 
@@ -37,9 +37,9 @@ Since the RMarkdown .Rmd file is essentially the fundamental unit of most of the
 **Unique to R Markdown**
 
 * `rmarkdown:::site_skeleton(getwd())`
-* What happens to Rmd's in subdirectories?
-    ** They're still knit...but not compiled in an automatic and *smart* way?
-* [Is Logo only added with CSS?]
+* What happens to Rmd's placed in subdirectories?
+    ** They're still knit...but not compiled in an automatic and *smart* way (?)
+* [Is logo only added with html/CSS?]
 * Footer must be constructed using HTML/CSS manually with `includes....` in YAML
 * Google analytics need to be inserted manually within HTML file and `includes.. before body` in YAML
 * Appendix not an option unless manually built into footer.
@@ -48,13 +48,63 @@ Since the RMarkdown .Rmd file is essentially the fundamental unit of most of the
 
 # Make a site
 
+These instructions will take you through setting up a basic Distill site.
 
-## Install the `distill` package from GitHub
+
+## Is this tutorial for you? {-}
+
+```{r child ="modules/is-this-tutorial-for-you.Rmd"}
+
+```
+
+* How to compile multiple R Markdown websites into an R Markdown site
+* How to add basic customization through themes using built-in options
+* How to publish your R Markdown pages for free via GitHub Pages
+
+
+## Mental framework: what are we going to make here? {-}
+
+Same idea as an R Markdown site. We need a site yaml + one index.Rmd doc + optional, additional .Rmds (of the Distill variety).
+
+<br>
+## Getting set up
+
+### Install `distill` 
+
+The distill package needs to be installed from GitHub. You only need to do this once on your computer.
+
 ```{r, eval=FALSE}
 
 remotes::install_github("rstudio/distill")
 
 ```
+
+### Two getting started workflows
+
+```{r child="modules/github-first-project.Rmd"}
+
+```
+
+```{r, eval=FALSE}
+create_website(dir = getwd(), title = "<your-site-name>")
+```
+
+\
+
+Though we recommend a “GitHub first” workflow, it is possible to begin by first making a RStudio Distill project in RStudio and then connecting it to GitHub afterwards:
+
+* Click *File* > *New Project* > *New Directory*
+* Scroll down and select *Distill Website*
+* Then, optionally:
+
+```
+usethis::use_git()
+usethis::use_github() # you have to have a PAT setup
+```
+
+Regardless of which workflow you choose, your project directory should end up looking like this:
+
+[INSERT SCREEN SHOT OF DIRECTORY]
 
 
 
@@ -93,7 +143,7 @@ ___
 
 ### Site footer
 
-Create and save a file in your root directory called `_footer.html`. It's contents will be used as a footer for each of your distill pages.
+Create and save a file in your root directory called `_footer.html`. Its contents will be used as a footer for each of your distill pages.
 
 For example, contents could be something like this:
 
