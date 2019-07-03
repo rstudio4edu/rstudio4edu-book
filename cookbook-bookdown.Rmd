@@ -102,7 +102,64 @@ bookdown::serve_book()
 
 In RStudio navigate to... 
 
-`index.Rmd` is going to be Chapter 1.
+#### index.Rmd YAML
+`index.Rmd` is going to be Chapter 1. 
+
+By default, this YAML looks like this:
+
+```
+--- 
+title: "A Minimal Book Example"
+author: "Yihui Xie"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+```
+
+#### _output.yml
+
+By default, this YAML looks like this:
+
+```
+bookdown::gitbook:
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">A Minimal Book Example</a></li>
+      after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
+```
+
+#### _bookdown.yml
+
+Here's what this YAML will look like by default.
+
+```
+book_filename: "basic-course-book"
+delete_merged_file: true
+language:
+  ui:
+    chapter_name: "Chapter "
+```
+
+
+
+
 
 ## Part 2: Create your content {-}
 
