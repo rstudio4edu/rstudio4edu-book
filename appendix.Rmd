@@ -38,7 +38,7 @@ The table below shows the tutorials that are in progress or soon-to-be in progre
 library(DT)
 library(tidyverse)
 ```
-
+<!--
 ```{r create_tbl, include=FALSE}
 tbl <- 
   tibble::tribble(
@@ -60,6 +60,7 @@ tbl %>% DT::datatable(escape = FALSE, options=list(dom ="t"))
 <br>
 
 Now, coding the table a second way, so as not to use HTML explicitly. But now everything is a link.
+--> 
 
 <br>
 
@@ -71,45 +72,59 @@ library(kableExtra)
 ```
 
 ```{r, echo = FALSE}
-tbl <- tibble(Tool = c("Package", rep("RMD site", 5)),
-              `Tutorial` = c("How to Make a Package",
-                                 "Basic Fundamentals", 
-                                 rep("Custom Site Tutorial", 2), 
-                                 rep("Fancy R Markdown Sites", 2)),
+tbl <- tibble(Tool = c("Package", 
+                       rep("RMD site", 5), 
+                       "Distill site", 
+                       "Bookdown"),
+              `Tutorial` = c("How to make a package",
+                              "Basic fundamentals", 
+                              rep("Custom site tutorial", 2), 
+                              rep("Fancy R Markdown Sites", 2), 
+                              "Make a Distill site",
+                              "Make a book"),
               `Demo site` = c(NA,
                               NA,
-                              "Custom Workshop Site",
-                              "Custom Course Site",
-                              "Fancy Workshop Site", 
-                              "Fancy Course Site"),
+                              "Custom workshop site",
+                              "Custom course site",
+                              "Fancy workshop site", 
+                              "Fancy course site", 
+                              "Basic course Distill", 
+                              "Basic course book"),
               `GitHub repo` = c("testpackage",
                                 NA,
                                 "basic-workshop-site",
                                 "basic-course-website",
                                 "fancy-workshop-site",
-                                "fancy-course-site")
+                                "fancy-course-site",
+                                "basic-course-distill", 
+                                "basic-course-book")
               )
 
-tutorial_url <- c("07-package-tutorial.html",
+tutorial_url <- c("intro-dry.html",
               "Basic Fundamentals", 
-              "r-markdown-custom-site-tutorial.html",
-              "r-markdown-custom-site-tutorial",
-              "fancy-rmarkdown-sites.html",
-              "fancy-rmarkdown-sites.html")
+              "cookbook-rmd.html",
+              "cookbook-rmd.html",
+              "cookbook-rmd-fancy.html",
+              "cookbook-rmd-fancy.html", 
+              "cookbook-distill.html",
+              "cookbook-bookdown.html")
 
 demo_url <- c(NA,
               NA, 
               "https://rstudio4edu.github.io/basic-workshop-site/",
               "https://rstudio4edu.github.io/basic-course-website/",
               "https://rstudio4edu.github.io/fancy-workshop-site/",
-              "https://rstudio4edu.github.io/fancy-course-site")
+              "https://rstudio4edu.github.io/basic-course-distill", 
+              "https://rstudio4edu.github.io/basic-course-book")
 
 repo_url <- c("https://github.com/rstudio4edu/testpackage",
               NA,
               "https://github.com/rstudio4edu/basic-workshop-site",
               "https://github.com/rstudio4edu/basic-course-website",
               "https://github.com/rstudio4edu/fancy-workshop-site",
-              "https://github.com/rstudio4edu/fancy-course-site")
+              "https://github.com/rstudio4edu/fancy-course-site", 
+              "https://github.com/rstudio4edu/basic-course-distill",
+              "https://github.com/rstudio4edu/basic-course-book")
 
  tbl %>% 
   mutate(
