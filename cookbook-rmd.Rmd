@@ -35,7 +35,8 @@ We're about to make a website out of R Markdown documents. There are a few key p
 
 
 Let's get started!
-## Part 1: Getting Set up {-}
+
+## Part 1: Getting set up {-}
 
 We'll use the `usethis` package:
 
