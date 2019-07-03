@@ -15,11 +15,13 @@ Imports:
     rmarkdown,
     DT,
     klippy,
-    devtools
+    devtools, 
+    emo
 Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
     klutometis/roxygen,
-    RLesur/klippy
+    RLesur/klippy,
+    hadley/emo
     

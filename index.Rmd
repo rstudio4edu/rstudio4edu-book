@@ -13,6 +13,7 @@ link-citations: yes
 cover-image: images/books.jpg
 description: "A work-in-progress"
 github-repo: rstudio4edu/rstudio4edu-book
+favicon: "images/books.jpg"
 always_allow_html: yes
 ---
 

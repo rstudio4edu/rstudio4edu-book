@@ -176,6 +176,54 @@ language:
 
 ## Part 3: Dress it up {-}
 
+Optional ways to make your bookdown site look `r emo::ji ("sparkles")` faaaabulous `r emo::ji ("sparkles")`.
+
+### Add a favicon
+
+You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon!
+
+**How to:**
+
+1. Save the image you'd like to use (for best results it should be square) in your project directory
+2. Open your bookdown `index.Rmd` file
+3. Add `favicon: <"insert-path-to-favicon.ico">` in the YAML, like so:
+
+```
+--- 
+title: "rstudio4edu"
+subtitle: "A Handbook for Teaching and Learning with RStudio"
+author: 
+- Desirée De Leon^[RStudio, https://desiree.rbind.io/]
+- Alison Hill^[RStudio, https://alison.rbind.io/]
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+cover-image: images/books.jpg
+description: "A work-in-progress"
+github-repo: rstudio4edu/rstudio4edu-book
+favicon: "images/favicon.png"
+always_allow_html: yes
+---
+```
+
+:::tip
+
+**Note**: In the example above, we can use specify any kind image file (e.g. PNG), but real favicons are special images files with `.ico` extensions. Luckily bookdown takes care of converting this for us if we don't give it an `.ico` file to begin with in the index YAML.
+:::
+
+Don't have an image? Make one from text or an emoji:
+
+**How to:**
+
+1. Go to [free favicon generator](https://favicon.io/) and create a favicon
+2. Download and move the `.ico` file into your project directory
+3. Open your bookdown `index.Rmd` file
+4. Add `favicon: <"favicon.ico">` in the YAML.
+
+
 ### Highlight options
 Possible styles are `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, and `haddock`.
 ### Chapters or...? {-}
