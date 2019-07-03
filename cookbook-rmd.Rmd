@@ -6,9 +6,6 @@ This is a tutorial intended for folks who would like to put together a site to h
 
 Using R Markdown, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo R Markdown site. You can follow along with this tutorial, or if you'd like to get up and running as quickly as possible, you can download the either of the repositories containing the workshop or course demo sites and modify either as much as you'd like. 
 
-
-<br>
-
 # Make a site
 
 Let's build an R Markdown site.

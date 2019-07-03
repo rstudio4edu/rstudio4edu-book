@@ -5,9 +5,6 @@ output: html_document
 
 **Pre-requisites:**
 
-<br>
-<br>
-
 * You have a [GitHub account](https://github.com/)
 * You are comfortable with the basics of using R and RStudio
 * You understand how R projects work
