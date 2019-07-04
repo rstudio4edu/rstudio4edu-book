@@ -6,21 +6,21 @@ Here we can put weekly goals to make sure we are staying on target.
 
 Complete by the end of:
 
-Week 12 (Aug 23):
+Week 12 (Aug 23): Wrap up, refine, style, check --complete book!
 
-Week 11 (Aug 16):
+Week 11 (Aug 16): Add miscellaneous content (illos, quotes, etc.) / Clean commits, etc.
 
-Week 10 (Aug 9):
+Week 10 (Aug 9): other rstudio4edu content: Connect, Cloud, etc.
 
-Week 9 (Aug 2):
+Week 9 (Aug 2): Complete Blogdown cookbook
 
-Week 8 (July 26):
+Week 8 (July 26): Complete Bookdown cookbook
 
-Week 7 (July 19):
+Week 7 (July 19): Work on beginning content: Flowcharts, etc. 
 
-Week 6 (July 12):
+Week 6 (July 12): Complete RMD/ Distill
 
-Week 5 (July 5):
+Week 5 (July 5): Re-worked Package Cookbook / Start Bookdown cookbook
 
 Week 4 (June 28): Outlining RMD tutorial
 
