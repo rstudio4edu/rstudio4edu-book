@@ -5,7 +5,7 @@ bookdown::gitbook:
   highlight: tango
   config:
     toc:
-      collapse: section
+      collapse: subsection
       before: |
         <li><a href="./">rstudio4edu</a></li>
       after: |
