@@ -1,6 +1,6 @@
-# (PART\*) Creating educational projects {-}
+# (PART\*) Teaching with websites {-}
 
-# Introduction {-#intro-collections}
+# Introduction {-#intro-web}
 
 Can just deploy single Rmds to website via GitHub pages- easiest
 

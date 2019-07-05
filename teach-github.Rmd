@@ -1,0 +1,17 @@
+# (PART\*) Teaching with GitHub {-}
+
+# GitHub for you {#gh-for-you}
+
+Why educators should use version control, high-level thoughts
+
+# GitHub for them {#gh-for-them}
+
+Resources for integrating GitHub for learners; not our primary focus here, outsource to:
+
+Make sure to mention Mine's ghclass package
+
+Happy Git with R for yourself and your students
+
+GitHub Classroom is also a good option to consider
+
+https://happygitwithr.com/classroom-overview.html
