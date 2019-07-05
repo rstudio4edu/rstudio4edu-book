@@ -1,6 +1,6 @@
-# (PART\*) Creating educational content {-}
+# (PART\*) Teaching with lessons {-}
 
-# Introduction {-#intro-content}
+# Introduction {-#intro-lessons}
 
 Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
 
