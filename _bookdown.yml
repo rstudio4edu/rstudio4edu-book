@@ -1,7 +1,7 @@
 book_filename: "rstudio4edu-book"
 #output_dir: "docs"
 delete_merged_file: true
-#before_chapter_script: "setup.R"
+before_chapter_script: "setup.R"
 language: 
   ui:
     chapter_name: "Chapter " # note the space
