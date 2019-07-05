@@ -61,9 +61,10 @@ pre code {
   font-family: 'Karla', arial, sans-serif;
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'Lora', arial, sans-serif;
 }
+
 
 .book .book-body .page-wrapper .page-inner section.normal h1, 
 .book .book-body .page-wrapper .page-inner section.normal h2, 
@@ -192,6 +193,14 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   float: right;
   font-size: 60%;
   padding: 4px 4px 4px 4px;
+}
+
+/* Two columns */
+
+.col2 {
+  columns: 2 200px;         /* number of columns and width in pixels*/
+  -webkit-columns: 2 200px; /* chrome, safari */
+  -moz-columns: 2 200px;    /* firefox */
 }
 
 /* Sidebar formating --------------------------------------------*/
