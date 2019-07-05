@@ -1,9 +1,12 @@
 # (PART\*) Education cookbooks {-}
 
+
+
 # How to use the cookbooks {-}
 
-Overview- the following chapters are filled with recipes for making common types of educational content...
+```{r child = "modules/clickable-toc.Rmd"}
 
+```
 
 The flowchart below is just a sketch/concept of something similar that might be useful here (or perhaps much earlier on) in order to help folks decide what cookbook they should use. 
 

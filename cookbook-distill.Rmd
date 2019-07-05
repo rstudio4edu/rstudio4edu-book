@@ -10,6 +10,8 @@ Since the R Markdown .Rmd file is essentially the fundamental unit of most of th
 
 [Venn Diagram?]
 
+![](images/venn.jpg)
+
 **Similarities**
 
 * Distill and R Markdown can both exist as single pages
@@ -46,7 +48,7 @@ Since the R Markdown .Rmd file is essentially the fundamental unit of most of th
 * Can you not do this in r Markdown within the YAML?
 * `output: html_document`....or whatever else you want.
 
-# Make a site
+# Make a site {#make-distill}
 
 These instructions will take you through setting up a basic Distill site.
 
@@ -67,6 +69,7 @@ These instructions will take you through setting up a basic Distill site.
 Same idea as an R Markdown site. We need a site yaml + one index.Rmd doc + optional, additional .Rmds (of the Distill variety).
 
 <br>
+
 ## Getting set up
 
 ### Install `distill` 
@@ -114,6 +117,7 @@ Regardless of which workflow you choose, your project directory should end up lo
 ---
 name: "distill"
 title: "Distill for R Markdown"
+favicon: images/favicon.ico
 navbar:
   logo:
     image: images/logo.png
@@ -139,7 +143,24 @@ navbar:
 output: distill::distill_article
 ___
 ```
+### Add a favicon
 
+You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon!
+
+**How to:**
+
+1. Save the image you'd like to use in your project directory. For best results this image should be square.
+  + Don't have an image? [Make a favicon with text or an emoji](https://favicon.io/). Download and move the `.ico` file into your project directory.
+2. Open your `_site.yml` file.
+3. Add `favicon: <insert-path-to-favicon.ico>` --not in quotes!
+
+
+:::tip
+
+**Note**: In the example above, we can use a PNG image file, but ICO files (with the `.ico` extension) are actually preferred because ________. You can also use a GIF. 
+:::
+
+\
 
 ### Site footer
 

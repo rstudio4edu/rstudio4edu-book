@@ -6,9 +6,19 @@ This is a tutorial intended for folks who would like to put together a site to h
 
 Using R Markdown, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo R Markdown site. You can follow along with this tutorial, or if you'd like to get up and running as quickly as possible, you can download the either of the repositories containing the workshop or course demo sites and modify either as much as you'd like. 
 
-# Make a site
+# Make a site {#make-rmd}
 
 Let's build an R Markdown site.
+
+\
+\
+
+
+```{r echo = FALSE, results = 'asis'}
+
+build_toc("cookbook-rmd.Rmd")
+
+```
 
 
 ## Is this tutorial for you? {-}
@@ -153,8 +163,11 @@ output:
 
 <br>
 
-> **FYI**: When we `knit` or `render_site()`, R Markdown's deliverable to us is going to be an HTML file for every `.Rmd` file in our R Project. The `output_dir: "docs"` line is important because it tells R Markdown where to put all of our freshly minted HTML files and any extras the HTMLs will need (images we include, etc.). In this case, it's a `docs/` folder. I kind of think of this folder as the boarding and gate areas of an airport--contents of this folder have gone through security clearance (`rmarkdown::render_site()`), ridden of items not approved for flight (`.Rmd` files),  and are awaiting takeoff (getting rendered as a live site). You cannot skip airport-security to get to your gate, and similarly, we should not put files in the `docs/` folder ourselves. 
+:::tip
+**FYI**: When we `knit` or `render_site()`, R Markdown's deliverable to us is going to be an HTML file for every `.Rmd` file in our R Project. The `output_dir: "docs"` line is important because it tells R Markdown where to put all of our freshly minted HTML files and any extras the HTMLs will need (images we include, etc.). In this case, it's a `docs/` folder. I kind of think of this folder as the boarding and gate areas of an airport--contents of this folder have gone through security clearance (knitting each file or running `rmarkdown::render_site()`), have been purged of items not approved for flight (`.Rmd` files),  and are now just sitting at their gate (`docs/`) waiting to leave on their flight (getting rendered as a live site). If you try to bypass airport security and walk straight to your gate, you'll never be allowed on the flight, and similarly, we we should never edit any files in the `docs/` folder ourselves. Everything must go through the knitting/rendering process to eventually make it into this folder. 
 
+EDIT: I think this analogy is too long and kind of wearing on me. Either remove? Or try to represent with visuals and minimal text to see if it still works?
+:::
 <br>
 
 ## Part 3: Dress it up! {-}

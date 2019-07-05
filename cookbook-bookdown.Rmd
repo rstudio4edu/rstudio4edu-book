@@ -5,7 +5,7 @@
 Overview- this is a section filled with recipes for making common types of educational content...
 
 
-# Make a book
+# Make a book {#make-book}
 
 This cookbook is intended for educators who would like to make a "book" to organize their educational content for their audience. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
 
@@ -211,7 +211,7 @@ always_allow_html: yes
 
 :::tip
 
-**Note**: In the example above, we can use specify any kind image file (e.g. PNG), but real favicons are special images files with `.ico` extensions. Luckily bookdown takes care of converting this for us if we don't give it an `.ico` file to begin with in the index YAML.
+**Note**: In the example above, we can use a PNG image file, but ICO files (with the `.ico` extension) are actually preferred because ________. You can also use a GIF. 
 :::
 
 Don't have an image? Make one from text or an emoji:
@@ -222,6 +222,12 @@ Don't have an image? Make one from text or an emoji:
 2. Download and move the `.ico` file into your project directory
 3. Open your bookdown `index.Rmd` file
 4. Add `favicon: <"favicon.ico">` in the YAML.
+
+:::tip
+
+A favicon can be added to both Distill sites and Bookdown sites with the addition directly into the YAML. But in bookdown, the favicon file must be put in "quotes" (it's not quoted in Distill)!
+
+:::
 
 
 ### Highlight options
