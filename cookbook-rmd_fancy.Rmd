@@ -30,7 +30,7 @@ Every element of a website that you see, from links to pictures to paragraphs, h
 
 Below is a quick example of some CSS that would change all link colors to the color "orchid" and all link text from being uppercase:
 
-```
+```{r, eval=FALSE}
 a {
   color: orchid;
   text-transform: uppercase;
@@ -85,7 +85,7 @@ There's a lot more we could say about CSS here. But it's faster and more rewardi
 
 You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
 
-```
+```{r, eval=FALSE}
 output: 
   html_document:
     includes:
@@ -98,9 +98,39 @@ output:
 
 ```
 
-We'll now make a CSS file, by going to `File` > `New File` > `Text File`. Go ahead and save this file in your project directory as `style.css`. We're going to add some styles to this file. We're going to want to keep a rendered version of our custom course site pulled up in a separate window. 
+We'll now make a CSS file, by going to *File* > *New File* > *Text File*. Go ahead and save this file in your project directory as `style.css`. We'll populate this with some CSS styles. We're going to want to keep a rendered version of our custom course site pulled up in a separate window. 
 
 <br>
+
+
+
+### 0. Add a favicon to your RMD site {-}
+
+You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon! We can add one by creating an HTML file and then referencing this file in our `_site.yml`:
+
+**Here's how:**
+
+1. Save the image you'd like to use as (use a PNG or ICO file) and place it in your project directory (for the best results, use a square image).
+2. Click *File* > *New File* > *Text File*. We're going to make an HTML file.
+3. Insert the following, replacing `favicon.ico` with your image filename.
+
+```{r, eval=FALSE}
+  <link rel="icon" type="image/png" href="favicon.ico"/>
+```
+  
+4. Save this file as `header.html`. You can choose a different name. 
+5. Open `_site.yml` and under the `html_document:` section, insert the `includes:` and `in_header` options like so:
+
+```{r, eval=FALSE}
+output:
+  html_document:
+    includes:
+      in_header: header.html
+```
+
+:::tip
+If you already were including a file with `in_header`, then you can add the line of code above at the top of your existing file, OR you can include both files by listing them within brackets like this: `[header.html, <first-file.html>,]`.
+:::
 
 ### 1. Navigation bar color {-}
 
@@ -119,7 +149,7 @@ In the righthand pane of the developer tools. we see these classes being used in
 
 3. Let's choose the first CSS selector `.navbar` and play around with it in this pane to decide what color we'd like. Type `background-color:` followed by any [HEX code or rgb code](https://www.google.com/search?q=color+picker) and press `Enter`. You can also click on the small color square to use sliders to set the color and transparency of your navigation bar. I'm selecting 
 
-![](images/color_picker.png){width=300px}
+<center>![](images/color_picker.png){width=200px}</center>
 
 <br>
 
@@ -145,32 +175,36 @@ Once you've selected the Google Fonts you want to use, open up your `style.css` 
 
 ### 5. Add a hero image (banner image at the top)
 
-To add the big image at the top of page (a.k.a hero image), we need to make an `.html` file containing our image.  
+To add the big image at the top of page (a.k.a hero image), we need to make an HTML file containing our image and text.  
 
-Go to *File* > *New File* > *Text File*. Go ahead and save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.  
+**How to do it:**
 
-Copy as paste the HTML code below into this file.
+1. Go to *File* > *New File* > *Text File*. 
+2. Copy as paste the HTML code below into this file. 
 
 ```
 <link href="style.css" rel="stylesheet">
 
-<div class="image-descript"> 
-	<img class="big_image" src="https://images.unsplash.com/photo-1515194674751-901bf97f123b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
-  <div class="image-text">
-		<div class="big-image-text"><strong>YUM-101 Delicious Foods</strong></div>
+<div class = "image-descript"> 
+	<img class = "big_image" src= "<url-or-image-file>" >
+  <div class = "image-text">
+		<div class = "big-image-text"> <strong> YUM-101 Delicious Foods </strong> </div>
   </div>
 </div>
 ```
+3. Replace `<url-or-image-file>` with the path of the image that you'd like to use. If you need some good ones, check [here](https://unsplash.com/).
+4. Replace 'YUM-101 Delicious Foods` with whatever text you'd like to be overlaid the image. 
+5. Close and Save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.
 
-Here's what each of these lines is doing:
+
+Here's what each of the lines in this file is doing:
 
 ![](images/annotate_hero.jpg)
 
+6. Open `index.Rmd`.
+7. Reference the HTML file in `index.Rmd`'s YAML with the `includes:` and `in_header:` lines.
 
-
-We'll insert our `.html` file in the header of our site page by adjusting the YAML for the R Markdown page where we'd like the image to appear. It's possible to add the same hero image to all pages by modifying the `_site.yml` page instead, but hero images are usually best reserved for welcoming visitors to your home page. We add the following to the YAML of the `index.Rmd`:
-
-```
+```{r, eval=FALSE}
 ---
 title: "YUM-101 Delicious Foods"
 output:
@@ -179,8 +213,57 @@ output:
       in_header: hero-image.html
 ---
 ```
+This will add the image to ONLY the `index.Rmd` page of your site, which is appropriate since the index will serve as the homepage. We could have instead added `in_header:` to our `_site.yml` to apply the image to EVERY site page (but consider whether this might be visually overwhelming for your site!). 
+
+
+You should note that when you add an `in_header:` option to a single pages's YAML, it will override the more "global" `in_header:` option set in `_site.yml`. So if you still want the global `in_header:` to apply (e.g. if you created a favicon), then you'll need to list both files in the single page's YAML. Like this, for example:
+
+```
+---
+title: "YUM-101 Delicious Foods"
+output:
+  html_document:
+    includes:
+      in_header: [<first-file.html>, hero-image.html]
+---
+```
+
+:::tip
+Including an image like this in the header of the page is kind of a hack-- in order for this to work properly, if you have two HTML files listed, make sure the hero-iamge.html is listed last.
+:::
 
 <br>
+
+:::tip
+Design tip: Try out a completely blank `index.Rmd` with nothing but the YAML with a header image for a visually-striking homepage. 
+:::
+
+**Styling the hero image**
+
+You could style this endlessly, but here's the CSS we're using for the fancy course demo site. Each selector corresponds to the class names we used in `header.html`:
+
+
+```{r, eval=FALSE}
+.image-descript {
+    position: relative;
+}
+
+.big_image {
+  margin-top: -50px;
+  margin-bottom: 2em;
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+
+.image-text {
+    position: absolute;
+    top:30%;
+    left:0;
+    right:0;
+    bottom:0;
+  }
+```
 
 
 ### Add a logo

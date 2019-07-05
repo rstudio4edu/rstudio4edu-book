@@ -13,7 +13,7 @@ link-citations: yes
 cover-image: images/books.jpg
 description: "A work-in-progress"
 github-repo: rstudio4edu/rstudio4edu-book
-favicon: "images/books.jpg"
+favicon: "images/favicon.ico"
 always_allow_html: yes
 ---
 
@@ -83,6 +83,9 @@ Finally, we want to point out a few pragmatic features (could include a diagram 
 ## What did we leave out? {-}
 
 on purpose
+
+* Shiny
+
 
 ## Who are we? {-}
 

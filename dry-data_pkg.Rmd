@@ -3,6 +3,7 @@
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 ## Is this tutorial for you? {-}
 
 This tutorial is intended for educators who would like to learn to make a package in order to distribute materials to their learners easily. 
