@@ -100,7 +100,7 @@ Though we recommend a “GitHub first” workflow, it is possible to begin by fi
 * Scroll down and select *Distill Website*
 * Then, optionally:
 
-```
+```{r, eval = FALSE}
 usethis::use_git()
 usethis::use_github() # you have to have a PAT setup
 ```
