@@ -1,0 +1,386 @@
+# Create a data package {#data-pkg}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+**Is this tutorial for you?**
+
+This tutorial is intended for educators who would like to learn to make a package in order to distribute materials to their learners easily. 
+
+<br>
+
+<br>
+
+```{r child="modules/is-this-tutorial-for-you.Rmd"}
+
+```
+
+* How to make a package that your students can download and install from GitHub
+* How to include a raw data set in your package
+* How to create a custom template in your package that your learners can use for worksheets, training materials, assignment templates, etc.
+* How to give your students access to a custom interactive tutorial/lesson
+
+<br>
+
+**Why make a package?** 
+
+<center>![](images/pkg/Box.jpg){width=600px}</center>
+
+<br>
+
+As an educator you can use a package to easily deliver the contents of your lesson/ teaching material/ data to an audience. Your package doesn't have to be on CRAN, and it doesn't have to contain functions (but it can if you want!). Packages can be used creatively so that you can give your students custom data sets to work with, R Markdown "worksheets" that they can fill in or use as templates for completing exercises. You can also have students run LearnR tutorials with a package. These are interactive R Markdown docs that use Shiny.
+
+<br>
+
+## PART 1: Creating bare bones package structure
+
+<center>![](images/pkg/barebones.jpg){width=350px}</center>
+
+Here we will make a bare bones package that is educator-ready. The final goal will be to create a package that is "downloadable" by your students, which means this package needs to have a GitHub repository so that it can be easily shared.
+
+<br>
+
+### Step 1: Make a GitHub repo for the package
+Our package-making begins when we set up a project repository. See our tips below for what to name your repository.
+
+
+```{r child = 'modules/github-first-project.Rmd'}
+
+```
+
+```{r, eval=FALSE}
+create_package(getwd())
+```
+
+
+<br>
+
+:::tip
+**What's in a name?** It'll be easiest if you give your GitHub repository the same name that you'd like to give your package. It will make things less confusing. As such, the name you choose must:
+
+* Include only letters, numbers, or `.`
+* Start with a letter
+* Not end with a `.` 
+* Optionally, consider the naming tips <strong>[here](https://r-pkgs.org/package-structure.html)</strong>
+:::
+
+:::tip
+**Where to put this project directory?** Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.
+:::
+
+<br>
+
+### Step 2: Create the package in RStudio {-}
+
+Below, we distill the more comprehensive resource [R packages](https://r-pkgs.org/whole-game.html) down to the basics. Now that your GitHub-connected project has been created, it's time to put in the scaffolding for our bare-minimum package, which will primarily consist of the addition of specific folders and files to our project directory. 
+
+Though we could do this manually, it's much easier to rely on helper functions from the `usethis` package to do this for us. 
+
+```{r, eval=FALSE}
+#install.packages("usethis")
+library(usethis)
+```
+
+Specifically, we use the `create_package()` function to create the folders and files we need in the directory of our choosing. Its argument is the path (and consequently, also the name) of our package. Since we are already in the project directory that we'd like to use, we can replace the path with `getwd()`: 
+
+```{r, eval=FALSE}
+create_package(getwd())
+```
+
+The console output will ask if you'd like to overwrite the pre-existing R project. Select No. 
+
+<br>
+
+<center> ![](images/pkg/create_package_ss.png){width=500px}</center>
+
+<br>
+
+A new session of RStudio will open, which will appear almost duplicate to the one you had open previously with one important difference: this new one has a *Build* tab in the  pane which also has the tabs *Environment*, *History*, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.
+
+<br>
+
+<center> ![](images/pkg/build_tab.png){width=500px} </center>
+
+<br>
+
+You can now confirm that `create_package()` has created some new files which we see in our `Files` pane:
+
+<br>
+
+<center> ![](images/pkg/cp_files.png){width=500px}</center>
+
+<br>
+
+It is a good idea to  commit to GitHub at this point. 
+
+<br>
+
+### Step 3: (Optionally) Edit DESCRIPTION file
+
+You can also edit the `DESCRIPTION` file to fill in the author (your) info and other descriptive info about the package:
+
+<br>
+
+<center>![](images/pkg/description.png){width=500px}</center>
+
+<br>
+
+[Commit again]
+  
+<br>
+
+:::tip
+**FYI**: At this point in package-making is when you could begin to create custom functions if you wanted to (e.g. [as described here](https://r-pkgs.org/whole-game.html#write-the-first-function) and [here](https://r-mageddon.netlify.com/post/writing-an-r-package-from-scratch/), but this is not a goal of the present tutorial).
+:::
+
+<br>
+
+### Step 4: Build!
+
+<center>![](images/pkg/Build.jpg){width=400px}</center>
+
+[SHOULD WE IGNORE THE CHECK STEP FOR NOW?]
+
+[IS LOADING DEVTOOLS ACTUALLY NECESSARY FOR THIS NEXT STEP?]
+
+The minimum package structure is in place, and now we go to `Build` > `Install and Restart` to make the package "official". And you're done!...well, kind of. Your package doesn't have anything useful in it (yet), but it does exist.
+
+[BETTER TO FIRST SUGGEST "LOAD ALL"?]
+
+<br>
+
+### Step 5: Deliver
+
+Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:
+
+```{r, eval=FALSE}
+# install.packages("remotes")
+remotes::install_github("rstudio4edu/testpackage")
+
+```
+
+<br>
+
+We next demonstrate how to include custom data in package.
+
+<br>
+
+## PART 2: Including data sets
+Assuming you have followed the previous steps for building the basic structure of a package, we now demonstrate how to package up some data for your students. 
+
+<br>
+
+### Why do this?
+What if you'd like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.
+
+<br>
+
+<br>
+
+### Step 1: Add raw data file
+
+* Call `usethis::use_data_raw` to create a folder called `data-raw`. We will use this folder as a general storage space for any raw data files, data pre-processing scripts, etc. that we don't want to be built into our final package.
+
+```{r, eval=FALSE}
+use_data_raw()
+```
+  
+This new folder houses a `DATASET.R` script. 
+  
+  <center>![](images/pkg/datasetr.png){width=500px}</center>
+  
+<br>
+
+* Add your raw data file to the `data-raw` folder. I am adding a `.csv` file called `aggression_behavior.csv`. 
+ 
+ <center>![](images/pkg/data-raw.png){width=500px}</center>
+ 
+<br>
+
+:::tip
+**Note**: It's always a good idea to start with the most unprocessed, messy version of the data in the `data-raw` folder along with scripts to clean it up, so that your workflow is reproducible. 
+:::
+
+
+<br>
+
+ 
+### Step 2: Save clean data to `data/`
+
+Edit the `DATASET.R` script:
+
+* Read in the `.csv` file containing our raw data.
+* Include any code necessary for processing or cleaning to ready the data set as you'd like it to be presented in the package.
+* Run `usethis::use_data()` which will export an `.rda`-formatted data file to a new folder, `data`. Any data in this folder will be accessible to the user.
+
+[SHOULD WE MENTION ANYTHING ABOUT HERE::HERE?] 
+
+```{r, eval = FALSE}
+## code to prepare `DATASET` dataset goes here
+
+# Read in your .csv file
+aggression_behavior <- readr::read_csv(here::here("data-raw", "aggression_behavior.csv"))
+
+# Include any processing steps here as well
+
+# Export to `data/` as .rda file
+usethis::use_data(aggression_behavior, overwrite = TRUE) # add overwrite option
+```
+
+<br>
+
+<center> ![](images/pkg/rdafile.png){width=500px}</center>
+
+<br>
+
+
+:::tip
+**FYI**: The reason .rda (also called .RData) files are use in packaged data sets is because this data file format is much faster to read in than .csv files.
+:::
+
+
+<br>
+
+Your data is now callable! Check that you can access your data.
+
+* Click *Build* > *Load All*
+* Print your data set object:
+
+```{r, eval=FALSE}
+
+aggression_behavior
+
+# A tibble: 214 x 11
+   focal compound birthyr obyear  rank `infant?` attack_all chase_all threatcontact_a…
+   <chr> <chr>      <dbl>  <dbl> <dbl> <chr>          <dbl>     <dbl>            <dbl>
+ 1 bs9   a1          2003   2008     3 N                  0         0            0    
+ 2 gk3   a1          1991   2007     1 Y                  0         0            0    
+ 3 se8   a1          2001   2008     1 N                  0         0            0    
+ 4 qq8   a1          2001   2008     3 N                  0         0            2.23 
+ 5 vd8   a1          2001   2008     3 Y                  0         0            0.998
+ 6 qv5   a1          1996   2008     3 Y                  0         0            0    
+ 7 sr8   a1          2001   2008     2 N                  0         0            0    
+ 8 pk8   a1          2001   2008     2 Y                  0         0            0    
+ 9 oz4   a1          1994   2008     1 N                  0         0            0    
+10 hv5   a1          1996   2007     2 N                  0         0            0    
+# … with 204 more rows, and 2 more variables: threatnocontact_all <dbl>, agg_in <dbl>
+> 
+```
+
+<br>
+
+<div class= "alert alert-note">
+
+:::
+**Note**: If you later decide to update the underlying raw .csv file, you will have to manually run the script in Step 2 again before re-building, loading, installing the package. The reason is that when packages are built, loaded, installed, etc., any contents in data-raw/ are ignored by default.
+:::
+
+</div>
+
+<br>
+
+### Step 3: Document the data set
+Because this will be a data set that is shared with others, it's important to add reference documentation for it.
+
+* Use `usethis::use_r()` with your data set name in quotes.
+
+```{r, eval=FALSE}
+
+use_r("aggression_behavior")
+```
+
+This generates a `.R` script that lives in the `R/ folder`. 
+
+<br>
+
+<center> ![](images/pkg/Rfiledataset.png){width=500px}</center>
+
+<br>
+
+Add information about the data set:
+
+- In the .R file, add the name of the data set object in quotes. 
+- Above the quoted object name, paste in specially-formatted comments (see the example below), called Roxygen comments.
+- Manually edit the information to reflect the columns in your data set.
+
+
+This is what will become our documentation. 
+
+```{r, eval=FALSE}
+#' Data of aggression behaviors observed in rhesus macaques
+#'
+#'
+#'
+#' @format A data frame with 214 rows representing individual "focal" rhesus and 11 variables:
+#' \describe{
+#'   \item{focal}{character denoting the subject ID of the rhesus}
+#'   \item{compound}{a character indicating the social group the focal belongs to}
+#'   \item{birthyr}{dbl denoting focal's year of birth}
+#'   \item{obyear}{dbl denoting year of behavioral observation when data were collected on the focal}
+#'   \item{rank}{dbl denoting high, middle, or low social rank of the focal (1, 2, or 3)}
+#'   \item{infant?}{character denoting whether or not the focal had an infant less than 1 year old during time of observation}
+#'   \item{attack_all}{average number of times an attack was intitiated by the }
+#'   \item{chase_all}{a character string giving given name}
+#'   \item{threatcontact_all}{a character string giving given name}
+#'   \item{agg_in}{number of times aggression was initiated by the focal}
+#' }
+#' @source aggression_behavior.csv file
+"aggression_behavior"
+```
+
+<br> 
+
+:::tip
+**Note:** To read more about Roxygen comments, check out [6.3 Roxygen Comments, R Packages](images/pkg/https://r-pkgs.org/man.html).
+:::
+
+
+* Use `devtools::document()` to make the roxygen comments "concrete". 
+
+```{r, eval=FALSE}
+#install.packages(c("devtools", "roxygen2"))
+library(roxygen2)
+library(devtools)
+
+document()
+```
+
+This generates a `.Rd` file, that makes our documentation accessible to the package. [PHRASING?] This file lives inside a newly-generated `man/` folder.
+
+<br>
+
+<center>![](images/pkg/manfolder.png){width=500px}</center>
+
+<br>
+
+Now we can check that our documentation works:
+
+* Call `? aggression_behavior`, substituting the name of your data set.
+* If everything looks good, then you're done! If not, edit the roxygen-style comments in the .R file and `document()` again until you're satisfied.
+
+<br>
+
+<center>![](images/pkg/datadoc.png){width=500px}</center>
+
+<br>
+
+
+
+### Step 4:  Build and install {-}
+
+* As before, click on *Install and Restart* under the *Build* tab.
+
+Here's a review of all the data package steps so far:
+
+![](images/pkg/datapackagemap.jpg)
+
+<br>
+
+Congratulations, your package now includes a documented data set! It can be downloaded and installed as recommeded in **Step 5: Deliver** of **Part 1**. 
+
+If you'd like to create a worksheet-like component for your package, continue with **Part 3**. Otherwise, skip to **Final Steps** for some recommendations on a couple final (and optional) package components.
+
+<br>
+
+
