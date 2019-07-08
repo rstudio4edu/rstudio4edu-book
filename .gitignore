@@ -5,4 +5,5 @@
 _book
 _bookdown_files
 *.rds
+*.bak
 .DS_Store
