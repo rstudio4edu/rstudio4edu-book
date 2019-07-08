@@ -1,18 +1,16 @@
 book_filename: "rstudio4edu-book"
 #output_dir: "docs"
 delete_merged_file: true
-before_chapter_script: "setup.R"
 language: 
   ui:
     chapter_name: "Chapter " # note the space
 new_session: yes # Each chapter is knitted as its own Rmd file
 #rmd_subdir: ["", "",""]
 rmd_files: ["index.Rmd", 
-"teach-rstudio.Rmd", # ingredient 1
-"teach-github.Rmd",  # ingredient 2
-"teach-data.Rmd",    # ingredient 3
-"teach-rmd.Rmd",     # ingredient 4
-"teach-web.Rmd",     # ingredient 5
+"teach-tools.Rmd", 
+"teach-data.Rmd",  
+"teach-rmd.Rmd",    
+"teach-web.Rmd",   
 "cookbook.Rmd",
 "cookbook-pkg.Rmd",
 "cookbook-pkg_data.Rmd", 
