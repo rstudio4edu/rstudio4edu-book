@@ -16,7 +16,8 @@ Imports:
     DT,
     klippy,
     devtools, 
-    emo
+    emo,
+    here
 Remotes:
     r-lib/fs,
     r-lib/usethis,
