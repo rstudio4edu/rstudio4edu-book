@@ -1,0 +1,45 @@
+/* For logo immediately above TOC, use style rule below, otherwise comment out*/
+
+/*
+#TOC::before {
+  content: "";
+  display: block;
+  height: 200px; 
+  margin: 20px 20px 20px 20px;
+  background-image: url("logo.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+*/
+
+
+/* For logo above title in upper righthand corner, inline with Title and Author, use style rule below. otherwise comment out*/
+
+#header.fluid-row::before {
+  content: "";
+  height: 150px;
+  width: 150px;
+  float: right;
+  background-image: url("nhanes_logo.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+
+/* For logo to be in upper righthand corner and ABOVE title and author fields */
+/* not recommended if using TOC float */
+
+/*
+#header.fluid-row::before {
+  content: "";
+  height: 200px;
+  display: block;
+  margin-top: 20px;
+  background-image: url("nhanes_logo.png");
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+*/

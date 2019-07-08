@@ -4,6 +4,7 @@ subtitle: "A Workshop on Visualizing Your Data with `ggplot`"
 author: "Alison Presmanes Hill & Julianne Myers"
 output:
   html_document:
+    css: nhanes_style.css
     highlight: pygments
     theme: flatly
     smart: false
@@ -22,11 +23,11 @@ output:
 <a href="http://github.com/apreshill"><i class="fa fa-github fa-fw"></i>@apreshill</a><br>
 <a href="http://cslu.ohsu.edu"><i class="fa fa-map-marker fa-fw"></i>OHSU Center for Spoken Language Understanding</a>
 
-```{r setup, include = FALSE}
+```{r setup_nhanes, include = FALSE}
 knitr::opts_chunk$set(error = TRUE, comment = NA, warning = FALSE, message = FALSE, tidy = FALSE, fig.path="nhanes-figs/", echo = TRUE)
 ```
 
-```{r load_packages, include = FALSE}
+```{r load_packages_nhanes, include = FALSE}
 suppressWarnings(suppressMessages(library(readr)))
 suppressWarnings(suppressMessages(library(dplyr)))
 suppressWarnings(suppressMessages(library(MASS)))
@@ -126,7 +127,7 @@ Use the `readr` package to import the nhanes_large.csv with the `read_csv` funct
 * Finally, assign the data to an R object using `<-` and call that object something simple, like `heart`.
 
 
-```{r}
+```{r nhanes}
 heart <- read_csv("http://faculty.washington.edu/kenrice/heartgraphs/nhaneslarge.csv", na = ".") 
 ```
 
@@ -176,7 +177,7 @@ You may be wondering what `DR1TFOLA` and `BPXSAR` are. The [data dictionary onli
 
 We just used 2 different *functions* in R: `head()` and `names()`. All functions take *arguments*, which typically go inside parentheses. Order matters here, unless you explicitly label the arguments; for example:
 
-```{r eval = FALSE}
+```{r nhanes2, eval = FALSE}
 head(6, heart) # this will not work
 head(n = 6, x = heart) # this works, but you type more
 head(heart, 6) # this works and is succinct
@@ -366,7 +367,7 @@ ggplot(heart, aes(x = DR1TFOLA, colour = gender)) +
 
 Now let's make some side-by-side univariate plots, specifically dotcharts or stripcharts, to visualize systolic blood pressure by gender. We'll start with a new base plot, and save it to an object called `side` that we can then add geoms to.
 
-```{r}
+```{r side}
 side <- ggplot(heart, aes(x = gender, y = BPXSAR)) +
   labs(x = "", y = "Systolic BP (mmHg)")
 ```

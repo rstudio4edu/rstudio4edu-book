@@ -4,6 +4,7 @@ subtitle: "CS631"
 author: "Alison Hill"
 output:
   html_document:
+    css: moma_style.css
     theme: flatly
     toc: TRUE
     toc_float: TRUE
@@ -12,7 +13,7 @@ output:
     code_folding: hide
     code_download: TRUE
 ---
-```{r setup, include = FALSE, cache = FALSE}
+```{r setup_moma, include = FALSE, cache = FALSE}
 knitr::opts_chunk$set(
   comment = NA, 
   warning = FALSE, 
