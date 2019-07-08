@@ -1,0 +1,602 @@
+---
+title: "OHSU Hands-on Data Jamboree: Code Your Graph"
+subtitle: "A Workshop on Visualizing Your Data with `ggplot`"
+author: "Alison Presmanes Hill & Julianne Myers"
+output:
+  html_document:
+    highlight: pygments
+    theme: flatly
+    smart: false
+    toc: TRUE
+    toc_float:
+      collapsed: TRUE
+      smooth_scroll: TRUE
+    toc_depth: 2
+    code_download: TRUE
+---
+
+<script src="https://use.fontawesome.com/5235085b15.js"></script>
+
+<a href="mailto:hillali@ohsu.edu"><i class="fa fa-paper-plane fa-fw"></i>hillali@ohsu.edu</a><br>
+<a href="http://twitter.com/apreshill"><i class="fa fa-twitter fa-fw"></i>@apreshill</a><br>
+<a href="http://github.com/apreshill"><i class="fa fa-github fa-fw"></i>@apreshill</a><br>
+<a href="http://cslu.ohsu.edu"><i class="fa fa-map-marker fa-fw"></i>OHSU Center for Spoken Language Understanding</a>
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(error = TRUE, comment = NA, warning = FALSE, message = FALSE, tidy = FALSE, fig.path="nhanes-figs/", echo = TRUE)
+```
+
+```{r load_packages, include = FALSE}
+suppressWarnings(suppressMessages(library(readr)))
+suppressWarnings(suppressMessages(library(dplyr)))
+suppressWarnings(suppressMessages(library(MASS)))
+suppressWarnings(suppressMessages(library(ggplot2)))
+suppressWarnings(suppressMessages(library(ggbeeswarm)))
+suppressWarnings(suppressMessages(library(ggalt)))
+```
+ 
+# Overview
+
+
+This workshop was presented at OHSU on June 24, 2016. The same dataset and plots were made for a [parallel breakout session using Python](https://github.com/abalter/data-viz-jamboree).
+
+
+
+
+## Dataset and inspiration
+
+For this workshop, we'll recreate the graphics presented in this article:
+
+[Graphics and statistics for cardiology: comparing categorical and continuous variables](http://heart.bmj.com/content/early/2016/01/27/heartjnl-2015-308104.full) 
+
+* _Authors:_ Kenneth Rice, Thomas Lumley  
+* [Full text](http://faculty.washington.edu/kenrice/heartgraphs/effectivegraphs.pdf)
+* [Datasets used](http://faculty.washington.edu/kenrice/heartgraphs/)
+    - The links to the medium and large datasets may be wrong- remove the second "s" in the urls
+    - Datasets are also in our github repo for this workshop
+* Data derived from [NHANES (National Health and Nutrition Examination Survey)](http://www.cdc.gov/nchs/nhanes/)
+* [Additional materials](http://faculty.washington.edu/kenrice/heartgraphs/)
+   
+
+Sometimes we'll offer a challenge for you to try on your own (either during or after this workshop), which will look like this:
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><i class="fa fa-hand-o-right" aria-hidden="true"></i> If this was easy:</div>
+  <div class="panel-body">
+Try this!
+  </div>
+</div>
+
+Other times, we'll encourage you to pair up with a partner to solve a problem, which will look like this:
+
+<div class="panel panel-success">
+  <div class="panel-heading"><i class="fa fa-handshake-o" aria-hidden="true"></i> Pair up</div>
+  <div class="panel-body">
+Work together on this!
+  </div>
+</div>
+
+
+
+# Pre-work
+
+Your pre-work included:
+
+* Install R
+* Install RStudio
+* Install the packages listed below, and load them in your current work session
+* Importing the dataset into your current work session
+
+
+
+## Install packages 
+
+Do this once per machine.
+
+```{r install_packages_demo, eval=FALSE}
+install.packages("readr")
+install.packages("ggplot2")
+install.packages("ggbeeswarm") 
+install.packages("dplyr")
+install.packages("MASS")
+install.packages("hexbin")
+install.packages("ggalt")
+```
+
+## Load packages 
+
+Do this once per R session.
+
+```{r load_packages_demo, eval = FALSE}
+library(readr)
+library(ggplot2)
+library(ggbeeswarm)
+library(dplyr)
+library(MASS)
+library(hexbin)
+library(ggalt)
+```
+
+## Import data 
+
+Use the `readr` package to import the nhanes_large.csv with the `read_csv` function.
+
+* The first argument in the `read_csv()` parentheses is the url to the dataset
+* The second argument, `na = "."`, specifies that missing data in this dataset is denoted by a period
+* Finally, assign the data to an R object using `<-` and call that object something simple, like `heart`.
+
+
+```{r}
+heart <- read_csv("http://faculty.washington.edu/kenrice/heartgraphs/nhaneslarge.csv", na = ".") 
+```
+
+
+
+
+
+# Basics
+
+## HLO
+
+It is good practice to say HLO to your new dataset by doing a High-Level Overview using some built-in R functions. 
+
+Use the `head()` function in your console and check with your partner to see if you got the same output. How many rows of data do you see? 
+
+```{r head, eval=FALSE}
+head(heart)
+```
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><i class="fa fa-hand-o-right" aria-hidden="true"></i> If this was easy:</div>
+  <div class="panel-body">
+Type `?head` in your console and figure out how to reveal the first 10 rows. Search online to find out the R function that returns the **last** *n* rows of a dataframe.
+  </div>
+</div>
+
+Let's look at the variables in our `heart` dataframe:
+
+```{r variables}
+names(heart)
+```
+
+You may be wondering what `DR1TFOLA` and `BPXSAR` are. The [data dictionary online](http://faculty.washington.edu/kenrice/heartgraphs/) defines the variable names as follows:
+
+* `BPXSAR`: systolic blood pressure (mmHg)
+* `BPXDAR`: diastolic blood pressure (mmHg)
+* `BPXDI1`, `BPXDI2`: two diastolic blood pressure readings
+* `race_ethc`: race/ethnicity, coded as Hispanic, White non-Hispanic, Black non-Hispanic and Other
+* `gender`: sex, coded as Male/Female
+* `DR1TFOLA`: folate intake (μg/day)
+* `RIAGENDR`: sex, coded as 1/2
+* `BMXBMI`: body mass index (kg/m2)
+* `RIDAGEY`: age (years)
+
+## All functions have arguments
+
+We just used 2 different *functions* in R: `head()` and `names()`. All functions take *arguments*, which typically go inside parentheses. Order matters here, unless you explicitly label the arguments; for example:
+
+```{r eval = FALSE}
+head(6, heart) # this will not work
+head(n = 6, x = heart) # this works, but you type more
+head(heart, 6) # this works and is succinct
+```
+
+For both `head()` and `names()`, the first argument was our dataframe, which we named `heart`. `ggplot2` is a package that essentially contains a bunch of functions, each taking different arguments, which we'll explore now...
+
+
+
+
+
+# Graphs for display of single samples
+
+Let's focus first on univariate plots by examining folate intake (a continuous variable). The first function we need is `ggplot()`: this function initializes a new ggplot object.
+
+We'll start with 1 argument: your dataframe- we called ours `heart`. 
+
+
+```{r empty_plot}
+ggplot(heart) 
+```
+
+The code above should produce an empty plot (a gray rectangle). 
+
+`ggplot` makes a plot by layering. So let's take this empty plot and add a layer to it. This layer is a geometric object, or `geom` for short. Let's start with the `geom_histogram()`. 
+
+Each `geom` also takes arguments, and you can always find out what arguments go along with a specific geom using the help function in the console:
+
+```{r help, eval = FALSE}
+?geom_histogram
+```
+
+## Histograms
+
+We'll take that empty plot and add a `geom_histogram()` layer using the `+` sign. This geom requires at least one argument, and it is special: it is an aesthestic mapping (`aes()`), meaning that what goes in the parentheses here *must* be a variable that is in our dataframe. Here, we map folate intake onto the x-axis.
+
+```{r hist1}
+ggplot(heart) +
+  geom_histogram(aes(x = DR1TFOLA))
+```
+
+
+*Small tweak #1:* change colour outline of bars
+
+One of the arguments that `geom_histogram()` takes is `colour`- we'll change it to white. Note that we are *outside* of the `aes()`- this is because the color "white" is not a variable.
+
+```{r hist2}
+ggplot(heart) +
+  geom_histogram(aes(x = DR1TFOLA), colour = "white") 
+```
+
+*Small tweak #2:* change colour fill of bars
+
+You might be surprised to see that `colour` does not in fact relate to the colour *inside* the bars (see above). To change that, we use another argument for `geom_histogram()`- `fill`. How `colour` versus `fill` works depends on which `geom` you are using. For our histogram, we'll change the the colour inside to orchid.
+
+```{r hist3}
+ggplot(heart) +
+  geom_histogram(aes(x = DR1TFOLA), fill = "orchid")
+```
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading"><i class="fa fa-hand-o-right" aria-hidden="true"></i> If this was easy:</div>
+  <div class="panel-body">
+Make a histogram with `royalblue` bars and a `hotpink` outline.
+```{r hist4, echo = FALSE, fig.width = 4, fig.height = 3}
+ggplot(heart) +
+  geom_histogram(aes(x = DR1TFOLA), colour = "hotpink", fill = "royalblue")
+```
+  </div>
+</div>
+
+*Small tweak #3:* change number of bins
+
+You may have noticed that all of our histograms have printed this warning in your console:
+
+`#stat_bin() using bins = 30. Pick better value with binwidth.`
+
+This warning tells us that `bins = 30` is the default that `ggplot` chose for us, based on our data. Let's play around with this!
+
+<div class="panel panel-success">
+  <div class="panel-heading"><i class="fa fa-handshake-o" aria-hidden="true"></i> Pair up</div>
+  <div class="panel-body">
+Make a histogram with 10 bins, and one with 50 bins. Color/fill any way you like!
+```{r hist6, include = FALSE}
+ggplot(heart) +
+  geom_histogram(aes(x = DR1TFOLA), 
+                 colour = "white", 
+                 fill = "orchid", 
+                 bins = 50) 
+```
+  </div>
+</div>
+
+
+
+*Small tweak #3:* update x-axis title 
+
+This is done by adding a `labs` layer, short for labels. We want to relabel the x-axis. Let's also save our `ggplot` object now, and call it `myhist`.
+
+```{r hist5}
+myhist <- ggplot(heart, aes(x = DR1TFOLA)) +
+  geom_histogram(colour = "white", fill = "orchid") +
+  labs(x = "folate intake")
+```
+
+
+
+
+
+
+I'm pretty happy with this one, so I'm going to save this plot so I can stop typing the same thing over and over again, and I can add layers using this one as my base plot.
+
+```{r hist_save, fig.show="hide"}
+hist <- ggplot(heart, aes(x = DR1TFOLA)) +
+  geom_histogram(colour = "white", fill = "orchid", bins = 50) +
+  labs(x = "folate intake (μg/day)")
+hist # view your plot
+```
+
+# Graphs comparing two variables: continuous vs. categorical
+
+OK, let's add another variable to the mix. We'll keep looking at folate intake as the continuous variable, with `gender` as the categorical variable. There are a few ways to do this in `ggplot2`. 
+
+* Facets
+* Colors
+* Side-by-side plots (along the x-axis)
+
+
+## Facets
+
+About facets (from `facet_wrap` documentation):
+
+> "Most displays are roughly rectangular, so if you have a categorical variable with many levels, it doesn't make sense to try and display them all in one row (or one column). To solve this dilemma, facet_wrap wraps a 1d sequence of panels into 2d, making best use of screen real estate."
+
+Let's add `+ facet_wrap(~variable)` to split the histograms based on `gender`
+
+```{r hist_facet}
+hist + facet_wrap(~gender)
+```
+
+Just as a reminder, the below code would create the exact same plot- just with more repetitive typing.
+
+```{r hist_facet_compare, eval = FALSE}
+ggplot(heart, aes(x = DR1TFOLA)) +
+  geom_histogram(colour = "white", fill = "orchid", bins = 50) +
+  labs(x = "folate intake (μg/day)") +
+  facet_wrap(~gender)
+```
+
+
+<div class="panel panel-success">
+  <div class="panel-heading">If this was easy:</div>
+  <div class="panel-body">
+Make the same facetted plot using the kernel density geom (`geom_density`) instead of `geom_histogram`.
+```{r dens_facet, echo = FALSE, fig.width = 5, fig.height = 4}
+ggplot(heart, aes(x = DR1TFOLA)) +
+  geom_density(colour = "white", fill = "orchid") +
+  labs(x = "folate intake (μg/day)") +
+  facet_wrap(~gender)
+```
+  </div>
+</div>
+
+
+## Colours
+
+So far, when we played with colours, we set fill/colour without mapping them onto another variable (i.e., `(colour = "white", fill = "orchid")`). Now, we want fill/colour to **vary** based on the value of a specific variable. Here we want colour to depend on `gender`, so we map the colour aesthetic (`aes(colour = variable)`) onto the variable `gender`.
+
+Notice moving the colour into aesthetics parentheses.
+
+```{r dens1}
+ggplot(heart, aes(x = DR1TFOLA)) +
+  geom_density(aes(colour = gender)) +
+  labs(x = "folate intake (μg/day)") 
+```
+
+The below code will produce the *exact* same plot. Try it! I promise it is identical. Play around with changing global aesthetics (like below) versus geom-specific aesthetics (like above). It won't matter when you only have one layer, but once you start adding `geoms` and `stats`, this can be a powerful way to change your visualization.
+
+```{r dens2, eval = FALSE}
+ggplot(heart, aes(x = DR1TFOLA, colour = gender)) +
+  geom_density() +
+  labs(x = "folate intake (μg/day)") 
+```
+
+## Side-by-side plots
+
+Now let's make some side-by-side univariate plots, specifically dotcharts or stripcharts, to visualize systolic blood pressure by gender. We'll start with a new base plot, and save it to an object called `side` that we can then add geoms to.
+
+```{r}
+side <- ggplot(heart, aes(x = gender, y = BPXSAR)) +
+  labs(x = "", y = "Systolic BP (mmHg)")
+```
+
+<div class="panel panel-success">
+  <div class="panel-heading"><i class="fa fa-handshake-o" aria-hidden="true"></i> Pair up</div>
+  <div class="panel-body">
+If you type `side` into your console, what will the plot look like? Try adding a `geom_point()`- is this plot useful?
+```{r point1, include = FALSE}
+side # blank plot
+side + geom_point() 
+```
+  </div>
+</div>
+
+
+Let's take this plot and tweak it a bit. 
+
+*Small tweak #2:* make points more transparent
+
+Alpha works on a scale from 0 (transparent) to 1 (opaque).
+ 
+```{r point2}
+side + geom_point(alpha = .3) 
+```
+
+*Small tweak #3*: try jittering the points
+
+To do this, instead of `geom_point()`, we will switch to using `geom_jitter()`, which automatically adds both vertical and horizontal space (noise) to your datapoints.
+
+```{r jitter1}
+side + geom_jitter(alpha = .3) 
+```
+
+*Small tweak #4*: control the jitter
+
+Sometimes you may only want to change the width of jitter but not the height. 
+
+```{r jitter2}
+side + geom_jitter(alpha = .3, width = .2, height = 0) 
+```
+
+
+Now let's try a different geom in our side-by-side plot, which is available through the `beeswarm` package you already loaded.
+
+
+```{r bee1}
+side + geom_beeswarm() 
+```
+
+*Small tweak #1:* add alpha again
+
+```{r bee2}
+side + geom_beeswarm(alpha = .2) 
+```
+
+*Small tweak #2:* add statistics
+
+We'll include the mean plus 95% CI
+
+```{r bee_stats}
+ggplot(heart, aes(x = gender, y = BPXSAR)) +
+  geom_beeswarm(alpha = .2) +
+  stat_summary(fun.y = "mean", geom = "point", colour = "orange") +
+  stat_summary(fun.data = mean_cl_boot, geom = "linerange", colour = "orange")  +
+  labs(x = "", y = "Systolic BP (mmHg)")
+```
+
+*Small tweak #3:* add another geom layer
+
+Try adding `geom_boxplot` on top of your side-by-side beeswarm plot. Also try re-ordering the geoms to see what changes.
+
+```{r bee_box}
+side +
+  geom_boxplot(outlier.shape = NA) +
+  geom_beeswarm(alpha = .2) 
+```
+
+
+New geom time- this time use `geom_violin`.
+
+```{r vio1}
+side + geom_violin(alpha = .2) 
+```
+
+*Small tweak #1:* add statistics
+
+Let's include the sample mean and median
+
+```{r vio_stat}
+ggplot(heart, aes(x = gender, y = BPXSAR)) +
+  geom_violin(alpha = .2) +
+  stat_summary(fun.y = "mean", geom = "point", colour = "orange") +
+  stat_summary(fun.y = "median", geom = "point", colour = "blue") +
+  labs(x = "", y = "Systolic BP (mmHg)")
+```
+
+*Small tweak #2:* add another geom layer
+
+Add another layer to your violin plot: try `geom_boxplot`
+
+```{r vio_box}
+side +
+  geom_violin(alpha = .2) +
+  geom_boxplot(width = .05) 
+```
+
+# Graphs comparing two variables: continuous vs. continuous
+
+Now we'll create some bivariate plots to look at the association between age and systolic blood pressure, both of which are continuous variables.
+
+## Scatterplots
+
+```{r scatter1}
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_point() +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)")
+```
+
+If you have big n, try hexbin plot
+```{r hex1}
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_hex() +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)")
+```
+
+Make colors make more sense
+```{r hex2}
+library(viridis)
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_hex() +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)") +
+  scale_fill_gradientn(colours = viridis(256, begin = 1, end = 0))
+```
+
+
+```{r contour}
+library(ggalt)
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  stat_bkde2d(aes(fill = ..level.., alpha = ..level..), geom = "polygon", bandwidth = c(2,2))  +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)") +
+  scale_fill_gradientn(colours = viridis(256, begin = 1, end = 0))
+```
+
+Add linear regression line with SE
+```{r scatter_lm}
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)")
+```
+
+Default is loess line
+```{r scatter_loess}
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_point() +
+  geom_smooth() +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)")
+```
+
+Add splines
+```{r scatter_splines}
+library(splines)
+library(MASS)
+ggplot(heart, aes(x = RIDAGEYR, y = BPXSAR)) +
+  geom_point() +
+  stat_smooth(method = "lm", formula = y ~ ns(x, 3)) +
+  labs(x = "Age (years)", y = "Systolic BP (mmHg)")
+```
+
+# Graphs illustrating more than two variables
+
+We'll finish up by creating some multivariable plots that help us visualize how the association between body mass index & systolic BP varies by gender and age (so 4 variables!).
+
+Just copy this code to create a categorical age variable:
+```{r create_age_category}
+library(dplyr)
+heart2 <- heart %>% 
+  mutate(age_cat = cut(RIDAGEYR, c(0, 30, 55, 100)))
+```
+
+Recreate theirs first
+
+```{r multi_facet}
+ggplot(heart2, aes(x = BMXBMI, y = BPXSAR)) +
+  geom_point() +
+  stat_smooth(aes(colour = gender), method = "lm") +
+  facet_wrap(~age_cat) +
+  labs(x = "Body Mass Index"~(kg/m^2), y = "Systolic BP (mmHg)")
+```
+
+Try with facet grid, update labels
+
+```{r multi_grid1}
+grid <- ggplot(heart2, aes(x = BMXBMI, y = BPXSAR)) +
+  stat_smooth(aes(colour = gender), method = "lm") +
+  facet_grid(gender~age_cat) +
+  labs(x = "Body Mass Index"~(kg/m^2), y = "Systolic BP (mmHg)")
+grid + geom_point()
+```
+
+Play with colors!
+```{r multi_grid2}
+grid +
+  geom_point(aes(colour = gender), alpha = .5) +
+  theme_minimal() +
+  scale_color_manual(values = c("#B47CC7", "#D65F5F"), guide = FALSE)
+```
+
+
+```{r multi_grid3}
+my_colors <- c("#C4AD66", "#77BEDB")
+grid +
+  theme_light() +
+  scale_color_manual(values = my_colors, guide = FALSE)
+```
+
+<div class = "row">
+  
+<div class = "col-md-4">
+<br><br>Since R Markdown use the [bootstrap framework](https://getbootstrap.com/docs/4.0/layout/grid/) under the hood. It is possible to benefit its powerful grid system. Basically, you can consider that your row is divided in 12 subunits of same width. You can then choose to use only a few of this subunits.
+</div>
+  
+<div class = "col-md-4">
+<br><br>Here, I use 3 subunits of size 4 (4x3=12). The last column is used for a plot. You can read more about the grid system [here](bootstrap grid system). I got this result showing the following code in my R Markdown document.
+</div>
+  
+<div class = "col-md-4">
+```{r, message=FALSE, echo=FALSE}
+ggplot( mtcars, aes(x=mpg)) + geom_histogram(fill="skyblue", alpha=0.5) + theme_minimal()
+```
+</div>
+</div>

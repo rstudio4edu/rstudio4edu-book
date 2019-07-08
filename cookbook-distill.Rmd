@@ -1,5 +1,9 @@
 # (PART) Cookbook: Distill sites {-}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 # Introduction {-#intro-distill}
 
 Overview- this is a section filled with recipes for making common types of educational content...

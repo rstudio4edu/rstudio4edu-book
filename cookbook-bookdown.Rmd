@@ -1,5 +1,9 @@
 # (PART) Cookbook: Bookdown book {-}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 # Introduction {-#intro-bookdown}
 
 Overview- this is a section filled with recipes for making common types of educational content...

@@ -1,5 +1,9 @@
 # Make it fancier {#rmd-fancy}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 Once you've built the basic structure for your R Markdown site, if you'd like to customize it even further, here are a handful of things you can add. 
 
 The steps below involve a little bit of HTML and CSS work, but you don't have to have much experience in these methods to be able to build something cool. 

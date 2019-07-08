@@ -1,0 +1,36 @@
+# Organization
+
+```{r, include = FALSE}
+source("common.R")
+```
+
+## Introduction {-#intro-org}
+
+
+Can just deploy single Rmds to website via GitHub pages- easiest
+
+Can use same strategy for rendering multiple files. 
+
+But you probably want a way to bundle up your collection...
+
+You need a project to house your collections of multiple Rmd documents
+
+## Types of R Markdown collections
+
+(why, how, pros and cons of each)
+   - distill
+   - R Markdown sites
+   - bookdown
+   - blogdown
+   
+## Choose your collections wisely
+
+pros/cons of each of above, specifically from educational standpoint.
+
+## Meta
+
+Consider sharing advice re: meta content needed (like links to all the things, schedule)
+
+## Showtime
+
+Publish/deploy (general advice)

@@ -1,5 +1,9 @@
 # (PART) Cookbook: Blogdown sites {-}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 # Introduction {-#intro-blogdown}
 
 Overview- this is a section filled with recipes for making common types of educational content...

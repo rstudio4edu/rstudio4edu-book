@@ -1,16 +1,51 @@
-# (PART\*) Teaching with lessons {-}
+# Lessons 
 
-# Introduction {-#intro-lessons}
+```{r, include = FALSE}
+source("common.R")
+```
+
+## Introduction {-#intro-lessons}
+
+In this section, we will walk through some of the options educators have for developing and revising lessons to deliver to learners. One of the first decisions you'll need to make is how you want to deliver your content: can it be a simple R script with minimal comments? Or do your learners need more narrative? 
+
+The good news is this: you *can* go back and forth between the two formats. So even if you pick one then change your mind, you can get back.
 
 Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
 
 This will be for static edu materials (as opposed to interactive- i.e., learnR)
 
-# Do you need R Markdown?
+## R scripts
 
-Maybe not, can do .R scripts, knitr::spin to GitHub
+## Do you need R Markdown?
 
-# R Markdown in practice
+R Markdown files allow you to blend code, output (like results and plots), and prose together in a single document that can be easily reproduced (by you and by others) and shared. This makes R Markdown an ideal tool for educators to develop lessons, and for learners to engage with those lessons. However, if you already using GitHub (and we hope you are!), you should know that you can make your scripts browseable as rendered "notebooks"...(TODO)
+
+:::rstudio-tip
+[R Markdown](https://rmarkdown.rstudio.com/docs/) is an R package that is already installed and loaded when you use the RStudio IDE. The workhorses "under the hood" of R Markdown, the `knitr` package and pandoc, are also pre-installed and loaded for you. You don't have to explicitly install or load any of these tools to use them from within the RStudio IDE.
+:::
+
+So, do you need R Markdown? Maybe not. If you prefer working with and sharing .R scripts and you are using GitHub, we think that using `knitr::spin()` can get you pretty far.
+
+But you have a lot of flexibility if you do choose to use R Markdown to start with, and the following chapters will delve into some of the bells and whistles that we think make R Markdown worth it in the short- and long-run for educators.
+
+
+## Knit to HTML
+
+The [R Markdown package](https://rmarkdown.rstudio.com/docs/) has a number of built-in ["output formats"](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), which means that a single .Rmd document can be "knit" into a bunch of different output file types like HTML, PDF, and even Word documents.
+
+For educators, we strongly encourage using the default HTML output format for three reasons:
+
+1. __Shareability__- HTML output can be easily shared with links, especially if you are using GitHub.
+
+1. __Flexibility__- .Rmd files output to HTML can be organized easily into larger educational projects using R Markdown extension packages like `bookdown` and `blogdown` (see later chapters).
+
+1. __Styleability__- Each R Markdown output format has its own output styling options. The [options](https://rmarkdown.rstudio.com/docs/reference/html_document.html) for the HTML output format are by far the most fully featured and easily accessible, relying on no additional software installation.
+
+1. __Customizability__- All HTML output can be further customized using CSS. The bad news is that you will need to learn a bit about CSS to get there (see our crash course), but the good news is that if you are the kind of educator that needs to, for example, use a specific branded style guide that specifies colors, fonts, etc., you *can* make your HTML output look "on brand" with a custom CSS.
+
+
+
+## R Markdown in practice
 
 examples:
 
@@ -27,36 +62,67 @@ also include how to leave invisible notes to yourself `<!--- your comment --->`
     + in RStudio, from git adds .gitignore for you
 + file paths using `here::here()`
     + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
++ working html output- use xaringan::inf_moon_reader to render
 
-# Design for teaching
+## Design for teaching
 
-## Formatting code
+The aesthetic design of your lessons can make the difference between learners ...
 
-Useful patterns:
+### Formatting text
 
-+ Just show me the code
+All plain text (that is, text that is not code) is formatted using markdown. Markdown is...
 
-+ Just show me the output
+### Formatting code
 
-+ Just show me the plots
+All code in an R Markdown document is processed by the `knitr` package. Code is entered in one of two ways:
 
-+ [verbatim code chunks](https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/)
-+ `knitr` code chunk options (like eval vs echo vs [include](https://yihui.name/en/2017/11/knitr-include-false/))
-+ `knitr` [ref.label](https://yihui.name/knitr/demo/reference/) to reuse code chunks
-+ the `fig.path` thing: https://yihui.name/knitr/options/#plots (see also: name your code chunks!)
-+ making sure that your package warnings/messages don't print!
-+ how to control numbers of digits that print 
-+ control significance stars
++ Code chunks ()
++ Inline code so `r `
 
-```{r}
-options(
-  show.signif.stars = FALSE,     
-  digits = 2
-  )
+The way that code chunks appear in your output are controlled by [`knitr` chunk options](https://yihui.name/knitr/options/). These options give you extremely granular control over your code chunk output, but there are a few key patterns of code chunk options that are especially useful in the education context.
+
+High-level important ideas:
+
+#### Know the defaults
+
+Print them here
+
+make a table with options down rows, cols are pattern / why / chunk option(s):
+- show results / hide code --> `echo=FALSE`
+- show code / hide results --> `results='hide'`
+- show code / hide plots --> `fig.show='hide'`
+- hide everything --> `include=FALSE`
+
+1. know the default chunk options
+1. know how to use a setup chunk to change those for the whole document
+1. know that you can also just override for individual chunks
+
+Maybe include a table
+
+#### Use a setup chunk
+
+You can explicitly set your own chunk options for the whole document at the top of your .Rmd, using `knitr::opts_chunk$set()`. Inside the parentheses, list the chunk option on the left `=` a new default value on the right. Each chunk option is separated by a comma. The chunk option for the setup chunk itself is typically `include=FALSE` so that no one sees it but you.
+
+````
+```{r, setup, include=FALSE}`r ''`
+knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
 ```
+````
 
+Due to `knitr`'s default rules around chunk names, you can only have 
 
-## Styling output
+### Images
+
+#### Markdown 
+![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
+
+#### `knitr`
+
+include_graphics gives you figure captions
+
+can also play with out.width
+
+### Styling output
 
 HTML output options like floating toc, numbering, code folding, code download (requires theme)
 
@@ -71,9 +137,46 @@ HTML output options like floating toc, numbering, code folding, code download (r
 
 - [breadcrumbs](https://bootswatch.com/flatly/)
 
-# Sharing 
+## Sample Rmds
 
-## Share data
+```{r render-lab, include=FALSE}
+demo_rmd <- here::here("static/moma-lab.Rmd")
+demo_html <- here::here("static/moma-lab.html")
+rerender_demo <- if (file.exists(demo_rmd) & file.exists(demo_html)) {
+  file.info(demo_rmd)$mtime > file.info(demo_html)$mtime
+} else TRUE
+if (rerender_demo) {
+  #callr::r(function(x) rmarkdown::render(x), args = list(demo_rmd))
+  rmarkdown::render(demo_rmd)
+}
+```
+
+[MoMA lab](static/moma-lab.html)
+<div class="iframe-container" style="height: 50vh;">
+<iframe width="1024" height="768" src="static/moma-lab.html" style="-webkit-transform:scale(0.75);-moz-transform-scale(0.75);"></iframe>
+</div>
+
+```{r render-workshop, include=FALSE}
+demo_rmd <- here::here("static/nhanes-workshop.Rmd")
+demo_html <- here::here("static/nhanes-workshop.html")
+rerender_demo <- if (file.exists(demo_rmd) & file.exists(demo_html)) {
+  file.info(demo_rmd)$mtime > file.info(demo_html)$mtime
+} else TRUE
+if (rerender_demo) {
+  #callr::r(function(x) rmarkdown::render(x), args = list(demo_rmd))
+  rmarkdown::render(demo_rmd)
+}
+```
+
+[NHANES workshop](static/nhanes-workshop.html)
+<div class="iframe-container" style="height: 50vh;">
+<iframe width="1024" height="768" src="static/nhanes-workshop.html" style="-webkit-transform:scale(0.75);-moz-transform-scale(0.75);"></iframe>
+</div>
+
+
+## Sharing 
+
+### Share data
 
 For html output formats only:
 
@@ -91,7 +194,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 ```
 
 
-## Share source code
+### Share source code
 
 + first, know the knitr code chunk options, and remember about code folding.
 
@@ -99,7 +202,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 
 - [ ] [code download](https://rmarkdown-docs.netlify.com/reference/html_document.html)
 
-## Share readable output
+### Share readable output
 
 + .R -> GitHub
 
@@ -121,7 +224,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 Can also export to pdf as attachments
       
    
-# Troubleshooting
+## Troubleshooting
 
 [Mine's troubleshooting tips:](https://mine-cetinkaya-rundel.github.io/teach-data-sci-icots2018/01-03-rmarkdown/01-03-rmarkdown.html#30)
 

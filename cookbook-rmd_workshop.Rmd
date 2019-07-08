@@ -1,5 +1,9 @@
 # Make a site for a workshop
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 Here are some components that your workshop site should have. 
 
 1) General Information: Where, When, Requirements (i.e. "bring a laptop, install this software"), Code of Conduct, Accesibility info, 
