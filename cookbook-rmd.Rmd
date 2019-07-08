@@ -1,5 +1,9 @@
 # (PART) Cookbook: R Markdown sites {-}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 # Introduction {-#intro-rmd}
 
 This is a tutorial intended for folks who would like to put together a site to help them organize and deliver their teaching materials to their participants. The R Markdown site is arguably the most basic [FUNDAMENTAL? CLASSIC?] means of compiling collections of R Markdown documents compared to other options available to you (i.e. blogdown, bookdown, etc.).

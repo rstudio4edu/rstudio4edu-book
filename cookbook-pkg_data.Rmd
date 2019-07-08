@@ -1,5 +1,9 @@
 # Create a data package {#data-pkg}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

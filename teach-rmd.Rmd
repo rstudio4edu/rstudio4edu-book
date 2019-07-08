@@ -1,16 +1,48 @@
-# (PART\*) Teaching with lessons {-}
+# Lessons 
 
-# Introduction {-#intro-lessons}
+```{r, include = FALSE}
+source("common.R")
+```
+
+## Introduction {-#intro-lessons}
+
+In this section, we will walk through some of the options educators have for developing and revising lessons to deliver to learners. One of the first decisions you'll need to make is how you want to deliver your content: can it be a simple R script with minimal comments? Or do your learners need more narrative? 
+
+The good news is this: you *can* go back and forth between the two formats. So even if you pick one then change your mind, you can get back.
 
 Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
 
 This will be for static edu materials (as opposed to interactive- i.e., learnR)
 
-# Do you need R Markdown?
+## Do you need R Markdown?
 
-Maybe not, can do .R scripts, knitr::spin to GitHub
+R Markdown files allow you to blend code, output (like results and plots), and prose together in a single document that can be easily reproduced (by you and by others) and shared. This makes R Markdown an ideal tool for educators to develop lessons, and for learners to engage with those lessons. However, if you already using GitHub (and we hope you are!), you should know that you can make your scripts browseable as rendered "notebooks"...(TODO)
 
-# R Markdown in practice
+:::rstudio-tip
+[R Markdown](https://rmarkdown.rstudio.com/docs/) is an R package that is already installed and loaded when you use the RStudio IDE. The workhorses "under the hood" of R Markdown, the `knitr` package and pandoc, are also pre-installed and loaded for you. You don't have to explicitly install or load any of these tools to use them from within the RStudio IDE.
+:::
+
+So, do you need R Markdown? Maybe not. If you prefer working with and sharing .R scripts and you are using GitHub, we think that using `knitr::spin()` can get you pretty far.
+
+But you have a lot of flexibility if you do choose to use R Markdown to start with, and the following chapters will delve into some of the bells and whistles that we think make R Markdown worth it in the short- and long-run for educators.
+
+## Why knit to HTML?
+
+The [R Markdown package](https://rmarkdown.rstudio.com/docs/) has a number of built-in ["output formats"](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), which means that a single .Rmd document can be "knit" into a bunch of different output file types like HTML, PDF, and even Word documents.
+
+For educators, we strongly encourage using the default HTML output format for three reasons:
+
+1. __Shareability__- HTML output can be easily shared with links, especially if you are using GitHub.
+
+1. __Flexibility__- .Rmd files output to HTML can be organized easily into larger educational projects using R Markdown extension packages like `bookdown` and `blogdown` (see later chapters).
+
+1. __Styleability__- Each R Markdown output format has its own output styling options. The [options](https://rmarkdown.rstudio.com/docs/reference/html_document.html) for the HTML output format are by far the most fully featured and easily accessible, relying on no additional software installation.
+
+1. __Customizability__- All HTML output can be further customized using CSS. The bad news is that you will need to learn a bit about CSS to get there (see our crash course), but the good news is that if you are the kind of educator that needs to, for example, use a specific branded style guide that specifies colors, fonts, etc., you *can* make your HTML output look "on brand" with a custom CSS.
+
+
+
+## R Markdown in practice
 
 examples:
 
@@ -27,21 +59,144 @@ also include how to leave invisible notes to yourself `<!--- your comment --->`
     + in RStudio, from git adds .gitignore for you
 + file paths using `here::here()`
     + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
++ working html output- use xaringan::inf_moon_reader to render
 
-# Design for teaching
+## Design for teaching
 
-## Formatting code
+The aesthetic design of your lessons can make the difference between learners ...
 
-Useful patterns:
+### Formatting text
 
-+ Just show me the code
+All plain text (that is, text that is not code) is formatted using markdown. Markdown is...
 
-+ Just show me the output
+### Formatting code
 
-+ Just show me the plots
+All code in an R Markdown document is controlled by the `knitr` package. Code is entered in one of two ways:
+
++ Code chunks ()
++ Inline code so `r `
+
+The way that code chunks appear in your output are controlled by [`knitr` chunk options](https://yihui.name/knitr/options/). These options give you extremely granular control over your code chunk output, but there are a few key patterns of code chunk options that are especially useful in the education context.
+
+High-level important ideas:
+
+1. know the default chunk options
+1. know how to use a setup chunk to change those for the whole document
+1. know that you can also just override for individual chunks
+
+Maybe include a table
+
+#### Show code, hide results
+
+The default global chunk option is `echo=TRUE`, which means that by default all code in code chunks is printed in the output. But sometimes you may want to suppress the output for pedagogical reasons on individual code chunks. You *could* set `eval = FALSE` as a global chunk option, but this would mean that all the code chunks will not get evaluated at all. Thus, you could have errors in your code that learners could stumble upon. Instead, we suggest setting `results='hide'` as a global chunk option to ensure that when you knit, you'll run into the same errors your learners will *before* they do.
+
+
+````
+```{r, results='hide'}`r ''`
+library(tidyverse)
+glimpse(starwars)
+```
+````
+
+#### Show code, hide plots
+
+If your code produces plots, though, `results='hide'` will not suppress the plot. To suppress printing a plot, you'll need to use `fig.show='hide'`.
+
+````
+```{r, results='hide', fig.show='hide'}`r ''`
+library(tidyverse)
+glimpse(starwars)
+ggplot(starwars, aes(x = height)) +
+  geom_histogram(colour = "white", fill = "#3fb5bd") +
+  theme_minimal()
+```
+````
+
+#### Show results, hide code
+
+Sometimes you may want to shield your learners from all the code and just focus their attention on the output, whether it is printed or it produced a plot. This requires a single switch to `echo=FALSE` to "mute" the code from being output.
+
+````
+```{r, echo=FALSE}`r ''`
+library(tidyverse)
+glimpse(starwars)
+```
+````
+
+This is all the learner sees:
+
+```{r, echo=FALSE}
+library(tidyverse)
+glimpse(starwars)
+```
+
+#### Interactively hide/show code
+
+whole document
+
+#### Hide everything
+
+Useful for you as you develop a lesson sometimes to save your code but hide the code and all output from learners. You can achieve the same thing with the combination of `echo=FALSE, results='hide', fig.show='hide'`. But the easier way is to use the `include` chunk option, which is by default set to TRUE.
+
+````
+```{r, include=FALSE}`r ''`
+library(tidyverse)
+glimpse(starwars)
+```
+````
+
+#### Fuse code and output together
+
+In a typical R Markdown document, the results or plot produced by the code is printed following the code itself, so you see:
+
+```{r}
+library(tidyverse)
+glimpse(starwars)
+```
+
+You may wish to fuse those two blocks together using the code chunk option `collapse=TRUE`:
+
+````
+```{r, collapse=TRUE}`r ''`
+library(tidyverse)
+glimpse(starwars)
+```
+````
+
+```{r, collapse=TRUE}
+library(tidyverse)
+glimpse(starwars)
+```
+
+
+#### Reuse your code
+
+Once you embrace code chunk options, you may often find yourself copying and pasting code chunks so that you can use different options on the same code chunk. Like maybe you want the code to appear once, but you 
+
+Special use case: plot first, code second
+
+    Chunk 1: {r plot-first, echo = FALSE}
+    Chunk 2: {r ref.label = 'plot-first', eval = FALSE}
+
+
+
+#### Two plots side-by-side
+
+```{r dodge-st, fig.show = "hold", out.width = "50%"}
+ggplot(mtcars, aes(factor(cyl), fill = factor(vs))) +
+  geom_bar(position = position_dodge(preserve = "total"))
+
+ggplot(mtcars, aes(factor(cyl), fill = factor(vs))) +
+  geom_bar(position = position_dodge2(preserve = "total"))
+```
+
+
+#### Include verbatim code chunks
+
+You may have noticed that the code chunk output, even when `echo=TRUE`, does not show the actual code chunk options that you see in your .Rmd file. In order to print the full code chunk, you'll need to 
 
 + [verbatim code chunks](https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/)
-+ `knitr` code chunk options (like eval vs echo vs [include](https://yihui.name/en/2017/11/knitr-include-false/))
+
 + `knitr` [ref.label](https://yihui.name/knitr/demo/reference/) to reuse code chunks
 + the `fig.path` thing: https://yihui.name/knitr/options/#plots (see also: name your code chunks!)
 + making sure that your package warnings/messages don't print!
@@ -55,8 +210,12 @@ options(
   )
 ```
 
+## Images
 
-## Styling output
+### Show images 
+![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
+
+### Styling output
 
 HTML output options like floating toc, numbering, code folding, code download (requires theme)
 
@@ -71,9 +230,26 @@ HTML output options like floating toc, numbering, code folding, code download (r
 
 - [breadcrumbs](https://bootswatch.com/flatly/)
 
-# Sharing 
+```{r render-rmd, include=FALSE}
+demo_rmd <- here::here("static/_02-moma.Rmd")
+demo_html <- here::here("static/_02-moma.html")
+rerender_demo <- if (file.exists(demo_rmd) & file.exists(demo_html)) {
+  file.info(demo_rmd)$mtime > file.info(demo_html)$mtime
+} else TRUE
+if (rerender_demo) {
+  #callr::r(function(x) rmarkdown::render(x), args = list(demo_rmd))
+  rmarkdown::render(demo_rmd)
+}
+```
 
-## Share data
+<div class="iframe-container" style="height: 50vh;">
+<iframe width="1024" height="768" src="static/_02-moma.html" style="-webkit-transform:scale(0.75);-moz-transform-scale(0.75);"></iframe>
+</div>
+
+
+## Sharing 
+
+### Share data
 
 For html output formats only:
 
@@ -91,7 +267,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 ```
 
 
-## Share source code
+### Share source code
 
 + first, know the knitr code chunk options, and remember about code folding.
 
@@ -99,7 +275,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 
 - [ ] [code download](https://rmarkdown-docs.netlify.com/reference/html_document.html)
 
-## Share readable output
+### Share readable output
 
 + .R -> GitHub
 
@@ -121,7 +297,7 @@ datatable(payroll, extensions = 'Buttons', options = list(
 Can also export to pdf as attachments
       
    
-# Troubleshooting
+## Troubleshooting
 
 [Mine's troubleshooting tips:](https://mine-cetinkaya-rundel.github.io/teach-data-sci-icots2018/01-03-rmarkdown/01-03-rmarkdown.html#30)
 

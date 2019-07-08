@@ -1,5 +1,9 @@
 # Add interactive tutorials {#learnr}
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 ## PART 1: Including a [LearnR](https://blog.rstudio.com/2017/07/11/introducing-learnr/) tutorial
 
 ### Why do this?

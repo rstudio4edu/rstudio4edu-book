@@ -1,5 +1,9 @@
 # Make a site for a course
 
+```{r, include = FALSE}
+source("common.R")
+```
+
 Here are some components that your course site should have. 
 
 1) Course Overview

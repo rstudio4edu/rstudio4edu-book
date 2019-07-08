@@ -1,6 +1,8 @@
 # (PART\*) Education cookbooks {-}
 
-
+```{r, include = FALSE}
+source("common.R")
+```
 
 # How to use the cookbooks {-}
 
