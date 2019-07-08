@@ -1,11 +1,11 @@
 bookdown::gitbook:
-  css: style.css
+  css: assets/style.css
   includes:
-    before_body: big-image.html
+    before_body: assets/big-image.html
   highlight: tango
   config:
     toc:
-      collapse: subsection
+      collapse: section
       before: |
         <li><a href="./">rstudio4edu</a></li>
       after: |

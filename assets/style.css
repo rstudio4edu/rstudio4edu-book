@@ -219,12 +219,12 @@ div.rstudio-tip, div.tip {
 }
 
 div.rstudio-tip {
-  background-image: url("images/rstudio.png");
+  background-image: url("../images/rstudio.png");
   background-color: #aed6d963;
 }
 
 div.tip {
-  background-image: url("images/lightbulb.png");
+  background-image: url("../images/lightbulb.png");
   background-color: #aed6d963;
 }
 
@@ -243,3 +243,22 @@ div.tip {
   margin-bottom: 0;
 }
 
+iframe { 
+   -moz-transform-origin: top left; 
+   -webkit-transform-origin: top left; 
+   -o-transform-origin: top left; 
+   -ms-transform-origin: top left; 
+   transform-origin: top left; 
+}
+
+.iframe-container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border: #ddd 2px solid;
+  box-shadow: #888 0px 5px 8px;
+  margin-bottom: 1em;
+}
+
+.iframe-container > iframe {
+  border: none;
+}
