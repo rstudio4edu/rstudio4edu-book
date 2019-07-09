@@ -8,7 +8,7 @@ source("common.R")
 
 Overview- this is a section filled with recipes for making common types of educational content...
 
-## Distill vs R Markdown site {-}
+## Distill vs R Markdown site
 
 Since the R Markdown .Rmd file is essentially the fundamental unit of most of these sites, it makes sense to compare the other rstudio4edu tools to it. Here we cover Distill. Distill is basically a slightly souped up R Markdown document with some built-in features that would otherwise need to be included more manually into a regular Rmd.
 
@@ -57,7 +57,7 @@ Since the R Markdown .Rmd file is essentially the fundamental unit of most of th
 These instructions will take you through setting up a basic Distill site.
 
 
-## Is this tutorial for you? {-}
+## Is this tutorial for you?
 
 ```{r child ="modules/is-this-tutorial-for-you.Rmd"}
 
@@ -68,7 +68,7 @@ These instructions will take you through setting up a basic Distill site.
 * How to publish your R Markdown pages for free via GitHub Pages
 
 
-## Mental framework: what are we going to make here? {-}
+## Mental framework: what are we going to make here?
 
 Same idea as an R Markdown site. We need a site yaml + one index.Rmd doc + optional, additional .Rmds (of the Distill variety).
 
@@ -86,7 +86,7 @@ remotes::install_github("rstudio/distill")
 
 ```
 
-### Two getting started workflows {-}
+### Two getting started workflows
 
 ```{r child="modules/github-first-project.Rmd"}
 

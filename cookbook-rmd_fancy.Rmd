@@ -11,7 +11,7 @@ The steps below involve a little bit of HTML and CSS work, but you don't have to
 In this section, we'll walk you through the non-YAML "add ons" to our custom course demo site.
 
 
-## Anatomy of a fancy R Markdown page {-}
+## Anatomy of a fancy R Markdown page
 
 Here's what we're starting with:
 
@@ -28,7 +28,7 @@ We'll go through how to do each of the numbered add-ons below, but first let's g
 
 <br>
 
-## CSS crash course {-#css-crash-course}
+## CSS crash course {#css-crash-course}
 
 Every element of a website that you see, from links to pictures to paragraphs, has a category label. These labels can be tags (for example, all links on websites have `a` tags, all big headers have `h1` tags), or they can be IDs or classes (described later).  If you know the label for something on a website, then you can style its appearance by using a `.css` file. In a CSS file, you write style rules that will apply to all elements of the same category. This is a very useful thing to be able to do because it allows you to break free from the limitations of built-in templates and themes that come with R Markdown.
 
@@ -43,7 +43,7 @@ a {
 
 You begin with the element's "label" (technically called a *selector*). Within curly braces, `{ }`, you can include as many different style properties as you'd like for that element. Each new property must end with a `;`.  What are your options for properties to style? [There are many](https://www.w3schools.com/cssref/), but don't feel overwhelmed-- just pick one or two things to change as you start out.
 
-### Determining the right selector {-}
+### Determining the right selector
 
 How could you have known that the selector for links was an `a`? The answer is by opening up your existing website, and right-clicking anywhere on the page and clicking on *Inspect* (in Chrome browsers) or *Inspect Element* (in Firefox).
 
@@ -85,7 +85,7 @@ There's a lot more we could say about CSS here. But it's faster and more rewardi
 [2. MULTIPLE ATTRIBUTES. COMBINING THEM WITH `.` vs separated by spaces ]
 
 
-### Adding custom CSS to your site {-}
+### Adding custom CSS to your site
 
 You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
 
@@ -108,7 +108,7 @@ We'll now make a CSS file, by going to *File* > *New File* > *Text File*. Go ahe
 
 
 
-### 0. Add a favicon to your RMD site {-}
+### 0. Add a favicon to your RMD site
 
 You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon! We can add one by creating an HTML file and then referencing this file in our `_site.yml`:
 
@@ -136,7 +136,7 @@ output:
 If you already were including a file with `in_header`, then you can add the line of code above at the top of your existing file, OR you can include both files by listing them within brackets like this: `[header.html, <first-file.html>,]`.
 :::
 
-### 1. Navigation bar color {-}
+### 1. Navigation bar color
 
 Let's make the navigation bar a different color. We'll use the developer tools to try out different options in real time.
 
@@ -157,11 +157,11 @@ In the righthand pane of the developer tools. we see these classes being used in
 
 <br>
 
-### 2. Customize your link appearance {-}
+### 2. Customize your link appearance
 
 <br>
 
-### 3. Remove table of contents border {-}
+### 3. Remove table of contents border
 
 <br> 
 
