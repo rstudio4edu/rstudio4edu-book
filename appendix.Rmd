@@ -210,11 +210,87 @@ __Stuff I don't like as much__
 
 * What is the main takeaway from the `<meta>` tags (slide 25) in the bookdown workshop/tutorial?
 
+
+# R Markdown Themes {#rmd-themes}
+
+Theme options include the following. Click through the tabs to see what they each look like on our [basic course demo site](https://rstudio4edu.github.io/basic-course-website/).
+
+### `default` 
+
+![](images/rmd_custom/themes/default.png){width=100%}
+
+### `cerulean`
+
+![](images/rmd_custom/themes/cerulean.png){width=100%}
+
+### `journal`
+
+![](images/rmd_custom/themes/journal.png){width=100%}
+
+
+### `flatly`
+
+![](images/rmd_custom/themes/yeti.png){width=100%}
+
+### `darkly`
+
+![](images/rmd_custom/themes/darkly.png){width=100%}
+
+
+### `readable`
+
+![](images/rmd_custom/themes/readable.png){width=100%}
+
+
+### `spacelab`
+
+![](images/rmd_custom/themes/spacelab.png){width=100%}
+
+
+### `united`
+
+![](images/rmd_custom/themes/united.png){width=100%}
+
+
+### `cosmo`
+
+![](images/rmd_custom/themes/cosmo.png){width=100%}
+
+
+### `lumen`
+
+![](images/rmd_custom/themes/lumen.png){width=100%}
+
+
+### `paper`
+
+![](images/rmd_custom/themes/paper.png){width=100%}
+
+
+### `sandstone`
+
+![](images/rmd_custom/themes/sandstone.png){width=100%}
+
+
+### `simplex`
+
+![](images/rmd_custom/themes/simplex.png){width=100%}
+
+
+
+### `yeti`
+
+![](images/rmd_custom/themes/yeti.png){width=100%}
+
+
 # What should I make {#teach-offer}
 
 ```{r child = "modules/clickable-toc.Rmd"}
 
 ```
+
+\
+
 
 I think that quite early on in this book, we should try to answer the question "I'm an educator...what should/can I make here?".  
 I'm not sure whether this should happen here or in the preface, but one way we can do this is with the flowchart. Below is just a *very rough* conceptual sketch of how a flowchart here might be a fun way to give users a visual map of where they could end up after using the rstudio4edu resource. [This is the idea I'm riffing off of.](https://www.beckysimpson.co/flowcharts) 
