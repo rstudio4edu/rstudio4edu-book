@@ -210,6 +210,20 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
   -moz-columns: 2 200px;    /* firefox */
 }
 
+
+.side-by-side {
+  display: flex;
+}
+
+.side1 {
+  width: 40%;
+}
+
+.side2 {
+  width: 58%;
+  margin-left: 1rem;
+  
+}
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
