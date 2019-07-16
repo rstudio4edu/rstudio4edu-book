@@ -21,6 +21,7 @@ Week 9 (Aug 2): Complete Blogdown cookbook
 Week 8 (July 26): Complete Bookdown cookbook
 
 Week 7 (July 19): Work on beginning content: Flowcharts, etc. 
+                  * Distill and Fancy RMd
 
 Week 6 (July 12): Complete RMD/ Distill
 
@@ -184,6 +185,15 @@ Here is a list of items that would be cool to include, but are lower priority.
 * [timer function for workshops]
 
 * Continuous integration? https://github.com/chris-prener/travis-test
+
+
+Other stuff not necessarily book related:
+
+* PR to Hugo Academic Themes
+* rmd4edu: Template package
+* 
+
+
 
 # Teaching and Learning with Jupyter Book Review
 
