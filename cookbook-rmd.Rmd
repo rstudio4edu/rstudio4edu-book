@@ -928,6 +928,16 @@ By default, the R Markdown page spacing looks pretty squished, and you can see f
 
 After dressing up your site, don't forget to push to GitHub!
 
+## Recap
+
+**Here's what the YAML looks like if you max-out the built-in customization options:**
+
+![](images/rmd_custom/max_yaml.png)
+
+
+**And here's what that maps onto on a real site**:
+![](images/rmd_custom/annotated_basic_course.jpg)
+
 ## Caring for your site
 
 ```{r, out.width = "65%", fig.align='center', echo= FALSE}
@@ -953,6 +963,18 @@ Here's what the add-new-pages workflow looks like for me:
 knitr::include_graphics("images/rmd_custom/Hiding.jpg")
 ```
 Have an R Markdown file that you'd like to keep under wraps? If you leave it off of your navbar and don't link to it elsewhere, then it's unlikely anyone will ever see it, but it will still be rendered when you build your site. If you don't want the `.Rmd` to be rendered at all, then save it with a filename that begins with an underscore `_`. All files with underscores get passed over when it's time to render the site (but they'll still be in your repository).
+
+
+## Alternatives and drawbacks
+
+This cookbook assumes that you'd like to host your R Markdown site on GitHub pages, but there are other alternatives like:
+
+* Option 1
+* Option 2
+
+
+
+
 
 ## Community resources
 
@@ -981,11 +1003,4 @@ Have an R Markdown file that you'd like to keep under wraps? If you leave it off
 * [Pimp my RMD](https://holtzy.github.io/Pimp-my-rmd/#equations): smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.
 
 
-**Here's what the YAML looks like if you max-out the built-in customization options:**
-
-![](images/rmd_custom/max_yaml.png)
-
-
-**And here's what that looks like on a real site**:
-![](images/rmd_custom/annotated_basic_course.jpg)
 
