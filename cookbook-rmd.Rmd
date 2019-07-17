@@ -247,26 +247,13 @@ Note: Editing your `.Rmd` files and then pushing to GitHub (steps 1,2, and 4 thr
 If at this point you somehow ended up with a folder called `_site/` in your project directory, go ahead and delete it. You don't need it. This is just the default version of the `docs/` folder, and if you have it, it just means you must have knit or rendered your site before we specified `output_dir: "docs"` in `_site.yml`.
 :::
 
-## Make a living, breathing, shareable site! {#rmd-living}
+## Make a living, breathing site! {#rmd-living}
 We have some out-of-the-box content, and we've knit, and pushed to GitHub. Now we'll go back to the GitHub website and tell it where to find our website-ready files:
 
 
-1. **Back on GitHub, click the *Settings* tab** of your project repository.
+```{r, child= "modules/github-pages.Rmd"}
 
-
-2. **Scroll down** until you get to "GitHub Pages" and select "master branch/docs folder". (This is why we had to set up `output_dir: docs` in our `site.yml` file previously. If your file doesn't end up in the `docs/` folder, GitHub pages doesn't care about it.)
-
-<center>![](images/rmd_custom/githubpages.png){width=600px}</center>
-
-\
-
-3. **Congratulations! A url is generated**--this is your website address. You can share it, tweet it, send it to your mom--it's now live!
-
-
-4. **Add this url to the repo description** so that it's easy to find. 
-
-<center>![](images/rmd_custom/url.png){width=80%}</center>
-
+```
 \
 
 Now that the bare bones of the site are up, you can go back and add more content to your R Markdown documents anytime. Your changes will go live as soon as you knit or `render_site()`, followed by a push to GitHub. 
@@ -332,8 +319,9 @@ Let's go back and change the way your site looks and feels. The sections below g
 
 ![](images/rmd_custom/First-annotated.jpg)
 
+Let's try out some different options. Knit your document or `render_site()` after trying each one out to see how the change affects your site.
 
-Let's try out some different options and then knit your document or `render_site()` to see what they look like. 
+If these customizations leave you wanting more, then be sure to check out the "Make it fancy" tutorial in the next chapter.
 
 \
 
@@ -370,7 +358,7 @@ output:
 </div>
 Open your `_site.yml` file, and let's begin our site makeover.
 
-### Table of Contents (TOC)
+### Table of Contents (TOC) {#rmd-TOC}
 
 In the `_site.yml` file, you can add a [table of contents](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents) either as a floating sidebar or as a static set of links at the top of the page. 
 
@@ -486,7 +474,7 @@ output:
 </div>
 </div>
 
-### Numbered Sections
+### Numbered sections {#rmd-numbered}
 
 * **Number your page sections and TOC** with the addition of `number_sections: true`. 
 
@@ -564,7 +552,7 @@ output:
 </div>
 </div>
 
-### Highlight style
+### Highlight style {#rmd-highlight}
 
 Want to change the way your code chunks and output appears? You can:
 
@@ -607,7 +595,7 @@ output:
 </div>
 </div>
 
-### Navbar
+### Navbar {#rmd-navbar}
 
 We can do a few different things to our navbar including:
 
@@ -621,7 +609,7 @@ We can do a few different things to our navbar including:
     * Change the navbar color
     * Align navbar content to right
 
-#### Link to more pages 
+#### Link to more pages {#rmd-link-to-more}
 
 To add another R Markdown page to the site:
 
@@ -667,7 +655,7 @@ output:
 </div>
 </div>
 
-#### Dropdown menu
+#### Dropdown menu {#rmd-dropdown}
 
 You can also create a dropdown menu to add *many* more pages to the site. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
 
@@ -787,11 +775,11 @@ navbar:
 </div>
 </div>
 
-#### Align navbar content to the right
+#### Align navbar content to the right {#rmd-align}
 
 In all the YAML options we've looked at so far, `left:` has been one of the first things to go under `navbar:`. You have all (or just some) of your links aligned to the right side of the navbar instead by changing this to `right:`. We demo this below when we add aligned-right icons to the navbar. 
 
-### Icons
+### Icons {#rmd-icons}
 
 Sprinkle some icons into your navbar and have them link to outside sources (e.g. twitter, GitHub, etc.) or to pages within your own site. You can use any icons from [Font Awesome](https://fontawesome.com/icons), by entering the prefix `fa-` followed by the icon's name.
 
@@ -855,7 +843,7 @@ output:
 If the icon won't be accompanied by text, you'll have to enter `- icon:`.
 :::
 
-### Code Folding
+### Code Folding {#rmd-code-folding}
 
 If you have a lot of code chunks, and you want to option for them to expand or fold with a click then:
 
@@ -880,7 +868,7 @@ output:
 </div>
 </div>
 
-### Code Download
+### Code Download {#rmd-code-download}
 
 You can also make it easy for others to download the raw R Markdown file that produced the page on the your site that they're viewing. 
 
@@ -906,7 +894,7 @@ output:
 </div>
 
 
-### White Space
+### White Space {#rmd-white}
 
 Last but not least, you should add some additional white space to your site to give the page more "breathing room" and improve readability. This is not accomplished with a built-in YAML option, and unfortunately, accomplishing this (without using CSS) is a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
 
@@ -972,10 +960,6 @@ This cookbook assumes that you'd like to host your R Markdown site on GitHub pag
 * Option 1
 * Option 2
 
-
-
-
-
 ## Community resources
 
 ### For existing tutorials
@@ -1000,7 +984,7 @@ This cookbook assumes that you'd like to host your R Markdown site on GitHub pag
 ### On formatting
 
 * [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-* [Pimp my RMD](https://holtzy.github.io/Pimp-my-rmd/#equations): smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.
+* [Pimp my RMD](https://holtzy.github.io/Pimp-my-rmd/#equations): a smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.
 
 
 
