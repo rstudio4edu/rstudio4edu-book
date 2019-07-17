@@ -187,13 +187,18 @@ Here is a list of items that would be cool to include, but are lower priority.
 * Continuous integration? https://github.com/chris-prener/travis-test
 
 
-Other stuff not necessarily book related:
 
+# Miscellaneous
+
+* Consistent use of pronouns in the book: our site, your site, we suggest, I suggest....?
+* Rmd, R Markdown doc, `.Rmd` -- which to use?
+* A growing yaml----show each feature getting added on? Or just focus on the one at hand?
+
+
+Other pursuits:
 * PR to Hugo Academic Themes
 * rmd4edu: Template package
-* 
-
-
+* writing function and doing a PR for the roxygen comment stuff for package
 
 # Teaching and Learning with Jupyter Book Review
 
