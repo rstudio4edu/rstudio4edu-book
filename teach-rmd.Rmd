@@ -43,7 +43,37 @@ For educators, we strongly encourage using the default HTML output format for th
 
 1. __Customizability__- All HTML output can be further customized using CSS. The bad news is that you will need to learn a bit about CSS to get there (see our crash course), but the good news is that if you are the kind of educator that needs to, for example, use a specific branded style guide that specifies colors, fonts, etc., you *can* make your HTML output look "on brand" with a custom CSS.
 
+## Style your HTML output
 
+For any given R Markdown [output formats](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), there are default styling options. These defaults can also be overriden using your .Rmd's YAML metadata header, which is an optional block at the top of your .Rmd file between the two `---`, like this:
+
+```yaml
+---
+title: "Lab 01"
+author: Anya Academic
+output: html_document
+---
+```
+
+
+?rmarkdown::html_document
+```{r tidy=FALSE, printr.help.sections='usage', comment=''}
+library(printr)
+?rmarkdown::html_document
+```
+
+HTML output options like floating toc, numbering, code folding, code download (requires theme)
+
+- [ ] [tabsets](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections)
+         - think about good use cases
+- [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
+- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
+- [ ] spacing with `<br>`
+- [ ] highlight
+- [ ] themes (plus `type: inverse`) 
+- [ ] [toc / toc floating](https://rmarkdown-docs.netlify.com/reference/html_document.html) 
+
+- [breadcrumbs](https://bootswatch.com/flatly/)
 
 ## R Markdown in practice
 
@@ -60,6 +90,7 @@ also include how to leave invisible notes to yourself `<!--- your comment --->`
 + Using RStudio projects (why)
     + https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
     + in RStudio, from git adds .gitignore for you
+    + try alfred app: https://twitter.com/hadleywickham/status/968624630276804608?lang=en
 + file paths using `here::here()`
     + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
 + working html output- use xaringan::inf_moon_reader to render
@@ -87,11 +118,25 @@ High-level important ideas:
 
 Print them here
 
-make a table with options down rows, cols are pattern / why / chunk option(s):
+make a table with cols- pattern / why / chunk option(s):
 - show results / hide code --> `echo=FALSE`
 - show code / hide results --> `results='hide'`
 - show code / hide plots --> `fig.show='hide'`
 - hide everything --> `include=FALSE`
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+chunks <- tribble(~pattern, ~use, ~option, 
+                      "show results / hide code", "teach concepts, not code", "`echo=FALSE`",
+                      "show code / hide results", "teach code", "`results='hide'`", 
+                      "show code / hide plots", "teach code", "`fig.show='hide'`",
+                      "hide everything", "use code for ", "`include=FALSE`")
+
+chunks %>%
+  kable("html", escape = FALSE) %>% 
+  kable_styling(bootstrap_options = c("hover", "condensed")) 
+```
 
 1. know the default chunk options
 1. know how to use a setup chunk to change those for the whole document
@@ -122,20 +167,7 @@ include_graphics gives you figure captions
 
 can also play with out.width
 
-### Styling output
 
-HTML output options like floating toc, numbering, code folding, code download (requires theme)
-
-- [ ] [tabsets](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections)
-         - think about good use cases
-- [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
-- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
-- [ ] spacing with `<br>`
-- [ ] highlight
-- [ ] themes (plus `type: inverse`) 
-- [ ] [toc / toc floating](https://rmarkdown-docs.netlify.com/reference/html_document.html) 
-
-- [breadcrumbs](https://bootswatch.com/flatly/)
 
 ## Sample Rmds
 

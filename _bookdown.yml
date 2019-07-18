@@ -7,7 +7,7 @@ language:
 new_session: yes # Each chapter is knitted as its own Rmd file
 #rmd_subdir: ["", "",""]
 rmd_files: ["index.Rmd", 
-"teach-tools.Rmd", 
+"teach-stack.Rmd", 
 "teach-data.Rmd",  
 "teach-rmd.Rmd",    
 "teach-org.Rmd",   
