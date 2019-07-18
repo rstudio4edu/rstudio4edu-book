@@ -18,7 +18,8 @@ Imports:
     devtools, 
     emo,
     here,
-    printr
+    printr, 
+    leaflet
 Remotes:
     r-lib/fs,
     r-lib/usethis,
