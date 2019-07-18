@@ -1,6 +1,6 @@
 --- 
 title: "rstudio4edu"
-subtitle: "A Handbook for Teaching and Learning with RStudio"
+subtitle: "A Handbook for Teaching and Learning with R and RStudio"
 author: 
 - Desirée De Leon^[RStudio, https://desiree.rbind.io/]
 - Alison Hill^[RStudio, https://alison.rbind.io/]
@@ -15,6 +15,7 @@ description: "A work-in-progress"
 github-repo: rstudio4edu/rstudio4edu-book
 favicon: "images/favicon.ico"
 always_allow_html: yes
+url: 'https\://rstudio4edu.github.io/rstudio4edu-book/'
 ---
 
 # Preface {-}
@@ -26,10 +27,6 @@ source("common.R")
 Welcome! This handbook was inspired by the [Handbook for Teaching and Learning with Jupyter](https://jupyter4edu.github.io/jupyter-edu-book/)- a book written by and for educators who teach data science. It is a thoughtful and inspiring resource for all educators, with a focus on the Python ecosystem. We aimed to create a similar resource for educators working with the R and RStudio ecosystem. 
 
 If you do educational work and use tools in this ecosystem, you may have seen a great tutorial made with R Markdown, or attended a streamlined workshop where learning the content was front-and-center and all the headaches around installation and setup were absent. Or maybe you have stumbled upon a polished workshop, book, or course website and thought: __"I want to make that too!"__ So that is what we have set out to do: make a handbook that will fill in those gaps for educators to create educational materials that engage learners, inspire other educators, and most importantly save you time and make it more fun for you to teach.
-
-Paraphrasing from Jenny Bryan and Jim Hester's ["What They Forgot to Teach You About R"](https://whattheyforgot.org/index.html):
-
-> *"We focus on building holistic and project-oriented workflows that address the most common sources of friction in creating educational materials, __outside of doing the teaching itself__."*
 
 If you find these materials useful, give us a shout-out on Twitter using `#rstudio4edu`. We hope you do! If you have ideas for ways to improve them, please consider contributing to the project.
 
@@ -46,6 +43,33 @@ Finally, there are temporary classrooms- those that pop up like food truck pods.
 
 We know that [this is the case for] people in fields like ecology, sociology, digital history, psychology, biology, genetics, neuroscience, pharmacology, and bioinformatics for education- not just those who teach data science or statistics.
 
+Other answers to "why":
+
+1. Better aesthetics, better engagement (draw attention vs distract)
+
+1. Build up modern educator toolbox with relevant materials (in general, be a bad-ass educator :)
+
+1. Empowering to own your content, and therefore own your learners' experience
+
+
+## Philosophy {-}
+
+```{r, out.width = "30%", fig.align='center', echo= FALSE}
+knitr::include_graphics("images/insert.jpg")
+```
+
+Paraphrasing from Jenny Bryan and Jim Hester's ["What They Forgot to Teach You About R"](https://whattheyforgot.org/index.html):
+
+> *"We focus on building holistic and project-oriented workflows that address the most common sources of friction in creating educational materials, __outside of doing the teaching itself__."*
+
+
+1. **Just in time learning:** we aimed to show educators how to use tools that you need, as you need them. We encourage you to take an "à la carte" approach to this handbook- skim the table of contents, take what you need when you need it, and skip what you don't need (until you decide that you do!).
+
+1. [**Eat cake first**](https://bit.ly/let-eat-cake): we try to show you the quickest, simplest way to do something you need to do right off the bat. Some of the time, there is a better but more complex workflow that you *could* adopt later, so we have tried to point you in that direction too. But in general, we aim for starting with "good enough" practices instead of "perfect." 
+
+1. **Get your hands dirty:** we want you to be able to make everything we show you. So we've built a lot of different ways for you to get your hands dirty right away, like demo repositories you can clone and deploy "out of the box", templates you can customize, and lots of example content. We hope these will inspire you to experiment, play, and create.
+
+
 
 ## Who are you? {-}
 
@@ -59,17 +83,6 @@ In short, if you are a person who needs or wants to create educational materials
 
 1. **Ona**: Ona heads a team that assists researchers and organizations design and track their project progress. She needs to train up her team of employess who have different R skill levels (sometimes none). Ona knows R but would not call herself a programmer, and she essentially knows nothing about web development. She has been emailing R files back-and-forth with team members as a means of sharing results and analysis, but she knows there has to be a better way to compile these materials and train her team, but isn't sure how to begin navigating new resources to learn to do this. Additionally, her team is limited in budget and time and does not have enough time or energy to read R-related books.
 
-## Five ingredients {-#five}
-
-+ RStudio
-
-+ Github
-
-+ Data
-
-+ Lessons (.R or .Rmd)
-
-+ Websites
 
 ## What is in this handbook? {-}
 
@@ -101,6 +114,8 @@ Finally, we want to point out a few pragmatic features (could include a diagram 
 on purpose
 
 * Shiny
+
+* Pedagogy- we think this is very well covered in other resources. In particular, we recommend [*Teaching Tech Together*](http://teachtogether.tech/) by [Greg Wilson](http://third-bit.com/), as well as his "What to Read Instead" [book recommendations](http://teachtogether.tech/#s:intro-instead). [Software Carpentry](https://carpentries.github.io/instructor-training/) also has a very popular and effective two-day instructor training workshop that we highly recommend.
 
 
 ## Who are we? {-}

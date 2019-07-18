@@ -1,5 +1,3 @@
-# (PART\*) Three ingredients {-}
-
 # Data {#data}
 
 ```{r, include = FALSE}
