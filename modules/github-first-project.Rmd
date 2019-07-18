@@ -6,7 +6,7 @@ output: html_document
 We recommend following the tips on [Happy Git with R](https://happygitwithr.com/new-github-first.html) and starting in GitHub before switching to RStudio:
 
 1. **Create a GitHub repo** for your work.
-2. **Click the green **Clone or Download** button**, and copy the URL.
+2. **Click the green Clone or Download button**, and copy the URL.
 3. **Open RStudio.** Click *File* > *New Project* > *Version Control*> *Git*. Paste the copied URL.
 4. **Click Create Project.**
 5. **Use:**

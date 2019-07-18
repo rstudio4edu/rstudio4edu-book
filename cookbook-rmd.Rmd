@@ -200,7 +200,7 @@ Our skeleton created some out-of-the-box content for our site: the "index" and "
 output_dir: "docs"
 ```
 
-This one-time step says: "please take all of my `.html` files that I will make when I *knit*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." Having our HTML files live in `docs/` is necessary for using GitHub pages put make our pages go live, which we'll do soon. If you're *not* using GitHub pages (which likely does not apply to you if you are reading this tutorial), you technically don't need to do this step.
+This step is a one-time step. It says: "please take all of my `.html` files that I will make when I *knit*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." Having our HTML files live in `docs/` is necessary for using GitHub pages put make our pages go live, which we'll do soon. If you're *not* using GitHub pages (which likely does not apply to you if you are reading this tutorial), you technically don't need to do this step.
 
 
 4. **Open both of your `.Rmd` files and click *Knit* for each one ** to preview what that specific page will look like on the website. Alternatively, run the code below to knit and preview the "index" and "about" pages in one fell swoop.
@@ -209,10 +209,10 @@ This one-time step says: "please take all of my `.html` files that I will make w
 rmarkdown::render_site()
 ```
 
-What does this do? This processes your `.Rmd`s and creates the `docs/` folder that now houses `.html` pages of your `.Rmd` files. AND each of these pages now has a navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).
+This is a step you will do a lot as you build your site. What does this do? This processes your `.Rmd`s and creates the `docs/` folder (if it doesn't already exist) that houses `.html` pages of your `.Rmd` files. AND each of these pages now has a navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).
 
 :::tip
-If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `index.html` file, and `View it in Web Browser`.)
+If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `index.html` file, and `View it in Web Browser`.
 :::
 
 
@@ -224,7 +224,7 @@ Watch out! Each time you run `rmarkdown::render_site()`, the `docs/` folder will
 
 ## Push to GitHub {#rmd-push}
 
-1. **Click *Git* ** in the same RStudio pane that also contains the Environment tab.
+1. **Click *Git* ** in the same RStudio pane that also contains the *Environment* tab.
 
 2. **Check the box(es)** under the "Staged" column and click *Commit*.
 
@@ -236,7 +236,7 @@ Watch out! Each time you run `rmarkdown::render_site()`, the `docs/` folder will
 Now we'll get to the good stuff! Let's put this on the internet!
 
 :::tip
-Note: Editing your `.Rmd` files and then pushing to GitHub (steps 1,2, and 4 through 7 above) are steps you'll do *many* times as you build up your content. Working with your `_site.yml` file is usually something you only mess with intially as you set up your site.
+Note: Editing your `.Rmd` files and then pushing to GitHub are steps you'll do *many* times as you build up your content. Working with your `_site.yml` file is usually something you only mess with intially as you set up your site.
 
 :::
 

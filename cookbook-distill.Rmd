@@ -8,16 +8,16 @@ source("common.R")
 
 Distill is R Markdown's sibling with technical and scientific interests. It is essentially a slightly souped-up R Markdown document that has some built-in features that would otherwise need to be included rather manually in a regular `.Rmd`. 
 
-Why might you want to use Distill?
+The original intended use case for Distill was to create a platform where authoring scientific, collaborative content would be made easier. 
+
+**Why Distill?**
 
 * You're creating content that will use citations, appendicies, and footnotes
-* You want a site that can acknowledge multiple authors and affilitions
-* You want built-in options 
-* You're fine sticking to the default Distill colors (or you don't mind getting your hands messy with CSS to change your site's aesthetic)
-* 
+* You want a site that can acknowledge multiple authors and affiliations
+* You want built-in options for things like a logo
+* You're fine sticking to the default Distill theme (or you don't mind getting your hands messy with CSS to change your site's aesthetic)
 
-You may be interested in using Distill if you'll be making a site where you'd like to list multiple authors and affiliations, include internal citations, easily add an appendix (which includes footnotes and citations), and little sidebars. 
-
+You may also want to learn how to use Distill so that you can then create Distill templates that your learners can then use to generate reports, etc. 
 
 ## Distill vs R Markdown site {-}
 
@@ -77,37 +77,54 @@ Since the R Markdown `.Rmd` file is essentially the fundamental unit of most of 
 
 ## Mental framework: what are we going to make here? {-}
 
-Same idea as an [R Markdown site](#make-rmd). We need a site yaml + one index.Rmd doc + optional, additional .Rmds (of the Distill variety).
+Same idea as an [R Markdown site](#make-rmd). We need a `_site.yml`, an `index.Rmd` + optional, additional .Rmds (of the Distill variety). 
 
 \
 
 # Make a site {#make-distill}
 
-These instructions will take you through setting up a basic Distill site.
+Here we'll show you how to set up a basic Distill site.
+
+Along the way, we point out the features that make Distill particularly useful for scientific and technical content. You can jump to the different parts of this cookbook by using the links below.
+
+
+<center>![](images/insert.jpg){width=70%}</center>
+
+
+You can jump to the different parts of this cookbook by using the links below.
+
+\
+
+```{r echo = FALSE, results = 'asis', include = TRUE}
+build_toc("cookbook-distill.Rmd")
+```
+
+\
 
 ## tldr; [EDIT FOR DISTILL]
 
-**Here's how you make an R Markdown site:**
+**Here's how you make a Distill site:**
 
-[1.](#rmd-getting-started) In a GitHub-connected RStudio project, run `create_website(dir = getwd(), title = "<your-site-name>")` to create the files you need.
+[1.](#distill-getting-started) In a GitHub-connected RStudio project, run `create_website(dir = getwd(), title = "<your-site-name>")` to create the files you need.
 \
 
-[2.](#rmd-edit ) Edit `index.Rmd` content to be with whatever you want to put on your homepage. Edit the `about.Rmd`, which will be your second page.
-\
 
-[3.](#rmd-edit) Within `_site.yml`, change the output directory to the `docs/` folder so you can be set up for GitHub pages.
+[2.](#distill-edit) Within `_site.yml`, change the output directory to the `docs/` folder so you can be set up for GitHub pages.
 \ 
 
-[4.](#rmd-edit) Run `rmarkdown::render_site()` each time you make changes to any doc to create `.html` file versions of your `.Rmd` pages.
+[3.](#distill-edit) Edit `index.Rmd` content to be with whatever you want to put on your homepage. Edit the `about.Rmd`, which will be your second page.
 \
 
-[5.](#rmd-push) Commit and push all changes to GitHub.
+[4.](#disill-edit) Run `rmarkdown::render_site()` each time you make changes to any doc to create `.html` versions of your `.Rmd` pages.
+\
+
+[5.](#distill-push) Commit and push all changes to GitHub.
 \
 
 [6.](#rmd-living) Go to your GitHub repo > *Settings* > *scroll down to GitHub pages* > *select "master branch/ docs folder" from the dropdown menu*. Share your new site URL!
 \
 
-[7.](#rmd-dress) Customize your site with built-in YAML options.
+[7.](#distill-dress) Customize your site with built-in YAML options.
 \
 
 [8.](#new-rmd) Add new pages by creating new `.Rmd`s, deleting their individual YAML info, except for the `Title:` and the dashed lines.
@@ -123,9 +140,11 @@ These instructions will take you through setting up a basic Distill site.
 
 ## Getting set up
 
-### Install `distill` 
+### Packages
 
-The distill package needs to be installed from GitHub. You only need to do this once on your computer.
+You only need to do this once per computer.
+
+The `distill` package needs to be installed from GitHub. 
 
 ```{r, eval=FALSE}
 
@@ -133,19 +152,31 @@ remotes::install_github("rstudio/distill")
 
 ```
 
-### Two getting started workflows
+
+If you'll want to add a `README` to your Distill site, then you should also install the `xfun` package so that the step for rendering your site becomes more convenient. 
+
+
+As another tip, if you're used to using `install.packages()` for CRAN packages, try using [`pak`](https://github.com/r-lib/pak) instead for installs. It's more efficient.
+
+```{r, eval=FALSE}
+install.packages("pak")
+
+pak::pkg_install("xfun")
+```
+
+
+### Two getting started workflows {#distill-getting-started}
 
 ```{r child="modules/github-first-project.Rmd"}
 
 ```
 
 ```{r, eval=FALSE}
-create_website(dir = getwd(), title = "<your-site-name>")
+distill::create_website(dir = getwd(), title = "Demo Website")
 ```
-
 \
 
-Though we recommend a “GitHub first” workflow, it is possible to begin by first making a RStudio Distill project in RStudio and then connecting it to GitHub afterwards:
+Though we recommend a “GitHub first” workflow, it is possible to begin by first making an RStudio Distill project in RStudio and then connecting it to GitHub afterwards:
 
 * Click *File* > *New Project* > *New Directory*
 * Scroll down and select *Distill Website*
@@ -156,7 +187,7 @@ usethis::use_git()
 usethis::use_github() # you have to have a PAT setup
 ```
 
-Regardless of which workflow you choose, your project directory should end up looking like this:
+Regardless of which workflow you choose, your project directory should end up looking something like this:
 
 ```{r, eval = TRUE, fig.align = "center", out.width = "40%"}
 
@@ -164,18 +195,64 @@ knitr::include_graphics("images/cookbook-distill/getting-started-directory.png")
 
 ```
 
-## Edit and preview
+## Edit and preview {#distill-edit}
 
-This created four new items:
+Your project directory now has four new important items. We'll touch on the them below:
 
-* **A `_site/` folder:** This is going to be the folder where all our knitted files will lives. If we're planning on using GitHub pages to host our site (which we are), then we'll eventually delete this, and replace it with a `docs/` folder.
-* **A `_site.yml` file:** This will allow us to set global YAML info
-* An **`index.Rmd`**, which will be your site's homepage
-* ** An **`about.Rmd**, which will be an additional page on your site
+1. **Delete `_site/` folder:** This is the default output folder, where knitted files live once they've been processed to become `.html` files. We're planning on using GitHub pages to host our site for this tutorial, which means we need to replace this folder with a `docs/` folder instead. We make sure this happens in the next step. 
+
+2. **Open `_site.yml` file** in your root directory, and **change the output directory from `"_site"` to `"docs"`**. In general, the `_site.yml` file lets us set options that will affect all pages in our site, and it has the same function here as it does in a typical R Markdown site. 
+
+```{r, eval = FALSE}
+name: "basic-course-distill"
+title: "Demo Website"
+description: |
+  Demo Website
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output: distill::distill_article
+```
+
+A few things you'll notice about this YAML, if you're comparing it to an R Markdown site's: 
+
+* The output here has to be `distill::distill_article`. It's okay for this to be on the same line as `output:` or indented on the line beneath it. 
+
+* Weirdly, the `description:` field here is non-functional (as far as I can tell). But we'll use this to create a subtitle of sorts in the indvidiaul YAMLS of our other Distill pages.
+
+
+3. **Open `index.Rmd`**. This will be our site's homepage. This file *must* be named `index.Rmd`, and it *must* at minimum have `title:`, `description:`, and `site:` lines. Optionally, make a small change to its YAML like changing the text in the `description:`. Something like:
+
+```
+---
+title: "Demo Website"
+description: |
+  Welcome to my Distill course page. Here you can find all course logistics and content.
+site: distill::distill_website
+---
+
+```
+4. **Open `about.Rmd`**. Optionally edit it by adding a new line of text. This will be an additional page on our site, and you can change the name pf this file to be whatever you want. Additional pages, like this one, at minimum just need a non-empty `title:`, but they don't require a `description:` or `site:` line. 
+
+5. Render your site with the line below to knit all of your pages in one fell swoop. 
+```{r, eval = FALSE}
+rmarkdown::render_site()` 
+```
+
+You must *always* render your site's pages as the last step before you push to GitHub. Once all of your site's `.Rmd`s have been rendered at least once, then it's okay to knit only the individual pages that you've made changes to (you might want to do this if you have some pages that knit slowly and want to avoid re-rendering everything each time you push). But if you forget to knit or `render_site()`, then you will be wondering why your site hasn't updated on GitHub pages.
+
+:::tip
+If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `.html` file you want to view, and then `View it in Web Browser`.
+:::
+
 
 ## Push to GitHub
 
-1. **Click *Git* ** in the same RStudio pane that also contains the Environment tab.
+1. **Click *Git* ** in the same RStudio pane that also contains the *Environment* tab.
 
 2. **Check the box(es)** under the "Staged" column and click *Commit*.
 
@@ -192,13 +269,31 @@ Now we'll get to the good stuff! Let's put this on the internet!
 ```
 
 
-## Distill's features
+## Distill features
 
-Here are some core features of Distill sites that you just don't get with a regular R Markdown site as easily. We demo how to implement each of them. 
+Here are some core features of Distill sites that you just don't get with a regular R Markdown site as easily.
 
 
 ### Authors and affiliations
 
+Within the YAML of an individual Distill page (a.k.a article), you can add multiple author fields with an (optional) affiliation field for each author. Below is an example of what this looks like when it's added to the index page.
+
+```{r, eval = FALSE}
+---
+title: "Untitled"
+description: |
+  A new article created using the Distill format.
+author:
+  - name: Nora Jones 
+    url: https://example.com/norajones
+    affiliation: Spacely Sprockets
+    affiliation_url: https://example.com/spacelysprokets
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+```
+
+if you want add in a `date:` field, entering in the 
 
 ### Appendix
 A place for your footnotes and works cited list will go. 
@@ -207,26 +302,24 @@ A place for your footnotes and works cited list will go.
 
 ### Site footer
 
-This nice that it goes all the way across the page (not easy to do in an R Markdown site, even if you're not afraid to mess with CSS)
+A footer is added to your all your pages when you make a file named `_footer.html` that has the text you want, and then you drop this file into your main project directory. 
 
-This will automatically be the default color you see here. 
+**How to:**
 
-To make one: 
-
-1. Go to *File* > *New File* > *Text file*. 
-2. Save this file in your root directory as `_footer.html`. Its contents will be used as a footer for each of your distill pages.
-3. 
+1. Go to *File* > *New File* > *Text file* to create a new text file.
+2. Save this as `_footer.html` in your main project directory. Its contents will be used as a footer for each of your distill pages.
+3. Enter some footer content. **Save.**
 
 For example, contents could be something like this:
 
 ```
-© Copyright 2018 [The Distill Template Authors]
-(https://github.com/distillpub/template/blob/master/AUTHORS) 
-and [RStudio, Inc](https://www.rstudio.com).
-
-Software licensed under the [Apache License, v2.0]
-(https://www.apache.org/licenses/LICENSE-2.0).
+Your Name
+Your Email
+This content was created using the Distill for R Markdown template in RStudio.
 ```
+
+You'll be stuck with the default teal color for the footer unless you change the CSS file, which we demo in the "Make it fancy" chapter. But, the nice thing about the Distill footer is that it will carry all across the page, which is not an easy feat to accomplish in some regular R Markdown sites (even if you're not afraid to mess with CSS). 
+
 
 
 ### Figure width
@@ -246,13 +339,14 @@ Software licensed under the [Apache License, v2.0]
 
 ## Dress it up! {#distill-dress}
 
-Many of the customizations you can add to a regular Rmd site, you can also use in a Distill site in the same way--by specifying them in the `_site.yml` file (unless otherwise noted). These include the ones linked below.
+Many of the customizations you can add to a regular Rmd site, you can also use in a Distill site in the same way--by specifying them in the `_site.yml` file (unless otherwise noted). We don't cover them again here, but you can learn more about them by clicking on the links below.
 
 **Layout features common to Rmd sites and Distill**
 
 <div class= "col2">
 
-* [TOC](#rmd-TOC)
+* [Table of contents (TOC)](#rmd-TOC)
+  + floating TOC not an option
 * [Navbar organization](#rmd-navbar)
   * [Ling to more pages](#rmd-link-to-more)
   * [Dropdown menus](#rmd-dropdown)
@@ -272,14 +366,19 @@ Note that Distill does not give you the option to change themes as you can in a 
 
 \
 
-However, some we gain some new YAML options with Distill. We highlight them below:
+Some styling features give us additional functionality that we don't easily get with R Markdown site's built-in options.
 
 
 ```{r, eval=FALSE}
----
+
 name: "distill"
 title: "Distill for R Markdown"
 favicon: images/favicon.ico
+base_url: https://rstudio.github.io/distill
+repository_url: https://github.com/rstudio/distill
+creative_commons: CC BY
+twitter:
+  site: "@rstudio"
 navbar:
   logo:
     image: images/logo.png
@@ -303,7 +402,7 @@ navbar:
     - icon: fab fa-github
       href: https://github.com/rstudio/distill
 output: distill::distill_article
-___
+
 ```
 
 
@@ -311,15 +410,13 @@ ___
 
 
 ### Favicon
-You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon!
+You know the little tiny icon on the left side of most of your your browser tabs? That's a favicon.
 
 **How to:**
 
-1. Save the image you'd like to use in your project directory. For best results this image should be square.
-  + Don't have an image? [Make a favicon with text or an emoji](https://favicon.io/). Download and move the `.ico` file into your project directory.
-2. Open your `_site.yml` file.
-3. Add `favicon: <insert-path-to-favicon.ico>`
-
+1. **Save the image** you want to use in your project directory. For best results this image should be square. Don't have an image? [Make a favicon with text or an emoji](https://favicon.io/), and then download and move the `.ico` file into your project directory.
+2. **Open your `_site.yml`** file.
+3. **Add `favicon: <insert-path-to-favicon.ico>`**
 
 :::tip
 
@@ -327,6 +424,64 @@ You know the little tiny icon that gets placed in the corner of your browser tab
 :::
 
 \
+
+### Wider figures
+
+
+
+## Caring for your site
+
+### Adding more pages
+
+### Switching from an existing R Markdown site to a Distill site
+
+## Alternatives and drawbacks
+* No README unless you move the entire site's contents into the docs folder and change `output_dir: "."`
+
+**But I really want a README.md:**
+
+Assuming that you currently have your output directory set to `docs/` for GitHub pages and you don't yet have a README:
+
+1.  Move all of your site-specific content to the `docs/` folder. This includes your `Rmd`s, image folders, etc.-- but not the `.gitignore` or `.Rproj` files.)
+2.  Change the output directory in `site.yml` to `output_dir: "."`
+3.  Now render all of your pages. The fool proof way to do this is to run the line below in the console (make sure you've installed the `xfun` package (`pak::pkg_install("xfun")`).
+```
+xfun::in_dir('docs/', rmarkdown::render_site())
+```
+4. Now you can create a README in your original project directory. 
+5. Commit and push to GitHub
+
+
+
+## Existing Distill sites
+
+* [Distill for R Markdown](https://rstudio.github.io/distill/)
+* [R-Music](https://r-music.rbind.io/about.html)
+* [https://m-clark.github.io/](https://m-clark.github.io/)
+
+## If you like Distill...
+
+...then you may also like the tools below. These are not unique to Distill (you could use them in any R Markdown doc), but they're useful tools for communicating technical content.
+
+**Visualizations**
+You can see some examples of the two tools below in action [here](https://rstudio.github.io/distill/interactivity.html)
+
+* [r2d3](https://rstudio.github.io/r2d3/)
+* [html widgets]()
+
+```{r, layout="l-screen-inset"}
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+
+**Tables**
+* paginated tables
+
+
+
+
 
 
 # Make a site for a workshop
