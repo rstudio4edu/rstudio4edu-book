@@ -186,7 +186,7 @@ Here is a list of items that would be cool to include, but are lower priority.
 
 * Continuous integration? https://github.com/chris-prener/travis-test
 
-
+* pandoc/ knitr/ addressing a letter version of R Markdown and YAML
 
 # Miscellaneous
 
@@ -199,6 +199,7 @@ Other pursuits:
 * PR to Hugo Academic Themes
 * rmd4edu: Template package
 * writing function and doing a PR for the roxygen comment stuff for package
+* word doc template
 
 # Teaching and Learning with Jupyter Book Review
 
