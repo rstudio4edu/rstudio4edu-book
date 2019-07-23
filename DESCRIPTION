@@ -19,7 +19,8 @@ Imports:
     emo,
     here,
     printr, 
-    leaflet
+    leaflet, 
+    plotly
 Remotes:
     r-lib/fs,
     r-lib/usethis,
