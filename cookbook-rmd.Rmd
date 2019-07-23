@@ -97,7 +97,7 @@ build_toc("cookbook-rmd.Rmd")
 Let's get started!
 
 
-## tldr;
+## tl;dr
 
 **Here's how you make an R Markdown site:**
 
@@ -125,7 +125,7 @@ Let's get started!
 [8.](#new-rmd) Add new pages by creating new `.Rmd`s, deleting their individual YAML info, except for the `Title:` and the dashed lines.
 \
 
-[9.](#rmd-one-yaml)Link new page to the site by referencing it in the navbar section of `_site.yml`.
+[9.](#rmd-one-yaml) Link new page to the site by referencing it in the navbar section of `_site.yml`.
 \
 
 [10.](#new-rmd) Always end by knitting or rendering and then pushing to GitHub. 
@@ -945,7 +945,7 @@ Here's what the add-new-pages workflow looks like for me:
 7. **Rinse and repeat** if needed!
 8. **Commit and push** all changes to GitHub.
 
-### Hiding pages
+### Hiding pages {#hide-rmd}
 
 ```{r, out.width = "40%", fig.align='center', echo= FALSE}
 knitr::include_graphics("images/rmd_custom/Hiding.jpg")
