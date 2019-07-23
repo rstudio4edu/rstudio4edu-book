@@ -20,11 +20,14 @@ Imports:
     here,
     printr, 
     leaflet, 
-    plotly
+    plotly,
+    ymlthis,
+    fs
 Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
+    rstudio-education/ymlthis,
     klutometis/roxygen,
     RLesur/klippy,
     hadley/emo
