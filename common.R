@@ -5,6 +5,10 @@ library(tidyverse,
         quietly = TRUE, 
         warn.conflicts = FALSE)
 
+library(ymlthis)
+library(usethis)
+library(fs)
+
 build_toc <- function(filename) {
   text <- read_file(filename)
   recipes <- text %>% 
