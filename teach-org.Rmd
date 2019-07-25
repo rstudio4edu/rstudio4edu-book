@@ -15,6 +15,61 @@ But you probably want a way to bundle up your collection...
 
 You need a project to house your collections of multiple Rmd documents
 
+
+
+
+## For Courses
+
+**Strongly Recommend**
+
+* **Syllabus**: A place to provide the overview of your course, its goals, its policies (e.g. grading), and general logistics.
+* **Schedule**: What is being taught when. You can also link relevant materials to this schedule (e.g. slides or readings for the day).
+* **Licensing info**: Your materials can be discovered by anyone. Have a use statement or badge somewhere on your site that let's people know how they can cite, use, or remix your work. Learn more about this in our Licensing section of this book.
+
+**Nice to have**
+
+* **Assignments or **: Have a spot where learners can get more in depth 
+* **Chat**: Consider linking to a slack channel or a gitter account that can serve as a forum. 
+* **Grades dashboard**: See an example of what this looks like [here](INSERT EXAMPLE).
+* **Links to resources**: The class text, Rstudio cloud, 
+
+
+## For Workshops
+
+Here are the core pieces of a workshop site that we recommend including. For a workshop, it's better to keep the site organization simpler than a course's. Your learners probably won't be interacting with this site long term, so no need to have any content potentially feel "hidden" in complex drop down menus or spread across multiple pages.
+
+**Strongly Recommend**
+
+* Registration Info:
+* Schedule: 
+* Abstract:
+* Learning Objectives:
+* **Licensing info**: Your materials can be discovered by anyone. Have a use statement or badge somewhere on your site that let's people know how they can cite, use, or remix your work. Learn more about this in our Licensing section of this book.
+
+**Nice to have**
+
+* Your workshop content
+* **Chat**:
+*
+
+**Leave out**
+
+
+
+
+## For Online Tutorials
+
+Online tutorials come in many shapes and sizes, so there's no one core element that we think every online tutorial should have. But all online tutorials do have at least one thing in common -- no real-time interaction with your learners-- so the engagement and interactivity has to come from the content itself.
+
+* Plotly ?
+
+* 
+
+
+
+
+* **Licensing info**: Your materials can be discovered by anyone. Have a use statement or badge somewhere on your site that let's people know how they can cite, use, or remix your work. Learn more about this in our Licensing section of this book.
+
 ## Types of R Markdown collections
 
 (why, how, pros and cons of each)
