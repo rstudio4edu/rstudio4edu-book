@@ -6,7 +6,7 @@ output: html_document
 1. **Back on GitHub, click the *Settings* tab** of your project repository.
 
 
-2. **Scroll down** until you get to "GitHub Pages" and select "master branch/docs folder". (This is why we had to set up `output_dir: docs` in our `site.yml` file previously. If your file doesn't end up in the `docs/` folder, GitHub pages won't find it.)
+2. **Scroll down** until you get to "GitHub Pages" and select "master branch/docs folder". (This is why we had to set up `output_dir: docs` in our `site.yml` file previously. If your file doesn't end up in the `docs/` folder, GitHub pages doesn't care about it.)
 
 <center>![](images/rmd_custom/githubpages.png){width=600px}</center>
 
