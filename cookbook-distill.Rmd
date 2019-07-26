@@ -843,3 +843,86 @@ There are different ways to include tables in your site. None are unique to Dist
 # Make a site for a course
 
 # Make it fancier
+
+Let's take our demo Distill site for a course and make it fancier, by doing a bit more customization with the CSS.
+
+For any of these changes, we first have to create a CSS file and then link it to our site via the `_site.yml` page. 
+
+1. **Make a CSS file** by going to *File* > *New File* > *Text File*. 
+2. **Save this file** in your root directory as `styles.css`. You can choose a different name if you'd like, but the extension must be `.css`.
+3. **Open `_site.yml` and add `css: styles.css`** like we do below. You'll need to make sure that `distill::distill_article` is now on its own line and ends with a `:`, too. 
+
+```
+name: "basic-course-distill"
+title: "Demo Website"
+favicon: images/favicon.ico
+description: |
+  A site for a course
+output_dir: "docs"
+creative_commons: CC BY
+navbar:
+  logo:
+    image: images/logo.png
+    href: https://www.rstudio.com
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "Lectures"
+      href: about.html
+output: 
+  distill::distill_article
+    css: styles.css
+```
+
+Now we can start styling!
+
+## Google Fonts
+
+We can choose new body and header fonts from Google Fonts.
+
+The first thing we need to do is add the following line to the top of our CSS file. This will import all of the Google Fonts that are listed within `|`. We chose these specifically from the Google Fonts website. 
+
+```
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Asap:400,400i,700,700i|Roboto:400,400i,700,700i&display=swap');
+```
+
+### Header fonts
+
+Let's change all the header fonts to a serif font, like "Playfair Display".
+
+```
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+}
+```
+
+I like this font, but the letters are a bit too squished for my taste. Let's fix this by adding some`letter-spacing`:
+
+```
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 2px;
+}
+```
+
+[before-and-after Screenshot]
+
+### Body font
+
+body {
+  font-family: "Asap";
+  color: #1f1f1f;
+}
+
+While I'm here, I'll also change the body's text color to be more of an off-black. 
+
+:::tip
+Choosing colors that are not at the complete extreme of the color spectrum (pure black or pure white), gives you some room 
+
+:::
+
+## Changing colors
+
+### Navbar
+### Footer
+### Links
