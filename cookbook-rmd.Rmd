@@ -11,7 +11,7 @@ knitr::opts_chunk$set(fig.align="center")
 
 This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. The R Markdown site is arguably the simplest way to compile a collection of R Markdown documents.
 
-Using R Markdown, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo site. You can follow along with this cookbook, or you can download the demo repositories modify as much as you'd like. 
+Using R Markdown project templates, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo site. You can follow along with this cookbook, or you can download the demo repositories modify as much as you'd like. 
 
 
 * In the "Dress it up" section, you find instructions for customizations that are built-in features. These are no-fuss ways to customize. 
@@ -66,7 +66,7 @@ Using R Markdown, you can put together a bare-bones site in no time at all. Here
 
 What are we going to make here?
 
-We're about to take R Markdown documents and create `.html` versions of them to make them web pages. This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a regular collection of R Markdown documents from a living, breathing website: 
+We're about to take a collection of R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
 
 <center>![](images/rmd_custom/thread_yaml.jpg)</center>
 
@@ -102,6 +102,40 @@ Let's get started!
 ## tl;dr
 
 **Here's how you make an R Markdown site:**
+
+<!--begin Alison's revised tldr-->
+
+1. Start with an empty RStudio project linked to a remote GitHub repository that you can push/pull to from your local copy in RStudio.
+
+1. In your project, create a simple shell for an R Markdown website shell by running the following code in your R console:
+
+    ```{r rmd-skeleton, eval = FALSE}
+    rmarkdown:::site_skeleton(getwd())
+    ```
+    
+1. Prep for publishing to GitHub pages with two steps:
+
+    + Change the output directory of your website to a folder named `"docs"` from
+    
+    + Tell GitHub Pages to bypass using Jekyll to build your site.
+
+1. Build your site using the RStudio "Build" pane.
+
+1. Push and commit to send your site online to GitHub- do you see your `.html` files in the `"docs"` folder?
+
+1. Turn on GitHub Pages by going to your repository settings online.
+
+1. Edit your site, build it, then push and commit to GitHub to publish your changes online.
+
+1. Rinse and repeat! Every push to your `master` branch triggers the online version of your site to update.
+
+* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
+* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
+* **A `docs/` folder**, which will be the folder that acts as the "boarding area" for your rendered site files, and which you need if you're deploying on GitHub pages.
+* **GitHub Pages for your repository**, turned on with the click of a button to make your work go live!
+
+
+<!--end Alison's revised tldr-->
 
 [1.](#rmd-getting-started) In a GitHub-connected RStudio project, run `rmarkdown:::site_skeleton(getwd())` to create the files you need.
 \
@@ -142,7 +176,7 @@ knitr::include_graphics("images/Gears.jpg")
 
 ### Packages
 
-None! 
+The only package you need for this cookbook is `rmarkdown` but if you are using RStudio, you are all set!
 
 :::rstudio-tip
 The `rmarkdown` package does not need to be explicitly installed or loaded here, as RStudio automatically does both when needed. 
@@ -154,17 +188,22 @@ However, if you haven't updated your package recently (or ever), you can re-inst
 install.packages("rmarkdown")
 ```
 
+### A project {#rmd-github-first}
 
-### Your first website {#rmd-getting-started}
+For your first R Markdown site, we recommend starting by created a GitHub repository online first, then making a project in RStudio. 
+
+<!--TODO: add link to other workflow that we recommend later-->
 
 ```{r child = 'modules/github-first-project.Rmd'}
 
 ```
 
-    ```{r eval = FALSE}
-    rmarkdown:::site_skeleton(getwd())
-    ```
- 
+## Your first website {#rmd-getting-started}
+
+We'll start by creating the shell for a basic R Markdown website and showing you how to publish your site on GitHub Pages. In a later section, we show you how to customize and care for your site.
+
+```{r ref.label = 'rmd-skeleton', eval = FALSE}
+```
 
 :::tip
 Warning! Note that we use `:::` here (with three colons!) to generate important infrastructure files we need.
@@ -202,7 +241,13 @@ Let's get these website files pushed up to our remote repository on GitHub. Do t
 
 ## Edit > Build > Preview {#rmd-edit}
 
-Our skeleton created some out-of-the-box content for our site: the "index" and "about" .Rmd files. When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. The third file in our skeleton, `_site.yml`, is not a file that gets turned into a site page but is necessary for site setup. 
+Our skeleton created two out-of-the-box content files for our site: 
+
+1. `index.Rmd`
+
+1. `about.Rmd` 
+
+When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. The third file in our skeleton, `_site.yml`, is not a file that gets turned into a site page but is necessary for site setup. 
 
 
 1. **Open `index.Rmd`**. Make a minimal change like changing the Title here. Any content on this page will be your site's homepage. This file *must* be named "index.Rmd". **Save**.
@@ -249,7 +294,7 @@ Note: Editing your `.Rmd` files, building your site, and then pushing to GitHub 
 
 ## Push to GitHub (again) {#rmd-push2}
 
-Let's get these *new* website files pushed up to our remote repository on GitHub. If you want your site to have the most recent updates you've made, then every single `.Rmd` file with a change must be built right *before* pushing to GitHub. Using either the build pane or `render_site()`, you don't need to knit each `.Rmd` file one at a time, but you do need to build your site locally first every time.
+Let's get these *new* website files pushed up to our remote repository on GitHub. If you want your site to have the most recent updates you've made, then every single `.Rmd` file with a change must be built right *before* pushing to GitHub. Using either the build pane or `rmarkdown::render_site()`, you don't need to knit each `.Rmd` file one at a time, but you do need to build your site locally first every time.
 
 :::tip
 Watch out! Each time you run `rmarkdown::render_site()`, the `docs/` folder will be overwritten with updated HTML versions of your `.Rmd`s. This means DON'T EVER EDIT FILES IN THE `docs/` FOLDER! Nothing catastrophic will happen if you do, but you will overwrite and lose all your changes the next time you knit or `render_site()`.
@@ -282,665 +327,6 @@ We have built some out-of-the-box content and pushed to GitHub. Now we'll go bac
 Now that the bare bones of the site are up, you can go back and add more content to your R Markdown documents anytime. Your changes will go live as soon as you build or `render_site()`, followed by a push to GitHub. 
 
 
-
-## One YAML to rule them all {#rmd-one-yaml}
-
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/insert.jpg")
-```
-
-Now for a closer look at `_site.yml`. This file is really the lifeblood of our site, and it contains YAML info (which in the programming world is just a language that is easy-ish to read and usually deals with configuation settings). `_site.yml` is not only what creates the navigation bar (a.k.a "navbar") for us, but it's also mission-control for layout and aesthetics options, as we'll see soon. 
-
-<center>![](images/rmd_custom/annotated_yml2nav.jpg){width=90%}</center>
-
-
-Normally a single R Markdown document will have its own YAML, but when making a site, we instead compile the YAML info that is common to all the `.Rmd`s into one file, `_site.yml`. This is useful if, for example, we want the table of contents to appear on every site page, but don't want to have to write it at the top every individual `.Rmd`. Just throw it in once to `_site.yml` and have all your YAML options apply globally.
-
-**What happens if one of your R Markdown documents in your site still has its own YAML at the top?** Then the YAML options at the top of that R Markdown document will apply to that document only. This can actually be useful when some options are only applicable to a single page on your site. For example, the `code_download` option, which we demo in the next section, might not be relevant for all your site pages, so you can reserve this for individual page YAMLs only. If an individual page's YAML and the `_site.yml` conflict, then the more specific option will always win (i.e. the individual YAML).
-
-
-Let's see how to set up our `_site.yml` to allow global options to apply:
-
-1. **Open `_site.yml`**.
-
-2. **Add `output:`** to the end on a new line. 
-
-3. **Add `html_document:`** to another line beneath that and let's give every page the same `theme = "yeti"`. Make sure this line is indented like so:
-
-    ```{r echo = FALSE}
-    site_yml <- yml(author = FALSE, date = FALSE) %>%
-      yml_site_opts(
-        name = "my-website",
-        output_dir = "docs") %>% 
-      yml_navbar(
-        title = "My Website",
-        left = list(
-          navbar_page("Home", href = "index.html"),
-          navbar_page("About", href = "about.html")
-        ))
-    site_yml %>% 
-      yml_output(html_document(theme = "yeti")) %>% 
-      asis_yaml_output()
-    ```
-
-
-\
-
-:::tip
-
-FYI: Within any YAML, pay careful attention to the indentations and spaces. YAMLs are fussy about this, and this is often the source of many errors!
-:::
-
-You're all set to specify global YAML settings for your individual `.Rmd` files. We go through many ways to do this in the "Dress it up!" section below. 
-
-
-## Dress it up! {#rmd-dress}
-
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/rmd_custom/Dressup.jpg")
-```
-
-Let's go back and change the way your site looks and feels. The sections below go through a nearly exhaustive list of built-in ways you can give your site a face lift by editing the YAML, but don't feel overwhelmed. Most of these options are à la carte -- so go ahead and scroll on down and see if there are any you like!
-
-![](images/rmd_custom/First-annotated.jpg)
-
-Let's try out some different options. Knit your document or `render_site()` after trying each one out to see how the change affects your site.
-
-If these customizations leave you wanting more, then be sure to check out the "Make it fancy" cookbook in the next chapter.
-
-\
-
-### Bare bones 
-
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/insert.jpg")
-```
-
-After adding some content, here's the site we're starting with and the YAML that goes with it. We use our [basic course demo Rmd site](https://rstudio4edu.github.io/basic-course-website/) as an example. We renamed the "about" files to "lectures", but the YAML structure is the same as where we left off above.
-
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval = FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-```
-
-</div>
-<div class = side2>
-![](images/rmd_custom/basic_yum.png)
-</div>
-</div>
-Open your `_site.yml` file, and let's begin our site makeover.
-
-### Table of Contents (TOC) {#rmd-TOC}
-
-In the `_site.yml` file, you can add a [table of contents](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents) either as a floating sidebar or as a static set of links at the top of the page. 
-
-
-
-#### Static TOC
-
-* **Add `toc: true`** on its own line underneath `html_document` and indented.
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval = FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-```
-</div>
-
-<div class = side2>
-![](images/rmd_custom/true_toc.png)
-</div>
-</div>
-
-
-#### Floating TOC
-
-* **Add `toc_float: true`** on another indented line beneath `toc: true`.
-  
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-```
-</div>
-
-<div class = side2>
-![](images/rmd_custom/float_toc.png)
-</div>
-</div>
-
-##### Even more
-
-There are a few more `toc_float` related options you can change, though we recommend skipping them. Note that if you use them, you need to leave `toc_float:` blank. 
-
-```{r, eval=FALSE}
-output: 
-  html_document:
-    toc: true
-    toc_float: 
-      smooth_scroll: false
-      collapsed: false
-```
-
-* **Try `smooth_scroll: false`** as an indented option underneath `toc_float:` so that when someone clicks on a header in the TOC, that section just "appears" automatically. We find doing this a bit jarring for the person navigating your site, so it's better to leave this as `true` (which is the same thing as not using the `smooth_scroll:` option at all).  
-
-
-* **Try `collapsed: false`** to keep your floating TOC fully expanded to show all sub-level headers at all times instead of dynamically expanding and collapsing. 
-
-
-#### TOC Depth
-
-You can control whether or not subheaders will be shown in your TOC, with the line below. The lower the `toc_depth`, the fewer subheaders it will show (e.g. a 1 will only show level 1 headers). The default is 3.
-
-* **Add `toc_depth: <depth-value>`**.
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 4
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/level4header.png)
-</div>
-</div>
-
-### Numbered sections {#rmd-numbered}
-
-* **Number your page sections and TOC** with the addition of `number_sections: true`. 
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
-
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/number_sections.png)
-</div>
-</div>
-
-
-### Themes
-
-Themes are blanket ways of dressing up your site's aesthetics. 
-
-\
-
-* **Add a theme** with `theme: <insert-theme-name>` indented on its own line underneath `html_document:` 
-    + Theme options: `default`, `cerulean`, `journal`, `flatly`, `darkly`, `readable`, `spacelab`, `united`, `cosmo`, `lumen`, `paper`, `sandstone`, `simplex`, and `yeti`.  
-    
-    
-See examples of the 14 available themes you can choose from [here](#rmd-themes)
-
-
-    
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
-    theme: yeti
-
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/yeti_closeup.png)
-
-</div>
-</div>
-
-### Highlight style {#rmd-highlight}
-
-Want to change the way your code chunks and output appears? You can:
-
- 
-* **Change the highlight style:** `highlight: <insert-style-name>`
-    + Highlight styles: `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, `haddock`, and `textmate`.  
-    
-    
-Check out what these look like [here](https://www.garrickadenbuie.com/blog/pandoc-syntax-highlighting-examples/). 
-
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
-    theme: yeti
-    highlight: tango
-
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/highlight.png)
-
-</div>
-</div>
-
-### Navbar {#rmd-navbar}
-
-We can do a few different things to our navbar including:
-
-* **Organizing the site**:
-    * Add more R Markdown documents to the site
-    * Create a dropdown menu
-    
-\
-
-* **Changing navbar aesthetics**:
-    * Change the navbar color
-    * Align navbar content to right
-
-#### Link to more pages {#rmd-link-to-more}
-
-To add another R Markdown page to the site:
-
-1.  Create a pair of new **`- text:` and `href:` lines**
-
-
-2.  Enter the **name you want to see** on the navbar for this page in quotes after `- text:`
-
-
-3.  Enter the **name of the `.html` file** that corresponds to the R Markdown page you're adding after `href:`
-
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      href: labs.html
-output_dir: "docs"
-output: 
-  html_document:
-    toc: true
-    toc_float: true
-    toc_depth: 3
-    number_sections: true
-    theme: yeti
-    highlight: tango
-
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/new_page.png)
-
-</div>
-</div>
-
-#### Dropdown menu {#rmd-dropdown}
-
-You can also create a dropdown menu to add *many* more pages to the site. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
-
-See how we do this in the YAML below:
-
-1. **Add a new `- text:` line** with the heading name of your dropdown menu. 
-
-2. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
-
-3. **Add a `- text:` line** beneath this with the name of page you want to link to.  
-
-4. **Add an `href:` line** with the `.html` of the page you want to link to.  
-
-5. Repeat 3. and 4. until you've added all the pages for this dropdown.
-
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/dropdown1.png)
-
-</div>
-</div>
-
-##### Even more
-
-There's a little more accessorizing we can do with the dropdown menu.
-
-* **Add divider lines** to create sections in the dropdown with `- text: "---"`. 
-
-* **Add internal headers** with a `- text:` line without an `href` line immediately underneath it. 
-
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Introductory"
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "---"
-      - text: "Advanced"
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/dropdown2.png)
-
-</div>
-</div>
-
-
-#### Change the navbar color
-
-* Swap out your theme's default navbar color with **`type: inverse`**.
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  title: "Course Website"
-  type: inverse
-```
-
-</div>
-
-<div class= side2>
-
-![](images/rmd_custom/inverse.png)
-
-</div>
-</div>
-
-#### Align navbar content to the right {#rmd-align}
-
-In all the YAML options we've looked at so far, `left:` has been one of the first things to go under `navbar:`. You have all (or just some) of your links aligned to the right side of the navbar instead by changing this to `right:`. We demo this below when we add aligned-right icons to the navbar. 
-
-### Icons {#rmd-icons}
-
-Sprinkle some icons into your navbar and have them link to outside sources (e.g. twitter, GitHub, etc.) or to pages within your own site. You can use any icons from [Font Awesome](https://fontawesome.com/icons), by entering the prefix `fa-` followed by the icon's name.
-
-Here's how you add them:
-
-* **Type `icon: <icon-prefix-and-name>`** on the line immediately above the link that you want to icon to point to.
-
-Below we add GitHub and Twitter icons that will link to our accounts, and just for fun, we some more icons to the pages that were already in our navbar.
-
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      icon: fa-home
-      href: index.html
-    - text: "Lectures"
-      icon: fa-book-open
-      href: lectures.html
-    - text: "Labs"
-      icon: fa-seedling
-      menu:
-      - text: "Introductory"
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "---"
-      - text: "Advanced"
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-  right: 
-    - icon: fa-github
-      href: https://github.com/rstudio4edu/basic-course-website
-    - icon: fa-twitter
-      href: https://twitter.com/rstudio?lang=en
-output_dir: "docs"
-output: 
-  html_document:
-```
-</div>
-
-<div class= side2>
-
-![](images/rmd_custom/icons1.png){width=100%}
-
-<br>
-
-![](images/rmd_custom/icons2.png){width=100%}
-</div>
-</div>
-
-:::tip
-If the icon won't be accompanied by text, you'll have to enter `- icon:`.
-:::
-
-### Code Folding {#rmd-code-folding}
-
-If you have a lot of code chunks, and you want to option for them to expand or fold with a click then:
-
-* **Add `code_folding:`** as an option underneath `html_document:`. The options are either `show` or `hide`, depending on whether or not you want code chunks to be expanded by default.
-
-<div class= side-by-side>
-
-<div class = side1>
-
-```{r, eval=FALSE}
-output_dir: "docs"
-output: 
-  html_document:
-    code_folding: show
-```
-
-</div>
-<div class = side2>
-
-![](images/rmd_custom/code_folding.png)
-
-</div>
-</div>
-
-### Code Download {#rmd-code-download}
-
-You can also make it easy for others to download the raw R Markdown file that produced the page on the your site that they're viewing. 
-
-* **Add `code_download: true`** underneath `html_document:`. This particular YAML option is one that you might consider only applying to `.Rmd` files where it's relevant (in which case, you would include in the `.Rmd`'s YAML and not the `_site.yml`.)
-
-<div class= side-by-side>
-<div class = side1>
-
-```{r, eval=FALSE}
-output_dir: "docs"
-output: 
-  html_document:
-    code_folding: show
-    code_download: true
-```
-
-</div>
-<div class = side2>
-
-![](images/rmd_custom/code_download.png)
-
-</div>
-</div>
-
-
-### White Space {#rmd-white}
-
-Last but not least, you should add some additional white space to your site to give the page more "breathing room" and improve readability. This is not accomplished with a built-in YAML option, and unfortunately, accomplishing this (without using CSS) is a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
-
-* **Add white space** in the body of your .Rmd file by including either a `<br>` or a `\` on its own line with a blank line above and below it. At a minimum, we recommend doing before top-level section headers.  
-
-By default, the R Markdown page spacing looks pretty squished, and you can see for yourself what our demo site looks like before and after a liberal helping of backslashes `\`.
-
-\
-
-<div class = col2>
-
-![](images/rmd_custom/squished1.png)
-
-<br>
-
-![](images/rmd_custom/white_space1.png)
-
-</div>
-
-After dressing up your site, don't forget to push to GitHub!
-
 ## Recap
 
 **Here's what the YAML looks like if you max-out the built-in customization options:**
@@ -951,31 +337,6 @@ After dressing up your site, don't forget to push to GitHub!
 **And here's what that maps onto on a real site**:
 ![](images/rmd_custom/annotated_basic_course.jpg)
 
-## Caring for your site
-
-```{r, out.width = "65%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/rmd_custom/Caring.jpg")
-```
-
-### Adding new pages {#new-rmd}
-Once you have the website in place, it's likely that you will want to update it periodically or add new pages. The key to updating is that you must knit the individual page you update or `render_site()` each time before you push to GitHub--otherwise your changes wouldn't make it into your `docs/` folder. And if it's not in the `docs/` then GitHub pages doesn't care about it. 
-
-Here's what the add-new-pages workflow looks like for me:
-
-1. **Open** the existing site RStudio project
-2. **Run** `rmarkdown::render_site()` right away to see where things left off.
-3. **Create** a new `.Rmd` document and delete its default YAML except for the title. 
-4. **Update** your `_site.yml` by adding the new page's `.html` file to the navbar section. **Note: It's very easy to forget this step!!**
-6. **Run** `rmarkdown::render_site()` to stitch everything together.
-7. **Rinse and repeat** if needed!
-8. **Commit and push** all changes to GitHub.
-
-### Hiding pages {#hide-rmd}
-
-```{r, out.width = "40%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/rmd_custom/Hiding.jpg")
-```
-Have an R Markdown file that you'd like to keep under wraps? If you leave it off of your navbar and don't link to it elsewhere, then it's unlikely anyone will ever see it, but it will still be rendered when you build your site. If you don't want the `.Rmd` to be rendered at all, then save it with a filename that begins with an underscore `_`. All files with underscores get passed over when it's time to render the site (but they'll still be in your repository).
 
 ### Your second website workflow
 
