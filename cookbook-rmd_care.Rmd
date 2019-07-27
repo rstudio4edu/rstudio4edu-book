@@ -74,6 +74,100 @@ yml(date = FALSE, author = FALSE) %>%
 </div>
 </div>
 
+## Grow your navbar {#rmd-grow}
+
+At some point, you may realize that you need room to grow with your navbar and the content you have planned to create and share. When you do, you may want to use dropdown menus. You can create a dropdown menu to add *many* more pages to the site without taking up space in your navbar. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
+
+See how we do this in the YAML below:
+
+1. **Add a new `- text:` line** with the heading name of your dropdown menu. 
+
+2. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
+
+3. **Add a `- text:` line** beneath this with the name of page you want to link to.  
+
+4. **Add an `href:` line** with the `.html` of the page you want to link to.  
+
+5. Repeat 3. and 4. until you've added all the pages for this dropdown.
+
+
+<div class = side-by-side>
+<div class = side1>
+```{r, eval=FALSE}
+name: "YUM-101"
+navbar:
+  type: default
+  title: "Course Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Labs"
+      menu:
+      - text: "Lab 1"
+        href: lab1.html
+      - text: "Lab 2"
+        href: lab2.html
+      - text: "Lab 3"
+        href: lab1.html
+      - text: "Lab 4"
+        href: lab1.html
+output_dir: "docs"
+output: 
+  html_document:
+```
+</div>
+
+<div class= side2>
+![](images/rmd_custom/dropdown1.png)
+
+</div>
+</div>
+
+There's a little more accessorizing we can do with the dropdown menu.
+
+* **Add divider lines** to create sections in the dropdown with `- text: "---"`. 
+
+* **Add internal headers** with a `- text:` line without an `href` line immediately underneath it. 
+
+
+<div class = side-by-side>
+<div class = side1>
+```{r, eval=FALSE}
+name: "YUM-101"
+navbar:
+  type: default
+  title: "Course Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Labs"
+      menu:
+      - text: "Introductory"
+      - text: "Lab 1"
+        href: lab1.html
+      - text: "Lab 2"
+        href: lab2.html
+      - text: "---"
+      - text: "Advanced"
+      - text: "Lab 3"
+        href: lab1.html
+      - text: "Lab 4"
+        href: lab1.html
+output_dir: "docs"
+output: 
+  html_document:
+```
+</div>
+
+<div class= side2>
+![](images/rmd_custom/dropdown2.png)
+
+</div>
+</div>
 
 
 ## Hiding pages {#hide-rmd}
@@ -82,4 +176,5 @@ yml(date = FALSE, author = FALSE) %>%
 knitr::include_graphics("images/rmd_custom/Hiding.jpg")
 ```
 Have an R Markdown file that you'd like to keep under wraps? If you leave it off of your navbar and don't link to it elsewhere, then it's unlikely anyone will ever see it, but it will still be rendered when you build your site. If you don't want the `.Rmd` to be rendered at all, then save it with a filename that begins with an underscore `_`. All files with underscores get passed over when it's time to render the site (but they'll still be in your repository).
+
 

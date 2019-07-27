@@ -85,7 +85,7 @@ There's a lot more we could say about CSS here. But it's faster and more rewardi
 [2. MULTIPLE ATTRIBUTES. COMBINING THEM WITH `.` vs separated by spaces ]
 
 
-### Adding custom CSS to your site
+## Adding custom CSS to your site
 
 You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
 
