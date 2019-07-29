@@ -54,8 +54,8 @@ Other answers to "why":
 
 ## Philosophy {-}
 
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/insert.jpg")
+```{r, out.width = "50%", fig.align='center', echo= FALSE}
+knitr::include_graphics("images/welcome.jpg")
 ```
 
 Paraphrasing from Jenny Bryan and Jim Hester's ["What They Forgot to Teach You About R"](https://whattheyforgot.org/index.html):
