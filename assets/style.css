@@ -227,7 +227,7 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip {
+div.rstudio-tip, div.tip, div.gotcha {
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -247,6 +247,10 @@ div.rstudio-tip {
 
 div.tip {
   background-image: url("../images/lightbulb.png");
+}
+
+div.gotcha {
+  background-image: url("../images/gotcha 2.jpg");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
