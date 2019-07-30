@@ -54,7 +54,7 @@ Other answers to "why":
 
 ## Philosophy {-}
 
-```{r, out.width = "50%", fig.align='center', echo= FALSE}
+```{r, out.width = "70%", fig.align='center', echo= FALSE}
 knitr::include_graphics("images/welcome.jpg")
 ```
 
@@ -101,11 +101,11 @@ Some high-level organizational highlights, like:
 
 Finally, we want to point out a few pragmatic features (could include a diagram here to help aid usability?):
 
-1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button in the upper toolbar. 
+1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button <i class= "fa fa-download"></i> in the upper toolbar. 
 
-1. The button to the left allows you to edit (say more about how this works). 
+1. The button to the left <i class = "fa fa-edit"></i> allows you to edit (say more about how this works). 
 
-1. Clicking on the GitHub icon on the far right takes you to the source repository for this book. 
+1. Clicking on the GitHub icon <i class = "fa fa-github"></i> on the far right takes you to the source repository for this book. 
 
 1. How to search within this book: https://github.com/rstudio/bookdown/issues/216
 
@@ -131,5 +131,9 @@ Through the book, we highlight specific ways that RStudio can expedite your pack
 :::
 
 :::tip
+RStudio exposes `load_all()` in the *Build* menu, in the *Build* pane via *More > Load All*, and in keyboard shortcuts Ctrl + Shift + L (Windows & Linux) or Cmd + Shift + L (macOS).
+:::
+
+:::gotcha
 RStudio exposes `load_all()` in the *Build* menu, in the *Build* pane via *More > Load All*, and in keyboard shortcuts Ctrl + Shift + L (Windows & Linux) or Cmd + Shift + L (macOS).
 :::
