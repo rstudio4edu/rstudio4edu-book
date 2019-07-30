@@ -1,8 +1,8 @@
 # Data {#data}
-
 ```{r, include = FALSE}
 source("common.R")
 ```
+<center>![](images/Data.jpg){width=60%}</center>
 
 ## Data from R packages {#data-int}
 
