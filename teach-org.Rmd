@@ -69,7 +69,10 @@ Here are some examples of workshop sites to give you a bit of inspiration:
 
 * [Software Carpentry Template](http://carpentries.github.io/workshop-template/)
 * [anglea-li/sotmus-r](https://github.com/angela-li/sotmus-r): Simple, clean layout for workshop info. It's only a README.md!
-
+* [https://mine-cetinkaya-rundel.github.io/teach-data-science/](https://mine-cetinkaya-rundel.github.io/teach-data-science/)
+* [https://github.com/carpentries/workshop-template](https://mine-cetinkaya-rundel.github.io/teach-data-science/)
+* [https://jennybc.github.io/wtf-2019-rsc/](https://mine-cetinkaya-rundel.github.io/teach-data-science/)
+* [https://github.com/rstudio-education/deep-teaching/blob/master/course-planning/outline.Rmd](https://mine-cetinkaya-rundel.github.io/teach-data-science/)
 
 ## For Online Tutorials
 
