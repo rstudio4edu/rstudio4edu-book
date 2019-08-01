@@ -4,6 +4,15 @@
 source("common.R")
 ```
 
+
+think about throwing something up in R/R Markdown for learners, here are some considerations
+
+(a) I want them to 
+(a) handouts (to html)
+(b) stuff they can read/review (to html)
+(c) stuff they need to interact with (learnr)
+(d) stuff they can run code in themselves and enter (add code here worksheets)
+
 ## Introduction {-#intro-lessons}
 
 In this section, we will walk through some of the options educators have for developing and revising lessons to deliver to learners. One of the first decisions you'll need to make is how you want to deliver your content: can it be a simple R script with minimal comments? Or do your learners need more narrative? 
@@ -167,7 +176,15 @@ include_graphics gives you figure captions
 
 can also play with out.width
 
+labeling chunks
 
+## Extra packages
+
+demoR
+
+countdown
+
+klippy
 
 ## Sample Rmds
 
