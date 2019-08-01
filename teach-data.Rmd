@@ -20,6 +20,9 @@ good clean data packages, ideal for teaching beginner to intermediate
 + https://github.com/rstudio-education/dsbox
 + https://kieranhealy.org/blog/archives/2018/12/12/teaching-and-learning-materials-for-data-visualization/
 
++ [ISLR data](https://cran.r-project.org/package=ISLR)
++ [`resample` data](https://github.com/rudeboybert/resampledata)
+
 ## Data stored on GitHub {#data-github}
 
 Tip: make a short link to the "raw" version of the data you uploaded to GitHub
