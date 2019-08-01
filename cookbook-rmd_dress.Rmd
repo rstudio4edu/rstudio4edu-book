@@ -17,7 +17,7 @@ Let's return to our site, right where we left off. The sections below go through
 
 Let's try out some different options. Build your site or use `rmarkdown::render_site()` after trying each one out to see how the change affects your site.
 
-If these customizations leave you wanting more, then be sure to check out the "Make it fancy" cookbook in the next chapter.
+If these customizations leave you wanting more, then be sure to check out the ["Make it fancier"](#rmd-fancy) chapter.
 
 ```{r include = FALSE}
 yum_yml <- yml(date = FALSE, author = FALSE) %>% 
@@ -194,6 +194,99 @@ navbar:
 </div>
 </div>
 
+At some point, you may realize that you need room to grow with your navbar and the content you have planned to create and share. When you do, you may want to use dropdown menus. You can create a dropdown menu to add *many* more pages to the site without taking up space in your navbar. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
+
+See how we do this in the YAML below:
+
+1. **Add a new `- text:` line** with the heading name of your dropdown menu. 
+
+2. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
+
+3. **Add a `- text:` line** beneath this with the name of page you want to link to.  
+
+4. **Add an `href:` line** with the `.html` of the page you want to link to.  
+
+5. Repeat 3. and 4. until you've added all the pages for this dropdown.
+
+
+<div class = side-by-side>
+<div class = side1>
+```{r, eval=FALSE}
+name: "YUM-101"
+navbar:
+  type: default
+  title: "Course Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Labs"
+      menu:
+      - text: "Lab 1"
+        href: lab1.html
+      - text: "Lab 2"
+        href: lab2.html
+      - text: "Lab 3"
+        href: lab1.html
+      - text: "Lab 4"
+        href: lab1.html
+output_dir: "docs"
+output: 
+  html_document:
+```
+</div>
+
+<div class= side2>
+![](images/rmd_custom/dropdown1.png)
+
+</div>
+</div>
+
+There's a little more accessorizing we can do with the dropdown menu.
+
+* **Add divider lines** to create sections in the dropdown with `- text: "---"`. 
+
+* **Add internal headers** with a `- text:` line without an `href` line immediately underneath it. 
+
+
+<div class = side-by-side>
+<div class = side1>
+```{r, eval=FALSE}
+name: "YUM-101"
+navbar:
+  type: default
+  title: "Course Website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Lectures"
+      href: lectures.html
+    - text: "Labs"
+      menu:
+      - text: "Introductory"
+      - text: "Lab 1"
+        href: lab1.html
+      - text: "Lab 2"
+        href: lab2.html
+      - text: "---"
+      - text: "Advanced"
+      - text: "Lab 3"
+        href: lab1.html
+      - text: "Lab 4"
+        href: lab1.html
+output_dir: "docs"
+output: 
+  html_document:
+```
+</div>
+
+<div class= side2>
+![](images/rmd_custom/dropdown2.png)
+
+</div>
+</div>
+
 
 
 ### Add navbar icons {#rmd-icons}
@@ -260,4 +353,14 @@ output:
 If the icon won't be accompanied by text, you'll have to enter `- icon:`.
 :::
 
+## Recap
 
+<!--todo: make sure this recap gets updated to just focus on what we covered in dress-->
+
+**Here's what the YAML looks like if you max-out the built-in customization options:**
+
+![](images/rmd_custom/max_yaml.png)
+
+
+**And here's what that maps onto on a real site**:
+![](images/rmd_custom/annotated_basic_course.jpg)

@@ -16,7 +16,7 @@ Here's what the add-new-pages workflow looks like for me:
 
 1. **Open** the existing site RStudio project
 2. **Run** "Build Site" or `rmarkdown::render_site()` right away to see where things left off.
-3. **Create** a new `.Rmd` document in RStudio using *File > New File > R Markdown*, and delete its default YAML except for the title. 
+3. **Create** a new `.Rmd` document in RStudio using *File > New File > R Markdown*, and delete its default YAML except for the title, then edit away.
 4. **Update** your `_site.yml` by adding the new page's `.html` file to the navbar section. **Note: It's very easy to forget this step!!**
 6. **Run** `rmarkdown::render_site()` to stitch everything together.
 7. **Rinse and repeat** if needed!
@@ -24,13 +24,17 @@ Here's what the add-new-pages workflow looks like for me:
 
 ## Adding new pages {#add-rmd}
 
-Adding new pages to your site means adding new `.Rmd` files to your site's project root directory. But, to make a new page actually findable from your site, you'll need to make a change to navbar, which means opening up the `_site.yml` file and fiddling with it. To add another R Markdown link to your navbar, you need to know two things about the new page you want to add:
+Adding new pages to your site means adding new `.Rmd` files to your site's project root directory. You can do this in RStudio using *File > New File > R Markdown*. Delete the default YAML except for the title and all text/code in the document, then edit away.
+
+## Grow your navbar {#rmd-grow}
+
+To make a new page actually findable from your site, you'll need to *also* make a change to navbar, which means opening up the `_site.yml` file and fiddling with it. To add another R Markdown link to your navbar, you need to know two things about the new page you want to add:
 
 1. The **name you want to see** on the navbar for this page; this is the page's `text`.
 
 1. The **name of the `.html` file** that corresponds to the `.Rmd` file you're adding; this is the page's `href`
 
-Let's say we create a new file called `labs.Rmd`. We want to add this to our upper navbar next to "Home" and "Lectures", so we would add the following to our YAML:
+Let's say we create a new file called `labs.Rmd`. We want to add the link to the rendered page `labs.html` to our upper navbar next to "Home" and "Lectures", so we would add the following to our YAML:
 
 ```{r echo = FALSE}
 yml(date = FALSE, author = FALSE) %>%
@@ -57,7 +61,6 @@ yml(date = FALSE, author = FALSE) %>%
     output_dir =  "docs"
     ) %>% 
   yml_navbar(
-    type = "default",
     left = list(
       navbar_page("Home", href = "index.html"),
       navbar_page("Lectures", href = "lectures.html"),
@@ -74,97 +77,43 @@ yml(date = FALSE, author = FALSE) %>%
 </div>
 </div>
 
-## Grow your navbar {#rmd-grow}
+You may have noticed that in the YAML options we’ve looked at so far, `left:` has been one of the first things to go under `navbar:`. You can add all (or just some) of your links aligned to the right side of the navbar instead by using `right:`. 
 
-At some point, you may realize that you need room to grow with your navbar and the content you have planned to create and share. When you do, you may want to use dropdown menus. You can create a dropdown menu to add *many* more pages to the site without taking up space in your navbar. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
+```{r echo = FALSE}
+yml(date = FALSE, author = FALSE) %>% 
+  yml_navbar(
+    left = list(),
+    right = list()
+    ) %>% 
+  asis_yaml_output()
+```
 
-See how we do this in the YAML below:
-
-1. **Add a new `- text:` line** with the heading name of your dropdown menu. 
-
-2. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
-
-3. **Add a `- text:` line** beneath this with the name of page you want to link to.  
-
-4. **Add an `href:` line** with the `.html` of the page you want to link to.  
-
-5. Repeat 3. and 4. until you've added all the pages for this dropdown.
-
-
+If we added the page for `labs.Rmd` to the right of our navbar instead:
 <div class = side-by-side>
 <div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
+
+```{r echo = FALSE}
+yml(date = FALSE, author = FALSE) %>% 
+  yml_site_opts(
+    name = "YUM-101",
+    output_dir =  "docs"
+    ) %>% 
+  yml_navbar(
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html")
+    ),
+    right = list(
+      navbar_page("Labs", href = "labs.html")
+    )) %>% 
+  asis_yaml_output()
 ```
+
 </div>
 
 <div class= side2>
-![](images/rmd_custom/dropdown1.png)
 
-</div>
-</div>
-
-There's a little more accessorizing we can do with the dropdown menu.
-
-* **Add divider lines** to create sections in the dropdown with `- text: "---"`. 
-
-* **Add internal headers** with a `- text:` line without an `href` line immediately underneath it. 
-
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Introductory"
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "---"
-      - text: "Advanced"
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
-```
-</div>
-
-<div class= side2>
-![](images/rmd_custom/dropdown2.png)
+<!--todo: insert new screenshot here-->
 
 </div>
 </div>

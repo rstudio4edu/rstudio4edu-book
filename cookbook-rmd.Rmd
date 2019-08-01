@@ -11,17 +11,83 @@ knitr::opts_chunk$set(fig.align="center")
 
 This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. The R Markdown site is arguably the simplest way to compile a collection of R Markdown documents.
 
+<!--todo: insert screenshots or iframes with links to existing R Markdown sites-->
+
 Using R Markdown project templates, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo site. You can follow along with this cookbook, or you can download the demo repositories modify as much as you'd like. 
 
 
-* In the "Dress it up" section, you find instructions for customizations that are built-in features. These are no-fuss ways to customize. 
+<div class = side-by-side>
+<div class = side1>
 
-* In the "Make it fancier" chapter, you'll find customizations that require some CSS and HTML.
+```{r echo = FALSE, fig.align='center', fig.link = "#make-rmd"}
+knitr::include_graphics("images/rmd_custom/intro-rmd.jpg")
+```
 
-* In the workshop / course sections, we give specific ideas on how you might use particular R Markdown site features that would be especially useful for workshop and course sites. 
+</div>
+<div class = side2>
+
+<h4>[Make a site](#make-rmd)</h4>
+You will build a bare-bones R Markdown website from a site skeleton and publish it. We make only the most minimal changes to content and style necessary to get you a shareable website.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, fig.link = "#rmd-care"}
+knitr::include_graphics("images/rmd_custom/Caring.jpg")
+```
+
+</div>
+<div class = side2>
+
+<h4>[Caring for your site](#rmd-care)</h4>
+You'll develop a workflow for editing your site, adding new content, and hiding pages that are works-in-progress.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-dress"}
+knitr::include_graphics("images/rmd_custom/Dressup.jpg")
+```
+
+</div>
+<div class = side2>
+
+<h4>[Dress it up](#rmd-dress)</h4>
+
+Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing or using CSS.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+<!--todo: insert fancy image here?-->
+</div>
+
+<div class = side2>
+
+<h4>[Make it fancier](#rmd-fancy)</h4>
+
+In the final chapter, you'll learn about website customizations that require some CSS and HTML.
+
+</div>
+</div>
 
 
 ## Pros and cons of using Rmd sites {-}
+
 
 **Pros:**
 
@@ -61,23 +127,22 @@ Using R Markdown project templates, you can put together a bare-bones site in no
 
 \
 
+Let's get started! 
 
-## Mental framework {-}
 
-What are we going to make here?
+## Other learning resources {-}
 
-We're about to take a collection of R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
+* [Lisa Debruine's *Create a simple webpage using R Markdown*](https://debruine.github.io/tutorials/webpages.html): Includes some overview of adding images, changing global style settings, etc.  
 
-<center>![](images/rmd_custom/thread_yaml.jpg)</center>
+* [Emily Zabor's *Creating Website in R*](https://www.emilyzabor.com/cookbooks/rmarkdown_websites_tutorial.html#r_markdown_website_basics): Includes description of how to add a personal domain name.
 
-* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
-* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
-* **A `docs/` folder**, which will be the folder that acts as the "boarding area" for your rendered site files, and which you need if you're deploying on GitHub pages.
-* **GitHub Pages for your repository**, turned on with the click of a button to make your work go live!
+* [Julia Lowndes' *Making free websites with RStudio's R Markdown*](https://jules32.github.io/rmarkdown-website-tutorial/index.html): A how to that also includes descriptions of the RStudio GUI layout and an overview of Markdown syntax.  
 
-\
+* [Nick Strayer & Lucy D’Agostino McGowan's *How to make an RMarkdown Website*](http://nickstrayer.me/RMarkdown_Sites_tutorial/)  
 
-Let's get started!
+* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/rmarkdown-site.html): The official and very thorough, but often technical, resource for R Markdown. Treat this as a reference text.
+
+* [GitHub and Rstudio](https://resources.github.com/whitepapers/github-and-rstudio/): Step-by-step guide on publishing `.Rmd` docs and websites to GitHub, includes working with local branches and using the terminal tab within R. 
 
 
 
@@ -86,17 +151,21 @@ Let's get started!
 <center>![](images/rmd_custom/intro-rmd.jpg){width=70%}</center>
 
 
-Let's build an R Markdown site made from one or more R Markdown pages. You can jump to the different parts of this cookbook by using the links below.
+What are we going to make here? We're about to take a collection of (one or more) R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
 
-\
+<center>![](images/rmd_custom/thread_yaml.jpg)</center>
 
-```{r echo = FALSE, results = 'asis', include = TRUE}
-build_toc("cookbook-rmd.Rmd")
-```
+* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
 
-\
+* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
 
-Let's get started!
+Additionally, we'll demo how to publish your R Markdown site using GitHub Pages, so you'll also need:
+
+* **A `docs/` folder**, which will be the folder that acts as the "boarding area" for your rendered site files, and which you need if you're deploying on GitHub pages.
+
+* To **turn on GitHub Pages for your repository**.
+
+There are certainly other options for publishing as you can copy the output directory to any web server or web hosting service. For an overview of other options, you may reference: https://rstudio.github.io/distill/publish_website.html.
 
 
 ## tl;dr
@@ -327,20 +396,12 @@ We have built some out-of-the-box content and pushed to GitHub. Now we'll go bac
 Now that the bare bones of the site are up, you can go back and add more content to your R Markdown documents anytime. Your changes will go live as soon as you build or `render_site()`, followed by a push to GitHub. 
 
 
-## Recap
-
-**Here's what the YAML looks like if you max-out the built-in customization options:**
-
-![](images/rmd_custom/max_yaml.png)
 
 
-**And here's what that maps onto on a real site**:
-![](images/rmd_custom/annotated_basic_course.jpg)
 
+## Your second website
 
-### Your second website workflow
-
-We followed a "GitHub first" workflow above, but if you'll be using GitHub regularly, we recommend installing the `usethis` package, and using it to simplify your initial setup workflow.
+We followed a "GitHub first" workflow above, but if you'll be using GitHub regularly, we recommend evolving this workflow. First, install the `usethis` package:
 
 ```{r eval = FALSE}
 install.packages("usethis")
@@ -352,51 +413,23 @@ Then load it to use it:
 library(usethis)
 ```
 
-Now, use the RStudio project wizard to create a new R Markdown site and then move to GitHub:
+Now, follow the instructions from [Happy Git with R setting up a GitHub personal access token or PAT](https://happygitwithr.com/github-pat.html).
+
+Once you have a GitHub PAT set up in your `.Renviron` file, you can stay in RStudio and use the RStudio project wizard to create a new R Markdown site:
 
 1. **Click** *File* > *New Project* > *New Directory*
-2. **Scroll down and select** *Simple R Markdown Website*
-3. Then use your R console to **run** this code: 
 
-```{r, eval=FALSE}
-use_git()
-use_github() # you have to have a PAT setup
-```
+1. **Scroll down and select** *Simple R Markdown Website*
 
+1. Then use your R console to **run** this code: 
 
-
-## Alternatives and drawbacks
-
-This cookbook assumes that you'd like to host your R Markdown site on GitHub pages, but there are other alternatives like:
-
-* Option 1
-* Option 2
-
-## Community resources
-
-### For existing cookbooks
-
-* [Chapter 5, Webpages](https://debruine.github.io/cookbooks/webpages.html): Includes some overview of adding images, changing global style settings, etc.  
-
-* [Creating Website in R](https://www.emilyzabor.com/cookbooks/rmarkdown_websites_cookbook.html#r_markdown_website_basics): Includes description of how to add a personal domain name.
+    ```{r, eval=FALSE}
+    use_git()
+    use_github() # you have to have a PAT setup
+    ```
 
 
-* [Making free websites with RStudio'd R Markdown](https://jules32.github.io/rmarkdown-website-cookbook/index.html): A how to that also includes descriptions of the RStudio GUI layout and an overview of Markdown syntax.  
 
-* [Personal Website cookbook](http://nickstrayer.me/RMarkdown_Sites_cookbook/)  
-
-### On general setup
-
-* [GitHub and Rstudio](https://resources.github.com/whitepapers/github-and-rstudio/): Step-by-step guide on publishing `.Rmd` docs to GitHub, includes working with local branches and using the terminal tab within R. 
-
-* [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/): The official and very thorough, but often technical, resource for R Markdown. Treat this as a reference text.
-
-\
-
-### On formatting
-
-* [R Markdown cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
-* [Pimp my RMD](https://holtzy.github.io/Pimp-my-rmd/#equations): a smattering of examples of different ways to format R Markdown documents. Includes adding equations, figure captions, etc.
 
 
 
