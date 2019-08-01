@@ -20,12 +20,14 @@ Imports:
     here,
     printr, 
     leaflet, 
-    plotly
+    plotly,
+    htmltools
 Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
     klutometis/roxygen,
     RLesur/klippy,
-    hadley/emo
+    hadley/emo,
+    rstudio/htmltools
     
