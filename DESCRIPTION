@@ -27,7 +27,7 @@ Remotes:
     r-lib/fs,
     r-lib/usethis,
     r-lib/devtools,
-    rstudio-education/ymlthis,
+    r-lib/ymlthis,
     klutometis/roxygen,
     RLesur/klippy,
     hadley/emo
