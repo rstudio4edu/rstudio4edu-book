@@ -10,7 +10,7 @@ think about throwing something up in R/R Markdown for learners, here are some co
 (a) I want them to 
 (a) handouts (to html)
 (b) stuff they can read/review (to html)
-(c) stuff they need to interact with (learnr)
+(c) stuff they need to interact with (learnr/ggplotly)
 (d) stuff they can run code in themselves and enter (add code here worksheets)
 
 ## Introduction {-#intro-lessons}
