@@ -11,6 +11,8 @@ good clean data packages, ideal for teaching beginner to intermediate
 + [fivethirtyeight](https://fivethirtyeight-r.netlify.com/)
 + gapminder
 + babynames
+    + https://github.com/mine-cetinkaya-rundel/ukbabynames
+    + https://docs.ropensci.org/ozbabynames/
 + not a package but https://github.com/rfordatascience/tidytuesday
 + for tidying: 
     + https://github.com/jennybc/lotr
