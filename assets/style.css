@@ -15,7 +15,7 @@ pre code {
   white-space: inherit;
 }
 
-/*  Desiree custom css  */
+/*---------------Hero Image------------------*/
 
 /* next 3 rules for setting large image at top of each page and pushing book content to appear beneath that */
 
@@ -40,14 +40,14 @@ pre code {
 }
 
 
-/* Links */
+/* ------------Links------------------ */
 
 .book .book-body .page-wrapper .page-inner section.normal a {
   color: #157f8e;
 }
 
 
-/* Body and header text */
+/*------------- Body and header text---------------- */
 
 .book.font-family-1 {
   font-family: 'Karla', arial, sans-serif;
@@ -82,7 +82,7 @@ h1, h2, h3, h4 {
 }
   
 
-/* DROP CAPS*/
+/*----------DROP CAPS--------------*/
 
 
 /*p:nth-child(2):first-letter {   /* /* DROP-CAP FOR FIRST P BENEATH EACH H1 OR H2*/ /*
@@ -97,8 +97,6 @@ h1, h2, h3, h4 {
   margin-bottom: 9px;
 }
 */
-
-/* try the below with the ~ instead...or just the space?) */
 
 .section.level1 > p:first-of-type:first-letter { /*drop cap for first p beneath level 1 headers only within class .section*/
   color: #3fb5bd;
@@ -129,7 +127,7 @@ h1, h2, h3, h4 {
 
 
 
-/* TOC */
+/*------------ TOC --------------*/
 
 .book .book-summary {
   background: white;
@@ -141,7 +139,8 @@ h1, h2, h3, h4 {
 }
 
 /* all TOC list items, basically */
-.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+.book .book-summary ul.summary li a, 
+.book .book-summary ul.summary li span {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -173,11 +172,6 @@ li.appendix span, li.part span { /* for TOC part names */
 }
 
 
-
-ul.summary > li > a { /* The > selects all the li's which are immediately within the class summary*/
-  font-family: 'Karla', sans-serif;
-}
-
 /* The next two rules make the horizontal line go straight across in top navbar */
 
 .summary > li:first-child {
@@ -191,18 +185,8 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 }
 
 
-/* source code copy button */
-.copy {
-  width: inherit;
-  background-color: #e2e2e2 ;
-  border: none;
-  border-radius: 2px;
-  float: right;
-  font-size: 60%;
-  padding: 4px 4px 4px 4px;
-}
 
-/* Two columns */
+/* --------------Two columns--------------- */
 
 .col2 {
   columns: 2 200px;         /* number of columns and width in pixels*/
@@ -227,7 +211,7 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip {
+div.rstudio-tip, div.tip, div.gotcha {
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -247,6 +231,10 @@ div.rstudio-tip {
 
 div.tip {
   background-image: url("../images/lightbulb.png");
+}
+
+div.gotcha {
+  background-image: url("../images/gotcha.jpg");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
@@ -282,4 +270,67 @@ iframe {
 
 .iframe-container > iframe {
   border: none;
+}
+
+
+/* -------Clipboard copy button --------- */
+.copy {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+}
+
+/* for new copy button */
+
+.hasCopyButton {
+  position: relative;
+}
+
+.btn-copy-ex {
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.hasCopyButton:hover button.btn-copy-ex {
+  visibility: visible;
+}
+
+
+
+/* -----------Section anchors -------------*/
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  overflow: visible !important; /*so anchor link doesn't get cut off */
+}
+
+a.anchor {
+  margin-left: -30px;
+  padding-right: 3px;
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  /*visibility: hidden;*/
+  background-image: url(https://image.flaticon.com/icons/svg/34/34735.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 20px 20px !important;
+  background-position: center bottom !important;
+  opacity: 0;
+}
+
+
+.hasAnchor:hover a.anchor, a.anchor:hover {
+  /*visibility: visible;*/
+  opacity: 0.6;
+}
+
+@media (max-width: 1144px) { /* don't show anchor link on small screens */
+  .hasAnchor:hover a.anchor {
+    visibility: hidden;
+  }
 }

@@ -24,6 +24,7 @@ url: 'https\://rstudio4edu.github.io/rstudio4edu-book/'
 source("common.R")
 ```
 
+<center>![](images/index/Hi.jpg){width=60%}</center>
 Welcome! This handbook was inspired by the [Handbook for Teaching and Learning with Jupyter](https://jupyter4edu.github.io/jupyter-edu-book/)- a book written by and for educators who teach data science. It is a thoughtful and inspiring resource for all educators, with a focus on the Python ecosystem. We aimed to create a similar resource for educators working with the R and RStudio ecosystem. 
 
 If you do educational work and use tools in this ecosystem, you may have seen a great tutorial made with R Markdown, or attended a streamlined workshop where learning the content was front-and-center and all the headaches around installation and setup were absent. Or maybe you have stumbled upon a polished workshop, book, or course website and thought: __"I want to make that too!"__ So that is what we have set out to do: make a handbook that will fill in those gaps for educators to create educational materials that engage learners, inspire other educators, and most importantly save you time and make it more fun for you to teach.
@@ -54,8 +55,8 @@ Other answers to "why":
 
 ## Philosophy {-}
 
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/insert.jpg")
+```{r, out.width = "70%", fig.align='center', echo= FALSE}
+knitr::include_graphics("images/index/welcome.jpg")
 ```
 
 Paraphrasing from Jenny Bryan and Jim Hester's ["What They Forgot to Teach You About R"](https://whattheyforgot.org/index.html):
@@ -72,6 +73,10 @@ Paraphrasing from Jenny Bryan and Jim Hester's ["What They Forgot to Teach You A
 
 
 ## Who are you? {-}
+
+```{r, out.width = "80%", fig.align='center', echo= FALSE}
+knitr::include_graphics("images/index/who-are-you.jpg")
+```
 
 Who did we make this handbook for? We envision that this handbook is for all end-user teachers: teaching may or may not be part of your formal job description, you may not have formal training in how to teach, and you may teach in a formal classroom setting, but you may also teach virtually (via webinars or online tutorials), or perhaps you teach in short but intense bursts like in-person workshops and small-group trainings. 
 
@@ -101,11 +106,11 @@ Some high-level organizational highlights, like:
 
 Finally, we want to point out a few pragmatic features (could include a diagram here to help aid usability?):
 
-1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button in the upper toolbar. 
+1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button <i class= "fa fa-download"></i> in the upper toolbar. 
 
-1. The button to the left allows you to edit (say more about how this works). 
+1. The button to the left <i class = "fa fa-edit"></i> allows you to edit (say more about how this works). 
 
-1. Clicking on the GitHub icon on the far right takes you to the source repository for this book. 
+1. Clicking on the GitHub icon <i class = "fa fa-github"></i> on the far right takes you to the source repository for this book. 
 
 1. How to search within this book: https://github.com/rstudio/bookdown/issues/216
 
@@ -132,4 +137,8 @@ Through the book, we highlight specific ways that RStudio can expedite your pack
 
 :::tip
 RStudio exposes `load_all()` in the *Build* menu, in the *Build* pane via *More > Load All*, and in keyboard shortcuts Ctrl + Shift + L (Windows & Linux) or Cmd + Shift + L (macOS).
+:::
+
+:::gotcha
+Watch out for "gotchas" along the way. We try our best to point out the tricky bits of a workflow.
 :::

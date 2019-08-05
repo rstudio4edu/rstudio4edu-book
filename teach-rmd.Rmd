@@ -40,6 +40,9 @@ But you have a lot of flexibility if you do choose to use R Markdown to start wi
 
 ## Knit to HTML
 
+<center>![](images/Knit-to-html.jpg){width=60%}</center>
+
+
 The [R Markdown package](https://rmarkdown.rstudio.com/docs/) has a number of built-in ["output formats"](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), which means that a single .Rmd document can be "knit" into a bunch of different output file types like HTML, PDF, and even Word documents.
 
 For educators, we strongly encourage using the default HTML output format for three reasons:

@@ -22,7 +22,8 @@ Imports:
     leaflet, 
     plotly,
     ymlthis,
-    fs
+    fs,
+    htmltools
 Remotes:
     r-lib/fs,
     r-lib/usethis,
@@ -30,5 +31,6 @@ Remotes:
     r-lib/ymlthis,
     klutometis/roxygen,
     RLesur/klippy,
-    hadley/emo
+    hadley/emo,
+    rstudio/htmltools
     
