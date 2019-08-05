@@ -9,7 +9,7 @@ knitr::opts_chunk$set(fig.align="center")
 
 <center>![](images/rmd_custom/rmd_site.jpg){width=30%}</center>
 
-This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. The R Markdown site is arguably the simplest way to compile a collection of R Markdown documents.
+This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. An R Markdown site is the most straightforward way to compile a collection of R Markdown documents.
 
 <!--todo: insert screenshots or iframes with links to existing R Markdown sites-->
 
@@ -19,7 +19,7 @@ Using R Markdown project templates, you can put together a bare-bones site in no
 <div class = side-by-side>
 <div class = side1>
 
-```{r echo = FALSE, fig.align='center', fig.link = "#make-rmd"}
+```{r echo = FALSE, fig.link = "#make-rmd"}
 knitr::include_graphics("images/rmd_custom/intro-rmd.jpg")
 ```
 
@@ -64,7 +64,7 @@ knitr::include_graphics("images/rmd_custom/Dressup.jpg")
 
 <h4>[Dress it up](#rmd-dress)</h4>
 
-Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing or using CSS.
+Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing, learning, or using CSS.
 
 </div>
 </div>
@@ -85,6 +85,29 @@ In the final chapter, you'll learn about website customizations that require som
 </div>
 </div>
 
+## What are we making? {-}
+
+We're about to take a collection of (one or more) R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. 
+
+<center>![](images/rmd_custom/thread_yaml.jpg)</center>
+
+
+This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
+
+
+* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
+
+* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
+
+Additionally, we'll demo how to publish your R Markdown site for free using GitHub Pages, so you'll also need:
+
+* **A `docs/` folder**, which will be the folder that we will use as the "boarding area" for your rendered site files to deploy on GitHub Pages.
+
+* To **turn on GitHub Pages for your repository**.
+
+There are certainly other options for publishing (aka deploying) an R Markdown website. For an overview of other options, you may reference: https://rstudio.github.io/distill/publish_website.html.
+
+
 
 ## Pros and cons of using Rmd sites {-}
 
@@ -97,7 +120,7 @@ In the final chapter, you'll learn about website customizations that require som
 
 * **A simple structure** allows you to grow your content and add pages quickly, without having to invest time in learning complicated folder structures to figure out where to put new files.  
 
-* **Ideal for small sites** that do not need complex organization or many pages (i.e. for workshops).  
+* **Ideal for small sites** that do not need complex organization or many pages (i.e. for workshops, a series of online tutorials, or a basic course website).  
 
 * **Easy to customize** without any knowledge of web design or CSS if you're okay sticking to the templates. 
 
@@ -106,9 +129,8 @@ In the final chapter, you'll learn about website customizations that require som
 
 **Cons:**
 
-* **Many files lead to chaos** because there is not a way to organize files so that they fall under the umbrella of an overarching page. All R Markdown docs and pages will be on the same "level" of website organization, so as the number of pages increases, your project directory becomes increasingly crowded. 
+* **Many files lead to chaos** because all `.Rmd` files that go into the site must sit inside the project root directory. That is, you cannot organize them within subdirectories. This means that, as the number of pages increases, your project directory becomes increasingly crowded and difficult to navigate. 
 
-<!--the wording above isn't totally clear re: "umbrella". You may want to mention that it is not possible to organize your website pages within subdirectories- every .Rmd file has to be in the "root" project directory, and show a mock directory tree-->
 
 * **CSS and HTML necessary** for moving beyond the limited built-in customization options. Depending on what you enjoy about coding--this might not actually be a con. 
 
@@ -150,29 +172,12 @@ Let's get started!
 
 <center>![](images/rmd_custom/intro-rmd.jpg){width=70%}</center>
 
-
-What are we going to make here? We're about to take a collection of (one or more) R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
-
-<center>![](images/rmd_custom/thread_yaml.jpg)</center>
-
-* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
-
-* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
-
-Additionally, we'll demo how to publish your R Markdown site using GitHub Pages, so you'll also need:
-
-* **A `docs/` folder**, which will be the folder that acts as the "boarding area" for your rendered site files, and which you need if you're deploying on GitHub pages.
-
-* To **turn on GitHub Pages for your repository**.
-
-There are certainly other options for publishing as you can copy the output directory to any web server or web hosting service. For an overview of other options, you may reference: https://rstudio.github.io/distill/publish_website.html.
-
-
 ## tl;dr
 
-**Here's how you make an R Markdown site:**
+This tl;dr is for readers who are already experienced with GitHub and want to see our "cheatsheet" version of the rest of this chapter. If you are looking for screenshots plus some hand-holding, we think you'll benefit from reading the [rest](#rmd-site-setup) of this chapter.
 
-<!--begin Alison's revised tldr-->
+**Here's how you make an R Markdown site from scratch, using a built-in site skeleton as a template:**
+
 
 1. Start with an empty RStudio project linked to a remote GitHub repository that you can push/pull to from your local copy in RStudio.
 
@@ -182,68 +187,40 @@ There are certainly other options for publishing as you can copy the output dire
     rmarkdown:::site_skeleton(getwd())
     ```
     
-1. Prep for publishing to GitHub pages with two steps:
-
-    + Change the output directory of your website to a folder named `"docs"` from
+1. Prep for publishing to GitHub Pages by changing the output directory of your website (in your `_site.yml` file) to a folder named `"docs"`.
     
-    + Tell GitHub Pages to bypass using Jekyll to build your site.
+    ```{r yml-docs, echo = FALSE}
+    ymlthis::yml(date = FALSE, author = FALSE) %>%
+        yml_site_opts(output_dir = "docs",
+                      name = "my-website") %>% 
+        asis_yaml_output()
+    ```
+    
+    
+1. Tell GitHub Pages to bypass using Jekyll to build your site by adding a single empty file named `.nojekyll` to your project root directory.
+
+    ```{r eval = FALSE}
+    file.create(".nojekyll")
+    ```
+
 
 1. Build your site using the RStudio "Build" pane.
 
 1. Push and commit to send your site online to GitHub- do you see your `.html` files in the `"docs"` folder?
 
-1. Turn on GitHub Pages by going to your repository settings online.
+1. Turn on GitHub Pages by going to your repository online. Click on the repository’s settings and under GitHub Pages, change the Source to be the `master branch /docs` folder.
 
 1. Edit your site, build it, then push and commit to GitHub to publish your changes online.
 
 1. Rinse and repeat! Every push to your `master` branch triggers the online version of your site to update.
 
-* **A `_site.yml` text file** that will stitch your `.Rmd` documents together and place an official-looking navigation bar at the top of them.
-* **An R Markdown file** with the name `index.Rmd` file, which will become your site's homepage.
-* **A `docs/` folder**, which will be the folder that acts as the "boarding area" for your rendered site files, and which you need if you're deploying on GitHub pages.
-* **GitHub Pages for your repository**, turned on with the click of a button to make your work go live!
 
-
-<!--end Alison's revised tldr-->
-
-[1.](#rmd-getting-started) In a GitHub-connected RStudio project, run `rmarkdown:::site_skeleton(getwd())` to create the files you need.
-\
-
-[2.](#rmd-edit) Edit `index.Rmd` content to be with whatever you want to put on your homepage. Edit the `about.Rmd`, which will be your second page.
-\
-
-[3.](#rmd-edit) Within `_site.yml`, change the output directory to the `docs/` folder so you can be set up for GitHub pages.
-\ 
-
-[4.](#rmd-edit) Run `rmarkdown::render_site()` each time you make changes to any doc to create `.html` file versions of your `.Rmd` pages.
-\
-
-[5.](#rmd-push) Commit and push all changes to GitHub.
-\
-
-[6.](#rmd-living) Go to your GitHub repo > *Settings* > *scroll down to GitHub pages* > *select "master branch/ docs folder" from the dropdown menu*. Share your new site URL!
-\
-
-[7.](#rmd-dress) Customize your site with built-in YAML options.
-\
-
-[8.](#new-rmd) Add new pages by creating new `.Rmd`s, deleting their individual YAML info, except for the `Title:` and the dashed lines.
-\
-
-[9.](#rmd-one-yaml) Link new page to the site by referencing it in the navbar section of `_site.yml`.
-\
-
-[10.](#new-rmd) Always end by knitting or rendering and then pushing to GitHub. 
-\
-
-
-
-## Getting set up
+## Getting set up {#rmd-site-setup}
 ```{r, out.width = "20%", fig.align='center', echo= FALSE}
 knitr::include_graphics("images/Gears.jpg")
 ```
 
-### Packages
+### Update packages
 
 The only package you need for this cookbook is `rmarkdown` but if you are using RStudio, you are all set!
 
@@ -254,10 +231,15 @@ The `rmarkdown` package does not need to be explicitly installed or loaded here,
 However, if you haven't updated your package recently (or ever), you can re-install it to make sure you are using the most up-to-date version from CRAN:
 
 ```{r eval = FALSE}
+# check package version installed
+packageVersion("rmarkdown")
+# install if update is needed
 install.packages("rmarkdown")
 ```
 
-### A project {#rmd-github-first}
+At the time of publishing, we are running `rmarkdown` version `r packageVersion("rmarkdown")`.
+
+### Make a project {#rmd-proj-first}
 
 For your first R Markdown site, we recommend starting by created a GitHub repository online first, then making a project in RStudio. 
 
@@ -267,9 +249,9 @@ For your first R Markdown site, we recommend starting by created a GitHub reposi
 
 ```
 
-## Your first website {#rmd-getting-started}
+### Make a site skeleton {#rmd-site-skeleton}
 
-We'll start by creating the shell for a basic R Markdown website and showing you how to publish your site on GitHub Pages. In a later section, we show you how to customize and care for your site.
+We'll start by creating the shell for a basic R Markdown website and publishing this site to GitHub Pages straight away. In your R console, type and run the following code:
 
 ```{r ref.label = 'rmd-skeleton', eval = FALSE}
 ```
@@ -295,6 +277,20 @@ Close RStudio and re-open your site by clicking on the project file (`.Rproj`). 
 BuildType: Website
 ```
 
+## A mini-orientation {#rmd-site-orientation}
+
+Our skeleton created two out-of-the-box content files for our site: 
+
+1. `index.Rmd` Any content in this file will be your site’s homepage. This file must be named `“index.Rmd”`. 
+
+1. `about.Rmd` This will be a second, distinct page of your site. This file can have any name, but we will stick to `“about”` for now.
+
+When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. 
+
+The third file in our skeleton, `_site.yml`, is *not* a file that gets turned into a site page, but *is* necessary for site setup. 
+
+Nothing to do here, but good to know these things! We'll circle back to editing these files later.
+
 ## Push to GitHub {#rmd-push}
 
 Let's get these website files pushed up to our remote repository on GitHub. Do the following from RStudio:
@@ -308,58 +304,68 @@ Let's get these website files pushed up to our remote repository on GitHub. Do t
 <center>![](images/rmd_custom/git1.png){width=400px}<center>
 
 
-## Edit > Build > Preview {#rmd-edit}
+## Change output directory {#rmd-site-output}
 
-Our skeleton created two out-of-the-box content files for our site: 
+Now let's make a small change. In order to publish to GitHub Pages, we'll want to send all the rendered site files (i.e., all those ending in `.html`) to our "boarding area", which is the `docs/` folder. We need to edit the `_site.yml` to change this setting.
 
-1. `index.Rmd`
+**Open `_site.yml` and add the following** on its own line at the end:
 
-1. `about.Rmd` 
+```{r yml-docs, echo = FALSE}
+```
 
-When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. The third file in our skeleton, `_site.yml`, is not a file that gets turned into a site page but is necessary for site setup. 
-
-
-1. **Open `index.Rmd`**. Make a minimal change like changing the Title here. Any content on this page will be your site's homepage. This file *must* be named "index.Rmd". **Save**.
-
-
-1. **Open `about.Rmd`.** Make a minimal change, like adding another sentence about yourself, your project, your dog- anything. This will be a second, distinct page of your site. This file can have any name, but we will stick to "about" for now. **Save**.
-
-1. **Open `_site.yml` and add the following** on its own line at the end:
-
-    ```{r, eval = FALSE}
-    output_dir: "docs"
-    ```
-
-    This step is a one-time step. It says: 
+This step is a one-time step. It says: 
     
-    > "Please take all of my `.html` files that I will make when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
+> "Please take all of my `.html` files that I will make when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
     
-    Having our HTML files live in `docs/` is necessary for using GitHub pages put make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+Having our HTML files live in `docs/` is necessary for using GitHub pages put make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+
+## Turn off Jekyll {#rmd-site-nojekyll}
+
+This bit is only necessary if you plan to use GitHub Pages for publishing your website. We need to tell GitHub Pages to bypass using Jekyll to build your site. We do this by adding a single empty file named `.nojekyll` to your project root directory.
+
+```{r eval = FALSE}
+file.create(".nojekyll")
+```
     
-    
-1. In RStudio, find the Build tab (usually in the upper right pane, right next to the Git tab) and select **Build Website** to render your new website locally.
+## Build your site {#rmd-site-build}
 
-    ```{r echo = FALSE, fig.link = "https://bookdown.org/yihui/rmarkdown/", fig.cap="The build pane in RStudio"}
-    knitr::include_graphics("https://bookdown.org/yihui/rmarkdown/images/site-build.png")
-    ```
-    
+```{r echo = FALSE, fig.link = "#make-rmd"}
+knitr::include_graphics("images/pkg/Build.jpg")
+```
 
-    Alternatively, you can render your site (knit + preview all .Rmd files in one fell swoop) from the R console using `rmarkdown`'s `render_site()` function.  
+In the lifecycle of your site, you'll be doing lots of building. What does building the site do? This processes your `.Rmd`s and creates the `docs/` folder (if it doesn't already exist) that houses `.html` versions of each of your `.Rmd` files. AND each of these pages now has a common navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).
 
-    ```{r, eval = FALSE}
-    rmarkdown::render_site()
-    ```
+In RStudio, you can render your site locally (knit + preview all `.Rmd` files in one fell swoop) from the either the IDE or the R console.
 
-    This is a step you will do a lot as you create your site. What does this do? This processes your `.Rmd`s and creates the `docs/` folder (if it doesn't already exist) that houses `.html` versions of each of your `.Rmd` files. AND each of these pages now has a common navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).
+<div class = side-by-side>
+<div class = side1>
+
+
+*From the R console*, you can run: 
+
+
+```{r, eval = FALSE}
+rmarkdown::render_site()
+```
+
+</div>
+
+<div class = side2>
+
+**OR** *from the IDE*, find the Build tab and select **Build Website**:
+
+```{r echo = FALSE, fig.link = "https://bookdown.org/yihui/rmarkdown/", fig.cap="The build pane in RStudio"}
+knitr::include_graphics("https://bookdown.org/yihui/rmarkdown/images/site-build.png")
+```
+
+</div>
+</div>
 
 :::tip
 If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `index.html` file, and `View it in Web Browser`.
 :::
 
-:::tip
-Note: Editing your `.Rmd` files, building your site, and then pushing to GitHub are steps you'll do *many* times as you build up your content. Working with your `_site.yml` file is usually something you only mess with intially as you set up your site.
 
-:::
 
 ## Push to GitHub (again) {#rmd-push2}
 
@@ -396,10 +402,7 @@ We have built some out-of-the-box content and pushed to GitHub. Now we'll go bac
 Now that the bare bones of the site are up, you can go back and add more content to your R Markdown documents anytime. Your changes will go live as soon as you build or `render_site()`, followed by a push to GitHub. 
 
 
-
-
-
-## Your second website
+## Uplevel your workflow
 
 We followed a "GitHub first" workflow above, but if you'll be using GitHub regularly, we recommend evolving this workflow. First, install the `usethis` package:
 
@@ -427,6 +430,12 @@ Once you have a GitHub PAT set up in your `.Renviron` file, you can stay in RStu
     use_git()
     use_github() # you have to have a PAT setup
     ```
+    
+1. Then follow all of our instructions above starting at [changing the site output directory](#rmd-site-output).
+
+
+
+
 
 
 

@@ -75,7 +75,7 @@ Normally a single R Markdown document will have its own YAML. When we make an R 
 
 **What happens if one of your R Markdown documents in your site still has its own YAML at the top?** Then the YAML options at the top of that R Markdown document will apply to that document only. An individual `.Rmd` file's YAML will override the global `_site.yml`. This can actually be useful when some options are only applicable to a single page on your site. For example, the `code_download` option, which we demo in the next section, might not be relevant for all your site pages, so you can reserve this for individual page YAMLs only. If an individual page's YAML and the `_site.yml` conflict, then the more specific option will always win (i.e. the individual YAML).
 
-## Themes
+## Add a site theme {#rmd-site-theme}
 
 Open your `_site.yml` file, and let's begin our site makeover. We'll start with setting up our `_site.yml` to apply a theme to our site. Themes are blanket ways of dressing up your site's aesthetics quickly. We highly recommend picking a theme for your site! You have `r length(rmarkdown:::themes())` theme options: 
 
@@ -96,6 +96,8 @@ just_output %>%
   asis_yaml_output()
 ```
 
+\
+
 Save your `_site.yml` file then re-build your site. Your YAML should like this, and your site should now be themed.
 
 <div class = side-by-side>
@@ -113,7 +115,11 @@ yum_yml %>%
 </div>
 
 <div class= side2>
-![](images/rmd_custom/yeti_closeup.png)
+
+```{r yeti-closeup, echo = FALSE, fig.cap = "Add a site theme"}
+knitr::include_graphics("images/rmd_custom/yeti_closeup.png")
+```
+
 
 </div>
 </div>
@@ -132,7 +138,7 @@ FYI: Within any YAML, pay careful attention to the indentations and spaces. YAML
 
 
 
-## Highlight style {#rmd-highlight}
+## Customize code highlighting {#rmd-highlight}
 
 Now that we have a theme, we may also want to change how our code looks. Again, we have a few built-in options:
 
@@ -165,24 +171,20 @@ yum_yml %>%
 
 
 
-## Navbar {#rmd-navbar}
+## Change the navbar color {#rmd-navbar}
 
-We can do a few different things to our navbar including:
-
-* **Changing navbar aesthetics**:
-    * Change the navbar color
-    
-### Change the navbar color
-
-* Swap out your theme's default navbar color with **`type: inverse`**.
+Each [site "theme"](#rmd-site-theme) has a built-in color for the navigation bar, but there is also an alternate navigation bar color we can activate by swapping out the theme `type` from default to inverse. This means that each site theme can really generate two distinct "looks".
 
 <div class = side-by-side>
 <div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  title: "Course Website"
-  type: inverse
+
+```{r echo = FALSE, warning = FALSE}
+yum_yml %>% 
+  yml_navbar(
+    title = "Course Website",
+    type = "inverse"
+  ) %>% 
+  asis_yaml_output()
 ```
 
 </div>
@@ -194,47 +196,114 @@ navbar:
 </div>
 </div>
 
+See Figure \@ref(fig:yeti-closeup) for a reminder of what the default navbar color looked like.
+
+## Add navbar icons {#rmd-icons}
+
+In [Caring for your site](#rmd-care), we saw how to [add new pages](#add-rmd) and [grow your navbar](#rmd-grow). When you add `text` and `href` fields to your navbar, you can also add sprinkle in an `icon: <icon-prefix-and-name>` either in addition to or in place of text. Using icons in place of text is often used to provide links to outside sources (e.g., Slack, GitHub, etc.) or to other pages within your own site. You can use any icons from [Font Awesome](https://fontawesome.com/icons), by entering the prefix `fa-` followed by the icon's name. 
+
+<div class = side-by-side>
+<div class = side1>
+
+Here is a basic navbar:
+
+```{r echo = FALSE}
+yml(date = FALSE, author = FALSE) %>%
+  yml_navbar(
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html"),
+      navbar_page("Labs", href = "labs.html")
+    )) %>% 
+  asis_yaml_output()
+```
+
+</div>
+
+<div class = side2>
+
+And here is the same with icons added:
+
+```{r echo = FALSE}
+yml(date = FALSE, author = FALSE) %>%
+  yml_navbar(
+    left = list(
+      navbar_page("Home", href = "index.html", icon = "fa-home"),
+      navbar_page("Lectures", href = "lectures.html", icon = "fa-book-open"),
+      navbar_page("Labs", href = "labs.html", icon = "fa-seedling")
+    ),
+    right = list(
+      navbar_page(href = "https://github.com/rstudio4edu", icon = "fa-github"),
+      navbar_page(href = "https://twitter.com/rstudio", icon = "fa-twitter")
+    )) %>% 
+  asis_yaml_output()
+```
+
+</div>
+</div>
+
+
+\
+
+Here is the output:
+
+\
+
+
+<div class = side-by-side>
+<div class = side1>
+
+Left navbar
+![](images/rmd_custom/icons1.png){width=100%}
+</div>
+
+<div class= side2>
+Right navbar
+
+![](images/rmd_custom/icons2.png){width=100%}
+</div>
+</div>
+
+
+## Add a dropdown menu {#rmd-menu}
+
 At some point, you may realize that you need room to grow with your navbar and the content you have planned to create and share. When you do, you may want to use dropdown menus. You can create a dropdown menu to add *many* more pages to the site without taking up space in your navbar. Let's say we instead decided to create a separate R Markdown document for each lab in this course. We could create a dropdown menu called "Labs" and link to each of the pages underneath that. 
 
 See how we do this in the YAML below:
 
 1. **Add a new `- text:` line** with the heading name of your dropdown menu. 
 
-2. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
+1. **Add `menu:`** on its own line underneath this, aligned with the `href:` of the other indepedent pages in the navbar.  
+1. **Add a `- text:` line** beneath this with the name of page you want to link to.  
 
-3. **Add a `- text:` line** beneath this with the name of page you want to link to.  
+1. **Add an `href:` line** with the `.html` of the page you want to link to.  
 
-4. **Add an `href:` line** with the `.html` of the page you want to link to.  
-
-5. Repeat 3. and 4. until you've added all the pages for this dropdown.
+1. Repeat 3. and 4. until you've added all the pages for this dropdown.
 
 
 <div class = side-by-side>
 <div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
+
+```{r echo = FALSE, warning = FALSE}
+yum_yml %>% 
+  yml_navbar(
+    title = "Course Website",
+    type = "inverse",
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html"),
+      menu = list(
+        navbar_page("Labs"),
+        navbar_page("Lab 1", href = "lab1.html"),
+        navbar_page("Lab 2", href = "lab2.html"),
+        navbar_page("Lab 3", href = "lab3.html"),
+        navbar_page("Lab 4", href = "lab4.html")
+      )
+  )) %>% 
+  asis_yaml_output()
 ```
+
+
 </div>
 
 <div class= side2>
@@ -289,69 +358,6 @@ output:
 
 
 
-### Add navbar icons {#rmd-icons}
-
-Sprinkle some icons into your navbar and have them link to outside sources (e.g. twitter, GitHub, etc.) or to pages within your own site. You can use any icons from [Font Awesome](https://fontawesome.com/icons), by entering the prefix `fa-` followed by the icon's name.
-
-Here's how you add them:
-
-* **Type `icon: <icon-prefix-and-name>`** on the line immediately above the link that you want to icon to point to.
-
-Below we add GitHub and Twitter icons that will link to our accounts, and just for fun, we some more icons to the pages that were already in our navbar.
-
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      icon: fa-home
-      href: index.html
-    - text: "Lectures"
-      icon: fa-book-open
-      href: lectures.html
-    - text: "Labs"
-      icon: fa-seedling
-      menu:
-      - text: "Introductory"
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "---"
-      - text: "Advanced"
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-  right: 
-    - icon: fa-github
-      href: https://github.com/rstudio4edu/basic-course-website
-    - icon: fa-twitter
-      href: https://twitter.com/rstudio?lang=en
-output_dir: "docs"
-output: 
-  html_document:
-```
-</div>
-
-<div class= side2>
-
-![](images/rmd_custom/icons1.png){width=100%}
-
-<br>
-
-![](images/rmd_custom/icons2.png){width=100%}
-</div>
-</div>
-
-:::tip
-If the icon won't be accompanied by text, you'll have to enter `- icon:`.
-:::
 
 ## Recap
 
