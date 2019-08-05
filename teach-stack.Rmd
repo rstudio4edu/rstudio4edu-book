@@ -34,6 +34,12 @@ Why educators should use version control, high-level thoughts
 
 ### GitHub for them {#gh-for-them}
 
+Whether or not you need your students to learn GitHub is a very personal decision. While we strongly believe that educators should use GitHub behind the scenes, whether you should *also* put GitHub center stage for your learners requires some additional considerations, like:
+
++ Do your learners need to learn and use GitHub? Are they going to be served well if you choose to include it?
+
++ Do you have the time and resources to teach GitHub? Sometimes this decision can come down to how long your learners will be with you.
+
 Resources for integrating GitHub for learners; not our primary focus here, outsource to:
 
 Make sure to mention Mine's ghclass package
