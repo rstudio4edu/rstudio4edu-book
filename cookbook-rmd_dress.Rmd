@@ -292,14 +292,15 @@ yum_yml %>%
     left = list(
       navbar_page("Home", href = "index.html"),
       navbar_page("Lectures", href = "lectures.html"),
-      menu = list(
+      list(menu = list(
         navbar_page("Labs"),
         navbar_page("Lab 1", href = "lab1.html"),
         navbar_page("Lab 2", href = "lab2.html"),
         navbar_page("Lab 3", href = "lab3.html"),
         navbar_page("Lab 4", href = "lab4.html")
-      )
-  )) %>% 
+      ))
+    )
+  ) %>% 
   asis_yaml_output()
 ```
 
@@ -321,33 +322,29 @@ There's a little more accessorizing we can do with the dropdown menu.
 
 <div class = side-by-side>
 <div class = side1>
-```{r, eval=FALSE}
-name: "YUM-101"
-navbar:
-  type: default
-  title: "Course Website"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Lectures"
-      href: lectures.html
-    - text: "Labs"
-      menu:
-      - text: "Introductory"
-      - text: "Lab 1"
-        href: lab1.html
-      - text: "Lab 2"
-        href: lab2.html
-      - text: "---"
-      - text: "Advanced"
-      - text: "Lab 3"
-        href: lab1.html
-      - text: "Lab 4"
-        href: lab1.html
-output_dir: "docs"
-output: 
-  html_document:
+
+```{r echo = FALSE, warning = FALSE}
+yum_yml %>% 
+  yml_navbar(
+    title = "Course Website",
+    type = "inverse",
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html"),
+      navbar_page("Labs", menu = list(
+        navbar_page("Introductory"),
+        navbar_page("Lab 1", href = "lab1.html"),
+        navbar_page("Lab 2", href = "lab2.html"),
+        navbar_page(navbar_separator()),
+        navbar_page("Advanced"),
+        navbar_page("Lab 3", href = "lab3.html"),
+        navbar_page("Lab 4", href = "lab4.html")
+      ))
+    )
+  ) %>% 
+  asis_yaml_output()
 ```
+
 </div>
 
 <div class= side2>
