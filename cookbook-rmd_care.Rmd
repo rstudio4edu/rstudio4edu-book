@@ -37,14 +37,14 @@ To make a new page actually findable from your site, you'll need to *also* make 
 Let's say we create a new file called `labs.Rmd`. We want to add the link to the rendered page `labs.html` to our upper navbar next to "Home" and "Lectures", so we would add the following to our YAML:
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>%
+yml_empty() %>%
   yml_navbar(
     left = list(
       navbar_page("Home", href = "index.html"),
       navbar_page("Lectures", href = "lectures.html"),
       navbar_page("Labs", href = "labs.html")
     )) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 \
@@ -55,7 +55,7 @@ Save the changes to `_site.yml`, build, and preview to see the new page appear i
 <div class = side1>
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>% 
+yml_empty() %>% 
   yml_site_opts(
     name = "YUM-101",
     output_dir =  "docs"
@@ -66,7 +66,7 @@ yml(date = FALSE, author = FALSE) %>%
       navbar_page("Lectures", href = "lectures.html"),
       navbar_page("Labs", href = "labs.html")
     )) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
@@ -80,20 +80,22 @@ yml(date = FALSE, author = FALSE) %>%
 You may have noticed that in the YAML options we’ve looked at so far, `left:` has been one of the first things to go under `navbar:`. You can add all (or just some) of your links aligned to the right side of the navbar instead by using `right:`. 
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>% 
+yml_empty() %>% 
   yml_navbar(
     left = list(),
     right = list()
     ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
+
+\
 
 If we added the page for `labs.Rmd` to the right of our navbar instead:
 <div class = side-by-side>
 <div class = side1>
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>% 
+yml_empty() %>% 
   yml_site_opts(
     name = "YUM-101",
     output_dir =  "docs"
@@ -106,7 +108,7 @@ yml(date = FALSE, author = FALSE) %>%
     right = list(
       navbar_page("Labs", href = "labs.html")
     )) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>

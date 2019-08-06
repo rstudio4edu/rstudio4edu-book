@@ -37,9 +37,9 @@ We'll go through how to do each of the numbered add-ons below, but first let's g
 You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>%
+yml_empty() %>%
   yml_output(html_document(css = "style.css")) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 We'll now make a CSS file, by going to *File* > *New File* > *Text File*. Go ahead and save this file in your project directory as `style.css`. We'll populate this with some CSS styles. We're going to want to keep a rendered version of our custom course site pulled up in a separate window. 
@@ -66,9 +66,9 @@ You know the little tiny icon that gets placed in the corner of your browser tab
 1. Open `_site.yml` and under the `html_document:` section, insert the `includes:` and `in_header` options like so:
 
     ```{r, echo = FALSE}
-    yml(date = FALSE, author = FALSE) %>%
+    yml_empty() %>%
       yml_output(html_document(includes = includes2(in_header = "header.html"))) %>% 
-      asis_yaml_output()
+      asis_yaml_output(fences = FALSE)
     ```
 
 :::tip
@@ -142,10 +142,10 @@ To add the big image at the top of page (a.k.a hero image), we need to make an H
 1. Reference the HTML file in `index.Rmd`'s YAML with the `includes:` and `in_header:` lines.
 
     ```{r, echo = FALSE}
-    yml(date = FALSE, author = FALSE) %>% 
+    yml_empty() %>% 
       yml_title("YUM-101 Delicious Foods") %>%
       yml_output(html_document(includes = includes2(in_header = "hero-image.html"))) %>% 
-      asis_yaml_output()
+      asis_yaml_output(fences = FALSE)
     ```
     
     This will add the image to ONLY the `index.Rmd` page of your site, which is appropriate since the index will serve as the homepage. We could have instead added `in_header:` to our `_site.yml` to apply the image to EVERY site page (but consider whether this might be visually overwhelming for your site!). 
@@ -163,14 +163,14 @@ knitr::include_graphics("images/annotate_hero.jpg")
 You should note that when you add an `in_header:` option to a single pages's YAML, it will override the more "global" `in_header:` option set in `_site.yml`. So if you still want the global `in_header:` to apply (e.g. if you created a favicon), then you'll need to list both files in the single page's YAML. Like this, for example:
 
 ```{r, echo = FALSE}
-yml(date = FALSE, author = FALSE) %>% 
+yml_empty() %>% 
   yml_title("YUM-101 Delicious Foods") %>%
   yml_output(html_document(includes = includes2(in_header = list(
     "<first-file.html>",
     "hero-image.html"))
   )
   )%>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 
@@ -222,7 +222,7 @@ You could style this endlessly, but here's the CSS we're using for the fancy cou
 Note that you can have several CSS files, if for example you have one for your organization and another custom file. We add multiple items like this to the YAML like so:
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>%
+yml_empty() %>%
   yml_output(html_document(css = list("org.css", "custom.css"))) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```

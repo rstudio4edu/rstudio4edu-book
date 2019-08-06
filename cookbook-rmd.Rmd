@@ -190,10 +190,10 @@ This tl;dr is for readers who are already experienced with GitHub and want to se
 1. Prep for publishing to GitHub Pages by changing the output directory of your website (in your `_site.yml` file) to a folder named `"docs"`.
     
     ```{r yml-docs, echo = FALSE}
-    ymlthis::yml(date = FALSE, author = FALSE) %>%
+    ymlthis::yml_empty() %>%
         yml_site_opts(output_dir = "docs",
                       name = "my-website") %>% 
-        asis_yaml_output()
+        asis_yaml_output(fences = FALSE)
     ```
     
     
