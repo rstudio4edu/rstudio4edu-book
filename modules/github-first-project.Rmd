@@ -5,8 +5,24 @@ output: html_document
 
 We recommend following the tips on [Happy Git with R](https://happygitwithr.com/new-github-first.html) and starting in GitHub before switching to RStudio:
 
-1. **Create a GitHub repo** for your work.
-2. **Click the green Clone or Download button**, and copy the URL.
-3. **Open RStudio.** Click *File* > *New Project* > *Version Control*> *Git*. Paste the copied URL.
-4. **Click Create Project.**
-5. **Use:**
+1. [**Create a new repository on GitHub**](https://happygitwithr.com/new-github-first.html#make-a-repo-on-github-2) for your work. 
+
+    + Do *not* initialize the repo with a `.gitignore` or a `README` file (we'll add these later!).  
+<br>
+1. **Copy the repository URL** to your clipboard. 
+
+    + Do this by clicking the green Clone or Download button.
+    
+    + Copy the HTTPS clone URL (looks like: `https://github.com/{yourname}/{yourrepo}.git`).
+    
+    + **Or** copy the SSH URL if you chose to set up SSH keys (looks like: `git@github.com:{yourname}/{yourrepo}.git`).  
+<br> 
+1. [Create a new RStudio Project via git clone](https://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone). **Open RStudio.** 
+
+    + Do this by clicking *File* > *New Project* > *Version Control*> *Git*. 
+    
+    + Paste the copied URL. 
+    
+    + Be intentional about where you tell RStudio to create this new Project.  
+<br>
+1. **Click Create Project.**
