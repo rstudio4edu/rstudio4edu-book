@@ -248,6 +248,15 @@ datatable(payroll, extensions = 'Buttons', options = list(
   ```
 
   + https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.R
+  
+What if you just want to keep things really simple? Try github_document as the output of a regular R script. This will create an `.md` version of whatever code and output you have, and it will be rendered in a nice, readable way without you having to mess with GitHub pages or HTML directly, etc. See an example of what I mean below:
+
+[Start with .R script...](https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.R) and [...end with a GitHub document](https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.md)
+
+```{r, echo = FALSE}
+side_by_side("images/gather-R.png",50,"images/gather-gitdoc.png", 50)
+```
+
 
 + Rmd -> GitHub
 
