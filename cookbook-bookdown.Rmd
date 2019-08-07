@@ -6,37 +6,154 @@ source("common.R")
 
 # Introduction {-#intro-bookdown}
 
-Overview- this is a section filled with recipes for making common types of educational content...
+<center> ![](images/illos/bookdown.jpg){width=40%} </center>
+
+This is a cookbook for educators who would like to use bookdown to organize and deliver educational content for their audience. Despite the name, using bookdown doesn't mean that what you make *has* to be a book--but a bookdown site does come with some built-in features (e.g. its hallmark heavy-duty table of contents) that make it well-suited for long-form content (or many R Markdown files that need organizing). This, and the lack of a navbar make a bookdown site feel somewhat less like a typical website and a bit more like a textbook, but how you use it is up to you. You can place an entire course-worth's of materials in a bookdown book, or you could pare down your TOC headers and create a bookdown site containing only the content for a short workshop. This rstudio4edu resource is itself a bookdown! 
+
+In short, bookdown's main features include:
+
+* A very prominent table of contents
+* Cross-references
+* Numbered figures, equations, and tables
+* Distribution of your book as a PDF, an HTML website, etc.
+* A built-in search feature (that's a bit unintuitive to use)
 
 
-# Make a book {#make-book}
+<div class = side-by-side>
+<div class = side1>
 
-This cookbook is intended for educators who would like to make a "book" to organize their educational content for their audience. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
-
-Plus, you can also easily:
-
-* Cross-reference
-* Number figures, equations, and tables
-* Distribute your book as a PDF, an HTML website, etc.
-
-Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
-
-
-## Is this tutorial for you? {-}
-
-```{r child= "modules/is-this-tutorial-for-you.Rmd"}
+```{r echo = FALSE, fig.link = "#make-book"}
+knitr::include_graphics("images/illos/intro-book.jpg")
 ```
+
+</div>
+<div class = side2>
+
+#### [Make a book](#make-book)
+Here, we'll guide you through creating an out-of-the-box bookdown book. We make only the most minimal changes to content and style necessary to get you a shareable bookdown site.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, fig.link = "#book-care"}
+knitr::include_graphics("images/illos/Caring-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Caring for your site](#book-care)
+You'll develop a workflow for editing your site, adding new content, and hiding pages that are works-in-progress.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, out.width="52%", fig.link = "#book-dress"}
+knitr::include_graphics("images/illos/Dressup-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Dress it up](#book-dress)
+
+Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing, learning, or using CSS.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#book-fancy"}
+knitr::include_graphics("images/illos/Fancy-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Make it fancier](#book-fancy)
+
+If you want to take your customization further, we show you how to make your book look like the crème de la crème with some CSS, HTML, and (a teensy bit of) JavaScript.
+
+</div>
+</div>
+
+## What are we making? {-}
+
+If you have experience making basic R Markdown sites, then you can think of a bookdown as an R Markdown site with additional YAML files (there are THREE total) and some more rigid rules about what can start each document. 
+
+Anytime you use a level 1 header (i.e. with a single `#`), this becomes a new book chapter that gets added as a top level entry in your TOC and also manifests as its own "page" in your book.
+
+You can use multiple .Rmd files to organize your book content, but how you separate your `.Rmd`s doesn't at all determine what becomes separate pages and what doesn't. This is one important difference from an RMD site---the only thing that triggers the division of book sections are the level 1 headers, whether they're in separate `.Rmd`s or not. When it's time to put the book together, bookdown essentially pastes all the `.Rmd`s together, creating a super long `.Rmd` file. And voilà, you book is made. 
+
+* **Level 1 headers**
+* **Three YAMLS**
+
+
+
+## Pros and cons of using bookdown sites {-}
+
+* Pros: Feels like working with a regular RMD site, once you get the hang of the setup. 
+
+* Cons: Three YAMLs. Can't use tabsets.
+
+
+## Is this cookbook for you? {-}
+
+**Pre-requisites:**
+
+* You have a [GitHub account](https://github.com/)
+* You are comfortable with the basics of using R and RStudio
+* You understand how R projects work
+* You understand the difference between a regular R script and an R Markdown document
+* You have some familiarity working with R Markdown documents
+* You at least vaguely know what a YAML is
+
+**What you’ll learn:**
 
 * How to compile multiple R Markdown files into a Bookdown book
 * How to add basic customization through themes using built in options
 * How to publish your Bookdown for free via GitHub Pages
 
-## Mental Framework: what are we going to make here? {-}
 
-If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files (there are THREE total) and some more rigid rules about what can start each document. 
+## Learning resources {-}
 
+*
+*
+* 
 
-## Part 1: Getting set up {-}
+# Make a book {#make-book}
+
+## tl;dr
+
+This tl;dr is for readers who are already experienced with GitHub and want to see our “cheatsheet” version of the rest of this chapter. If you are looking for screenshots plus some hand-holding, we think you’ll benefit from reading the rest of this chapter.
+
+**Here’s how you make an bookdown site from scratch, using a built-in site skeleton as a template:**
+
+1. Start with an empty RStudio project linked to a remote GitHub repository that you can push/pull to from your local copy in RStudio.
+
+1. In your project, create a simple shell for a bookdown website shell by running the following code in your R console:
+
+    ```{r book-skeleton, eval = FALSE}
+    bookdown:::bookdown_skeleton(getwd())
+    ```
+
+## Getting set up
+
+### Packages needed
 
 We'll use the following packages:
 
@@ -46,6 +163,45 @@ We'll use the following packages:
 
 library(usethis)
 ```
+
+### Make a project {#book-proj-first}
+
+For your first bookdown site, we recommend starting by creating a GitHub repository online first, then making a project in RStudio. 
+
+<!--TODO: add link to other workflow that we recommend later-->
+
+```{r child = 'modules/github-first-project.Rmd'}
+
+```
+
+
+### Make a book skeleton {#book-site-skeleton}
+
+    ```{r, eval = FALSE}
+      bookdown:::bookdown_skeleton(getwd())
+    ```
+
+:::tip 
+Note that we use ::: here (with three colons!) to generate important infrastructure files we need.
+:::
+
+## A mini orientation
+
+Our skeleton created two out-of-the-box content files for our site:
+
+
+
+## Push to GitHub {#book-push}
+
+Let's get these website files pushed up to our remote repository on GitHub. Do the following from RStudio:
+
+1. **Click *Git* ** in the same RStudio pane that also contains the *Environment* tab.
+
+2. **Check the box(es)** under the "Staged" column and click *Commit*.
+
+3. **Add a commit message** like "initial commit" and then click *Push*.
+
+[SCREENSCHOT]
 
 ### Two getting-started workflows:
 
@@ -269,8 +425,6 @@ Once you have the website in place, it’s likely that you will want to update i
 - Explain the never-ending loop of book-rendering [Would be good to get some more context into what sorts of things trigger this behavior.] Common problem! Exit out of this by going to *Session* > *Terminate R...*.
 - re-explain search here https://github.com/rstudio/bookdown/issues/216
 
-## Bookdown resources
-[https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/)
 
 
 # Make a book for a workshop
