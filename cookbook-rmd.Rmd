@@ -222,7 +222,7 @@ knitr::include_graphics("images/Gears.jpg")
 
 ### Update packages
 
-The only package you need for this cookbook is `rmarkdown` but if you are using RStudio, you are all set!
+The only package you need for this cookbook is `rmarkdown`, but if you are using RStudio, you are all set!
 
 :::rstudio-tip
 The `rmarkdown` package does not need to be explicitly installed or loaded here, as RStudio automatically does both when needed. 
