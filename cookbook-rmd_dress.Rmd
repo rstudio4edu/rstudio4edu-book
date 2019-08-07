@@ -20,7 +20,7 @@ Let's try out some different options. Build your site or use `rmarkdown::render_
 If these customizations leave you wanting more, then be sure to check out the ["Make it fancier"](#rmd-fancy) chapter.
 
 ```{r include = FALSE}
-yum_yml <- yml(date = FALSE, author = FALSE) %>% 
+yum_yml <- yml_empty() %>% 
   yml_site_opts(
     name = "YUM-101",
     output_dir =  "docs"
@@ -47,7 +47,7 @@ After adding some content, here's the site we're starting with and the YAML that
 
 ```{r echo = FALSE}
 yum_yml %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
@@ -90,10 +90,10 @@ Here is how you give your website a theme:
 2. **Add these 3 lines** to the bottom of your `_site.yml` file; let's give every page the same `theme = "yeti"` *(Remember! Indentation and new lines matter very much here)*:
 
 ```{r echo = FALSE}
-just_output <- yml(author = FALSE, date = FALSE) %>% 
+just_output <- yml_empty() %>% 
   yml_output(html_document(theme = "yeti"))
 just_output %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 \
@@ -110,7 +110,7 @@ yum_yml %>%
       theme = "yeti"
     )
   ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 </div>
 
@@ -159,7 +159,7 @@ yum_yml %>%
       highlight = "tango"
     )
   ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 </div>
 
@@ -184,7 +184,7 @@ yum_yml %>%
     title = "Course Website",
     type = "inverse"
   ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
@@ -208,14 +208,14 @@ In [Caring for your site](#rmd-care), we saw how to [add new pages](#add-rmd) an
 Here is a basic navbar:
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>%
+yml_empty() %>%
   yml_navbar(
     left = list(
       navbar_page("Home", href = "index.html"),
       navbar_page("Lectures", href = "lectures.html"),
       navbar_page("Labs", href = "labs.html")
     )) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
@@ -225,7 +225,7 @@ yml(date = FALSE, author = FALSE) %>%
 And here is the same with icons added:
 
 ```{r echo = FALSE}
-yml(date = FALSE, author = FALSE) %>%
+yml_empty() %>%
   yml_navbar(
     left = list(
       navbar_page("Home", href = "index.html", icon = "fa-home"),
@@ -236,7 +236,7 @@ yml(date = FALSE, author = FALSE) %>%
       navbar_page(href = "https://github.com/rstudio4edu", icon = "fa-github"),
       navbar_page(href = "https://twitter.com/rstudio", icon = "fa-twitter")
     )) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
@@ -301,7 +301,7 @@ yum_yml %>%
       ))
     )
   ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 
@@ -342,7 +342,7 @@ yum_yml %>%
       ))
     )
   ) %>% 
-  asis_yaml_output()
+  asis_yaml_output(fences = FALSE)
 ```
 
 </div>
