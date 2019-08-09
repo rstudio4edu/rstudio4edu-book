@@ -12,7 +12,7 @@ knitr::opts_chunk$set(fig.align="center")
 
 This is a cookbook for educators who would like to use bookdown to organize and deliver educational content for their audience. Despite the name, using bookdown doesn't mean that what you make *has* to be a book--but a bookdown site does come with some built-in features (e.g. its hallmark heavy-duty table of contents) that make it well-suited for long-form content (or many R Markdown files that can be organized in a chronological way). This, and the lack of a navbar make a bookdown site feel somewhat less like a typical website and a bit more like a textbook, but how you use it is up to you. You can place an entire course-worth's of materials in a bookdown book, or you could pare down your TOC headers and create a site for a short workshop. This rstudio4edu resource is itself a bookdown! 
 
-In short, bookdown's main features include:
+**In short, bookdown's main features include:**
 
 * A very prominent table of contents
 * Cross-references
@@ -97,9 +97,8 @@ If you want to take your customization further, we show you how to make your boo
 
 If you have experience making basic R Markdown sites, then you can think of a bookdown as an R Markdown site with additional YAML files (there are *three*, which take care of configuration and stitching the site together) and some more rigid rules about what can start each document. 
 
-In broad strokes, a bookdown site is created when several `.Rmd` files get merged together (in a particular order--but more on that later), resulting in a single (sometimes massive) `.Rmd` file. This monolith of an `.Rmd` then gets rendered into website-ready, HTML form. What is sometimes unintuitive (especially for those coming from R Markdown sites) is that new pages are determined by the level 1 headers (i.e. headers made with a single `#`) in your content--not necessarily by distinct `.Rmd` documents in your project.  
 
-<center>![](images/illos/Bookdown-file-flow.jpg){width=90%}</center>
+[INSERT ANALOGY HERE FOR THE FILE TYPES]
 
 As we build our first book, we'll want to keep in mind these elements:
 
@@ -202,6 +201,10 @@ This tl;dr is for readers who are already experienced with GitHub and want to se
 
 ## Getting set up
 
+```{r echo = FALSE, out.width = "20%"}
+knitr::include_graphics("images/illos/Gears.jpg")
+```
+
 ### Packages needed
 
 We'll use the following packages:
@@ -303,6 +306,27 @@ This step is a one-time step. It says:
 > "Please take all of my `.html` files that will get made when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
     
 Having our HTML files live in `docs/` is necessary for using GitHub pages to make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+
+
+While we have `_bookdown.yml` open, let's add an additional line that will have each `.Rmd` in our book be processed independently. This is preferable, but if you think you have a use-case where this wouldn't be what you want, read up more about the alternative [here](https://bookdown.org/yihui/bookdown/new-session.html). 
+
+* In `_bookdown.yml`, **add `new_session: yes`**.
+
+    ```{r yml-book-docs, echo = FALSE}
+
+    ymlthis::yml_empty() %>%
+          yml_bookdown_opts(book_filename = "fake-book",
+                            output_dir = "docs",
+                            delete_merged_file = TRUE) %>%
+          yml_toplevel(language = list(list(ui = list(chapter_name = "Chapter ")))) %>%
+          yml_toplevel(new_session = TRUE) %>%
+          asis_yaml_output(fences = FALSE)
+
+    # Add note about how quotes don't matter?
+    ```
+
+
+
 
 ## Turn off Jekyll {#book-nojekyll}
 
