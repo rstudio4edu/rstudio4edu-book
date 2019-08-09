@@ -7,7 +7,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><a href="./">rstudio4edu</a></li>
+        <li class="toc-logo"><a href="./"><img src="images/logo/logo-rstudio4edu.png"></a></li>
       after: |
         <li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
     download: ["rmd"]
