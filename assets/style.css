@@ -354,6 +354,10 @@ a.anchor {
 
 /*____Code Chunks____*/
 
+.sourceCode {
+  margin-bottom: 0.85em; /* adds same amount of margin as a <p> would */
+}
+
 .sourceCode pre {
   margin: 0 !important; /* makes space above and below symmetrical*/
 }
