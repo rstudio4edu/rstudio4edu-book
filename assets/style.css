@@ -185,6 +185,22 @@ li.appendix span, li.part span { /* for TOC part names */
 }
 
 
+/*--- LOGO ---*/
+
+.toc-logo {
+  width: 200px !important;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.toc-logo img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.summary > li:first-child {
+  height: auto !important; 
+}
 
 /* --------------Two columns--------------- */
 
@@ -333,4 +349,11 @@ a.anchor {
   .hasAnchor:hover a.anchor {
     visibility: hidden;
   }
+}
+
+
+/*____Code Chunks____*/
+
+.sourceCode pre {
+  margin: 0 !important; /* makes space above and below symmetrical*/
 }
