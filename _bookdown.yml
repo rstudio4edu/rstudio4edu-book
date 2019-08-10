@@ -24,5 +24,8 @@ rmd_files: ["index.Rmd",
 "cookbook-rmd_fancy.Rmd",
 "cookbook-distill.Rmd",
 "cookbook-bookdown.Rmd",
+"cookbook-bookdown_care.Rmd",
+"cookbook-bookdown_dress.Rmd",
+"cookbook-bookdown_fancy.Rmd",
 "cookbook-blogdown.Rmd",
 "appendix.Rmd"]

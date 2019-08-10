@@ -1,0 +1,90 @@
+# Make it fancier
+
+Once you’ve built the basic structure for your book, if you’d like to customize it even further, we can do a little bit of HTML and CSS work to add-on some fancy features.  
+
+## Anatomy of a fancy book 
+Here's where we're starting: 
+
+[SCREENSHOT OF PLAIN BOOK]
+
+And here's where we're going:
+
+[SCREENSHOT OF FANCY BOOK, ANNOTATED]
+
+**Link back to CSS Crash Course** 
+
+## Add Google Fonts {-}
+
+1. Go to the [Google Fonts website](https://www.google.com/fonts) and select the font you want. 
+2. Click the 
+
+
+
+
+Customize your fonts 
+## Add hero image {-}
+
+1. Create an HTML file with these contents and save it in your project directory. 
+
+```{r, eval=FALSE}
+
+<link href="style.css" rel="stylesheet">
+
+<script src="hideOutput.js"></script>
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="images/books.jpg">
+</div>
+```
+
+\
+
+2. Open up `output.yml` and reference using the `before_body:` option
+
+```{r, eval=FALSE}
+bookdown::gitbook:
+  css: style.css
+  includes:
+    before_body: big-image.html
+```
+
+\
+
+3. Add CSS to your styles.css file to style it
+
+```{r, eval = FALSE}
+
+.hero-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 390px;
+  background-color: #3fb5bd;
+}
+
+.hero-image {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+}
+
+.page-inner {
+  padding-top: 440px !important;
+}
+
+```
+
+**`position: absolute`**: To make the image go all the way across the page (not including the table of contents), we have to make the container that the image sits in `position: absolute` and then spell out its position explicitly (with `top`, `left`, `right`, etc. all set to `0`.)  These positions are relative to the container that `.hero-image-container` itself is inside.
+
+**`.page-inner`**: All of our book content is by defautl inside a container labelled `.page-inner`. We don't want our book content to get stuck hiding behind the big image we just stuck to the top of our page. So, we need to move the book content down by *at least* the height of our image + about `50px`. 
+
+
+
+## Table of contents {-}
+### Hierarchy styling {-}
+### Background {-}
+## Add a logo {-}
+## Sidebar Divs {-}
+## Drop Caps {-}
+## Copy to Clipboard {-}

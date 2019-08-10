@@ -50,7 +50,7 @@ knitr::include_graphics("images/illos/Caring-book.jpg")
 <div class = side2>
 
 #### [Caring for your site](#book-care)
-You'll develop a workflow for editing your site, adding new content, and hiding pages that are works-in-progress.
+You'll develop a workflow for editing your book, adding new content, and hiding pages that are works-in-progress.
 
 </div>
 </div>
@@ -136,9 +136,9 @@ There are certainly other options for publishing (aka deploying) a bookdown webs
 **What you’ll learn:**
 
 * How to compile multiple R Markdown files into a Bookdown site
-* How to use bookdown features, e.g. crossreferencing, as you create your content
-* How to add basic customization through themes using built in options
 * How to publish your Bookdown for free via GitHub Pages
+* How to add basic customization using built in options
+* How to take the customization even further by using HTML, CSS, and a little bit of JavaScript
 
 
 ## Learning resources {-}
@@ -310,9 +310,9 @@ Having our HTML files live in `docs/` is necessary for using GitHub pages to mak
 
 While we have `_bookdown.yml` open, let's add an additional line that will have each `.Rmd` in our book be processed independently. This is preferable, but if you think you have a use-case where this wouldn't be what you want, read up more about the alternative [here](https://bookdown.org/yihui/bookdown/new-session.html). 
 
-* In `_bookdown.yml`, **add `new_session: yes`**.
+* **In `_bookdown.yml`, add** `new_session: yes`.
 
-    ```{r yml-book-docs, echo = FALSE}
+    ```{r yml-new-session, echo = FALSE}
 
     ymlthis::yml_empty() %>%
           yml_bookdown_opts(book_filename = "fake-book",
@@ -324,8 +324,6 @@ While we have `_bookdown.yml` open, let's add an additional line that will have 
 
     # Add note about how quotes don't matter?
     ```
-
-
 
 
 ## Turn off Jekyll {#book-nojekyll}
@@ -351,27 +349,20 @@ This step will render the HTML files we need and place them in a `docs/` folder.
 <div class="side-by-side">
 <div class= "side1">
 
-* **Option 1**: *From the R console*, you can run: 
+**Option 1**: *From the R console*, you can run: 
 
-    ```{r, eval = FALSE}
-    bookdown::serve_book()
-    ```
+```{r, eval = FALSE}
+bookdown::serve_book()
+```
 
 </div>
 <div class = "side2">
 
-* **Option 2**: *From the R console*, you can run: 
+**Option 2**: *In the RStudio toolbar menu*, click on *Addins* > *Preview Book*
 
-    ```{r, eval = FALSE}
-    bookdown::serve_book()
-    ```
-
-
-*In the RStudio toolbar menu*, click on *Addins* > *Preview Book*
-
-    ```{r echo = FALSE}
-    knitr::include_graphics("images/screenshots/bookdown-addins.png")
-    ```
+```{r echo = FALSE, fig.cap="The Addins menu in RStudio"}
+knitr::include_graphics("images/screenshots/bookdown-addins.png")
+```
 
 </div>
 </div>
@@ -383,8 +374,9 @@ Do not click on *Knit* to render your book! **[WHY?]** If you've already knit, t
 <!-- or docs/ folder?-->
 
 After running this, you should now see:
-* A `docs/` folder in your project directory that has HTML files, among a few other files
-* A local preview of your book, either automatically opened in a new window or in the *Viewer* tab in one of the RStudio panes.
+
+* A **`docs/` folder** in your project directory that has HTML files, among a few other files
+* A **local preview of your book**, either automatically opened in a new window or in the *Viewer* tab in one of the RStudio panes.
 
 :::tip
 If at this point you somehow ended up with a folder called `_book/` in your project directory, go ahead and delete it. You don't need it. This is just bookdown's default version of the `docs/` folder, and if you have it, it just means you must have built your book before we specified `output_dir: "docs"` in `_bookdown.yml`.
