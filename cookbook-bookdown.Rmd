@@ -2,372 +2,442 @@
 
 ```{r, include = FALSE}
 source("common.R")
+knitr::opts_chunk$set(fig.align="center")
+
 ```
 
 # Introduction {-#intro-bookdown}
 
-Overview- this is a section filled with recipes for making common types of educational content...
+<center> ![](images/illos/bookdown.jpg){width=40%} </center>
 
+This is a cookbook for educators who would like to use bookdown to organize and deliver educational content for their audience. Despite the name, using bookdown doesn't mean that what you make *has* to be a book--but a bookdown site does come with some built-in features (e.g. its hallmark heavy-duty table of contents) that make it well-suited for long-form content (or many R Markdown files that can be organized in a chronological way). This, and the lack of a navbar make a bookdown site feel somewhat less like a typical website and a bit more like a textbook, but how you use it is up to you. You can place an entire course-worth's of materials in a bookdown book, or you could pare down your TOC headers and create a site for a short workshop. This rstudio4edu resource is itself a bookdown! 
+
+**In short, bookdown's main features include:**
+
+* A very prominent table of contents
+* Cross-references
+* Numbered figures, equations, and tables
+* Distribution of your book as a PDF, an HTML website, etc.
+* A built-in search feature (that's a bit unintuitive to use)
+
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r echo = FALSE, fig.link = "#make-book"}
+knitr::include_graphics("images/illos/intro-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Make a book](#make-book)
+Here, we'll guide you through creating an out-of-the-box bookdown book. We make only the most minimal changes to content and style necessary to get you a shareable bookdown site.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, fig.link = "#book-care"}
+knitr::include_graphics("images/illos/Caring-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Caring for your site](#book-care)
+You'll develop a workflow for editing your book, adding new content, and hiding pages that are works-in-progress.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, out.width="52%", fig.link = "#book-dress"}
+knitr::include_graphics("images/illos/Dressup-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Dress it up](#book-dress)
+
+Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing, learning, or using CSS.
+
+</div>
+</div>
+
+\
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#book-fancy"}
+knitr::include_graphics("images/illos/Fancy-book.jpg")
+```
+
+</div>
+<div class = side2>
+
+#### [Make it fancier](#book-fancy)
+
+If you want to take your customization further, we show you how to make your book look like the crème de la crème with some CSS, HTML, and (a teensy bit of) JavaScript.
+
+</div>
+</div>
+
+## What are we making? {-}
+
+If you have experience making basic R Markdown sites, then you can think of a bookdown as an R Markdown site with additional YAML files (there are *three*, which take care of configuration and stitching the site together) and some more rigid rules about what can start each document. 
+
+
+[INSERT ANALOGY HERE FOR THE FILE TYPES]
+
+As we build our first book, we'll want to keep in mind these elements:
+
+* **Level 1 headers**, become new site pages/ book chapters
+* **Three YAMLS**, one of which is `index.Rmd`and works as it does for RMD sites
+* **.Rmd file order**, can be set manually in one of the YAMLs
+
+Additionally, just like we did for R Markdown sites, we'll demo how to publish your bookdown site for free using GitHub Pages, so we'll also need:
+
+* **A `docs/` folder** which will be the folder that we will use as the “boarding area” for your rendered site files to deploy on GitHub Pages.
+* To **turn on GitHub Pages for your repository**.
+
+There are certainly other options for publishing (aka deploying) a bookdown website. For an overview of other options, you may reference: https://rstudio.github.io/distill/publish_website.html.
+
+
+
+## Pros and cons of using bookdown sites {-}
+
+* Pros: Feels like working with a regular RMD site, once you get the hang of the YAMLS and the Level 1 headers. 
+
+* Cons: Three YAMLs. Can't use tabsets. Your directory will be likely be filled with many `.Rmd`s, and there's no good way to organize them into subdirectories.
+
+
+## Is this cookbook for you? {-}
+
+**Pre-requisites:**
+
+* You have a [GitHub account](https://github.com/)
+* You are comfortable with the basics of using R and RStudio
+* You understand how R projects work
+* You understand the difference between a regular R script and an R Markdown document
+* You have some familiarity working with R Markdown documents
+* It is helpful, but not necessary if you have some familiarity with making regular RMD sites
+
+**What you’ll learn:**
+
+* How to compile multiple R Markdown files into a Bookdown site
+* How to publish your Bookdown for free via GitHub Pages
+* How to add basic customization using built in options
+* How to take the customization even further by using HTML, CSS, and a little bit of JavaScript
+
+
+## Learning resources {-}
+
+* Bookdown examples from competition
+*
+* 
 
 # Make a book {#make-book}
 
-This cookbook is intended for educators who would like to make a "book" to organize their educational content for their audience. Just because we'll be using bookdown doesn't mean that what you intend to make *has* to be an actual book--but because bookdown has a built-in and scrolling table of contents, it's well-suited when you have a lot of content (and many R Markdown files) that you'll need to organize. Consider using bookdown for any long-form tutorial--you can even place an entire course-worth's of materials in a bookdown book. 
+<center>![](images/illos/intro-book.jpg){width=70%}</center>
 
-Plus, you can also easily:
+## tl;dr
 
-* Cross-reference
-* Number figures, equations, and tables
-* Distribute your book as a PDF, an HTML website, etc.
+This tl;dr is for readers who are already experienced with GitHub and want to see our “cheatsheet” version of the rest of this chapter. If you are looking for screenshots plus some hand-holding, we think you’ll benefit from reading the rest of this chapter.
 
-Here, we'll guide you through creating an out-of-the-box bookdown book with basic customization. Then we'll provide suggestions on how to use a book for a workshop or for a course and provide a demo book for each of these use-cases. You can follow along with our demo to make a book of your own from scratch, or you can download the repository containing our demo workshop or course book and modify it as much as you'd like. 
+**Here’s how you make an bookdown site from scratch, using a built-in site skeleton as a template:**
+
+1. Start with an empty RStudio project linked to a remote GitHub repository that you can push/pull to from your local copy in RStudio.
+
+1. In your project, create a simple shell for a bookdown website shell by running the following code in your R console:
+
+    ```{r book-skeleton, eval = FALSE}
+    bookdown:::bookdown_skeleton(getwd())
+    ```
+
+1. In your `_bookdown.yml` file, prep for publishing to GitHub Pages by changing the output directory of your book to a folder named `"docs"`.
+    
+    ```{r, echo= FALSE, eval = FALSE}
+    ymlthis::yml_empty() %>%
+      yml_bookdown_opts(book_filename = "fake-book",
+                        output_dir = "docs",
+                        delete_merged_file = TRUE) %>%
+      yml_toplevel(language = list(list(ui = list(chapter_name = "Chapter ")))) %>%
+      yml_toplevel(new_session = TRUE) %>%
+      asis_yaml_output(fences = FALSE)
+
+    # Add note about how quotes don't matter?
+
+    ```
+    
+1. Tell GitHub Pages to bypass using Jekyll to build your book by adding a single empty file named `.nojekyll` to your project root directory.
+
+    ```{r eval = FALSE}
+    file.create(".nojekyll")
+    ```
 
 
-## Is this tutorial for you? {-}
+1. Build your book using the RStudio "Build" pane or by going to *Addins* > *Preview Book*
 
-```{r child= "modules/is-this-tutorial-for-you.Rmd"}
+1. Push and commit to send your book online to GitHub- do you see your `.html` files in the `"docs"` folder?
+
+1. Turn on GitHub Pages by going to your repository online. Click on the repository’s settings and under GitHub Pages, change the Source to be the `master branch /docs` folder.
+
+1. Edit your book, build it, then push and commit to GitHub to publish your changes online.
+
+1. Rinse and repeat! Every push to your `master` branch triggers the online version of your site to update.
+
+
+
+## Getting set up
+
+```{r echo = FALSE, out.width = "20%"}
+knitr::include_graphics("images/illos/Gears.jpg")
 ```
 
-* How to compile multiple R Markdown files into a Bookdown book
-* How to add basic customization through themes using built in options
-* How to publish your Bookdown for free via GitHub Pages
-
-## Mental Framework: what are we going to make here? {-}
-
-If you have experience making basic R Markdown sites, then you can think of a Bookdown as an R Markdown site with some additional YAML files (there are THREE total) and some more rigid rules about what can start each document. 
-
-
-## Part 1: Getting set up {-}
+### Packages needed
 
 We'll use the following packages:
 
 ```{r, eval=FALSE}
 #install.packages("bookdown")
-#install.packages("usethis")
-
-library(usethis)
+library(bookdown)
 ```
 
-### Two getting-started workflows:
+### Make a project {#book-proj-first}
 
-```{r child = "modules/github-first-project.Rmd"}
+For your first bookdown site, we recommend starting by creating a GitHub repository online first, then making a project in RStudio. 
+
+<!--TODO: add link to other workflow that we recommend later-->
+
+```{r child = 'modules/github-first-project.Rmd'}
+
 ```
 
-```{r, eval=FALSE}
+
+### Make a book skeleton {#book-site-skeleton}
+
+We'll start by creating the shell for a minimal bookdown website, and we'll publish this to GitHub Pages straight away. In your R console, type and run the following code:
+
+```{r, eval = FALSE}
 bookdown:::bookdown_skeleton(getwd())
 ```
 
-:::tip 
-Note that we use ::: here (with three colons!) to generate important infrastructure files we need.
+:::gotcha
+Note that we use ::: here (with three colons!) to generate these files.
 :::
 
-<br>
+You will end up with the files in your working directory shown in Figure \@ref(fig:bookdown-dir).
 
-Though we recommend a “GitHub first” workflow, it is possible to start with RStudio project wizard to create a new R book project and then move to GitHub:
+Close RStudio and re-open your book by clicking on the project file (`.Rproj`). When you re-open the project, you may notice the `.Rproj` file shows up in your Git pane, which means that the file has changed. What happened? RStudio has detected that you have built a book, so a single line has been added to your `.Rproj` file:
 
-1. Click *File* > *New Project* > *New Directory*
-2. Scroll down and select: *Book Project using bookdown*
-3. Then, optionally, to connect to GitHub:
-
-```{r, eval=FALSE}
-usethis::use_git()
-usethis::use_github() # you have to have a PAT setup
+```yaml
+BuildType: Website
 ```
 
-### Rendering a skeletal book
+## A mini-orientation {#book-site-orientation}
 
-Regardless of which workflow you used, you should now have a directory structure with contents like these:
-![](INSERT SCREEN SHOT)
+Our skeleton created several out-of-the-box content files for our site, three of which contain YAML content:  
 
-These files here are enough to create a skeleton of a book. Let's render it!
+```{r bookdown-dir, echo = FALSE, out.width="500px", fig.cap="Book skeleton"}
+knitr::include_graphics("images/screenshots/bookdown-skeleton-files.jpg")
+```
+
+1. `index.Rmd`. Any content in this file will be your bookdown site’s homepage. It will also be the initial chapter in your book, usually a preface or introductory chapter. This is also the only `.Rmd` file in the book that will begin with YAML (aka configuration) info. This file *must* be named `“index.Rmd”`.
+
+1. `.Rmd` files starting with `"01-"`, `"02-"`, etc. These make up the other book content. By default, our book skeleton prefaces their filenames with numbers, which is what bookdown will use to order our content after `index.Rmd.` We'll eventually change these filenames (and the way we order files), but for now let's leave them as is. 
+
+1. The other 2 YAMLs: `_bookdown.yml` and `_output.yml` contain other configuration info that we'll detail later. Highlights include that `_bookdown.yml` will be the place where we specify custom ordering of our bookdown `.Rmd`s, and `_output.yml` is where we'll link to supporting files like custom HTML and CSS. 
+
+When we build our book, all of the `.Rmd` files will eventually be rendered as HTML files (i.e., website-ready pages). 
+
+Nothing to do here, but good to know these things! We'll circle back to editing these files later.
+
+
+## Push to GitHub {#book-push}
+
+Let's get these website files pushed up to our remote repository on GitHub. Do the following from RStudio:
+
+1. **Click *Git* ** in the same RStudio pane that also contains the *Environment* tab.
+
+2. **Check the box(es)** under the "Staged" column and click *Commit*.
+
+3. **Add a commit message** like "Creates book skeleton" and then click *Push*.
+
+```{r echo = FALSE, fig.out="300px" }
+knitr::include_graphics("images/screenshots/bookdown-push.png")
+```
+
+## Change output directory {#book-output}
+
+Now let's make a small change. In order to publish to GitHub pages, we'll want to send all of our rendered site files (i.e., the HTML files we'll soon have) to a folder named `docs/`. We do this by editing one of bookdown's YAML files.
+
+* **Open `_bookdown.yml` and add `output_dir: docs`** on its own line:
+
+    ```{r yml-book-docs, echo = FALSE}
+
+    ymlthis::yml_empty() %>%
+          yml_bookdown_opts(book_filename = "fake-book",
+                            output_dir = "docs",
+                            delete_merged_file = TRUE) %>%
+          yml_toplevel(language = list(list(ui = list(chapter_name = "Chapter ")))) %>%
+          asis_yaml_output(fences = FALSE)
+
+    # Add note about how quotes don't matter?
+    ```
+
+
+:::gotcha
+You might think that changing for the output directory to the `/docs` folder would be something that would be handled by the `_output.yml`, given its name, but confusingly, this is added to the `_bookdown.yml` instead.
+:::
+
+This step is a one-time step. It says: 
+    
+> "Please take all of my `.html` files that will get made when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
+    
+Having our HTML files live in `docs/` is necessary for using GitHub pages to make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+
+
+While we have `_bookdown.yml` open, let's add an additional line that will have each `.Rmd` in our book be processed independently. This is preferable, but if you think you have a use-case where this wouldn't be what you want, read up more about the alternative [here](https://bookdown.org/yihui/bookdown/new-session.html). 
+
+* **In `_bookdown.yml`, add** `new_session: yes`.
+
+    ```{r yml-new-session, echo = FALSE}
+
+    ymlthis::yml_empty() %>%
+          yml_bookdown_opts(book_filename = "fake-book",
+                            output_dir = "docs",
+                            delete_merged_file = TRUE) %>%
+          yml_toplevel(language = list(list(ui = list(chapter_name = "Chapter ")))) %>%
+          yml_toplevel(new_session = TRUE) %>%
+          asis_yaml_output(fences = FALSE)
+
+    # Add note about how quotes don't matter?
+    ```
+
+
+## Turn off Jekyll {#book-nojekyll}
+
+This bit is only necessary if you plan to use GitHub Pages for publishing your website. We need to tell GitHub Pages to bypass using Jekyll to build your site. Jekyll works behind the scenes in GitHub Pages as a static site generator, but is not needed for R Markdown-related sites. Turning it off ensures that later down the line we won't run into problems with including formulas, equations, and folders that start with an `_` underscore, should we decide to do that. We complete this step by adding a single empty file named `.nojekyll` to your project root directory by running the following in the console:
+
+```{r eval = FALSE}
+file.create(".nojekyll")
+```
+    
+This is a hidden file, so don't worry if you don't see it in your *Files* pane after it's been created.
+
+## Build your book {#build-book}
+
+```{r echo = FALSE, fig.link = "#build-book"}
+knitr::include_graphics("images/pkg/Build.jpg")
+```
+
+The files we have so far are enough to build our skeletal book. We "build", or render, our book each time we want to preview what our book likes like locally, and this is something you'll likely do many times over the course of making your book.
+
+This step will render the HTML files we need and place them in a `docs/` folder. You can render your book a few different ways from either the RStudio IDE or the R console. Choose one of these for now, but we discuss other options later in @\ref(render-book).
+
+<div class="side-by-side">
+<div class= "side1">
+
+**Option 1**: *From the R console*, you can run: 
+
+```{r, eval = FALSE}
+bookdown::serve_book()
+```
+
+</div>
+<div class = "side2">
+
+**Option 2**: *In the RStudio toolbar menu*, click on *Addins* > *Preview Book*
+
+```{r echo = FALSE, fig.cap="The Addins menu in RStudio"}
+knitr::include_graphics("images/screenshots/bookdown-addins.png")
+```
+
+</div>
+</div>
 
 :::rstudio-tip
 Do not click on *Knit* to render your book! **[WHY?]** If you've already knit, then just clear out the `_book` folder. 
 :::
 
-* In the RStudio toolbar menu, click on *Addins* > *Preview Book*
+<!-- or docs/ folder?-->
 
-![INSERT SCREEN SHOT of addins]()
+After running this, you should now see:
 
-But you can also render it these other ways instead:
-
-* 1)  The line below does the exact same thing as *Preview Book*:
-```{r, eval=FALSE}
-bookdown::render_book('index.Rmd')
-```
-
-* 2) Or you can use:
-```{r, eval=FALSE}
-bookdown::serve_book()
-```
-
-
-
-### Three kinds of YAMLs
-
-In RStudio navigate to... 
-
-#### index.Rmd YAML
-`index.Rmd` is going to be Chapter 1. 
-
-By default, this YAML looks like this:
-
-```
---- 
-title: "A Minimal Book Example"
-author: "Yihui Xie"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
----
-
-```
-
-#### _output.yml
-
-By default, this YAML looks like this:
-
-```
-bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">A Minimal Book Example</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
-bookdown::epub_book: default
-```
-
-#### _bookdown.yml
-
-Here's what this YAML will look like by default.
-
-```
-book_filename: "basic-course-book"
-delete_merged_file: true
-language:
-  ui:
-    chapter_name: "Chapter "
-```
-
-
-
-
-
-## Part 2: Create your content {-}
-
-
-### Structure
-
-#### Files to change
-#### What not to touch
-
-#### Figures and Tables
-#### Cross References
-#### Citations
-#### References
-
-## Part 3: Dress it up {-}
-
-Optional ways to make your bookdown site look `r emo::ji ("sparkles")` faaaabulous `r emo::ji ("sparkles")`.
-
-### Add a favicon
-
-You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon!
-
-**How to:**
-
-1. Save the image you'd like to use (for best results it should be square) in your project directory
-2. Open your bookdown `index.Rmd` file
-3. Add `favicon: <"insert-path-to-favicon.ico">` in the YAML, like so:
-
-```
---- 
-title: "rstudio4edu"
-subtitle: "A Handbook for Teaching and Learning with RStudio"
-author: 
-- Desirée De Leon^[RStudio, https://desiree.rbind.io/]
-- Alison Hill^[RStudio, https://alison.rbind.io/]
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-cover-image: images/books.jpg
-description: "A work-in-progress"
-github-repo: rstudio4edu/rstudio4edu-book
-favicon: "images/favicon.png"
-always_allow_html: yes
----
-```
+* A **`docs/` folder** in your project directory that has HTML files, among a few other files
+* A **local preview of your book**, either automatically opened in a new window or in the *Viewer* tab in one of the RStudio panes.
 
 :::tip
-
-**Note**: In the example above, we can use a PNG image file, but ICO files (with the `.ico` extension) are actually preferred because ________. You can also use a GIF. 
+If at this point you somehow ended up with a folder called `_book/` in your project directory, go ahead and delete it. You don't need it. This is just bookdown's default version of the `docs/` folder, and if you have it, it just means you must have built your book before we specified `output_dir: "docs"` in `_bookdown.yml`.
 :::
 
-Don't have an image? Make one from text or an emoji:
+<!--todo: we need to tell them how to remove that dir if pushed-->
 
-**How to:**
 
-1. Go to [free favicon generator](https://favicon.io/) and create a favicon
-2. Download and move the `.ico` file into your project directory
-3. Open your bookdown `index.Rmd` file
-4. Add `favicon: <"favicon.ico">` in the YAML.
+## Push to GitHub (again) {#book-push2}
 
-:::tip
+Let's get these *new* website files pushed up to our remote repository on GitHub. 
 
-A favicon can be added to both Distill sites and Bookdown sites with the addition directly into the YAML. But in bookdown, the favicon file must be put in "quotes" (it's not quoted in Distill)!
+* **You did render everything, right?** If you want your site to have the most recent updates you've made, then every single `.Rmd` file with a change must be rendered *right before* pushing to GitHub. We just did this in the last step, but just in case you felt inspired to make edits after seeing your book's local preview, then make sure each file with edits is rendered again. These can be done in one fell swoop, using either *Preview Book* or `bookdown::serve_book()`. 
 
+:::gotcha
+Watch out! Each time you build your book, the `docs/` folder will be overwritten with updated HTML versions of your `.Rmd`s. This means you shou NEVER EDIT FILES IN THE `docs/` FOLDER! Nothing catastrophic will happen if you do, but you will overwrite and lose all your changes the next time you build your book.
 :::
 
+* Go ahead and **stage** all your changed files, **commit**, and **push** to GitHub.
 
-### Highlight options
-Possible styles are `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, and `haddock`.
-### Chapters or...? {-}
-### Numbered or Not {-}
+Everything should now be in your GitHub repo, but it's not yet a working bookdown site. In the next step we make the bookdown site live!
 
+## Make a living, breathing site! {#book-living}
 
+It's now time to tell GitHub where to find our website-ready files:
 
-## Part 4: Put your book out there! {-}
-
-### Online
-### As a PDF
-### As....
-
-
-## Workflow for maintenance {-}
-
-Once you have the website in place, it’s likely that you will want to update it periodically or add new pages. Here’s what that workflow looks like for us:  
-
-1. Open my existing site RStudio project
-2. Go to *Addins* > *Preview Book* to render the book
-3. 
-4. 
-5. 
-
-## Gotchas to watch out for
-
-(Or call this section, Notes for using your book once it's made)
-
-- We've already covered not knitting when rendering your book.
-- All chapter `.Rmd` files MUST begin with # Level 1 Header no matter what. Any content before that will not appear.
-- Making sure your book contents are put together in the right order: For this to happen automatically, you would need to create .Rmd file names that start with 01, 02, etc. This seems fine and dandy, but think of how annoying it would be if you decided to switch around the order of all your chapters--you would have to rename multiple files (ugh!). So, it is recommended to instead go to the `_bookdown.yml` and set the chapter order there. This is kind of like the bookdown builder's instruction manual for chapter order. Swap around your chapters as much as you'd like in this single file and be done.
-- In `_bookdown.yml`, when you fill out `chapter_name`: What follows should include a space after it, within the quotes!
-- Explain the never-ending loop of book-rendering [Would be good to get some more context into what sorts of things trigger this behavior.] Common problem! Exit out of this by going to *Session* > *Terminate R...*.
-- re-explain search here https://github.com/rstudio/bookdown/issues/216
-
-## Bookdown resources
-[https://bookdown.org/yihui/bookdown/](https://bookdown.org/yihui/bookdown/)
-
-
-# Make a book for a workshop
-
-# Make a book for a course
-
-# Make it fancier
-
-Once you’ve built the basic structure for your book, if you’d like to customize it even further, we can do a little bit of HTML and CSS work to add-on some fancy features.  
-
-## Anatomy of a fancy book 
-Here's where we're starting: 
-
-[SCREENSHOT OF PLAIN BOOK]
-
-And here's where we're going:
-
-[SCREENSHOT OF FANCY BOOK, ANNOTATED]
-
-**Link back to CSS Crash Course** 
-
-## Add Google Fonts {-}
-
-1. Go to the [Google Fonts website](https://www.google.com/fonts) and select the font you want. 
-2. Click the 
-
-
-
-
-Customize your fonts 
-## Add hero image {-}
-
-1. Create an HTML file with these contents and save it in your project directory. 
-
-```{r, eval=FALSE}
-
-<link href="style.css" rel="stylesheet">
-
-<script src="hideOutput.js"></script>
-
-<div class="hero-image-container"> 
-  <img class= "hero-image" src="images/books.jpg">
-</div>
-```
-
-\
-
-2. Open up `output.yml` and reference using the `before_body:` option
-
-```{r, eval=FALSE}
-bookdown::gitbook:
-  css: style.css
-  includes:
-    before_body: big-image.html
-```
-
-\
-
-3. Add CSS to your styles.css file to style it
-
-```{r, eval = FALSE}
-
-.hero-image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 390px;
-  background-color: #3fb5bd;
-}
-
-.hero-image {
-  width: 100%;
-  height: 390px;
-  object-fit: cover;
-}
-
-.page-inner {
-  padding-top: 440px !important;
-}
+```{r, child= "modules/github-pages.Rmd"}
 
 ```
 
-**`position: absolute`**: To make the image go all the way across the page (not including the table of contents), we have to make the container that the image sits in `position: absolute` and then spell out its position explicitly (with `top`, `left`, `right`, etc. all set to `0`.)  These positions are relative to the container that `.hero-image-container` itself is inside.
-
-**`.page-inner`**: All of our book content is by defautl inside a container labelled `.page-inner`. We don't want our book content to get stuck hiding behind the big image we just stuck to the top of our page. So, we need to move the book content down by *at least* the height of our image + about `50px`. 
+Now that the bare bones of the site are up, you can go back and add more `.Rmd` content to your book anytime. Your changes will go live as soon as you build your book, followed by a push to GitHub.
 
 
+## Uplevel your workflow {#book-uplevel}
 
-## Table of contents {-}
-### Hierarchy styling {-}
-### Background {-}
-## Add a logo {-}
-## Sidebar Divs {-}
-## Drop Caps {-}
-## Copy to Clipboard {-}
+We followed a "GitHub first" workflow above, but if you'll be using GitHub regularly, we recommend evolving this workflow. First, install the `usethis` package:
 
+```{r eval = FALSE}
+install.packages("usethis")
+```
+
+Then load it to use it:
+
+```{r message = FALSE, warning = FALSE}
+library(usethis)
+```
+
+Now, follow the instructions from [Happy Git with R setting up a GitHub personal access token or PAT](https://happygitwithr.com/github-pat.html).
+
+Once you have a GitHub PAT set up in your `.Renviron` file, you can stay in RStudio and use the RStudio project wizard to create a new bookdown site:
+
+1. **Click** *File* > *New Project* > *New Directory*
+1. **Scroll down and select:** *Book Project using bookdown*
+1. Then use your R console to **run** this code: 
+
+    ```{r, eval=FALSE}
+    use_git()
+    use_github() # you have to have a PAT setup
+    ```
+    
+1. Then follow all of our instructions above starting at [changing the site output directory](#book-site-output).
 
 
 

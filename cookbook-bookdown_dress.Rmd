@@ -1,0 +1,62 @@
+# Dress it up!
+
+Optional ways to make your bookdown site look `r emo::ji ("sparkles")` faaaabulous `r emo::ji ("sparkles")`.
+
+- In `_bookdown.yml`, when you fill out `chapter_name`: What follows should include a space after it, within the quotes!
+
+## Add a favicon
+
+You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon!
+
+**How to:**
+
+1. Save the image you'd like to use (for best results it should be square) in your project directory
+2. Open your bookdown `index.Rmd` file
+3. Add `favicon: <"insert-path-to-favicon.ico">` in the YAML, like so:
+
+```
+--- 
+title: "rstudio4edu"
+subtitle: "A Handbook for Teaching and Learning with RStudio"
+author: 
+- Desirée De Leon^[RStudio, https://desiree.rbind.io/]
+- Alison Hill^[RStudio, https://alison.rbind.io/]
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+cover-image: images/books.jpg
+description: "A work-in-progress"
+github-repo: rstudio4edu/rstudio4edu-book
+favicon: "images/favicon.png"
+always_allow_html: yes
+---
+```
+
+:::tip
+
+**Note**: In the example above, we can use a PNG image file, but ICO files (with the `.ico` extension) are actually preferred because ________. You can also use a GIF. 
+:::
+
+Don't have an image? Make one from text or an emoji:
+
+**How to:**
+
+1. Go to [free favicon generator](https://favicon.io/) and create a favicon
+2. Download and move the `.ico` file into your project directory
+3. Open your bookdown `index.Rmd` file
+4. Add `favicon: <"favicon.ico">` in the YAML.
+
+:::tip
+
+A favicon can be added to both Distill sites and Bookdown sites with the addition directly into the YAML. But in bookdown, the favicon file must be put in "quotes" (it's not quoted in Distill)!
+
+:::
+
+
+### Highlight options
+Possible styles are `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, and `haddock`.
+### Chapters or...? {-}
+### Numbered or Not {-}
