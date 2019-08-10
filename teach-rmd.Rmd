@@ -93,9 +93,6 @@ examples:
 
 + https://bbc.github.io/rcookbook/
 
-why, how
-
-also include how to leave invisible notes to yourself `<!--- your comment --->`
 
 ## R Markdown Workflows
 
@@ -228,22 +225,6 @@ if (rerender_demo) {
 
 ## Sharing 
 
-### Share data
-
-For html output formats only:
-
-1. `xfun::embed_file()` [link](https://yihui.name/en/2018/07/embed-file/)
-
-1. DT buttons [link](https://rstudio.github.io/DT/003-tabletools-buttons.html)
-
-```{r eval = FALSE}
-library(DT)
-datatable(payroll, extensions = 'Buttons', options = list(
-    dom = 'Bfrtip',
-    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-  )
-)
-```
 
 
 ### Share source code
