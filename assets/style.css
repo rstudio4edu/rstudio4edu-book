@@ -227,7 +227,7 @@ li.appendix span, li.part span { /* for TOC part names */
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip, div.gotcha {
+div.rstudio-tip, div.tip, div.gotcha, div.design, div.hat{
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -246,11 +246,19 @@ div.rstudio-tip {
 }
 
 div.tip {
-  background-image: url("../images/lightbulb.png");
+  background-image: url("../images/illos/lightbulb.png");
 }
 
 div.gotcha {
-  background-image: url("../images/gotcha.jpg");
+  background-image: url("../images/illos/gotcha_2.png");
+}
+
+div.design {
+  background-image: url("../images/illos/design.png");
+}
+
+div.hat {
+  background-image: url("../images/illos/hat.png");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
