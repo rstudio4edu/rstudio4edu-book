@@ -144,3 +144,12 @@ RStudio exposes `load_all()` in the *Build* menu, in the *Build* pane via *More 
 :::gotcha
 Watch out for "gotchas" along the way. We try our best to point out the tricky bits of a workflow.
 :::
+
+:::design
+In tip boxes like this one, we'll point out design tips, to help you keep your page looking looking `r emo::ji("sparkles")`fresh `r emo::ji("sparkles")`.
+:::
+
+:::hat
+These tips highlight advice and tricks from community members.
+:::
+
