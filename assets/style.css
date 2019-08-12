@@ -242,15 +242,15 @@ div.rstudio-tip, div.tip, div.gotcha {
 }
 
 div.rstudio-tip {
-  background-image: url("../images/rstudio.png");
+  background-image: url("../images/divs/rstudio.png");
 }
 
 div.tip {
-  background-image: url("../images/lightbulb.png");
+  background-image: url("../images/divs/lightbulb.png");
 }
 
 div.gotcha {
-  background-image: url("../images/gotcha.jpg");
+  background-image: url("../images/divs/gotcha.jpg");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
