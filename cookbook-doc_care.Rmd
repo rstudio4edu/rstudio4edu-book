@@ -22,6 +22,38 @@ Here's what the add-new-pages workflow looks like for me:
 7. **Rinse and repeat** if needed!
 8. **Commit and push** all changes to GitHub.
 
+## Live editing
+
+<div class=side-by-side>
+<div class=side1>
+Whenever you are editing a single R Markdown file, and outputting to HTML format, you can turn on "live reload" while you work. This means that, after turning it on, every time you *Save* your updated output re-renders in your RStudio viewer pane, and also in a browser window if you open it up.
+</div>
+
+<div class=side2>
+```{r echo = FALSE, fig.cap="Demo of R Markdown live reload from [Yihui Xie](https://yihui.name/en/2019/02/ultimate-inf-mr/)", fig.link="https://yihui.name/en/2019/02/ultimate-inf-mr/"}
+knitr::include_graphics("https://user-images.githubusercontent.com/163582/53144527-35f7a500-3562-11e9-862e-892d3fd7036d.gif")
+```
+</div>
+</div>
+
+To turn on "live reload", you'll first need to install the [`xaringan` package](https://github.com/yihui/xaringan)^[`xaringan` is an R package for making presentation slides with R Markdown]:
+
+```{r eval = FALSE}
+install.packages("xaringan")
+```
+
+Then close RStudio.
+
+When you reopen RStudio, in your "Addins" dropdown, scroll down to the bottom where the `xaringan` addins are. You should see ["Infinite Moon Reader"](https://cran.r-project.org/web/packages/xaringan/xaringan.pdf). 
+
+The same thing can be accomplished from your R console by running this code:
+
+```{r eval = FALSE}
+xaringan::inf_mr()
+```
+
+
+
 
 ## Add text with Markdown
 
@@ -176,6 +208,13 @@ knitr::include_graphics("images/horst_here.png")
 </div>
 </div>
 
+
+:::hat
+> "The chance of the `setwd()` command having the desired effect – making the file paths work – for anyone besides its author is 0%."
+>
+> &mdash; [Jenny Bryan](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)
+:::
+
 ## Knit to HTML {#doc-to-html}
 
 ```{r echo = FALSE, out.width="60%"}
@@ -199,7 +238,7 @@ yml_empty() %>%
 
 ## Add a setup code chunk {#knitr-setup}
 
-Get into the habit of always having your first `knitr` code chunk be a *setup* chunk. A good one looks like this:
+Get into the habit of always having your first `knitr` code chunk be a *setup* chunk using `knitr::opts_chunk$set()`. A good one looks like this:
 
 ````
 ```{r setup, include = FALSE}`r ''`
@@ -211,7 +250,9 @@ knitr::opts_chunk$set(
 ```
 ````
 
-A few notes on what these do:
+Inside the parentheses, list the chunk option on the left `=` a new default value on the right. Each chunk option is separated by a comma. The chunk option for the setup chunk itself is typically `include=FALSE` so that no one sees it but you.
+
+A few notes on what the above chunk options do:
 
 + `comment = "#>"` sets the character on the far left of all printed output such that a reader could copy/paste a block of code into their console and run it (they won't be bombarded by errors produced if they accidentally include your printed output in their code)
 
@@ -251,45 +292,47 @@ Our `setup` code chunk above affects *all* code chunks. It is called a global ch
 
 ## Name your code chunks
 
-Remember how we [advised you set your `fig.path`?](#knitr-setup) One of the best things you can do for yourself is to *name your code chunks*. Here is an example:
+Remember how we [advised you set your `fig.path`?](#knitr-setup) One of the best things you can do for yourself is to *name your code chunks*. 
 
-<div class="side-by-side">
-<div class="side1">
+:::hat
+h/t to [Maëlle Salmon](https://masalmon.eu/)
 
-<h3>Sad code with no name</h3>
+Maëlle wrote a [fun blog post](https://masalmon.eu/2017/08/08/chunkpets/) that (hopefully) will convince you that your chunks are pets rather than livestock (so they deserve a name!).
+:::
 
-````
-```{r}`r ''`
-library(tidyverse)
-starwars %>% 
-  count(homeworld, sort = TRUE)
-```
-````
+In short, here are a few very good reasons to name your pets:
 
-</div>
-<div class ="side2">
-
-<h3>Code with a name!</h3>
-
-````
-```{r swplot}`r ''`
-library(tidyverse)
-starwars %>% 
-  count(homeworld, sort = TRUE)
-```
-````
-
-</div>
-</div>
-
-Why name your code chunks? A few reasons:
-
-1. easier to find things (use the chunk outline thingie in IDE)
-1. easier to debug
+1. Easier to find them (use the chunk outline thingie in IDE)
+1. Easier to debug when you `r emo::ji("yarn")` *Knit*
 1. your figures get named!!
 
+
 :::tip
-Here's a [fun blog post](https://masalmon.eu/2017/08/08/chunkpets/) that (hopefully) will convince you that your chunks are pets rather than livestock (so they deserve a name!).
+We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in chunk labels instead of spaces or underscores (or really, any punctuation)...
+
+<div class= side-by-side>
+
+<div class= side1>
+`r emo::ji("heavy_check_mark")` Good
+````
+```{r my-dog-skip}`r ''`
+
+```
+````
+</div>
+
+<div class= side2>
+`r emo::ji("x")` Bad
+
+````
+```{r my_dog_skip}`r ''`
+
+```
+````
+</div>
+</div>
+
+
 :::
 
 

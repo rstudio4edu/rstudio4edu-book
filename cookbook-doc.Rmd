@@ -210,6 +210,8 @@ knitr::include_graphics("images/illos/Gears.jpg")
 
 The only package you need for this cookbook is `rmarkdown` but if you are using RStudio, you are all set!
 
+
+
 :::rstudio-tip
 The `rmarkdown` package does not need to be explicitly installed or loaded here, as RStudio automatically does both when needed. 
 :::
@@ -250,8 +252,8 @@ For your first R Markdown document, we recommend starting by created a GitHub re
 </div>
 </div>
 
-:::rstudio-tip
-h/t to [Matt Crump](https://twitter.com/MattCrump_/status/1159540934733967363?s=20): 
+:::hat
+h/t to [Matt Crump](https://twitter.com/MattCrump_/status/1159540934733967363?s=20):
 \
 "If you're not in a project, get in one, you'll be happy you did later."
 :::

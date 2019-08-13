@@ -29,6 +29,21 @@ yml_empty() %>%
   asis_yaml_output()
 ```
 
+## Customize code highlighter
+
+## Add images
+
+### Markdown images
+![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
+
+### Use `knitr::include_graphics()`
+
+include_graphics gives you figure captions
+
+can also play with out.width
+
+labeling chunks
+
 ## Add white space
 
 Let your code chunks breathe! Bonus: it improves the readability of your narrative. This is not accomplished with a built-in YAML option, and unfortunately, accomplishing this (without using CSS) is a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
