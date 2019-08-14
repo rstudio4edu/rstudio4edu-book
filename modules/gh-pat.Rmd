@@ -1,0 +1,28 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+First, install the [`usethis` package](https://usethis.r-lib.org/):
+
+```{r eval = FALSE}
+install.packages("usethis")
+```
+
+Then load it to use it:
+
+```{r message = FALSE, warning = FALSE}
+library(usethis)
+```
+
+\
+
+Now, follow the instructions from [Happy Git with R for setting up a GitHub personal access token or PAT](https://happygitwithr.com/github-pat.html).
+
+:::gotcha
+Be sure to restart your R session after setting up the PAT, and pay close attention that your `.Renviron` file has at least one empty line at the bottom.
+:::
+
+\
+
+Once you have a GitHub PAT set up in your `.Renviron` file, you can stay in the comfort of your project in the RStudio IDE to do all the GitHub things we were doing before online in your browser. 
