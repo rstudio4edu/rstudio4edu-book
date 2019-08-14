@@ -124,6 +124,8 @@ on purpose
 
 * Pedagogy- we think this is very well covered in other resources. In particular, we recommend [*Teaching Tech Together*](http://teachtogether.tech/) by [Greg Wilson](http://third-bit.com/), as well as his "What to Read Instead" [book recommendations](http://teachtogether.tech/#s:intro-instead). [Software Carpentry](https://carpentries.github.io/instructor-training/) also has a very popular and effective two-day instructor training workshop that we highly recommend.
 
+https://openlearning.mit.edu/mit-faculty/research-based-learning-findings
+
 
 ## Who are we? {-}
 
