@@ -109,7 +109,7 @@ To change any of the fonts on your site to be a Google Font,
 
 Once you've selected the Google Fonts you want to use, open up your `style.css` file and paste in the line of code from Google at the top of it. 
 
-```
+```css
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap');
 
 ```

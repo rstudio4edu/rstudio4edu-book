@@ -242,23 +242,23 @@ div.rstudio-tip, div.tip, div.gotcha, div.design, div.hat{
 }
 
 div.rstudio-tip {
-  background-image: url("../images/rstudio.png");
+  background-image: url("../images/divs/rstudio.png");
 }
 
 div.tip {
-  background-image: url("../images/illos/lightbulb.png");
+  background-image: url("../images/divs/lightbulb.png");
 }
 
 div.gotcha {
-  background-image: url("../images/illos/gotcha_2.png");
+  background-image: url("../images/divs/gotcha_2.png");
 }
 
 div.design {
-  background-image: url("../images/illos/design.png");
+  background-image: url("../images/divs/design.png");
 }
 
 div.hat {
-  background-image: url("../images/illos/hat.png");
+  background-image: url("../images/divs/hat.png");
 }
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed

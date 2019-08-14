@@ -26,3 +26,8 @@ We recommend following the tips on [Happy Git with R](https://happygitwithr.com/
     + Be intentional about where you tell RStudio to create this new Project.  
 <br>
 1. **Click Create Project.**
+
+:::tip
+Follow these instructions from [Happy Git with R](https://happygitwithr.com/) to start with a new repo on [GitLab](https://happygitwithr.com/new-github-first.html#gitlab) or [Bitbucket](https://happygitwithr.com/new-github-first.html#bitbucket), instead of GitHub.
+:::
+
