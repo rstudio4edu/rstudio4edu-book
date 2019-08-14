@@ -121,6 +121,23 @@ The built in search feature in your book can be useful for both you and your lea
 * As you enter your search term into the box, the TOC is filtered to show only the sections were your search term appears.
 * Don't move that cursor-- keeping it hovered over the box, you can use your arrow `UP` and `DOWN` keys to navigate from the term's first occurence to the next through the book. 
 
+## Hiding Chapters
 
+```{r, out.width = "40%", echo = FALSE, fig.align = "center"}
+knitr::include_graphics("images/illos/bookdown-hide.jpg")
+```
 
+Books can take a while to write-- and that's okay. Don't be afraid to put your book on GitHub pages or another platform before you think it's completely finished. Sharing your bookdown site publicly, even as the content and chapters evolve, can be an important part of the making-process (and is also really great for soliciting community feedback). 
 
+It's not possible to keep your files completely concealed once you've pushed them to a public repo on GitHub, but there are some ways you can make works-in-progress difficult enough to discover that it's unlikely anyone will stumble across them. If you do want to keep all or some of your book under wraps, then you have a couple of options:
+
+1. **Easy:** Upload your source to GitHub, but don't share the GitHub pages link in the GitHub repo description. Savvy GitHubbers can still guess your URL if you have turned on GitHub pages, or they'd be able to clone the repo and build it locally, but it would take some grit!). 
+
+1. **Medium:** Hide individual chapters by not adding their `.Rmd` file to the `_bookdown.yml`. OR, if you've been following our configuration settings and have used `new_session: yes`, then placing your `.Rmd` in a sub-folder within your project will also keep it hidden.
+
+1. **Advanced**: A more advanced workflow would involve creating a GitHub branch for works in progress and waiting to merge those into the master branch until they're ready for showtime.
+
+<!--TO DO: Add table the summarizes what we learned in this section --->
+
+## Staying organized {#book-organized}
+You may find that as your book content grows, your project directory (and possibly your mind) will start swimming in `.Rmd`s and other files. Unfortunately, there's no good way to keep your `.Rmd`s organized with subdirectories if you're following our suggestion to use `new_session: yes`. But, you can do a little bit of clean up by creating folder for your images (`images/`) and another one like `assets/` to place HTML and CSS files. But if the Marie Kondo within you is *still* not satisfied, then you might consider creating a Blogdown site. 
