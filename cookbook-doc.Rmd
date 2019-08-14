@@ -399,7 +399,7 @@ Let's get this document pushed up to our remote repository on GitHub. Do the fol
 ```{r ref.label='knit-to-html', echo = FALSE, out.width="60%"}
 ```
 
-
+\
 
 <div class='side-by-side'>
 <div class='side1'>
@@ -426,10 +426,12 @@ knitr::include_graphics("images/screenshots/doc-knit.png")
 </div>
 </div>
 
-
-:::tip
-If you'll only have this one document as the main page, consider renaming it `index.Rmd`- then your url will be shorter and easier to remember (or at least, as easy as your repo name is to remember!).
+:::rstudio
+In your RStudio viewer pane, find the *"Show in New Window"* button and click on it to open your previewed document in a real browser window. The RStudio viewer can sometimes be misleading, as well as being TEENY.
 :::
+
+
+
 
 ## Push to GitHub (again) {#doc-push2}
 
@@ -447,6 +449,10 @@ The last step is to go online to the GitHub website and tell it where to find ou
 ```{r, child= "modules/github-pages.Rmd"}
 
 ```
+
+:::tip
+If you'll only have this one document as the main page, consider renaming it `index.Rmd`- then your url will be shorter and easier to remember (or at least, as easy as your repo name is to remember!).
+:::
 
 
 ## Uplevel your workflow

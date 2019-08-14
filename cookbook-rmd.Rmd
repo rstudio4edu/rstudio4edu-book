@@ -7,7 +7,7 @@ knitr::opts_chunk$set(fig.align="center")
 
 # Introduction {-#intro-rmd}
 
-<center>![](images/rmd_custom/rmd_site.jpg){width=30%}</center>
+<center>![](images/illos/rmd_site.jpg){width=30%}</center>
 
 This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. An R Markdown site is the most straightforward way to compile a collection of R Markdown documents.
 
@@ -20,7 +20,7 @@ Using R Markdown project templates, you can put together a bare-bones site in no
 <div class = side1>
 
 ```{r echo = FALSE, fig.link = "#make-rmd"}
-knitr::include_graphics("images/rmd_custom/intro-rmd.jpg")
+knitr::include_graphics("images/illos/intro-rmd.jpg")
 ```
 
 </div>
@@ -38,7 +38,7 @@ You will build a bare-bones R Markdown website from a site skeleton and publish 
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, fig.link = "#rmd-care"}
-knitr::include_graphics("images/rmd_custom/Caring.jpg")
+knitr::include_graphics("images/illos/Caring.jpg")
 ```
 
 </div>
@@ -56,7 +56,7 @@ You'll develop a workflow for editing your site, adding new content, and hiding 
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-dress"}
-knitr::include_graphics("images/rmd_custom/Dressup.jpg")
+knitr::include_graphics("images/illos/Dressup.jpg")
 ```
 
 </div>
@@ -89,7 +89,7 @@ In the final chapter, you'll learn about website customizations that require som
 
 We're about to take a collection of (one or more) R Markdown files, create `.html` versions of each, and "knit" them together into a single, navigable website. 
 
-<center>![](images/rmd_custom/thread_yaml.jpg)</center>
+<center>![](images/illos/thread_yaml.jpg)</center>
 
 
 This is not so different from what happens when you work with individual `.Rmd`s. But, there are a few key pieces of magic that separate a directory filled with R Markdown files from a living, breathing website: 
@@ -170,7 +170,7 @@ Let's get started!
 
 # Make a site {#make-rmd}
 
-<center>![](images/rmd_custom/intro-rmd.jpg){width=70%}</center>
+<center>![](images/illos/intro-rmd.jpg){width=70%}</center>
 
 ## tl;dr
 
@@ -217,7 +217,7 @@ This tl;dr is for readers who are already experienced with GitHub and want to se
 
 ## Getting set up {#rmd-site-setup}
 ```{r, out.width = "20%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/Gears.jpg")
+knitr::include_graphics("images/illos/Gears.jpg")
 ```
 
 ### Update packages
@@ -330,7 +330,7 @@ file.create(".nojekyll")
 ## Build your site {#rmd-site-build}
 
 ```{r echo = FALSE, fig.link = "#make-rmd"}
-knitr::include_graphics("images/pkg/Build.jpg")
+knitr::include_graphics("images/illos/Build.jpg")
 ```
 
 In the lifecycle of your site, you'll be doing lots of building. What does building the site do? This processes your `.Rmd`s and creates the `docs/` folder (if it doesn't already exist) that houses `.html` versions of each of your `.Rmd` files. AND each of these pages now has a common navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).

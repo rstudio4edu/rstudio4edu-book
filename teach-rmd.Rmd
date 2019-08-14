@@ -4,14 +4,45 @@
 source("common.R")
 ```
 
+Structure this section around (a) presentation, and (b) content; not on tools
 
-think about throwing something up in R/R Markdown for learners, here are some considerations
+where do you start? We don't think that should depend on the presentation. Whether you are developing an online tutorial, a workshop, or an academic course, you'll probably start with a schedule and a content outline. Most educators we know rely on a variety of tools at this stage, ranging from plain text editors to Google docs. Some start with R Markdown.
 
-(a) I want them to 
-(a) handouts (to html)
-(b) stuff they can read/review (to html)
-(c) stuff they need to interact with (learnr/ggplotly)
-(d) stuff they can run code in themselves and enter (add code here worksheets)
+We won't provide specific tools recommendations for this stage, because there is really no right or wrong way to start- the most important thing is that you find a way to plan out loud *somewhere*.
+
+No matter where you start though, at some point, if you'll be teaching R or teaching *with* R, you'll need R Markdown.
+
+And at some point, probably sooner rather than later, you'll need GitHub. (provide bit of a pep talk here: You are more than your teaching materials. here are some things you can get out of putting your edu materials on GitHub.
+
+Once you've gotten as far as using GitHub, you are _thisclose_ to also publishing your content with a shareable link. This, to us, is a critical step. Why do it? First for you. Second for learners. Third for the community. Fourth for your career and network.
+
+Considerations for live coding
+
++ Start with R Markdown
++ Disable all custom RStudio color themes and fonts
++ Keycastr
+
+Considerations for screencasting
+
++ getkap, Quicktime
++ Start with R Markdown
++ Keycastr
+
+present some sort of typology of lessons
+
+Code
+
+- read only 
+
+- hands on (may be static or interactive0)
+
+Narrative
+
+
+- Code leads; narrative supports. The narrative follows or explains real-world code. This type of lesson may show a coding workflow, or a code worked example for "How to do X with Y"
+
+- A story or a question drives the narrative; code supports. This will usually be a worked example or a series of. The narrative is writtento
+
 
 ## Introduction {-#intro-lessons}
 
