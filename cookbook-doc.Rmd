@@ -181,7 +181,6 @@ doc_inspo <- tibble::tribble(
 ```{r echo = FALSE}
 library(glue)
 library(kableExtra)
-rmd_icon <- icon::fa("code")
 doc_inspo %>% 
     mutate(see_doc = cell_spec(html_label, "html", link = html_url),
            show_doc = cell_spec(emo::ji("computer"), "html", link = rmd_url),
