@@ -10,7 +10,7 @@ knitr::opts_chunk$set(fig.align="center")
 
 # Introduction {-#intro-doc}
 
-R Markdown is a powerful tool that seems relatively simple when you first start using R: you focus mainly on your words (written in [Markdown](https://commonmark.org/help/tutorial/)) and your code (written in `r icon::fa("r-project")`), which seem basic enough! But...then you start trying to use R Markdown to create educational content that will be consumed by learners. 
+R Markdown is a powerful tool that seems relatively simple when you first start using R: you focus mainly on your words (written in [Markdown](https://commonmark.org/help/tutorial/)) and your code (written in R), which seem basic enough! But...then you start trying to use R Markdown to create educational content that will be consumed by learners. 
 
 It is easy to become overwhelmed by the number of knobs you can turn. You may even feel like you are stumbling upon hidden knobs and secret passages that you wish you had known about earlier (or at least, we did). 
 
