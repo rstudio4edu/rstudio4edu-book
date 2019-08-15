@@ -25,7 +25,7 @@ Since the R Markdown `.Rmd` file is essentially the fundamental unit of most of 
 
 [Venn Diagram?]
 
-![](images/cookbook-distill/venn.jpg){width=70%}
+<center>![](images/cookbook-distill/venn.jpg){width=40%}</center>
 
 **Similarities**
 
