@@ -1,33 +1,45 @@
 book_filename: "rstudio4edu-book"
+repo: "https://github.com/rstudio4edu/rstudio4edu-book/"
 #output_dir: "docs"
 delete_merged_file: true
-language: 
+language:
   ui:
-    chapter_name: "Chapter " # note the space
+    chapter_name: 'Chapter '
 new_session: yes # Each chapter is knitted as its own Rmd file
 #rmd_subdir: ["", "",""]
-rmd_files: ["index.Rmd", 
-"teach-stack.Rmd", 
-"teach-data.Rmd",  
-"teach-lessons.Rmd",    
-"teach-org.Rmd",   
-"cookbook.Rmd",
-"cookbook-doc.Rmd",
-"cookbook-doc_care.Rmd",
-"cookbook-doc_dress.Rmd",
-"cookbook-pkg.Rmd",
-"cookbook-pkg_data.Rmd", 
-"cookbook-pkg_template.Rmd", 
-"cookbook-pkg_proj.Rmd", 
-"cookbook-pkg_learnr.Rmd", 
-"cookbook-rmd.Rmd",
-"cookbook-rmd_care.Rmd",
-"cookbook-rmd_dress.Rmd",
-"cookbook-rmd_fancy.Rmd",
-"cookbook-distill.Rmd",
-"cookbook-bookdown.Rmd",
-"cookbook-bookdown_care.Rmd",
-"cookbook-bookdown_dress.Rmd",
-"cookbook-bookdown_fancy.Rmd",
-"cookbook-blogdown.Rmd",
-"appendix.Rmd"]
+rmd_files: [
+  "index.Rmd", 
+            
+  "teach-stack.Rmd", 
+  "teach-data.Rmd",  
+  "teach-rmd.Rmd",    
+  "teach-org.Rmd", 
+            
+  "cookbook.Rmd",
+            
+  "cookbook-doc.Rmd",
+  "cookbook-doc_care.Rmd",
+  "cookbook-doc_dress.Rmd",
+            
+  "cookbook-pkg.Rmd",
+  "cookbook-pkg_data.Rmd", 
+  "cookbook-pkg_template.Rmd", 
+  "cookbook-pkg_proj.Rmd", 
+  "cookbook-pkg_learnr.Rmd", 
+            
+  "cookbook-rmd.Rmd",
+  "cookbook-rmd_care.Rmd",
+  "cookbook-rmd_dress.Rmd",
+  "cookbook-rmd_fancy.Rmd",
+            
+  "cookbook-distill.Rmd",
+            
+  "cookbook-bookdown.Rmd",
+  "cookbook-bookdown_care.Rmd",
+  "cookbook-bookdown_dress.Rmd",
+  "cookbook-bookdown_fancy.Rmd",
+            
+  "cookbook-blogdown.Rmd",
+            
+  "appendix.Rmd"
+  ]
