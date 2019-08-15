@@ -16,17 +16,6 @@ And at some point, probably sooner rather than later, you'll need GitHub. (provi
 
 Once you've gotten as far as using GitHub, you are _thisclose_ to also publishing your content with a shareable link. This, to us, is a critical step. Why do it? First for you. Second for learners. Third for the community. Fourth for your career and network.
 
-Considerations for live coding
-
-+ Start with R Markdown
-+ Disable all custom RStudio color themes and fonts
-+ Keycastr
-
-Considerations for screencasting
-
-+ getkap, Quicktime
-+ Start with R Markdown
-+ Keycastr
 
 present some sort of typology of lessons
 
@@ -44,26 +33,43 @@ Narrative
 - A story or a question drives the narrative; code supports. This will usually be a worked example or a series of. The narrative is writtento
 
 
-## Introduction {-#intro-lessons}
+## A very brief history {#history}
 
-In this section, we will walk through some of the options educators have for developing and revising lessons to deliver to learners. One of the first decisions you'll need to make is how you want to deliver your content: can it be a simple R script with minimal comments? Or do your learners need more narrative? 
+The concept of ["literate programming"](https://en.wikipedia.org/wiki/Literate_programming) was originally introduced by [Donald Knuth](http://www.literateprogramming.com/knuthweb.pdf) in 1992. In a nutshell, Knuth envisioned a new programming paradigm where computer scientists focus on weaving code together with text with the aim of creating programs as *"works of literature."*  
 
-The good news is this: you *can* go back and forth between the two formats. So even if you pick one then change your mind, you can get back.
+> Let us change our traditional attitude to the construction of programs: Instead  of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do.
+>
+> &mdash; Donald E. Knuth, Literate Programming, 1984
 
-Note: not teaching others *how to use* R Markdown, but teaching yourself tips/tricks for how to teach others *with* R Markdown.
+Knuth coined this new paradigm the `WEB` system, which you have probably never heard of! Probably the most impactful outcome from Knuth's original idea was inspiring software developers to not only change their own mindset, but to create tools to enable others to write literate programs. And a huge next step was to enable users to write their narratives in a markup language made for authoring  (such as [Markdown](https://daringfireball.net/projects/markdown/) or $LaTeX$), where it became easier and ultimately natural to use real words in full sentences instead of just code comments. 
 
-This will be for static edu materials (as opposed to interactive- i.e., learnR)
+The most fully-featured tool for literate programming in the R ecosystem is [R Markdown](https://rmarkdown.rstudio.com/). 
 
-## R scripts
+The idea of applying literate programming to teaching is not new. But, we think that opening up literate programming toolkits for educators with specific use cases may be new- in our experience, the actual application of using literate programming tools.
 
-## Do you need R Markdown?
-
-R Markdown files allow you to blend code, output (like results and plots), and prose together in a single document that can be easily reproduced (by you and by others) and shared. This makes R Markdown an ideal tool for educators to develop lessons, and for learners to engage with those lessons. However, if you already using GitHub (and we hope you are!), you should know that you can make your scripts browseable as rendered "notebooks"...(TODO)
+> "There is no telling what will happen if lots of other people catch `WEB` fever and start foisting their creations on each other."
 
 
-So, do you need R Markdown? Maybe not. If you prefer working with and sharing .R scripts and you are using GitHub, we think that using `knitr::spin()` can get you pretty far.
+## Literate lessons {#lit-edu}
 
-But you have a lot of flexibility if you do choose to use R Markdown to start with, and the following chapters will delve into some of the bells and whistles that we think make R Markdown worth it in the short- and long-run for educators.
+> "~~Programming~~ *Teaching* is a very personal activity, so I can’t be certain that what has worked for me will work for everybody."
+>
+> &mdash; Donald E. Knuth, Literate Programming, 1984 (edited by the authors)
+
+Permission to educators who teach R or teach with R to consider themselves literate programmers. You are programming a lesson, however you end up delivering it. You could deliver a lesson any number of ways, but you are a literate programmer. For any given lesson, here are some "inputs" that you need to design around:
+
++ __Audience:__ who are your learners?
+
++ __Time:__ who long do you have with the learners? If you won't meet them in person (i.e., you are designing a ), this is trickier- you need to think about how long you can reasonably have their attention for.
+
++ __Scope:__ what are your learning objectives?
+
++ __Sequencing:__ in what order can you cover the things you need to meet your learners' goals?
+
+:::hat
+If you would like pedagogical advice for how to plug in these inputs, and get a lesson out, there are many ways to get there but we recommend following [Greg Wilson's](http://third-bit.com/) advice for [*A Lesson Design Process*](https://teachtogether.tech/#s:process), from his book [__Teaching Tech Together__](https://teachtogether.tech).
+:::
+
 
 
 ## Knit to HTML
@@ -249,7 +255,29 @@ Also see:
 + switch latex engines (do a screenshot here)
 + consider printing out your `sessionInfo()` [for pro-level, use DT]
 
-```{r}
+```{r results="hide"}
 DT::datatable(devtools::session_info()$packages)
 ```
 
+## Lesson delivery & sharing
+
+When it comes to presenting your lesson, here are some things to consider and tool recommendations for different lesson delivery methods.
+
+### Live coding
+
++ Start with R Markdown
++ Disable all custom RStudio color themes and fonts
++ Keycastr
+
+### Screencast
+
++ getkap, Quicktime
++ Start with R Markdown
++ Keycastr
++ web hosting
+
+### Online tutorials
+
++ web hosting
++ html widgets like plotly, highchartr, etc.
++ learnr tutorials

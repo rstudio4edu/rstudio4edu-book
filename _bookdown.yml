@@ -9,7 +9,7 @@ new_session: yes # Each chapter is knitted as its own Rmd file
 rmd_files: ["index.Rmd", 
 "teach-stack.Rmd", 
 "teach-data.Rmd",  
-"teach-rmd.Rmd",    
+"teach-lessons.Rmd",    
 "teach-org.Rmd",   
 "cookbook.Rmd",
 "cookbook-doc.Rmd",
