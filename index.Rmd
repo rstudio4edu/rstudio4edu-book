@@ -114,7 +114,7 @@ Finally, we want to point out a few pragmatic features (could include a diagram 
 
 1. Clicking on the GitHub icon <i class = "fa fa-github"></i> on the far right takes you to the source repository for this book. 
 
-1. How to search within this book: https://github.com/rstudio/bookdown/issues/216
+1. How to search within this book: https://github.com/rstudio/bookdown/issues/216. You can click on the <i class="fa fa-info"></i> see the instructions.
 
 ## What did we leave out? {-}
 

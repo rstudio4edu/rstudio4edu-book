@@ -116,7 +116,7 @@ As you build content for your book, don't forget about the bells and whistles yo
 
 ### Search
 
-The built in search feature in your book can be useful for both you and your learners--but the way it works is a little [tricky](https://github.com/rstudio/bookdown/issues/216)!
+The built in search feature in your book can be useful for both you and your learners--but the way it works is a little [tricky](https://github.com/rstudio/bookdown/issues/216)! You can see the instructions for it by clicking on the <i class="fa fa-info"></i> in the toolbar.
 
 * As you enter your search term into the box, the TOC is filtered to show only the sections were your search term appears.
 * Don't move that cursor-- keeping it hovered over the box, you can use your arrow `UP` and `DOWN` keys to navigate from the term's first occurence to the next through the book. 
