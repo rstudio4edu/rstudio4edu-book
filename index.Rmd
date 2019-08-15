@@ -108,9 +108,9 @@ Some high-level organizational highlights, like:
 
 Finally, we want to point out a few pragmatic features (could include a diagram here to help aid usability?):
 
-1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button <i class= "fa fa-download"></i> in the upper toolbar. 
+1. For every chapter you can download the `.Rmd` source file that created it by clicking on the download button <i class="fa fa-download"></i> in the upper toolbar. 
 
-1. The button to the left <i class = "fa fa-edit"></i> allows you to edit (say more about how this works). 
+1. The button to the left <i class ="fa fa-edit"></i> allows you to edit (say more about how this works). 
 
 1. Clicking on the GitHub icon <i class = "fa fa-github"></i> on the far right takes you to the source repository for this book. 
 
