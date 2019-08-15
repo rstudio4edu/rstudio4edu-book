@@ -402,3 +402,11 @@ a.anchor {
 .sourceCode pre {
   margin: 0 !important; /* makes space above and below symmetrical*/
 }
+
+/* Footer */
+
+.footer {
+  font-family: "Lora", serif;
+  font-size: .85em;
+  color: #2ea8b3;
+}

@@ -2,6 +2,7 @@ bookdown::gitbook:
   css: assets/style.css
   includes:
     before_body: assets/big-image.html
+    after_body: assets/footer.html
   highlight: tango
   config:
     edit:
