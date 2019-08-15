@@ -11,8 +11,8 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 cover-image: images/logo/logo-rstudio4edu.png
+github-repo: "rstudio4edu/rstudio4edu-book"
 description: "A work-in-progress"
-github-repo: rstudio4edu/rstudio4edu-book
 favicon: "images/favicon/favicon.ico"
 always_allow_html: yes
 url: 'https\://rstudio4edu.github.io/rstudio4edu-book/'

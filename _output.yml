@@ -4,6 +4,9 @@ bookdown::gitbook:
     before_body: assets/big-image.html
   highlight: tango
   config:
+    edit:
+      link: https://github.com/rstudio4edu/rstudio4edu-book/edit/master/%s
+      text: "Edit"
     toc:
       collapse: section
       before: |
@@ -11,9 +14,6 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
     download: ["rmd"]
-    edit:
-      link: https://github.com/rstudio4edu/rstudio4edu-book/edit/master/%s
-      text: "Suggest an edit"
     sharing:
       github: yes
       facebook: no
