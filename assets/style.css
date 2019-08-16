@@ -15,7 +15,7 @@ pre code {
   white-space: inherit;
 }
 
-/*  Desiree custom css  */
+/*---------------Hero Image------------------*/
 
 /* next 3 rules for setting large image at top of each page and pushing book content to appear beneath that */
 
@@ -40,14 +40,14 @@ pre code {
 }
 
 
-/* Links */
+/* ------------Links------------------ */
 
 .book .book-body .page-wrapper .page-inner section.normal a {
   color: #157f8e;
 }
 
 
-/* Body and header text */
+/*------------- Body and header text---------------- */
 
 .book.font-family-1 {
   font-family: 'Karla', arial, sans-serif;
@@ -82,7 +82,7 @@ h1, h2, h3, h4 {
 }
   
 
-/* DROP CAPS*/
+/*----------DROP CAPS--------------*/
 
 
 /*p:nth-child(2):first-letter {   /* /* DROP-CAP FOR FIRST P BENEATH EACH H1 OR H2*/ /*
@@ -97,8 +97,6 @@ h1, h2, h3, h4 {
   margin-bottom: 9px;
 }
 */
-
-/* try the below with the ~ instead...or just the space?) */
 
 .section.level1 > p:first-of-type:first-letter { /*drop cap for first p beneath level 1 headers only within class .section*/
   color: #3fb5bd;
@@ -129,7 +127,7 @@ h1, h2, h3, h4 {
 
 
 
-/* TOC */
+/*------------ TOC --------------*/
 
 .book .book-summary {
   background: white;
@@ -141,7 +139,8 @@ h1, h2, h3, h4 {
 }
 
 /* all TOC list items, basically */
-.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+.book .book-summary ul.summary li a, 
+.book .book-summary ul.summary li span {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 15px;
@@ -173,11 +172,6 @@ li.appendix span, li.part span { /* for TOC part names */
 }
 
 
-
-ul.summary > li > a { /* The > selects all the li's which are immediately within the class summary*/
-  font-family: 'Karla', sans-serif;
-}
-
 /* The next two rules make the horizontal line go straight across in top navbar */
 
 .summary > li:first-child {
@@ -191,18 +185,24 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 }
 
 
-/* source code copy button */
-.copy {
-  width: inherit;
-  background-color: #e2e2e2 ;
-  border: none;
-  border-radius: 2px;
-  float: right;
-  font-size: 60%;
-  padding: 4px 4px 4px 4px;
+/*--- LOGO ---*/
+
+.toc-logo {
+  width: 200px !important;
+  object-fit: contain;
+  margin: 0 auto;
 }
 
-/* Two columns */
+.toc-logo img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.summary > li:first-child {
+  height: auto !important; 
+}
+
+/* --------------Two columns--------------- */
 
 .col2 {
   columns: 2 200px;         /* number of columns and width in pixels*/
@@ -222,12 +222,12 @@ ul.summary > li > a { /* The > selects all the li's which are immediately within
 .side2 {
   width: 58%;
   margin-left: 1rem;
-  
 }
+
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
-div.rstudio-tip, div.tip {
+div.rstudio-tip, div.tip, div.gotcha, div.design, div.hat{
   border: 4px #aed6d963;
   border-style: dashed solid;
   padding: 1em;
@@ -241,13 +241,58 @@ div.rstudio-tip, div.tip {
   background-color: #fcfcfc;
 }
 
+
 div.rstudio-tip {
-  background-image: url("../images/rstudio.png");
+  background-image: url("../images/divs/rstudio.png");
 }
 
 div.tip {
-  background-image: url("../images/lightbulb.png");
+  background-image: url("../images/divs/lightbulb.png");
 }
+
+div.gotcha {
+  background-image: url("../images/divs/gotcha_2.png");
+}
+
+div.design {
+  background-image: url("../images/divs/design.png");
+}
+
+div.hat {
+  background-image: url("../images/divs/hat.png");
+}
+
+/* for fancy bookdown cookbook */
+
+div.puzzle, div.fyi, div.demo, div.note {
+  padding: 1em;
+  margin: 1em 0;
+  padding-left: 100px;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  min-height: 120px;
+  color: #1f5386;
+  background-color: #bed3ec;
+  border: solid 5px #dfedff;
+}
+
+div.puzzle {
+  background-image: url("../images/illos/Your-turn.png");
+}
+
+div.fyi {
+  background-image: url("../images/illos/fyi.png");
+}
+
+div.demo {
+  background-image: url("../images/illos/Live-code.png");
+}
+
+div.note {
+  background-image: url("../images/illos/lightbulb2.png");
+}
+
 
 /* .book .book-body .page-wrapper .page-inner section.normal is needed
    to override the styles produced by gitbook, which are ridiculously
@@ -282,4 +327,86 @@ iframe {
 
 .iframe-container > iframe {
   border: none;
+}
+
+
+/* -------Clipboard copy button --------- */
+.copy {
+  width: inherit;
+  background-color: #e2e2e2 ;
+  border: none;
+  border-radius: 2px;
+  float: right;
+  font-size: 60%;
+  padding: 4px 4px 4px 4px;
+}
+
+/* for new copy button */
+
+.hasCopyButton {
+  position: relative;
+}
+
+.btn-copy-ex {
+  position: absolute;
+  right: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.hasCopyButton:hover button.btn-copy-ex {
+  visibility: visible;
+}
+
+
+
+/* -----------Section anchors -------------*/
+
+.book .book-body .page-wrapper .page-inner section.normal {
+  overflow: visible !important; /*so anchor link doesn't get cut off */
+}
+
+a.anchor {
+  margin-left: -30px;
+  padding-right: 3px;
+  display:inline-block;
+  width: 30px;
+  height: 30px;
+  /*visibility: hidden;*/
+  background-image: url(https://image.flaticon.com/icons/svg/34/34735.svg) !important;
+  background-repeat: no-repeat !important;
+  background-size: 20px 20px !important;
+  background-position: center bottom !important;
+  opacity: 0;
+}
+
+
+.hasAnchor:hover a.anchor, a.anchor:hover {
+  /*visibility: visible;*/
+  opacity: 0.6;
+}
+
+@media (max-width: 1144px) { /* don't show anchor link on small screens */
+  .hasAnchor:hover a.anchor {
+    visibility: hidden;
+  }
+}
+
+
+/*____Code Chunks____*/
+
+.sourceCode {
+  margin-bottom: 0.85em; /* adds same amount of margin as a <p> would */
+}
+
+.sourceCode pre {
+  margin: 0 !important; /* makes space above and below symmetrical*/
+}
+
+/* Footer */
+
+.footer {
+  font-family: "Lora", serif;
+  font-size: .85em;
+  color: #2ea8b3;
 }

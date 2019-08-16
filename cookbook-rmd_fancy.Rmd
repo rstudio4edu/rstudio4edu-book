@@ -10,6 +10,8 @@ The steps below involve a little bit of HTML and CSS work, but you don't have to
 
 In this section, we'll walk you through the non-YAML "add ons" to our custom course demo site.
 
+You'll get the most out of this chapter if you read through our [CSS crash course](#css-crash) before diving in. You'll want to be familiar with using the Developer Tools of your web browser and [selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Selectors).
+
 
 ## Anatomy of a fancy R Markdown page
 
@@ -28,78 +30,16 @@ We'll go through how to do each of the numbered add-ons below, but first let's g
 
 <br>
 
-## CSS crash course {#css-crash-course}
-
-Every element of a website that you see, from links to pictures to paragraphs, has a category label. These labels can be tags (for example, all links on websites have `a` tags, all big headers have `h1` tags), or they can be IDs or classes (described later).  If you know the label for something on a website, then you can style its appearance by using a `.css` file. In a CSS file, you write style rules that will apply to all elements of the same category. This is a very useful thing to be able to do because it allows you to break free from the limitations of built-in templates and themes that come with R Markdown.
-
-Below is a quick example of some CSS that would change all link colors to the color "orchid" and all link text from being uppercase:
-
-```{r, eval=FALSE}
-a {
-  color: orchid;
-  text-transform: uppercase;
-}
-```
-
-You begin with the element's "label" (technically called a *selector*). Within curly braces, `{ }`, you can include as many different style properties as you'd like for that element. Each new property must end with a `;`.  What are your options for properties to style? [There are many](https://www.w3schools.com/cssref/), but don't feel overwhelmed-- just pick one or two things to change as you start out.
-
-### Determining the right selector
-
-How could you have known that the selector for links was an `a`? The answer is by opening up your existing website, and right-clicking anywhere on the page and clicking on *Inspect* (in Chrome browsers) or *Inspect Element* (in Firefox).
-
-<center> ![](images/inspect.png){width=300px} </center>
-
-Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") [IS THIS ACTUALLY THE RIGHT NAME? I PERSONALLY CALL THIS THE INSPECTOR, BUT MAYBE I MADE THAT UP], and these give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
-
-In the lower left pane of the subwindow, click on the icon of a rectangle with an arrow. Now as you hover and then click on anything in your website, you will see the contents of the developer tools change. The pane on the right shows the CSS styles that are applied. 
 
 
-[NEED TO SWITCH TO SCREENSHOT WITH COURSE DEMO SITE]
-<br>
-
-![](images/inspect2.png)
-<br>
-
-Taking a closer look at the CSS pane on the right, we can see that the link we are hovering over does indeed have an `a` as its selector. 
-
-<br>
-
-![](images/closer.png)
-
-<br>
-
-
-One neat thing about the developer tools is that you can click and temporarily edit the CSS properties in this very window and  simlutaneously see the changes take effect on the page. These edits only happen in your browser, so nothing in your R Markdown document will change (in fact, your edits will be lost as soon as you refresh the page in your browser), but editing here is a fast way to test out any CSS ideas.
-
-[ALSO ADD TEXTTRANSFORM IN SCREENSHOT TO MATCH ABOVE EXAMPLE]
-
-<br>
-
-![](images/orchid.png)
-<br>
-
-There's a lot more we could say about CSS here. But it's faster and more rewarding to learn via real examples. Let's start tinkering!
-
-[OTHER TOPICS TO MENTION:]
-[1. EXAMPLES OF CLASSES AS CSS SELECTORS. (WHY DO SOME SELECTORS BEGIN WITH . AND OTHERS DON'T?)]
-[2. MULTIPLE ATTRIBUTES. COMBINING THEM WITH `.` vs separated by spaces ]
-
-
-### Adding custom CSS to your site
+## Adding custom CSS to your site
 
 You can make your own file with custom CSS rules and apply it to your site by adding `includes:` and `css: <file-name.css>` in the `_site.yml` file underneath `html_document`. Like so:
 
-```{r, eval=FALSE}
-output: 
-  html_document:
-    includes:
-    css: style.css
-    theme: yeti
-    highlight: zenburn
-    toc: true
-    toc_float: true
-    code_download: true
-
+```{r echo = FALSE}
+yml_empty() %>%
+  yml_output(html_document(css = "style.css")) %>% 
+  asis_yaml_output(fences = FALSE)
 ```
 
 We'll now make a CSS file, by going to *File* > *New File* > *Text File*. Go ahead and save this file in your project directory as `style.css`. We'll populate this with some CSS styles. We're going to want to keep a rendered version of our custom course site pulled up in a separate window. 
@@ -108,132 +48,135 @@ We'll now make a CSS file, by going to *File* > *New File* > *Text File*. Go ahe
 
 
 
-### 0. Add a favicon to your RMD site
+### Add a favicon
 
 You know the little tiny icon that gets placed in the corner of your browser tabs? That's a favicon! We can add one by creating an HTML file and then referencing this file in our `_site.yml`:
 
 **Here's how:**
 
 1. Save the image you'd like to use as (use a PNG or ICO file) and place it in your project directory (for the best results, use a square image).
-2. Click *File* > *New File* > *Text File*. We're going to make an HTML file.
-3. Insert the following, replacing `favicon.ico` with your image filename.
+1. Click *File* > *New File* > *Text File*. We're going to make an HTML file.
+1. Insert the following, replacing `favicon.ico` with your image filename.
 
-```{r, eval=FALSE}
-  <link rel="icon" type="image/png" href="favicon.ico"/>
-```
+    ```{r, eval=FALSE}
+      <link rel="icon" type="image/png" href="favicon.ico"/>
+    ```
   
-4. Save this file as `header.html`. You can choose a different name. 
-5. Open `_site.yml` and under the `html_document:` section, insert the `includes:` and `in_header` options like so:
+1. Save this file as `header.html`. You can choose a different name. 
+1. Open `_site.yml` and under the `html_document:` section, insert the `includes:` and `in_header` options like so:
 
-```{r, eval=FALSE}
-output:
-  html_document:
-    includes:
-      in_header: header.html
-```
+    ```{r, echo = FALSE}
+    yml_empty() %>%
+      yml_output(html_document(includes = includes2(in_header = "header.html"))) %>% 
+      asis_yaml_output(fences = FALSE)
+    ```
 
 :::tip
 If you already were including a file with `in_header`, then you can add the line of code above at the top of your existing file, OR you can include both files by listing them within brackets like this: `[header.html, <first-file.html>,]`.
 :::
 
-### 1. Navigation bar color
+### Change the navigation bar color
 
 Let's make the navigation bar a different color. We'll use the developer tools to try out different options in real time.
 
 1. Pull up your site and right click to open the developer tools. 
-2. When we click on the navigation bar, we see that it highlights a certain line of HTML in the left pane of the developer tools. Look for anything that says `class = `. The values that follow `class` are the CSS selectors that are currently styling our navigation bar. 
+1. When we click on the navigation bar, we see that it highlights a certain line of HTML in the left pane of the developer tools. Look for anything that says `class = `. The values that follow `class` are the CSS selectors that are currently styling our navigation bar. 
 
-In this case, our navbar has three classes `navbar`, `navbar-default`, and `navbar-fixed-top`. 
+    In this case, our navbar has three classes `navbar`, `navbar-default`, and `navbar-fixed-top`. 
 
-![](images/navbar.png)
+    ![](images/navbar.png)
 
-<br>
+    <br>
 
-In the righthand pane of the developer tools. we see these classes being used in the CSS (notice that a class needs to have a `.` before it in when it's a selector--but a tag, like the link example above, does not). [SAY SOMETHING ABOUT THE ORDER EACH ARE LISTED?]
+    In the righthand pane of the developer tools. we see these classes being used in the CSS (notice that a class needs to have a `.` before it in when it's a selector--but a tag, like the link example above, does not). [SAY SOMETHING ABOUT THE ORDER EACH ARE LISTED?]
 
-3. Let's choose the first CSS selector `.navbar` and play around with it in this pane to decide what color we'd like. Type `background-color:` followed by any [HEX code or rgb code](https://www.google.com/search?q=color+picker) and press `Enter`. You can also click on the small color square to use sliders to set the color and transparency of your navigation bar. I'm selecting 
+1. Let's choose the first CSS selector `.navbar` and play around with it in this pane to decide what color we'd like. Type `background-color:` followed by any [HEX code or rgb code](https://www.google.com/search?q=color+picker) and press `Enter`. You can also click on the small color square to use sliders to set the color and transparency of your navigation bar. I'm selecting 
 
-<center>![](images/color_picker.png){width=200px}</center>
-
-<br>
-
-### 2. Customize your link appearance
+    <center>![](images/color_picker.png){width=200px}</center>
 
 <br>
 
-### 3. Remove table of contents border
+### Customize your link appearance
+
+<br>
+
+### Remove table of contents border
 
 <br> 
 
-### 4. Use Google fonts {-}
+### Use Google fonts
 To change any of the fonts on your site to be a Google Font, 
 
 Once you've selected the Google Fonts you want to use, open up your `style.css` file and paste in the line of code from Google at the top of it. 
 
-```
+```css
 @import url('https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i&display=swap');
 
 ```
 
 <br>
 
-### 5. Add a hero image (banner image at the top)
+### Add a hero image
 
 To add the big image at the top of page (a.k.a hero image), we need to make an HTML file containing our image and text.  
 
 **How to do it:**
 
 1. Go to *File* > *New File* > *Text File*. 
-2. Copy as paste the HTML code below into this file. 
+1. Copy as paste the HTML code below into this file (see Figure \@ref(fig:hero-decode) to decode this!)
 
+    ```css
+    <link href="style.css" rel="stylesheet">
+    
+    <div class = "image-descript"> 
+    	<img class = "big_image" src= "<url-or-image-file>" >
+      <div class = "image-text">
+    		<div class = "big-image-text"> <strong> YUM-101 Delicious Foods </strong> </div>
+      </div>
+    </div>
+    ```
+1. Replace `<url-or-image-file>` with the path of the image that you'd like to use. If you need some good ones, check [here](https://unsplash.com/).
+1. Replace "YUM-101 Delicious Foods" with whatever text you'd like to be overlaid the image. 
+1. Close and Save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.
+1. Open `index.Rmd`.
+1. Reference the HTML file in `index.Rmd`'s YAML with the `includes:` and `in_header:` lines.
+
+    ```{r, echo = FALSE}
+    yml_empty() %>% 
+      yml_title("YUM-101 Delicious Foods") %>%
+      yml_output(html_document(includes = includes2(in_header = "hero-image.html"))) %>% 
+      asis_yaml_output(fences = FALSE)
+    ```
+    
+    This will add the image to ONLY the `index.Rmd` page of your site, which is appropriate since the index will serve as the homepage. We could have instead added `in_header:` to our `_site.yml` to apply the image to EVERY site page (but consider whether this might be visually overwhelming for your site!). 
+
+
+
+Here's what each of the lines in `hero-image.html` is doing:
+
+```{r hero-decode, fig.cap = "Decoding the hero-image.html file", echo = FALSE}
+knitr::include_graphics("images/annotate_hero.jpg")
 ```
-<link href="style.css" rel="stylesheet">
 
-<div class = "image-descript"> 
-	<img class = "big_image" src= "<url-or-image-file>" >
-  <div class = "image-text">
-		<div class = "big-image-text"> <strong> YUM-101 Delicious Foods </strong> </div>
-  </div>
-</div>
-```
-3. Replace `<url-or-image-file>` with the path of the image that you'd like to use. If you need some good ones, check [here](https://unsplash.com/).
-4. Replace 'YUM-101 Delicious Foods` with whatever text you'd like to be overlaid the image. 
-5. Close and Save this file in your project directory as `hero-image.html`. The name of the file does not have to be `hero-image`.
-
-
-Here's what each of the lines in this file is doing:
-
-![](images/annotate_hero.jpg)
-
-6. Open `index.Rmd`.
-7. Reference the HTML file in `index.Rmd`'s YAML with the `includes:` and `in_header:` lines.
-
-```{r, eval=FALSE}
----
-title: "YUM-101 Delicious Foods"
-output:
-  html_document:
-    includes:
-      in_header: hero-image.html
----
-```
-This will add the image to ONLY the `index.Rmd` page of your site, which is appropriate since the index will serve as the homepage. We could have instead added `in_header:` to our `_site.yml` to apply the image to EVERY site page (but consider whether this might be visually overwhelming for your site!). 
 
 
 You should note that when you add an `in_header:` option to a single pages's YAML, it will override the more "global" `in_header:` option set in `_site.yml`. So if you still want the global `in_header:` to apply (e.g. if you created a favicon), then you'll need to list both files in the single page's YAML. Like this, for example:
 
-```
----
-title: "YUM-101 Delicious Foods"
-output:
-  html_document:
-    includes:
-      in_header: [<first-file.html>, hero-image.html]
----
+```{r, echo = FALSE}
+yml_empty() %>% 
+  yml_title("YUM-101 Delicious Foods") %>%
+  yml_output(html_document(includes = includes2(in_header = list(
+    "<first-file.html>",
+    "hero-image.html"))
+  )
+  )%>% 
+  asis_yaml_output(fences = FALSE)
 ```
 
+
+
 :::tip
-Including an image like this in the header of the page is kind of a hack-- in order for this to work properly, if you have two HTML files listed, make sure the hero-iamge.html is listed last.
+Including an image like this in the header of the page is kind of a hack-- in order for this to work properly, if you have two HTML files listed, make sure the `hero-image.html` is listed last.
 :::
 
 <br>
@@ -247,7 +190,7 @@ Design tip: Try out a completely blank `index.Rmd` with nothing but the YAML wit
 You could style this endlessly, but here's the CSS we're using for the fancy course demo site. Each selector corresponds to the class names we used in `header.html`:
 
 
-```{r, eval=FALSE}
+```css
 .image-descript {
     position: relative;
 }
@@ -274,3 +217,12 @@ You could style this endlessly, but here's the CSS we're using for the fancy cou
 
 <br>
 
+### Add multiple CSS files
+
+Note that you can have several CSS files, if for example you have one for your organization and another custom file. We add multiple items like this to the YAML like so:
+
+```{r echo = FALSE}
+yml_empty() %>%
+  yml_output(html_document(css = list("org.css", "custom.css"))) %>% 
+  asis_yaml_output(fences = FALSE)
+```

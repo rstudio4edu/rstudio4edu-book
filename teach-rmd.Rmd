@@ -4,6 +4,46 @@
 source("common.R")
 ```
 
+Structure this section around (a) presentation, and (b) content; not on tools
+
+where do you start? We don't think that should depend on the presentation. Whether you are developing an online tutorial, a workshop, or an academic course, you'll probably start with a schedule and a content outline. Most educators we know rely on a variety of tools at this stage, ranging from plain text editors to Google docs. Some start with R Markdown.
+
+We won't provide specific tools recommendations for this stage, because there is really no right or wrong way to start- the most important thing is that you find a way to plan out loud *somewhere*.
+
+No matter where you start though, at some point, if you'll be teaching R or teaching *with* R, you'll need R Markdown.
+
+And at some point, probably sooner rather than later, you'll need GitHub. (provide bit of a pep talk here: You are more than your teaching materials. here are some things you can get out of putting your edu materials on GitHub.
+
+Once you've gotten as far as using GitHub, you are _thisclose_ to also publishing your content with a shareable link. This, to us, is a critical step. Why do it? First for you. Second for learners. Third for the community. Fourth for your career and network.
+
+Considerations for live coding
+
++ Start with R Markdown
++ Disable all custom RStudio color themes and fonts
++ Keycastr
+
+Considerations for screencasting
+
++ getkap, Quicktime
++ Start with R Markdown
++ Keycastr
+
+present some sort of typology of lessons
+
+Code
+
+- read only 
+
+- hands on (may be static or interactive0)
+
+Narrative
+
+
+- Code leads; narrative supports. The narrative follows or explains real-world code. This type of lesson may show a coding workflow, or a code worked example for "How to do X with Y"
+
+- A story or a question drives the narrative; code supports. This will usually be a worked example or a series of. The narrative is writtento
+
+
 ## Introduction {-#intro-lessons}
 
 In this section, we will walk through some of the options educators have for developing and revising lessons to deliver to learners. One of the first decisions you'll need to make is how you want to deliver your content: can it be a simple R script with minimal comments? Or do your learners need more narrative? 
@@ -20,9 +60,6 @@ This will be for static edu materials (as opposed to interactive- i.e., learnR)
 
 R Markdown files allow you to blend code, output (like results and plots), and prose together in a single document that can be easily reproduced (by you and by others) and shared. This makes R Markdown an ideal tool for educators to develop lessons, and for learners to engage with those lessons. However, if you already using GitHub (and we hope you are!), you should know that you can make your scripts browseable as rendered "notebooks"...(TODO)
 
-:::rstudio-tip
-[R Markdown](https://rmarkdown.rstudio.com/docs/) is an R package that is already installed and loaded when you use the RStudio IDE. The workhorses "under the hood" of R Markdown, the `knitr` package and pandoc, are also pre-installed and loaded for you. You don't have to explicitly install or load any of these tools to use them from within the RStudio IDE.
-:::
 
 So, do you need R Markdown? Maybe not. If you prefer working with and sharing .R scripts and you are using GitHub, we think that using `knitr::spin()` can get you pretty far.
 
@@ -30,6 +67,9 @@ But you have a lot of flexibility if you do choose to use R Markdown to start wi
 
 
 ## Knit to HTML
+
+<center>![](images/illos/Knit-to-html.jpg){width=60%}</center>
+
 
 The [R Markdown package](https://rmarkdown.rstudio.com/docs/) has a number of built-in ["output formats"](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), which means that a single .Rmd document can be "knit" into a bunch of different output file types like HTML, PDF, and even Word documents.
 
@@ -43,57 +83,20 @@ For educators, we strongly encourage using the default HTML output format for th
 
 1. __Customizability__- All HTML output can be further customized using CSS. The bad news is that you will need to learn a bit about CSS to get there (see our crash course), but the good news is that if you are the kind of educator that needs to, for example, use a specific branded style guide that specifies colors, fonts, etc., you *can* make your HTML output look "on brand" with a custom CSS.
 
-## Style your HTML output
-
-For any given R Markdown [output formats](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), there are default styling options. These defaults can also be overriden using your .Rmd's YAML metadata header, which is an optional block at the top of your .Rmd file between the two `---`, like this:
-
-```yaml
----
-title: "Lab 01"
-author: Anya Academic
-output: html_document
----
-```
-
-
-?rmarkdown::html_document
-```{r tidy=FALSE, printr.help.sections='usage', comment=''}
-library(printr)
-?rmarkdown::html_document
-```
-
-HTML output options like floating toc, numbering, code folding, code download (requires theme)
-
-- [ ] [tabsets](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections)
-         - think about good use cases
-- [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
-- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
-- [ ] spacing with `<br>`
-- [ ] highlight
-- [ ] themes (plus `type: inverse`) 
-- [ ] [toc / toc floating](https://rmarkdown-docs.netlify.com/reference/html_document.html) 
-
-- [breadcrumbs](https://bootswatch.com/flatly/)
-
 ## R Markdown in practice
 
 examples:
 
 + https://bbc.github.io/rcookbook/
 
-why, how
-
-also include how to leave invisible notes to yourself `<!--- your comment --->`
 
 ## R Markdown Workflows
 
 + Using RStudio projects (why)
-    + https://www.tidyverse.org/articles/2017/12/workflow-vs-script/
     + in RStudio, from git adds .gitignore for you
     + try alfred app: https://twitter.com/hadleywickham/status/968624630276804608?lang=en
-+ file paths using `here::here()`
-    + https://malco.io/2018/11/05/why-should-i-use-the-here-package/
-+ working html output- use xaringan::inf_moon_reader to render
+
+
 
 ## Design for teaching
 
@@ -144,28 +147,6 @@ chunks %>%
 
 Maybe include a table
 
-#### Use a setup chunk
-
-You can explicitly set your own chunk options for the whole document at the top of your .Rmd, using `knitr::opts_chunk$set()`. Inside the parentheses, list the chunk option on the left `=` a new default value on the right. Each chunk option is separated by a comma. The chunk option for the setup chunk itself is typically `include=FALSE` so that no one sees it but you.
-
-````
-```{r, setup, include=FALSE}`r ''`
-knitr::opts_chunk$set(fig.width = 8, collapse = TRUE)
-```
-````
-
-Due to `knitr`'s default rules around chunk names, you can only have 
-
-### Images
-
-#### Markdown 
-![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
-
-#### `knitr`
-
-include_graphics gives you figure captions
-
-can also play with out.width
 
 
 
@@ -208,22 +189,6 @@ if (rerender_demo) {
 
 ## Sharing 
 
-### Share data
-
-For html output formats only:
-
-1. `xfun::embed_file()` [link](https://yihui.name/en/2018/07/embed-file/)
-
-1. DT buttons [link](https://rstudio.github.io/DT/003-tabletools-buttons.html)
-
-```{r eval = FALSE}
-library(DT)
-datatable(payroll, extensions = 'Buttons', options = list(
-    dom = 'Bfrtip',
-    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-  )
-)
-```
 
 
 ### Share source code
@@ -245,6 +210,15 @@ datatable(payroll, extensions = 'Buttons', options = list(
   ```
 
   + https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.R
+  
+What if you just want to keep things really simple? Try github_document as the output of a regular R script. This will create an `.md` version of whatever code and output you have, and it will be rendered in a nice, readable way without you having to mess with GitHub pages or HTML directly, etc. See an example of what I mean below:
+
+[Start with .R script...](https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.R) and [...end with a GitHub document](https://github.com/apreshill/teachthat/blob/master/gather/make-data-to-gather.md)
+
+```{r, echo = FALSE}
+side_by_side("images/gather-R.png",50,"images/gather-gitdoc.png", 50)
+```
+
 
 + Rmd -> GitHub
 

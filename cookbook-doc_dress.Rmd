@@ -1,0 +1,70 @@
+# Dress it up! {#doc-dress}
+
+```{r, include = FALSE}
+source("common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
+
+```{r, out.width = "65%", fig.align='center', echo= FALSE}
+knitr::include_graphics("images/rmd_custom/Dress.jpg")
+```
+
+Once you have the website in place, it's likely that you will want to update it periodically or add new pages. The key to updating is that you must build your site or use `rmarkdown::render_site()` each time before you push to GitHub--otherwise your changes wouldn't make it into your `docs/` folder. And if it's not in the `docs/` then GitHub pages will not be able to find it. 
+
+## Use a bootswatch theme
+
+For a single R Markdown document, knitted to the HTML output format, adding a theme is so dead simple that you have no good excuses for not using one.  You have `r length(rmarkdown:::themes())` theme options: 
+
++ `r knitr::combine_words(rmarkdown:::themes(), before='\x60')` (use `null` for no theme) 
+
+You can preview them all [here](#rmd-themes).
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_site_opts(
+    name = "YUM-101"
+    ) %>% 
+  yml_output(html_document(theme = "flatly")) %>% 
+  asis_yaml_output()
+```
+
+## Customize code highlighter
+
+## Add images
+
+### Markdown images
+![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
+
+### Use `knitr::include_graphics()`
+
+include_graphics gives you figure captions
+
+can also play with out.width
+
+labeling chunks
+
+## Add white space
+
+Let your code chunks breathe! Bonus: it improves the readability of your narrative. This is not accomplished with a built-in YAML option, and unfortunately, accomplishing this (without using CSS) is a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
+
+* **Add white space** in the body of your .Rmd file by including either a `<br>` or a `\` on its own line with a blank line above and below it. At a minimum, we recommend doing before top-level section headers.  
+
+By default, the R Markdown page spacing looks pretty squished, and you can see for yourself what our demo site looks like before and after a liberal helping of backslashes `\`.
+
+\
+
+<div class = col2>
+
+![](images/rmd_custom/squished1.png)
+
+<br>
+
+![](images/rmd_custom/white_space1.png)
+
+</div>
+
+
+
+
+
