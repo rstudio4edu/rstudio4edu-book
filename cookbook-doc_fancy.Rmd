@@ -31,3 +31,19 @@ divs
 - [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
 - [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
 - [ ] [toc / toc floating](https://rmarkdown-docs.netlify.com/reference/html_document.html) 
+
+# Upgrade your output format
+
+So we know we told you to use HTML document as our preferred output format. That hasn't changed- but there are ways to significantly upgrade your HTML output from R Markdown with additional packages, and you can keep all your content as is. The only changes are to install these packages and change the output format in your YAML. We'll show you four options.
+
+## `bookdown::html_document2`
+
+## `distill::distill_article`
+
+## `tufte::tufte_html`
+
+## `learnr::tutorial`
+
+::gotcha
+Warning! This output format means more surgery is needed to your content. But if you want to make your code interactive and hands-on, it may be worth it to you (and your learners!)
+:::
