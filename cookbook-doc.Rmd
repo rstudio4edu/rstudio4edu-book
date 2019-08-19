@@ -143,6 +143,18 @@ We're about to take a single R Markdown file, knit an `.html` version, and publi
 knitr::include_graphics("images/illos/Knit-to-html.jpg")
 ```
 
+The [R Markdown package](https://rmarkdown.rstudio.com/docs/) has a number of built-in ["output formats"](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), which means that a single .Rmd document can be "knit" into a bunch of different output file types like HTML, PDF, and even Word documents.
+
+For educators, we strongly encourage using the default HTML output format for four reasons:
+
+1. __Shareability__- HTML output can be easily shared with links, especially if you are using GitHub.
+
+1. __Flexibility__- .Rmd files output to HTML can be organized easily into larger educational projects using R Markdown extension packages like `bookdown` and `blogdown` (see later chapters).
+
+1. __Styleability__- Each R Markdown output format has its own output styling options. The [options](https://rmarkdown.rstudio.com/docs/reference/html_document.html) for the HTML output format are by far the most fully featured and easily accessible, relying on no additional software installation.
+
+1. __Customizability__- All HTML output can be further customized using CSS. The bad news is that you will need to learn a bit about CSS to get there (see our crash course), but the good news is that if you are the kind of educator that needs to, for example, use a specific branded style guide that specifies colors, fonts, etc., you *can* make your HTML output look "on brand" with a custom CSS.
+
 
 We'll deploy the single document to GitHub Pages. The rest of our cookbooks focus on websites built from collections of R Markdown documents, but for this cookbook, we'll create one R Markdown document and publish it.
 
@@ -150,21 +162,21 @@ But first, a little inspiration. All of the below documents were made with R Mar
 
 
 
-+ [<i class="fas fa-hand-holding-heart"></i>Harvard's R graphics with `ggplot2` workshop](https://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/IQSS/dss-workshops/blob/master/R/Rgraphics/Rgraphics.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>Harvard's R graphics with `ggplot2` workshop](https://tutorials.iq.harvard.edu/R/Rgraphics/Rgraphics.html)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/IQSS/dss-workshops/blob/master/R/Rgraphics/Rgraphics.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>BBC Visual and Data Journalism cookbook for R graphics](https://bbc.github.io/rcookbook/)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/bbc/rcookbook/blob/master/index.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>BBC Visual and Data Journalism cookbook for R graphics](https://bbc.github.io/rcookbook/)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/bbc/rcookbook/blob/master/index.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>OpenCaseStudies - Health Expenditure](https://opencasestudies.github.io/casestudies/ocs-healthexpenditure.html)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/opencasestudies/ocs-healthexpenditure/blob/master/ocs-healthexpenditure.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>OpenCaseStudies - Health Expenditure](https://opencasestudies.github.io/casestudies/ocs-healthexpenditure.html)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/opencasestudies/ocs-healthexpenditure/blob/master/ocs-healthexpenditure.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>How to explore and manipulate a dataset from the fivethirtyeight package in R](http://www.storybench.org/how-to-explore-a-dataset-from-the-fivethirtyeight-package-in-r/)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/mjfrigaard/storybench-posts/blob/master/03-how-to-explore-and-manipulate-a-dataset-from-the-fivethirtyeight-package-in-r.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>How to explore and manipulate a dataset from the fivethirtyeight package in R](http://www.storybench.org/how-to-explore-a-dataset-from-the-fivethirtyeight-package-in-r/)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/mjfrigaard/storybench-posts/blob/master/03-how-to-explore-and-manipulate-a-dataset-from-the-fivethirtyeight-package-in-r.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>Bioconductor for Everyone: Exploring, Analyzing, and Visualizing Large Data Sets with R](https://bioconductor.org/help/course-materials/2019/UB-CDSE/CDSE2019.html)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/Bioconductor/BiocIntro/blob/UB-CDSE-Apr-2019/vignettes/CDSE2019.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>Bioconductor for Everyone: Exploring, Analyzing, and Visualizing Large Data Sets with R](https://bioconductor.org/help/course-materials/2019/UB-CDSE/CDSE2019.html)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/Bioconductor/BiocIntro/blob/UB-CDSE-Apr-2019/vignettes/CDSE2019.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>Trafford Data Lab Open Data Companion](https://www.trafforddatalab.io/open_data_companion/#open_data_companion)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/traffordDataLab/open_data_companion/blob/master/index.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>Trafford Data Lab Open Data Companion](https://www.trafforddatalab.io/open_data_companion/#open_data_companion)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/traffordDataLab/open_data_companion/blob/master/index.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>Claus Wilke's class worksheet on k-means clustering](https://wilkelab.org/classes/SDS348/2019_spring/worksheets/class10.html)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/wilkelab/wilkelab.github.io/blob/master/classes/SDS348/2019_spring/worksheets/class10.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>Claus Wilke's class worksheet on k-means clustering](https://wilkelab.org/classes/SDS348/2019_spring/worksheets/class10.html)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/wilkelab/wilkelab.github.io/blob/master/classes/SDS348/2019_spring/worksheets/class10.Rmd)
 
-+ [<i class="fas fa-hand-holding-heart"></i>Introduction to multilevel modeling using **rstanarm**: A tutorial for education researchers](https://mc-stan.org/users/documentation/case-studies/tutorial_rstanarm.html)[<i class="fas fa-code"></i>`.Rmd`](https://github.com/stan-dev/example-models/blob/master/education/tutorial_rstanarm/tutorial_rstanarm.Rmd)
++ [<i class="fas fa-hand-holding-heart"></i>Introduction to multilevel modeling using **rstanarm**: A tutorial for education researchers](https://mc-stan.org/users/documentation/case-studies/tutorial_rstanarm.html)[<i class="fa fa-code"></i>`.Rmd`](https://github.com/stan-dev/example-models/blob/master/education/tutorial_rstanarm/tutorial_rstanarm.Rmd)
 
 
 ```{r}
