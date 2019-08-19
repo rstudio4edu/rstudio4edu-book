@@ -23,8 +23,7 @@ Imports:
     plotly,
     ymlthis,
     fs,
-    htmltools,
-    icon
+    htmltools
 Remotes:
     r-lib/fs,
     r-lib/usethis,
@@ -33,6 +32,5 @@ Remotes:
     klutometis/roxygen,
     RLesur/klippy,
     hadley/emo,
-    rstudio/htmltools,
-    ropenscilabs/icon
+    rstudio/htmltools
     

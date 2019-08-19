@@ -12,7 +12,7 @@ rmd_files: [
             
   "teach-stack.Rmd", 
   "teach-data.Rmd",  
-  "teach-rmd.Rmd",    
+  "teach-lessons.Rmd",    
   "teach-org.Rmd", 
             
   "cookbook.Rmd",
@@ -20,6 +20,7 @@ rmd_files: [
   "cookbook-doc.Rmd",
   "cookbook-doc_care.Rmd",
   "cookbook-doc_dress.Rmd",
+  "cookbook-doc_trouble.Rmd",
             
   "cookbook-pkg.Rmd",
   "cookbook-pkg_data.Rmd", 

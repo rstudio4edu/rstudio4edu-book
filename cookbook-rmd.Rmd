@@ -315,9 +315,9 @@ Now let's make a small change. In order to publish to GitHub Pages, we'll want t
 
 This step is a one-time step. It says: 
     
-> "Please take all of my `.html` files that I will make when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
+> "Please take all of my `.html` files that get made when I *build*, and place them in the `docs/` folder. And if there's not a `docs/` folder, then make one." 
     
-Having our HTML files live in `docs/` is necessary for using GitHub pages put make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+Having our HTML files live in `docs/` is necessary for using GitHub pages to make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
 
 ## Turn off Jekyll {#rmd-site-nojekyll}
 
@@ -326,7 +326,7 @@ This bit is only necessary if you plan to use GitHub Pages for publishing your w
 ```{r eval = FALSE}
 file.create(".nojekyll")
 ```
-    
+
 ## Build your site {#rmd-site-build}
 
 ```{r echo = FALSE, fig.link = "#make-rmd"}
