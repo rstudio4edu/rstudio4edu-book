@@ -26,7 +26,7 @@ How could you have known that the selector for links was an `a`? The answer is b
 
 <center> ![](images/inspect.png){width=300px} </center>
 
-Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") [IS THIS ACTUALLY THE RIGHT NAME? I PERSONALLY CALL THIS THE INSPECTOR, BUT MAYBE I MADE THAT UP], and these give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
+Clicking on this will open a small set of windows inside of your browser called the Developer Tools (a.k.a "devtools") or the inspector. These give you an inside peek into all the CSS styles that are being applied to every element in the site. (The examples that follow use the Chrome developer tools.)
 
 In the lower left pane of the subwindow, click on the icon of a rectangle with an arrow. Now as you hover and then click on anything in your website, you will see the contents of the developer tools change. The pane on the right shows the CSS styles that are applied. 
 
@@ -258,6 +258,23 @@ Other pursuits:
 * rmd4edu: Template package
 * writing function and doing a PR for the roxygen comment stuff for package
 * word doc template
+
+# Spillover from distill
+
+**Unique to R Markdown** [ Probably remove]
+
+* `rmarkdown:::site_skeleton(getwd())`
+* What happens to Rmd's placed in subdirectories?
+    ** They're still knit...but not compiled in an automatic and *smart* way (?)
+* A logo can only be added with HTML/CSS-- unless you create your own pandoc template (Ahh!)
+* Footer must be constructed using HTML/CSS manually with `includes....` in YAML. And it doesn't go all the way across the page easily. 
+* Google analytics need to be inserted manually within HTML file and `includes.. before body` in YAML
+* Appendix not an option unless manually built into footer.
+* Favicon: can you not do this in r Markdown within the YAML?
+* `output: html_document`....or whatever else you want.
+
+
+
 
 # Teaching and Learning with Jupyter Book Review
 
