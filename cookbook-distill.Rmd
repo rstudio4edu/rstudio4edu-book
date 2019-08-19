@@ -25,7 +25,7 @@ You may also want to learn how to use Distill so that you can then create Distil
 <div class = side1>
 
 ```{r echo = FALSE, fig.link = "#make-distill"}
-knitr::include_graphics("images/illos/intro-rmd.jpg")
+knitr::include_graphics("images/illos/intro-distill.jpg")
 ```
 
 </div>
@@ -44,7 +44,7 @@ You will build a bare-bones Distill website from a site skeleton and publish it.
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, fig.link = "#distill-care"}
-knitr::include_graphics("images/illos/Caring.jpg")
+knitr::include_graphics("images/illos/Caring-distill.jpg")
 ```
 
 </div>
@@ -62,7 +62,7 @@ You'll develop a workflow for editing your site, adding new content, and hiding 
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#distill-dress"}
-knitr::include_graphics("images/illos/Dressup-book.jpg")
+knitr::include_graphics("images/illos/Dressup-distill.jpg")
 ```
 
 </div>
@@ -81,7 +81,7 @@ Here, you'll find instructions for no-fuss website customizations that leverage 
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#distill-fancy"}
-knitr::include_graphics("images/illos/Dressup.jpg")
+knitr::include_graphics("images/illos/Fancy-distill.jpg")
 ```
 
 </div>
@@ -158,34 +158,11 @@ You can check out the links below as other examples of Distill websites in the w
 * [R-Music](https://r-music.rbind.io/about.html)
 * [https://m-clark.github.io/](https://m-clark.github.io/)
 
-### If you like Distill...
-...then you may also like the tools below. These are not unique to Distill (you could use them in any R Markdown doc), but they're useful and cool for communicating technical content.
-
-\
-
-**For Visualizations**
-You can see some examples of the two tools below in action [here](https://rstudio.github.io/distill/interactivity.html)
-
-* [r2d3](https://rstudio.github.io/r2d3/)
-* [html widgets]()
-
-```{r, layout="l-screen-inset"}
-library(leaflet)
-leaflet() %>%
-  addTiles() %>%  # Add default OpenStreetMap map tiles
-  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
-```
-
-\
-
-**For Tables**
-
-There are different ways to include tables in your site. None are unique to Distill, but they're useful to know about. You can see examples [here](https://rstudio.github.io/distill/tables.html).
 
 
 # Make a Distill site {#make-distill}
 
-<center>![](images/insert.jpg){width=70%}</center>
+<center>![](images/illos/intro-distill.jpg){width=70%}</center>
 
 ```{r echo = FALSE, results = 'asis', include = FALSE}
 build_toc("cookbook-distill.Rmd")
@@ -288,12 +265,6 @@ knitr::include_graphics("images/screenshots/distill-getting-started-directory.pn
 
 ```
 
-```{r, eval = TRUE, echo= FALSE, fig.align = "center", out.width = "40%"}
-
-knitr::include_graphics("images/screenshots/distill-getting-started-directory.png")
-
-```
-
 Close RStudio and re-open your site by clicking on the project file (`.Rproj`). When you re-open the project, you may notice the `.Rproj` file shows up in your Git pane, which means that the file has changed since your last commit. What happened? RStudio has detected that you have built a website, so a single line has been added to your `.Rproj` file:
 
 ```yaml
@@ -301,26 +272,15 @@ BuildType: Website
 ```
 ## A mini-orientation {#distill-site-orientation}
 
-Our skeleton created two out-of-the-box content files for our site: 
+Our project directory now has four new important items. Open and take a peek at each file as we touch on the them below:
 
-1. `index.Rmd` Any content in this file will be your site’s homepage. This file must be named `“index.Rmd”`. 
+1. **`index.Rmd`**: This will be our site's homepage. This file *must* be named `index.Rmd`, and it *must* at minimum have `title:`, `description:`, and `site: distill::distill_website` fields.
 
-1. `about.Rmd` This will be a second, distinct page of your site. This file can have any name, but we will stick to `“about”` for now.
+1. **`about.Rmd`**: This will be an additional page on our site, and you can change the name of this file to be whatever you want. Additional pages, like this one, at a minimum need to have a non-empty `title:`, but they don't require a `description:` or `site:` line.
 
-When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. 
+1. **`_site.yml`**  is *not* a file that gets turned into a site page, but it *is* necessary for site setup. In general, the `_site.yml` file lets us set options that will affect all pages in our site, and it has the same function here as it does in a typical R Markdown site. A few things you'll notice about this YAML, if you're comparing it to an R Markdown site's: 
 
-The third file in our skeleton, `_site.yml`, is *not* a file that gets turned into a site page, but *is* necessary for site setup. 
-
-Nothing to do here, but good to know these things! We'll circle back to editing these files later.
-
-
-## Edit and preview {#distill-edit}
-
-Your project directory now has four new important items. We'll touch on the them below:
-
-1. **Delete `_site/` folder.** This is the default output folder, where knitted versions of our `.Rmd`s live once they've been processed to become `.html` files. We're going to replace this folder with a `docs/` folder instead so we can host our site on GitHub pages--we'll set that up soon. 
-
-2. **Open the `_site.yml` file in your root directory, and change the output directory from `"_site"` to `"docs"`**. In general, the `_site.yml` file lets us set options that will affect all pages in our site, and it has the same function here as it does in a typical R Markdown site. 
+<!-- TODO: use ymlthis -->
 
 ```{r, eval = FALSE}
 name: "basic-course-distill"
@@ -337,56 +297,115 @@ navbar:
 output: distill::distill_article
 ```
 
-A few things you'll notice about this YAML, if you're comparing it to an R Markdown site's: 
+    + The output here has to be `distill::distill_article`. It's okay for this to be on the same line as `output:` or indented on the line beneath it. 
 
-* The output here has to be `distill::distill_article`. It's okay for this to be on the same line as `output:` or indented on the line beneath it. 
+    + Weirdly, the `description:` field in `_site.yml` is non-functional (as far as we can tell). But we will use it to create a subtitle of sorts in other YAMLS of our other Distill pages.
 
-* Weirdly, the `description:` field in `_site.yml` is non-functional (as far as I can tell). But we will use it to create a subtitle of sorts in other YAMLS of our other Distill pages.
+1. **`_site/` folder**: This is the default output folder, where knitted versions of our `.Rmd`s live once they've been processed to become `.html` files. We're eventually going to replace this folder with a `docs/` folder instead so we can host our site on GitHub pages--we'll set that up soon. 
 
-3. **Open `index.Rmd`**. This will be our site's homepage. This file *must* be named `index.Rmd`, and it *must* at minimum have `title:`, `description:`, and `site:` lines. Optionally, make a small change to its YAML like changing the text in the `description:`. Something like:
+Nothing else to do here, just good info to know. We'll be circling back to these files later. 
 
-```
----
-title: "Demo Website"
-description: |
-  Welcome to my Distill course page. Here you can find all course logistics and content.
-site: distill::distill_website
----
+## Push to GitHub {#distill-push}
 
-```
-4. **Open `about.Rmd`**. Optionally edit it by adding a new line of text. This will be an additional page on our site, and you can change the name of this file to be whatever you want. Additional pages, like this one, at a minimum need to have a non-empty `title:`, but they don't require a `description:` or `site:` line. 
-
-5. **Render your site** with the line below to knit all of your pages in one fell swoop. 
-```{r, eval = FALSE}
-rmarkdown::render_site()` 
-```
-
-You must *always* render your site's pages as the last step before you push to GitHub. Once all of your site's `.Rmd`s have been rendered at least once, then it's okay to knit only the individual pages that you've made changes to (you might want to do this if you have some pages that knit slowly and want to avoid re-rendering everything each time you push). But if you forget to knit or `render_site()`, then you will be wondering why your site hasn't updated on GitHub pages.
-
-:::tip
-If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `.html` file you want to view, and then `View it in Web Browser`.
-:::
-
-
-## Push to GitHub
+Let's get these website files pushed up to our remote repository on GitHub. Do the following from RStudio:
 
 1. **Click *Git* ** in the same RStudio pane that also contains the *Environment* tab.
 
 2. **Check the box(es)** under the "Staged" column and click *Commit*.
 
-3. **Add a commit message** and then click *Push*.
+3. **Add a commit message** like "initial commit" and then click *Push*.
 
-<center>![](images/rmd_custom/git1.png){width=400px}<center>
+<!-- TODO: Update w/ screenshot: <center>![](images/rmd_custom/git1.png){width=400px}<center>
+-->
 
+## Change output directory {#distill-site-output}
+
+Now let's make a small change. In order to publish to GitHub Pages, we'll want to send all the rendered site files (i.e., all those ending in `.html`) to our "boarding area", which is the `docs/` folder. We need to edit the `_site.yml` to do this. This step is once-per-website step. 
+
+**Open `_site.yml`** and change the `output_dir:` to be `docs`:
+
+<!-- TODO: use ymlthis -->
+
+```{r, eval = FALSE}
+name: "basic-course-distill"
+title: "Demo Website"
+description: |
+  Demo Website
+output_dir: "docs"
+```
+
+Having our HTML files live in `docs/` is necessary for using GitHub pages to make our pages go live, which we'll do soon. You do *not* need this step if you will not be publishing to GitHub Pages.
+
+## Turn off Jekyll {#distill-site-nojekyll}
+
+This bit is only necessary if you plan to use GitHub Pages for publishing your Distill website. We need to tell GitHub Pages to bypass using Jekyll to build your site. We do this by adding a single empty file named `.nojekyll` to your project root directory.
+
+```{r eval = FALSE}
+file.create(".nojekyll")
+```
+
+## Build your site {#distill-site-build}
+
+```{r echo = FALSE, fig.link = "#make-distill"}
+knitr::include_graphics("images/illos/Build.jpg")
+```
+
+In the lifecycle of your Distill site, you'll be doing lots of building. What does building the site do? This processes your `.Rmd`s and creates the `docs/` folder (if it doesn't already exist), which houses `.html` versions of each of your `.Rmd` files. AND each of these pages now has a common navigation bar at the top that links your site together (this is thanks to our `_site.yml` file--but more on that later).
+
+In RStudio, you can render your site locally (knit + preview all `.Rmd` files in one fell swoop) from the either the IDE or the R console.
+
+<div class = side-by-side>
+<div class = side1>
+
+
+*From the R console*, you can run: 
+
+```{r, eval = FALSE}
+rmarkdown::render_site()
+```
+
+</div>
+
+<div class = side2>
+
+**OR** *from the IDE*, find the Build tab and select **Build Website**:
+
+```{r echo = FALSE, fig.link = "https://bookdown.org/yihui/rmarkdown/", fig.cap="The build pane in RStudio"}
+knitr::include_graphics("https://bookdown.org/yihui/rmarkdown/images/site-build.png")
+```
+
+</div>
+</div>
+
+:::tip
+If the rendered site does not open up automatically in a new window, you can go to the `docs/` folder in your project, click on the `index.html` file, and `View it in Web Browser`.
+:::
+
+## Push to GitHub (again) {#distill-push2}
+
+Let's get these *new* Distill website files pushed up to our remote repository on GitHub. If you want your site to have the most recent updates you've made, then every single `.Rmd` file with a change must be built right *before* pushing to GitHub. Using either the build pane or `rmarkdown::render_site()`, you don't need to knit each `.Rmd` file one at a time, but you do need to build your site locally first every time.
+
+:::tip
+Watch out! Each time you run `rmarkdown::render_site()`, the `docs/` folder will be overwritten with updated HTML versions of your `.Rmd`s. This means DON'T EVER EDIT FILES IN THE `docs/` FOLDER! Nothing catastrophic will happen if you do, but you will overwrite and lose all your changes the next time you knit or `render_site()`.
+:::  
+
+
+Go ahead and stage all your changed files, commit, and push to GitHub.
 
 Now we'll get to the good stuff! Let's put this on the internet!
 
-## Make a living, breathing site
+
+## Make a living, breathing site! {#distill-living}
+
+We have built some out-of-the-box content and pushed to GitHub. Now we'll go back to the GitHub website and tell it where to find our website-ready files:
+
+
 ```{r, child= "modules/github-pages.Rmd"}
 
 ```
+\
 
-You can now edit and knit your `.Rmd` pages to your heart's content. 
+Now that the bare bones of the site are up, you can go back and add more content to your Distill documents anytime. Your changes will go live as soon as you build or `render_site()`, followed by a push to GitHub. 
 
 
 ## Uplevel your workflow {#distill-uplevel}
@@ -402,7 +421,7 @@ Now, here is your advanced workflow for creating a new Distill site inside a pro
 
 1. **Click** *File* > *New Project* > *New Directory*
 
-1. **Scroll down and select** *Simple R Markdown Website*
+1. **Scroll down and select** *Distill Website*
 
 1. Then use your R console to **run** this code: 
 
@@ -411,311 +430,7 @@ Now, here is your advanced workflow for creating a new Distill site inside a pro
     use_github() # you have to have a PAT setup
     ```
     
-1. Then follow all of our instructions above starting at [changing the site output directory](#rmd-site-output).
+1. Then follow all of our instructions above starting at [changing the site output directory](#distill-site-output).
 
-## Distill features
 
-After adding some page content, we now demo some core features of Distill sites that you can't get with a regular R Markdown site as easily.
-
-
-### Authors and affiliations
-
-Within the YAML of an individual Distill page (a.k.a article), you can add multiple author fields with an (optional) affiliation field for each author. Below is an example of what this looks like when it's added to the index page.
-
-While you're here you can optionally add in a `date:` field (which must always be in the order of month, day, then year). Use `"r Sys.Date()`"` to show the current date each time you knit the page. 
-
-All of this info will be placed in a "Title" section at the top of the page. 
-
-<div class = side-by-side>
-<div class = side1>
-
-```{r, eval = FALSE}
----
-title: "Demo Website"
-description: |
-  Welcome to my Distill course page. Here you can find all course logistics and content.
-author:
-  - name: Desirée De Leon
-    url: https://desiree.rbind.io
-    affiliation: RStudio
-    affiliation_url: https://rstudio.com
-  - name: Alison Hill
-    url: https://alison.rbind.io
-    affiliation: RStudio
-    affiliation_url: https://rstudio.com
-date: "`r Sys.Date()`"
-site: distill::distill_website
----
-```
-
-</div>
-<div class = side2> 
-
-
-![](images/cookbook-distill/index-authors.png)
-</div> 
-</div>
-
-### Citations
-
-Including internal citations is made easier with Distill. They appear as numbers, and when hovering over them, you see the full citation info.
-
-To include citations of your own, you'll need to have two things: (1) a file with a list of your references and (2) a link to this file in the YAML of your `.Rmd` page
-
-* **Create the file of listed citations**. This has to be a BibTeX file with citation entries like the ones below, for example. If you use a citation manager (like Endnote or Mendeley), then the easiest way to get a BibTex file is to export a BibTeX file from there (there are many online tutorials that show you how, e.g.  [Endnote](https://www.reed.edu/cis/help/LaTeX/EndNote.html), [Mendeley](https://blog.mendeley.com/tag/bibtex/)). However, you can also make a BibTeX file manually if want to, by creating a regular new text file (*File* > *New File* > *Text File*) and saving it with a `.bib` file extension (we named our `refs.bib`, but you can choose a different name). 
-
-
-* **Save your BibTeX file** in your project directory.
-
-```
-@book{r4ds,
- author = {Wickham, Hadley and Grolemund, Garrett},
- title = {R for Data Science: Import, Tidy, Transform, Visualize, and Model Data},
- year = {2017},
- isbn = {1491910399, 9781491910399},
- edition = {1st},
- publisher = {O'Reilly Media, Inc.},
- url = {https://r4ds.had.co.nz/},
-}
-
-@misc{loremipsum,
-  title = {Lorem Ipsum},
-  author = {Wasai},
-  year = {2015-2019},
-  url = {https://loremipsum.io/},
-}
-```
-
-* **Add a `bibliography:` field to the YAML of your individual `.Rmd`** whose content will contain the citations, then specify the name of your BibTex file. Now you can create inline citations of any reference that exists in this file. 
-
-
-* **Cite your sources** in the body of the text. The citation should be in brackets and start with an `@` followed by the source's unique ID from the BibTex file (e.g.`[@loremipsem]`). The unique ID is whatever is on the first line of its BibTeX entry, immediately following the `{`. When you cite a source, an appendix will be created at the end of the page (if it doesn't already exist) with a list of all your cited references.
-
-<div class = side-by-side>
-<div class = side1>
-```{r, eval = FALSE}
----
-title: "Demo Website"
-description: |
-  Welcome to my Distill course page. Here you can find all course logistics and content.
-author:
-  - name: Desirée De Leon
-    url: https://desiree.rbind.io
-    affiliation: RStudio
-    affiliation_url: https://rstudio.com
-  - name: Alison Hill
-    url: https://alison.rbind.io
-    affiliation: RStudio
-    affiliation_url: https://rstudio.com
-bibliography: refs.bib
-date: "`r Sys.Date()`"
-site: distill::distill_website
----
-```
-</div>
-
-<div class = side2>
-
-![](images/cookbook-distill/citations-hover.png){width=100%}
-<br>
-
-![](images/cookbook-distill/citations-appendix.png){width=100%}
-
-</div>
-</div>
-
-The citation feature within Distill was originally intended for citing academic sources, so the display of the citation data in the hovered box and in the appendix looks best when fields like "publisher" and "year" are filled out, but having blank entries for these won't prevent you from creating a citation.
-
-You can read more of the nitty-gritty details about citations, as well as about making your Distill page itself easily citable to others [here](https://rstudio.github.io/distill/citations.html).
-
-
-### Site footer
-
-A footer is added to your all your pages when you make a file named `_footer.html` that has the content you want. It's automatically applied to all pages when you drop this file into your main project directory. 
-
-1. **Create a new text file** by going to *File* > *New File* > *Text file*.
-2. **Save this as `_footer.html`** in your main project directory. Its contents will be used as a footer for each of your Distill pages.
-3. **Enter some footer content** and save.
-
-For example, contents could be something like this:
-
-<div class = side-by-side>
-<div class =side1>
-
-```
-Your Name, youremail@example.com
-
-Your Collaborator's Name, anotheremail@example.com
-
-This content was created using 
-the Distill for R Markdown template in RStudio.
-
-```
-</div>
-<div class= side2>
-
-![](images/cookbook-distill/footer.png)
-
-</div>
-</div>
-
-You'll be stuck with the default teal color for the footer unless you change the CSS file, which we demo in the "Make it fancy" chapter. But the nice thing about the Distill footer is that it will carry all across the page, which is not an easy feat to accomplish in some regular R Markdown sites (even if you're not afraid to mess with CSS). 
-
-### Appendix
-
-If there's other content you'd like to add to the Appendix, you can add it by creating a new level 1 or 2 header followed by `{.appendix}` in the body of your Distill page. This will move that content of that section to the appendix, with footnotes and the reference list placed afterwards. 
-
-```
-# Acknowledgments {.appendix}
-
-We'd like to thank the following funding sources for making this work possible: 
-Source 1, Source 2, and Source 3. 
-
-```
-![](images/cookbook-distill/appendix.png)
-
-### Hoverable footnotes
-
-Want footnotes to be read more easily? No problem. Just include `^[footnote here]` whereever you'd like the footnote to go, and it will be automatically numbered, added to the appendix, and expanded when you hover over the number. 
-
-<div class = side-by-side>
-<div class = side1>
-```
-# Credits
-
-This course is assigned 
-3 credit hours^[A footnote goes here!].    
-
-```
-</div>
-
-<div class = side2>
-![](images/cookbook-distill/footnotes.png)
-</div>
-</div>
-
-### Asides
-
-You can also include small notes, images, or plots in the margins of the page by enclosing content within `<aside>` tags, like this (note that the second tag needs a `/`):
-
-**A note**
-<div class = side-by-side>
-<div class = side1>
-```
-<aside>
-Here is a small side note.
-</aside>
-
-```
-</div>
-
-<div class = side2>
-![](images/cookbook-distill/aside-note.png)
-</div>
-</div>
-
-**An image**
-
-<div class = side-by-side>
-<div class = side1>
-```
-<aside>
-![R4DS](http://alturl.com/bmfvq)
-</aside>
-
-```
-</div>
-
-<div class = side2>
-![](images/cookbook-distill/aside-image.png)
-</div>
-</div>
-
-**A plot**
-
-<div class = side-by-side>
-<div class = side1>
-```
-<aside>
-```{r, eval = TRUE, echo = FALSE}
-library(tidyverse)
-library(gapminder)
- 
-p <- gapminder %>%
-  filter(year==1977) %>%
-  ggplot( aes(x = gdpPercap, y = lifeExp, size = pop, color=continent)) +
-  geom_point() +
-  scale_x_log10() +
-  theme_bw()
-
-p
-```
-</aside>
-
-```
-</div>
-
-<div class = side2>
-![](images/cookbook-distill/aside-plot.png)
-</div>
-</div>
-
-### Figure width
-
-Distill allows you do change the width of figures that you produce within code chunks. This includes all sorts of plots but also plain, static `jpg`s and `png`s. The coolest application of the variable widths is being able to produce a figure, plot, or image that extends across the full width of the page. This would work well with figures that have a lot of visual interest -- likes maps or photographs.
-
-To try this out, you can apply `layout = "l-screen"` to the specific code chunk that contains your image or plot. Don't have an image? [Try these](https://unsplash.com/), and then download and move the file into your project directory (or to an `images/` folder in your project directory folder to keep your files more organized).
-
-````clike
-```{r layout = "l-screen"}`r ''`
-knitr::include_graphics("images/curves.png")
-```
-````
-Produces this output:
-
-![](images/cookbook-distill/width-full.png)
-
-:::tip
-You can use the `l-screen` option creatively to make your image a page banner or a section divider. 
-:::
-
-It's also an option to expand the plot or image to be just a bit wider than the main body content. We're not a huge fan of this option aesthetically and recommend avoiding it unless you truly feel there's no other way to effectively display your output.
-
-Nonetheless, here are all the [width options available](https://rstudio.github.io/distill/figures.html#wider-layouts):
-
-* `l-body`: (Default) As wide as the body of text.
-* `l-body-outset`: Overflows the text-width a bit (Not recommended).
-* `l-page`: About 3/4 of the screen width.
-* `l-screen-inset`: Stretches across the entire page, except for 15px padding around the sides. 
-* `l-screen`: Fully-committed, full screen. Works best for wide, short figures.
-
-You can check out the specifics of Distill figure widths [here](https://rstudio.github.io/distill/figures.html#wider-layouts). 
-
-### Figure captions and cross-references
-
-You can also include captions for your figures by including `fig.cap =` in the code chunk options. 
-
-````clike
-```{r gdpplot, eval = TRUE, echo = FALSE, fig.cap = "Reference for Assignment 1"}`r ''`
-library(tidyverse)
-library(gapminder)
- 
-p <- gapminder %>%
-  filter(year==1977) %>%
-  ggplot( aes(x = gdpPercap, y = lifeExp, size = pop, color=continent)) +
-  geom_point() +
-  scale_x_log10() +
-  theme_bw()
-
-p
-```
-````
-
-If you give the code chunk a name, you can use that name later to reference the plot in the body of the text, like so: Figure `\@ref(fig:gdpplot)`. You would replace `gdpplot` with the name of your code chunk. 
-
-![](images/cookbook-distill/figures-caption.png)
-
-:::tip
-If the image or figures you're using come from an external source, in addition to using a figure caption, you should also add an `out.extra="class=external"` to the chunk option. This will add a bit of formatting that makes it clear that outside images you're using may not necessarily fall under the same license as the rest of your content, should someone else want to use your materials.
-:::
 

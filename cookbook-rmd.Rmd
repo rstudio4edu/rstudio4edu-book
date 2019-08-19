@@ -56,7 +56,7 @@ You'll develop a workflow for editing your site, adding new content, and hiding 
 <div class = side1>
 
 ```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-dress"}
-knitr::include_graphics("images/illos/Dressup.jpg")
+knitr::include_graphics("images/illos/Dressup-book.jpg")
 ```
 
 </div>
@@ -73,7 +73,11 @@ Here, you'll find instructions for no-fuss website customizations that leverage 
 
 <div class = side-by-side>
 <div class = side1>
-<!--todo: insert fancy image here?-->
+
+```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-fancy"}
+knitr::include_graphics("images/illos/Dressup.jpg")
+```
+
 </div>
 
 <div class = side2>
@@ -241,9 +245,9 @@ At the time of publishing, we are running `rmarkdown` version `r packageVersion(
 
 ### Make a project {#rmd-proj-first}
 
-For your first R Markdown site, we recommend starting by created a GitHub repository online first, then making a project in RStudio. 
+For your first R Markdown site, we recommend starting by creating a GitHub repository online first, then making a project in RStudio. 
 
-<!--TODO: add link to other workflow that we recommend later-->
+If this is not your first rodeo, then you could check out the [more advanced GitHub last workflow](#uplevel-rmd)).
 
 ```{r child = 'modules/github-first-project.Rmd'}
 
@@ -256,8 +260,8 @@ We'll start by creating the shell for a basic R Markdown website and publishing 
 ```{r ref.label = 'rmd-skeleton', eval = FALSE}
 ```
 
-:::tip
-Warning! Note that we use `:::` here (with three colons!) to generate important infrastructure files we need.
+:::gotcha
+Don't miss it! Note that we use `:::` here (with three colons) to generate important infrastructure files we need.
 
 :::
 
@@ -281,13 +285,13 @@ BuildType: Website
 
 Our skeleton created two out-of-the-box content files for our site: 
 
-1. `index.Rmd` Any content in this file will be your site’s homepage. This file must be named `“index.Rmd”`. 
+1. **`index.Rmd`** Any content in this file will be your site’s homepage. This file must be named `“index.Rmd”`. 
 
-1. `about.Rmd` This will be a second, distinct page of your site. This file can have any name, but we will stick to `“about”` for now.
+1. **`about.Rmd`** This will be a second, distinct page of your site. This file can have any name, but we will stick to `“about”` for now.
 
 When we build our site, R Markdown will *knit* each of these, and create `.html` (i.e. website-ready) versions of them that we can preview locally. 
 
-The third file in our skeleton, `_site.yml`, is *not* a file that gets turned into a site page, but *is* necessary for site setup. 
+The third file in our skeleton, **`_site.yml`**, is *not* a file that gets turned into a site page, but *is* necessary for site setup. 
 
 Nothing to do here, but good to know these things! We'll circle back to editing these files later.
 
@@ -402,7 +406,7 @@ We have built some out-of-the-box content and pushed to GitHub. Now we'll go bac
 Now that the bare bones of the site are up, you can go back and add more content to your R Markdown documents anytime. Your changes will go live as soon as you build or `render_site()`, followed by a push to GitHub. 
 
 
-## Uplevel your workflow
+## Uplevel your workflow {#rmd-uplevel}
 
 We followed a "GitHub first" workflow above, but if you'll be using GitHub regularly, we recommend evolving this workflow. 
 
