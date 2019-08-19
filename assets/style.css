@@ -224,6 +224,22 @@ li.appendix span, li.part span { /* for TOC part names */
   margin-left: 1rem;
 }
 
+/* --------------Even split- two columns--------------- */
+
+.split {
+  display: flex;
+}
+
+.split1 {
+  width: 50%;
+  padding-right: 20px;
+}
+
+.split2 {
+  width: 50%;
+}
+
+
 /* Sidebar formating --------------------------------------------*/
 /* from r-pkgs.org*/
 
