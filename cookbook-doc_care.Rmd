@@ -15,12 +15,9 @@ Once you have your published doc in place, it's likely that you will want to cha
 Here's what the change-my-doc workflow looks like for me:
 
 1. **Open** the existing RStudio project
-2. `r emo::ji("yarn")` *Knit* right away to see where things left off, or turn on `xaringan::inf_mr()` to see a live preview of your changes.
-3. 
-4. **Update** your `_site.yml` by adding the new page's `.html` file to the navbar section. **Note: It's very easy to forget this step!!**
-6. **Run** `rmarkdown::render_site()` to stitch everything together.
-7. **Rinse and repeat** if needed!
-8. **Commit and push** all changes to GitHub.
+1. `r emo::ji("yarn")` *Knit* right away to see where things left off, or turn on `xaringan::inf_mr()` to see a live preview of your changes.
+1. Make edits, preview changes, **rinse and repeat...**
+1. **Commit and push** all changes to GitHub.
 
 ## Live editing
 
@@ -66,8 +63,8 @@ You'll need to save this file first, before using the "Infinite Moon Reader".
 Headers are useful for organizing your document into sections, and with Markdown formatting you can have up to 6 types/sizes of headers. Use a `#` symbol before the label to create a new header.
 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "split">
+<div class = "split1">
 
 ```markdown
 # HEADER 1
@@ -84,7 +81,7 @@ Headers are useful for organizing your document into sections, and with Markdown
 ```
 
 </div>
-<div class = side2>
+<div>
 
 <h1>Header 1</h1>
 <h2>Header 2</h2>
@@ -131,15 +128,20 @@ knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2016/11/tip_
 
 Let's take a lightly-edited snippet from a [blog post](https://www.huffpost.com/entry/post_b_755048) originally published on the Huffington Post in 2010, and show it in raw Markdown (L) and rendered (R).
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "split">
+<div class = "split1">
 
 ```markdown
 # The Great British Bake Off
 
-The Great British Bake Off (also called *Bake Off* or *GBBO*) is a British television baking competition.
+The Great British Bake Off (also called 
+*Bake Off* or *GBBO*) is a British 
+television baking competition.
 
-In the first series, the location of the cast and crew moves from town to town each week, with a different baking theme each week:
+In the first series, the location of 
+the cast and crew moves from town to town 
+each week, with a different baking theme 
+each week:
 
 1. Cakes
 1. Biscuits
@@ -148,7 +150,9 @@ In the first series, the location of the cast and crew moves from town to town e
 1. Pastry
 1. Tea Party
 
-In each episode, the amateur bakers are given three challenges based on that week's theme:
+In each episode, the amateur bakers 
+are given three challenges based on 
+that week's theme:
 
 - A signature bake,
 - a technical challenge,
@@ -163,7 +167,7 @@ Vanilla Macaron, Michelle Naherny
 
 </div>
 
-<div class = side2>
+<div>
 
 <h4>The Great British Bake Off</h4>
 
@@ -266,8 +270,9 @@ A few notes on what the above chunk options do:
 
     Below is a side-by-side changing this chunk option for an *individual* chunk. 
 
-<div class="side-by-side">
-<div class="side1">
+<div class="split">
+
+<div class="split1">
 
 <h3>Default chunk style</h3>
 
@@ -279,7 +284,7 @@ starwars %>%
 ```
 
 </div>
-<div class ="side2">
+<div class="split2">
 
 <h3>Custom chunk style</h3>
 
@@ -314,9 +319,9 @@ In short, here are a few very good reasons to name your pets:
 :::tip
 We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in chunk labels instead of spaces or underscores (or really, any punctuation)...
 
-<div class= side-by-side>
+<div class= "split">
 
-<div class= side1>
+<div class= "split1">
 `r emo::ji("heavy_check_mark")` Good
 ````
 ```{r my-dog-skip}`r ''`
@@ -325,7 +330,7 @@ We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in 
 ````
 </div>
 
-<div class= side2>
+<div class= "split2">
 `r emo::ji("x")` Bad
 
 ````
