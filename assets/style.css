@@ -381,9 +381,16 @@ a.anchor {
 }
 
 
-.hasAnchor:hover a.anchor, a.anchor:hover {
+.hasAnchor:hover a.anchor, 
+a.anchor:hover {
   /*visibility: visible;*/
   opacity: 0.6;
+}
+
+/* disable anchors for headers with "no-anchor" class */
+.no-anchor .hasAnchor:hover a.anchor, 
+.no-anchor a.anchor:hover {
+  opacity: 0 !important;
 }
 
 @media (max-width: 1144px) { /* don't show anchor link on small screens */
