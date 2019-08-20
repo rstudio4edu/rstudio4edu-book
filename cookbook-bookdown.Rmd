@@ -3,12 +3,13 @@
 ```{r, include = FALSE}
 source("common.R")
 knitr::opts_chunk$set(fig.align="center")
-
 ```
 
 # Introduction {-#intro-bookdown}
 
-<center> ![](images/illos/bookdown.jpg){width=40%} </center>
+```{r echo = FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/bookdown-base.jpg")
+```
 
 This is a cookbook for educators who would like to use bookdown to organize and deliver educational content for their audience. Despite the name, using bookdown doesn't mean that what you make *has* to be a book--but a bookdown site does come with some built-in features (e.g. its hallmark heavy-duty table of contents) that make it well-suited for long-form content (or many R Markdown files that can be organized in a chronological way). This, and the lack of a navbar make a bookdown site feel somewhat less like a typical website and a bit more like a textbook, but how you use it is up to you. You can place an entire course-worth's of materials in a bookdown book, or you could pare down your TOC headers and create a site for a short workshop. This rstudio4edu resource is itself a bookdown! 
 
@@ -21,15 +22,15 @@ This is a cookbook for educators who would like to use bookdown to organize and 
 * A built-in search feature (that's a bit unintuitive to use)
 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
 ```{r echo = FALSE, fig.link = "#make-book"}
-knitr::include_graphics("images/illos/intro-book.jpg")
+knitr::include_graphics("images/illos/bookdown-make.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 #### [Make a book](#make-book)
 Here, we'll guide you through creating an out-of-the-box bookdown book. We make only the most minimal changes to content and style necessary to get you a shareable bookdown site.
@@ -39,17 +40,35 @@ Here, we'll guide you through creating an out-of-the-box bookdown book. We make 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, fig.link = "#book-care"}
-knitr::include_graphics("images/illos/Caring-book.jpg")
+```{r, echo= FALSE, fig.link = "#book-yours"}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-#### [Caring for your site](#book-care)
+#### [Make it yours](#book-yours)
+You'll personalize your book's content here by adding chapters.
+
+</div>
+</div>
+
+\
+
+<div class = "side-by-side no-anchor">
+<div class = "side1">
+
+```{r, echo= FALSE, fig.link = "#book-care"}
+knitr::include_graphics("images/illos/bookdown-care.jpg")
+```
+
+</div>
+<div class = "side2">
+
+#### [Caring for your book](#book-care)
 You'll develop a workflow for editing your book, adding new content, and hiding pages that are works-in-progress.
 
 </div>
@@ -57,15 +76,15 @@ You'll develop a workflow for editing your book, adding new content, and hiding 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="52%", fig.link = "#book-dress"}
-knitr::include_graphics("images/illos/Dressup-book.jpg")
+```{r, echo= FALSE, out.width="52%", fig.link = "#book-dress"}
+knitr::include_graphics("images/illos/bookdown-dressup.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 #### [Dress it up](#book-dress)
 
@@ -76,15 +95,15 @@ Here, you'll find instructions for no-fuss website customizations that leverage 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#book-fancy"}
-knitr::include_graphics("images/illos/Fancy-book.jpg")
+```{r, echo= FALSE, out.width="50%", fig.link = "#book-fancy"}
+knitr::include_graphics("images/illos/bookdown-fancy.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 #### [Make it fancier](#book-fancy)
 
@@ -149,7 +168,10 @@ There are certainly other options for publishing (aka deploying) a bookdown webs
 
 # Make a book {#make-book}
 
-<center>![](images/illos/intro-book.jpg){width=70%}</center>
+
+```{r, echo= FALSE, out.width="70%"}
+knitr::include_graphics("images/illos/bookdown-make.jpg")
+```
 
 ## tl;dr
 

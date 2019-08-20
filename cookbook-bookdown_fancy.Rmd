@@ -1,6 +1,14 @@
 # Make it fancier {#book-fancy}
 
-<center>![](images/illos/Fancy-book.jpg){width=40%}</center>
+```{r, include = FALSE}
+source("common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
+
+```{r echo = FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/bookdown-fancy.jpg")
+```
 
 Now it's time to customize our book even further. We can do a little bit of HTML and CSS work to add-on some fancy features.
 
@@ -110,7 +118,6 @@ knitr::include_graphics("images/screenshots/google-import.png")
 1. On the very first line paste in the Google Font import code for the Muli font. Don't include the `<style>` tags. This makes the font available within your bookdown site.
 
     ```style.css
-
     @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
     ```
 

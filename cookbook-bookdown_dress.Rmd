@@ -1,12 +1,18 @@
 # Dress it up! {#book-dress}
 
-<center>![](images/illos/Dressup-book.jpg){width=40%}</center>
-
-```{r include = FALSE}
+```{r, include = FALSE}
+source("common.R")
+knitr::opts_chunk$set(fig.align="center")
 # remotes::install_github("r-lib/ymlthis")
 library(ymlthis)
 library(dplyr)
 ```
+
+
+```{r echo = FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/bookdown-dressup.jpg")
+```
+
 
 In this section, we cover optional ways to make your bookdown site look `r emo::ji ("sparkles")`faaaabulous `r emo::ji ("sparkles")`. The features we cover below do not require knowing CSS nor HTML, and they're all built-in things you can add to your bookdown now. There are a lot of different options here, and you certainly don't have to implement all of them. Take an à la carte approach and pick the stuff you like!
 
@@ -67,7 +73,7 @@ We'll need to use the three different bookdown YAML files to turn on these featu
     * `_bookdown.yml`
     * `index.Rmd`
     
-2. **Remove output types we don't need:`** from `_output.yml`. All of our cookbook content will only deal with the `gitbook` output from here on out. This means you can get rid of this part of the YAML in `_output.yml`:
+1. **Remove output types we don't need:`** from `_output.yml`. All of our cookbook content will only deal with the `gitbook` output from here on out. This means you can get rid of this part of the YAML in `_output.yml`:
 
     ```output.yml
     bookdown::pdf_book:
@@ -382,18 +388,17 @@ When you turn sharing on, it's easier for people to give your book a shoutout on
 1. Add the field `github-repo:` followed by your `"username/repo"`. 
 
 ```{r, echo = FALSE}
-library(ymlthis)
-    ymlthis::yml_empty() %>%
-          yml_title("A Minimal Book Example") %>%
-          yml_author("Yihui Xie") %>%
-          yml_date("`r Sys.Date()`") %>%
-          yml_bookdown_site() %>%
-          yml_toplevel(documentclass = "book") %>%
-          yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-          yml_toplevel("biblio-style" = "apalike") %>% 
-          yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-          yml_toplevel("github-repo" = "your-github/your-repo") %>%
-          asis_yaml_output(fences = TRUE)
+ymlthis::yml_empty() %>%
+  yml_title("A Minimal Book Example") %>%
+  yml_author("Yihui Xie") %>%
+  yml_date("`r Sys.Date()`") %>%
+  yml_bookdown_site() %>%
+  yml_toplevel(documentclass = "book") %>%
+  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+  yml_toplevel("biblio-style" = "apalike") %>% 
+  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+  yml_toplevel("github-repo" = "your-github/your-repo") %>%
+  asis_yaml_output(fences = TRUE)
 ```
 
 Now, the GitHub icon will go to your book's repo.
@@ -413,21 +418,20 @@ You know the little tiny icon that gets placed in the corner of your browser tab
 1. **Add** `favicon: <"images/favicon.ico">` in the YAML, replacing the filepath in quotes with your own.
 
 ```{r, echo = FALSE}
-library(ymlthis)
-    ymlthis::yml_empty() %>%
-          yml_title("A Minimal Book Example") %>%
-          yml_author("Yihui Xie") %>%
-          yml_date("`r Sys.Date()`") %>%
-          yml_bookdown_site() %>%
-          yml_toplevel(documentclass = "book") %>%
-          yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-          yml_toplevel("biblio-style" = "apalike") %>% 
-          yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-          yml_site_opts(favicon = "images/favicon.ico") %>%
-          yml_toplevel("cover-image" = "images/logo-black.png") %>%
-          yml_toplevel("github-repo" = "your-github/your-repo") %>%
-          yml_toplevel("url" = "https://github.com/dcossyleon/fake_book") %>%
-          asis_yaml_output(fences = TRUE)
+ymlthis::yml_empty() %>%
+  yml_title("A Minimal Book Example") %>%
+  yml_author("Yihui Xie") %>%
+  yml_date("`r Sys.Date()`") %>%
+  yml_bookdown_site() %>%
+  yml_toplevel(documentclass = "book") %>%
+  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+  yml_toplevel("biblio-style" = "apalike") %>% 
+  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+  yml_site_opts(favicon = "images/favicon.ico") %>%
+  yml_toplevel("cover-image" = "images/logo-black.png") %>%
+  yml_toplevel("github-repo" = "your-github/your-repo") %>%
+  yml_toplevel("url" = "https://github.com/dcossyleon/fake_book") %>%
+  asis_yaml_output(fences = TRUE)
 ```
 
 :::tip
@@ -449,24 +453,30 @@ Let's update our `index.Rmd` with the following:
 
 
 ```{r, echo = FALSE}
-library(ymlthis)
-    ymlthis::yml_empty() %>%
-          yml_title("Demo Book") %>%
-          yml_author(c("Desiree De Leon", "Alison Hill")) %>%
-          yml_date("`r Sys.Date()`") %>%
-          yml_bookdown_site() %>%
-          yml_toplevel(documentclass = "book") %>%
-          yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-          yml_toplevel("biblio-style" = "apalike") %>% 
-          yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-          yml_site_opts(favicon = "images/favicon.ico") %>%
-          yml_toplevel("cover-image" = "images/logo-black.png") %>%
-          yml_toplevel("github-repo" = "your-github/your-repo") %>%
-          yml_toplevel("url" = "https://github.com/dcossyleon/fake_book") %>%
-          asis_yaml_output(fences = TRUE)
+ymlthis::yml_empty() %>%
+  yml_title("Demo Book") %>%
+  yml_author(c("Desiree De Leon", "Alison Hill")) %>%
+  yml_date("`r Sys.Date()`") %>%
+  yml_bookdown_site() %>%
+  yml_toplevel(documentclass = "book") %>%
+  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+  yml_toplevel("biblio-style" = "apalike") %>% 
+  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+  yml_site_opts(favicon = "images/favicon.ico") %>%
+  yml_toplevel("cover-image" = "images/logo-black.png") %>%
+  yml_toplevel("github-repo" = "your-github/your-repo") %>%
+  yml_toplevel("url" = "https://dcossyleon.github.io/fake_book/") %>%
+  asis_yaml_output(fences = TRUE)
 ```
 
 <!---do we REALLY need url?-->
+
+:::gotcha
+The formatting for `url` is really important, and weird: 
+
++ You must use a forward slash `\` before the colon to "escape" it. 
++ The `url` **must** end with a back slash `/` in order for the `cover-image` to render. 
+:::
 
 \
 
