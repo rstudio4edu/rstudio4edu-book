@@ -259,7 +259,7 @@ We'll start by creating the shell for a basic Distill website and publishing thi
 
 You will end up with the following files in your working directory, as shown in Figure \@ref(fig:distill-site-dir). The most critical files are the `index.Rmd` and the `_site.yml`, and we mention a little about them below. 
 
-```{r ref.label = 'distill-site-dir', eval = FALSE, fig.cap = "Distill site skeleton", out.width = "40%"}
+```{r distill-site-dir, eval = FALSE, fig.cap = "Distill site skeleton", out.width = "40%"}
 
 knitr::include_graphics("images/screenshots/distill-getting-started-directory.png")
 
