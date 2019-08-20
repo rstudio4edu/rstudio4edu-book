@@ -111,6 +111,7 @@ As you build content for your book, don't forget about the bells and whistles yo
 * [**Figures captions**](https://bookdown.org/yihui/bookdown/figures.html)
 * [**Tables**](https://bookdown.org/yihui/bookdown/tables.html)
 * [**Citations**](https://bookdown.org/yihui/bookdown/citations.html)
+* [**Footnotes**](https://bookdown.org/yihui/bookdown/markdown-syntax.html#inline-formatting)
 
 
 
