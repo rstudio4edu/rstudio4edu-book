@@ -18,6 +18,7 @@ rmd_files: [
   "cookbook.Rmd",
             
   "cookbook-doc.Rmd",
+  "cookbook-doc_yours.Rmd",
   "cookbook-doc_care.Rmd",
   "cookbook-doc_dress.Rmd",
   "cookbook-doc_fancy.Rmd",
