@@ -29,6 +29,41 @@ yml_empty() %>%
   asis_yaml_output()
 ```
 
+## Add a floating table of contents {#rmd-TOC}
+
+In the `_site.yml` file, you can add a [table of contents](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents) either as a static list of links at the top of the page, or a floating sidebar. We recommend adding a floating TOC, which means adding two lines to your document's YAML.
+  
+<div class = "side-by-side">
+<div class = "side1">
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_site_opts(
+    name = "YUM-101"
+    ) %>% 
+  yml_output(html_document(
+    toc = TRUE,
+    toc_float = TRUE)) %>% 
+  asis_yaml_output()
+```
+
+</div>
+
+<div class = "side2">
+![](images/rmd_custom/float_toc.png)
+</div>
+</div>
+
+By default, the following "nice things" happen when you use a floating TOC.
+
++ First, the TOC "explodes" the subsections when you click on the top-level (H2) headers (i.e., `## My big header`). 
++ The TOC also animates, so that when you click on a top-level header, your document appears to "scroll" to the right section. 
++ All `#`, `##`, and `###` headers will be included because the default `toc_depth: 3`. 
+
+We encourage you to leave these default settings, but know that you can [change them](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents).
+
+You *can* also [number your sections](https://bookdown.org/yihui/rmarkdown/html-document.html#section-numbering), but we find it easier to stick to good top-level headers as the TOC organizing principle.
+
 ## Customize code highlighter
 
 ## Add images
@@ -44,25 +79,32 @@ can also play with out.width
 
 labeling chunks
 
-## Add white space
+fig.link too
 
-Let your code chunks breathe! Bonus: it improves the readability of your narrative. This is not accomplished with a built-in YAML option, and unfortunately, accomplishing this (without using CSS) is a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
+##
 
-* **Add white space** in the body of your .Rmd file by including either a `<br>` or a `\` on its own line with a blank line above and below it. At a minimum, we recommend doing before top-level section headers.  
+That would be great re: narrative/code. I realized they are two diff lenses, because your exposition is for the educator who is sitting down and assessing their learners, their time, their task etc- so their question is, what should I make? Then, next in the process is where I am sitting! I want to write up something for educators who have decided what to make and help them navigate the dizzying array of YAML/knitr options. But for that I want a clear typology of who needs what and when from the educators’ standpoint (not from the learners’ necessarily). Does that make sense?
 
-By default, the R Markdown page spacing looks pretty squished, and you can see for yourself what our demo site looks like before and after a liberal helping of backslashes `\`.
+## Upgrade your output format
 
-\
+So we know we told you to use HTML document as our preferred output format. That hasn't changed- but there are ways to significantly upgrade your HTML output from R Markdown with additional packages, and you can keep all your content as is. The only changes are to install these packages and change the output format in your YAML. We'll show you four options.
 
-<div class = col2>
+### `bookdown::html_document2`
 
-![](images/rmd_custom/squished1.png)
+What you get: 
 
-<br>
++ cross references to other documents
++ numbered figures (plus cross-references)
 
-![](images/rmd_custom/white_space1.png)
+### `distill::distill_article`
 
-</div>
+### `tufte::tufte_html`
+
+### `learnr::tutorial`
+
+::gotcha
+Warning! This output format means more surgery is needed to your content. But if you want to make your code interactive and hands-on, it may be worth it to you (and your learners!)
+:::
 
 
 

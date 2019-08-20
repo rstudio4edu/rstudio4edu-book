@@ -15,12 +15,9 @@ Once you have your published doc in place, it's likely that you will want to cha
 Here's what the change-my-doc workflow looks like for me:
 
 1. **Open** the existing RStudio project
-2. `r emo::ji("yarn")` *Knit* right away to see where things left off, or turn on `xaringan::inf_mr()` to see a live preview of your changes.
-3. 
-4. **Update** your `_site.yml` by adding the new page's `.html` file to the navbar section. **Note: It's very easy to forget this step!!**
-6. **Run** `rmarkdown::render_site()` to stitch everything together.
-7. **Rinse and repeat** if needed!
-8. **Commit and push** all changes to GitHub.
+1. `r emo::ji("yarn")` *Knit* right away to see where things left off, or turn on `xaringan::inf_mr()` to see a live preview of your changes.
+1. Make edits, preview changes, **rinse and repeat...**
+1. **Commit and push** all changes to GitHub.
 
 ## Live editing
 
@@ -59,15 +56,44 @@ You'll need to save this file first, before using the "Infinite Moon Reader".
 :::
 
 
-## Add text with Markdown
+## Care for your text {#text-care}
+
+<div class = "side-by-side">
+<div class = "side1">
+
+```{r echo = FALSE, fig.link=c("https://commonmark.org/help/tutorial/",NA)}
+knitr::include_graphics("images/screenshots/md-tutorial.png")
+knitr::include_graphics("images/screenshots/rstudio-md-quick.png")
+```
+
+</div>
+
+<div class = "side2">
+
+\
+
+One of the not-very-secret weapons of the most skilled R Markdown users is knowing Markdown inside and out. If you haven't done so already, take 10 minutes to do an [interactive Markdown tutorial](https://commonmark.org/help/tutorial/). 
+
+\
+
+\
+
+\
+
+\
+
+From within the RStudio IDE, you can also access a *"Markdown Quick Reference"* from the **Help** menu.
+
+</div>
+</div>
 
 ### Headers
 
 Headers are useful for organizing your document into sections, and with Markdown formatting you can have up to 6 types/sizes of headers. Use a `#` symbol before the label to create a new header.
 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "split">
+<div class = "split1">
 
 ```markdown
 # HEADER 1
@@ -84,14 +110,14 @@ Headers are useful for organizing your document into sections, and with Markdown
 ```
 
 </div>
-<div class = side2>
+<div>
 
-<h1>Header 1</h1>
-<h2>Header 2</h2>
-<h3>Header 3</h3>
-<h4>Header 4</h4>
-<h5>Header 5</h5>
-<h6>Header 6</h6>
+<h1 style="margin-top: 0em;">Header 1</h1>
+<h2 style="margin-top: 0em;">Header 2</h2>
+<h3 style="margin-top: 0em;">Header 3</h3>
+<h4 style="margin-top: 0em;">Header 4</h4>
+<h5 style="margin-top: 0em;">Header 5</h5>
+<h6 style="margin-top: 0em;">Header 6</h6>
 
 </div>
 </div>
@@ -102,15 +128,15 @@ The RStudio IDE has several built-in features made to improve quality of life fo
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side">
+<div class = "side1">
 
 ```{r md-nav, echo=FALSE, fig.cap="RStudio code navigator", fig.link='https://r4ds.had.co.nz/', fig.align="center", out.width = "80%"}
 knitr::include_graphics("https://r4ds.had.co.nz/screenshots/rmarkdown-chunk-nav.png")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 One feature is the drop-down code navigator in the bottom-left of your file editor as shown in Figure \@ref(fig:md-nav) (from the [R for Data Science book](https://r4ds.had.co.nz/)).
 
@@ -129,17 +155,22 @@ knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2016/11/tip_
 
 ### Add Text & Images
 
-Let's take a lightly-edited snippet from a [blog post](https://www.huffpost.com/entry/post_b_755048) originally published on the Huffington Post in 2010, and show it in raw Markdown (L) and rendered (R).
+Let's take a lightly-edited snippet from a [Wikipedia about "The Great British Bake Off"](https://en.wikipedia.org/wiki/The_Great_British_Bake_Off). On the left, you can see the raw Markdown and on the right, the rendered version.
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "split">
+<div class = "split1">
 
 ```markdown
 # The Great British Bake Off
 
-The Great British Bake Off (also called *Bake Off* or *GBBO*) is a British television baking competition.
+The Great British Bake Off (also called 
+*Bake Off* or *GBBO*) is a British 
+television baking competition.
 
-In the first series, the location of the cast and crew moves from town to town each week, with a different baking theme each week:
+In the first series, the location of 
+the cast and crew moves from town to town 
+each week, with a different baking 
+**theme** each week:
 
 1. Cakes
 1. Biscuits
@@ -148,7 +179,9 @@ In the first series, the location of the cast and crew moves from town to town e
 1. Pastry
 1. Tea Party
 
-In each episode, the amateur bakers are given three challenges based on that week's theme:
+In each episode, the amateur bakers 
+are given three challenges based on 
+that week's theme:
 
 - A signature bake,
 - a technical challenge,
@@ -163,13 +196,13 @@ Vanilla Macaron, Michelle Naherny
 
 </div>
 
-<div class = side2>
+<div>
 
-<h4>The Great British Bake Off</h4>
+<h4 style="margin-top: 0em;">The Great British Bake Off</h4>
 
 The Great British Bake Off (also called *Bake Off* or *GBBO*) is a British television baking competition.
 
-In the first series, the location of the cast and crew moves from town to town each week, with a different baking theme each week:
+In the first series, the location of the cast and crew moves from town to town each week, with a different baking **theme** each week:
 
 1. Cakes
 1. Biscuits
@@ -192,55 +225,25 @@ Vanilla Macaron, Michelle Naherny
 </div>
 </div>
 
-## Practice safe file paths {#doc-here}
+### Add white space
 
+Let your code chunks breathe! Bonus: it improves the readability of your narrative. This is unfortunately a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
 
-<div class="side-by-side">
-<div class="side1">
+* **Add white space** in the body of your .Rmd file by including either a `<br>` or a `\` on its own line with a blank line above and below it. At a minimum, we recommend doing before top-level section headers.  
 
-When you are in an `.Rproj`, you'll probably want to create some directories like `data/`, `images/`, `figures/`, etc. We strongly encourage you to use the [here package](https://here.r-lib.org/) to build up safe file paths. Read more from Jenny Bryan's [*What They Forgot to Teach You About R* workshop](https://whattheyforgot.org/safe-paths.html).
+<div class = col2>
 
-If you are *still* skeptical, read Malcolm Barret's blog post [*Why should I use the here package when I'm already using projects?*](https://malco.io/2018/11/05/why-should-i-use-the-here-package/)
+![](images/rmd_custom/squished1.png)
 
-</div>
-<div class="side2">
+<br>
 
-```{r horst-here, echo = FALSE, fig.cap = "Artwork by [Allison Horst](https://twitter.com/allison_horst?lang=en)", fig.link = "https://twitter.com/allison_horst?lang=en"}
-knitr::include_graphics("images/horst_here.png")
-```
+![](images/rmd_custom/white_space1.png)
 
 </div>
-</div>
 
+## Care for your code {#code-care}
 
-:::hat
-> "The chance of the `setwd()` command having the desired effect – making the file paths work – for anyone besides its author is 0%."
->
-> &mdash; [Jenny Bryan](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)
-:::
-
-## Knit to HTML {#doc-to-html}
-
-```{r echo = FALSE, out.width="60%"}
-knitr::include_graphics("images/illos/Knit-to-html.jpg")
-```
-
-We feel pretty strongly about this advice. If you must output to PDF, word, or another output format, because you are using GitHub (right? `r emo::ji("wink")`), you can *at least* also output to HTML to buy yourself a free webpage with a link you can always use to refer people to the very critical content you created (as opposed to: "Oh that is on my home computer, not my work laptop. I'll email that to you after I put the kids to bed!"- and then you never remember).
-
-Outputting to HTML is the default YAML output format for R Markdown, so when you open up a new document you should see:
-
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_site_opts(
-    name = "YUM-101"
-    ) %>% 
-  yml_output(html_document()) %>% 
-  asis_yaml_output()
-```
-
-
-
-## Add a setup code chunk {#knitr-setup}
+### Add a setup code chunk {#knitr-setup}
 
 Get into the habit of always having your first `knitr` code chunk be a *setup* chunk using `knitr::opts_chunk$set()`. A good one looks like this:
 
@@ -266,8 +269,9 @@ A few notes on what the above chunk options do:
 
     Below is a side-by-side changing this chunk option for an *individual* chunk. 
 
-<div class="side-by-side">
-<div class="side1">
+<div class="split">
+
+<div class="split1">
 
 <h3>Default chunk style</h3>
 
@@ -279,7 +283,7 @@ starwars %>%
 ```
 
 </div>
-<div class ="side2">
+<div class="split2">
 
 <h3>Custom chunk style</h3>
 
@@ -294,7 +298,7 @@ starwars %>%
 
 Our `setup` code chunk above affects *all* code chunks. It is called a global chunk option for that reason. You can (and should) use individual chunk options too, but setting up some nice ones that apply to all code chunks can save you time and can lessen your cognitive load as you create your content.
 
-## Name your code chunks
+### Name your code chunks
 
 Remember how we [advised you set your `fig.path`?](#knitr-setup) One of the best things you can do for yourself is to *name your code chunks*. 
 
@@ -314,9 +318,9 @@ In short, here are a few very good reasons to name your pets:
 :::tip
 We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in chunk labels instead of spaces or underscores (or really, any punctuation)...
 
-<div class= side-by-side>
+<div class= "split">
 
-<div class= side1>
+<div class= "split1">
 `r emo::ji("heavy_check_mark")` Good
 ````
 ```{r my-dog-skip}`r ''`
@@ -325,7 +329,7 @@ We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in 
 ````
 </div>
 
-<div class= side2>
+<div class= "split2">
 `r emo::ji("x")` Bad
 
 ````
@@ -340,7 +344,7 @@ We [recommend](https://yihui.name/en/2018/03/space-pain/) using dashes (`-`) in 
 :::
 
 
-## Print pretty packages
+### Print pretty packages
 
 If you load packages, we recommend setting that code chunk to be message = FALSE, warning = FALSE
 
@@ -352,49 +356,50 @@ library(janitor)
 ````
 
 
-## Add notes to self
+## Care for your self {#self-care}
+
+### Use portable file paths {#doc-here}
+
+<div class="side-by-side">
+<div class="side1">
+
+When you are in an `.Rproj`, you'll probably want to create some directories like `data/`, `images/`, `figures/`, etc. We strongly encourage you to use the [here package](https://here.r-lib.org/) to build up safe file paths. Read more from Jenny Bryan's [*What They Forgot to Teach You About R* workshop](https://whattheyforgot.org/safe-paths.html).
+
+If you are *still* skeptical, read Malcolm Barret's blog post [*Why should I use the here package when I'm already using projects?*](https://malco.io/2018/11/05/why-should-i-use-the-here-package/)
+
+</div>
+<div class="side2">
+
+```{r horst-here, echo = FALSE, fig.cap = "Artwork by [Allison Horst](https://twitter.com/allison_horst?lang=en)", fig.link = "https://twitter.com/allison_horst?lang=en"}
+knitr::include_graphics("images/horst_here.png")
+```
+
+</div>
+</div>
+
+
+:::hat
+> "The chance of the `setwd()` command having the desired effect – making the file paths work – for anyone besides its author is 0%."
+>
+> &mdash; [Jenny Bryan](https://www.tidyverse.org/articles/2017/12/workflow-vs-script/)
+:::
+
+### Name your files nicely
+
+![https://twitter.com/DGuarch/status/663049353007931392?s=20](images/jb-fortune-cookie.jpg)
+
+### Add notes to self
 
 also include how to leave invisible notes to yourself `<!--- your comment --->`
+
+
 
 
 # Design a how-to 
 
 We define a "how-to" as a step-by-step recipe for a specific problem; light on narrative and teaching "why". R Markdown is a great tool for this kind of lesson, and we recommend (surprise!) HTML output with the following options.
 
-## Add a floating table of contents {#rmd-TOC}
 
-In the `_site.yml` file, you can add a [table of contents](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents) either as a static list of links at the top of the page, or a floating sidebar. We recommend adding a floating TOC, which means adding two lines to your document's YAML.
-  
-<div class = side-by-side>
-<div class = side1>
-
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_site_opts(
-    name = "YUM-101"
-    ) %>% 
-  yml_output(html_document(
-    toc = TRUE,
-    toc_float = TRUE)) %>% 
-  asis_yaml_output()
-```
-
-</div>
-
-<div class = side2>
-![](images/rmd_custom/float_toc.png)
-</div>
-</div>
-
-By default, the following "nice things" happen when you use a floating TOC.
-
-+ First, the TOC "explodes" the subsections when you click on the top-level (H2) headers (i.e., `## My big header`). 
-+ The TOC also animates, so that when you click on a top-level header, your document appears to "scroll" to the right section. 
-+ All `#`, `##`, and `###` headers will be included because the default `toc_depth: 3`. 
-
-We encourage you to leave these default settings, but know that you can [change them](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents).
-
-You *can* also [number your sections](https://bookdown.org/yihui/rmarkdown/html-document.html#section-numbering), but we find it easier to stick to good top-level headers as the TOC organizing principle for how-tos.
 
 ## Share the source code {#rmd-code-download}
 
