@@ -141,7 +141,7 @@ knitr::include_graphics("images/screenshots/happier-rmd-course.png")
 </div>
 </div>
 
-![https://twitter.com/DGuarch/status/663049353007931392?s=20](images/jb-fortune-cookie.jpg)
+
     
 
 

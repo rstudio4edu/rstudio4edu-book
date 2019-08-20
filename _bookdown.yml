@@ -20,6 +20,7 @@ rmd_files: [
   "cookbook-doc.Rmd",
   "cookbook-doc_care.Rmd",
   "cookbook-doc_dress.Rmd",
+  "cookbook-doc_fancy.Rmd",
   "cookbook-doc_trouble.Rmd",
             
   "cookbook-pkg.Rmd",
