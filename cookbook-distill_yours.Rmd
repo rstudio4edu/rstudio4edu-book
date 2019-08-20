@@ -1,0 +1,121 @@
+# Make it yours {#distill-yours}
+
+```{r, include = FALSE}
+source("common.R")
+knitr::opts_chunk$set(fig.align="center")
+```
+
+
+```{r echo = FALSE, out.width="65%"}
+knitr::include_graphics("images/illos/insert.jpg")
+```
+
+## Adding new Distill articles {#add-distill}
+
+A Distill page is called an article. To add new ones we need to add new `.Rmd` files (with a Distill-flavored YAML) to our site's project root directory. You can do this in RStudio using *File > New File > R Markdown*. When the dialogue box opens, go to *From Template* and choose "Distill Article". Now you can edit away. To add this article to your navbar and site, see the next section.
+
+    ```{r ref.label = 'distill-article', fig.cap = "Adding a new Distill Article", out.width = "40%"}
+    knitr::include_graphics("images/screenshots/choose-distill-template.png")
+    ```
+
+## Grow your navbar {#distill-grow}
+
+To make a new Distill article discoverable and connected to the Distill site, you'll need to *also* make a change to navbar, which means opening up the `_site.yml` file and fiddling with it. To add another page link to your navbar, you need to know two things about the new page you want to add:
+
+1. The **name you want to see** on the navbar for this page; this is the page's `text`.
+
+1. The **name of the `.html` file** that corresponds to the `.Rmd` file you're adding; this is the page's `href`.
+
+Let's say we create a new file called `labs.Rmd`. We want to add the link to the rendered page `labs.html` to our upper navbar next to "Home" and "Lectures", so we would add the following to our YAML:
+
+```{r echo = FALSE}
+yml_empty() %>%
+  yml_navbar(
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html"),
+      navbar_page("Labs", href = "labs.html")
+    )) %>% 
+  asis_yaml_output(fences = FALSE)
+```
+
+\
+
+Save the changes to `_site.yml`, build, and preview to see the new page appear in the upper navbar.
+
+<div class = side-by-side>
+<div class = side1>
+
+
+<!-- TODO is ymlthis okay? -->
+
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_site_opts(
+    name = "Basic Course Site",
+    title = "Demo Distill",
+    description = " | Demo Distill",
+    output_dir =  "docs"
+    ) %>% 
+  yml_navbar(
+    right = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html"),
+      navbar_page("Labs", href = "labs.html")
+    )) %>% 
+  asis_yaml_output(fences = FALSE)
+```
+
+</div>
+
+<div class= side2>
+![](images/illos/insert.jpg){width=40%}
+
+</div>
+</div>
+
+You may have noticed that in the YAML options we’ve looked at so far, `right:` has been one of the first things to go under `navbar:`. You can add all (or just some) of your links aligned to the left side of the navbar instead by using `left:`. 
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_navbar(
+    left = list(),
+    right = list()
+    ) %>% 
+  asis_yaml_output(fences = FALSE)
+```
+
+\
+
+If we added the page for `labs.Rmd` to the left of our navbar instead:
+<div class = side-by-side>
+<div class = side1>
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_site_opts(
+    name = "Basic Course Site",
+    title = "Demo Distill",
+    description = " | Demo Distill",
+    output_dir =  "docs"
+    ) %>% 
+  yml_navbar(
+    right = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("Lectures", href = "lectures.html")
+    ),
+    left = list(
+      navbar_page("Labs", href = "labs.html")
+    )) %>% 
+  asis_yaml_output(fences = FALSE)
+```
+
+</div>
+
+<div class= side2>
+
+![](images/illos/insert.jpg){width=40%}
+
+</div>
+</div>

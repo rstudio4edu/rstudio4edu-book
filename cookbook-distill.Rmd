@@ -21,15 +21,15 @@ The original intended use-case for Distill was to create a platform where author
 
 You may also want to learn how to use Distill so that you can then create Distill templates that your learners can then use to generate reports, etc. 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
 ```{r echo = FALSE, fig.link = "#make-distill"}
-knitr::include_graphics("images/illos/intro-distill.jpg")
+knitr::include_graphics("images/illos/distill-make.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 #### [Make a Distill site](#make-distill)
 You will build a bare-bones Distill website from a site skeleton and publish it. We make only the most minimal changes to content and style necessary to get you a shareable website.
@@ -40,15 +40,34 @@ You will build a bare-bones Distill website from a site skeleton and publish it.
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, fig.link = "#distill-care"}
-knitr::include_graphics("images/illos/Caring-distill.jpg")
+```{r, echo= FALSE, fig.link = "#distill-yours"}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
+
+#### [Make it yours](#distill-yours)
+
+You'll personalize your content here by adding new pages or blog posts to your site.
+
+</div>
+</div>
+
+\
+
+<div class = "side-by-side no-anchor">
+<div class = "side1">
+
+```{r, fig.align='center', echo= FALSE, fig.link = "#distill-care"}
+knitr::include_graphics("images/illos/distill-care.jpg")
+```
+
+</div>
+<div class = "side2">
 
 #### [Caring for your Distill site](#distill-care)
 You'll develop a workflow for editing your site, adding new content, and hiding pages that are works-in-progress.
@@ -58,15 +77,15 @@ You'll develop a workflow for editing your site, adding new content, and hiding 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#distill-dress"}
-knitr::include_graphics("images/illos/Dressup-distill.jpg")
+```{r, echo= FALSE, out.width="50%", fig.link = "#distill-dress"}
+knitr::include_graphics("images/illos/distill-dressup.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
 #### [Dress it up](#distill-dress)
 
@@ -77,16 +96,16 @@ Here, you'll find instructions for no-fuss website customizations that leverage 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#distill-fancy"}
-knitr::include_graphics("images/illos/Fancy-distill.jpg")
+```{r, echo= FALSE, out.width="50%", fig.link = "#distill-fancy"}
+knitr::include_graphics("images/illos/distill-fancy.jpg")
 ```
 
 </div>
 
-<div class = side2>
+<div class = "side2">
 
 #### [Make it fancier](#distill-fancy)
 
@@ -107,10 +126,12 @@ Same idea as an [R Markdown site](#make-rmd). We need a `_site.yml` that will st
 
 Since the R Markdown `.Rmd` file is essentially the fundamental unit of most of these sites, it makes sense to compare the other rstudio4edu tools to it.
 
-[Venn Diagram?]
 
 
-<center> ![](images/cookbook-distill/venn.jpg){width=40%} </center>
+```{r, echo= FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/distill-venn.jpg")
+```
+
 
 
 **Similarities**
@@ -162,7 +183,10 @@ You can check out the links below as other examples of Distill websites in the w
 
 # Make a Distill site {#make-distill}
 
-<center>![](images/illos/intro-distill.jpg){width=70%}</center>
+```{r, echo= FALSE, out.width="70%"}
+knitr::include_graphics("images/illos/distill-make.jpg")
+```
+
 
 ```{r echo = FALSE, results = 'asis', include = FALSE}
 build_toc("cookbook-distill.Rmd")
@@ -259,7 +283,7 @@ We'll start by creating the shell for a basic Distill website and publishing thi
 
 You will end up with the following files in your working directory, as shown in Figure \@ref(fig:distill-site-dir). The most critical files are the `index.Rmd` and the `_site.yml`, and we mention a little about them below. 
 
-```{r distill-site-dir, eval = FALSE, fig.cap = "Distill site skeleton", out.width = "40%"}
+```{r distill-site-dir, echo = FALSE, fig.cap = "Distill site skeleton", out.width = "40%"}
 
 knitr::include_graphics("images/screenshots/distill-getting-started-directory.png")
 
@@ -270,6 +294,7 @@ Close RStudio and re-open your site by clicking on the project file (`.Rproj`). 
 ```yaml
 BuildType: Website
 ```
+
 ## A mini-orientation {#distill-site-orientation}
 
 Our project directory now has four new important items. Open and take a peek at each file as we touch on the them below:
@@ -280,26 +305,27 @@ Our project directory now has four new important items. Open and take a peek at 
 
 1. **`_site.yml`**  is *not* a file that gets turned into a site page, but it *is* necessary for site setup. In general, the `_site.yml` file lets us set options that will affect all pages in our site, and it has the same function here as it does in a typical R Markdown site. A few things you'll notice about this YAML, if you're comparing it to an R Markdown site's: 
 
-<!-- TODO: use ymlthis -->
+      <!-- TODO: use ymlthis -->
 
-```{r, eval = FALSE}
-name: "basic-course-distill"
-title: "Demo Website"
-description: |
-  Demo Website
-output_dir: "docs"
-navbar:
-  right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
-output: distill::distill_article
-```
+      ```{r, eval = FALSE}
+      name: "basic-course-distill"
+      title: "Demo Website"
+      description: |
+        Demo Website
+      output_dir: "docs"
+      navbar:
+        right:
+          - text: "Home"
+            href: index.html
+          - text: "About"
+            href: about.html
+      output: distill::distill_article
+      ```
 
-    + The output here has to be `distill::distill_article`. It's okay for this to be on the same line as `output:` or indented on the line beneath it. 
 
-    + Weirdly, the `description:` field in `_site.yml` is non-functional (as far as we can tell). But we will use it to create a subtitle of sorts in other YAMLS of our other Distill pages.
+      The output here has to be `distill::distill_article`. It's okay for this to be on the same line as `output:` or indented on the line beneath it. 
+
+      Weirdly, the `description:` field in `_site.yml` is non-functional (as far as we can tell). But we will use it to create a subtitle of sorts in other YAMLS of our other Distill pages.
 
 1. **`_site/` folder**: This is the default output folder, where knitted versions of our `.Rmd`s live once they've been processed to become `.html` files. We're eventually going to replace this folder with a `docs/` folder instead so we can host our site on GitHub pages--we'll set that up soon. 
 
@@ -354,8 +380,8 @@ In the lifecycle of your Distill site, you'll be doing lots of building. What do
 
 In RStudio, you can render your site locally (knit + preview all `.Rmd` files in one fell swoop) from the either the IDE or the R console.
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side">
+<div class = "side1">
 
 
 *From the R console*, you can run: 
@@ -366,7 +392,7 @@ rmarkdown::render_site()
 
 </div>
 
-<div class = side2>
+<div class = "side2">
 
 **OR** *from the IDE*, find the Build tab and select **Build Website**:
 

@@ -37,6 +37,7 @@ rmd_files: [
   "cookbook-rmd_fancy.Rmd",
             
   "cookbook-distill.Rmd",
+  "cookbook-distill_yours.Rmd",
   "cookbook-distill_care.Rmd",
   "cookbook-distill_dress.Rmd",
   "cookbook-distill_fancy.Rmd",

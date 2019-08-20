@@ -5,8 +5,9 @@ source("common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-
-<center>![]("images/illos/Fancy-distill.jpg"){width=65%}</center>
+```{r, out.width = "65%", echo= FALSE}
+knitr::include_graphics("images/illos/distill-fancy.jpg")
+```
 
 
 Distill looks pretty sleek on its own using the default settings. But fancy knows no limits! Let's put on our finest pearls, and take our demo Distill site for some more customization with the CSS.
