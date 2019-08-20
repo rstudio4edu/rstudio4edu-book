@@ -6,7 +6,7 @@ knitr::opts_chunk$set(fig.align="center")
 ```
 
 
-```{r, o echo= FALSE}
+```{r, echo= FALSE}
 knitr::include_graphics("images/illos/insert.jpg")
 ```
 
