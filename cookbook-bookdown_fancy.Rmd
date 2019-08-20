@@ -2,7 +2,7 @@
 
 <center>![](images/illos/Fancy-book.jpg){width=40%}</center>
 
-Now it's time to customize our book even further. We can do a little bit of HTML and CSS work to add-on some fancy features, so you might want to check out our [CSS crash course]{#css-crash} if this is your first time dipping your toe into the water. 
+Now it's time to customize our book even further. We can do a little bit of HTML and CSS work to add-on some fancy features.
 
 ```{r include = FALSE}
 # remotes::install_github("r-lib/ymlthis")
@@ -15,7 +15,11 @@ library(dplyr)
 
 * If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course]{#css-crash}.
 * For organization purposes, we recommend creating a folder called `assets/` in your project directory and moving the CSS file called `style.css` that came with your skeletal book into that folder.
-* AND, if you just followed the previous suggestion, then you'll also want to update your `_output.yml` file to show this change `css: assets/style.css`.
+* AND, if you just followed the previous suggestion, then you'll also want to update your `_output.yml` file to show this change:
+    ```{r, eval= FALSE}
+    bookdown::gitbook: 
+      css: assets/style.css
+    ```
 * Also, if you don't already have one, create an `image/` folder in your project directory.
 
 ## Anatomy of a fancy book 
@@ -32,7 +36,41 @@ Here's where we're starting:
 
 As the old adage goes, you shouldn't just a book by its CSS---but we all know it's a little hard not to. Bring your learners in and have them stay a while with an interface that's welcoming, easy to ready, easy to use, and easy on the eyes. 
 
+
+### Align the toolbar line
+
+This first aesthetic adjustment goes out to everyone who notices the little things. 
+
+You may have noticed that the horizontal line from the toolbar and the TOC do not match up perfectly. This CSS fixes that:
+
+1. **Open** `style.css`.
+2. **Paste** in the following: 
+
+    ```style.css
+    /* The next two rules make the horizontal line go straight across in top navbar */
+        
+    .summary > li:first-child {
+    	height: 50px;
+	    padding-top: 10px;
+	    border-bottom: 1px solid rgba(0,0,0,.07);
+    }
+    
+    .book .book-summary ul.summary li.divider {
+	    height: 0px;
+    }
+    
+    ```
+3. **Save and Build** your book to see how it looks.
+
+Ahh, fixed. Now doesn't that feel better?
+
+:::tip
+Organize your CSS using comments like `/* --insert-comment-- */` to create make-shift section dividers for your CSS, as we've done above.
+:::
+
 ### Google fonts {#book-font}
+
+<!-- Thought: could refer folks to use Bookdown theme Editor Addin. However, using this will generate a `style.css` that will override any other existing css in root directory. Also, generates messy CSS, so hard to edit later.  -->
 
 To change the appearance of your text with a new font, you need to:
 
@@ -50,15 +88,20 @@ We recommend a sans-serif font (i.e. no little feet on the letters) because it's
     
 2. Select the font you want by clicking on the upper red `+` sign, and navigate to the small pop up window. 
 
-[screenshot]
-
+```{r, echo = FALSE, out.width="50%"}
+knitr::include_graphics("images/screenshots/muli-select.png")
+```
 3. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use. In addition to regular, we're choosing one italic and one bold. 
 
-[screenshot]
+```{r, echo = FALSE, out.width="50%"}
+knitr::include_graphics("images/screenshots/google-choices.png")
+```
 
 4. Now click on `EMBED` and look under the `@IMPORT` tab. **Copy the code within the `<style>` tags** (you don't need the style tags themselves). We will also need the second code chunk in a couple steps that says `Specify in CSS`, so keep this page open to come back to that.
 
-[screenshot]
+```{r, echo = FALSE, out.width="50%"}
+knitr::include_graphics("images/screenshots/google-import.png")
+```
 
 
 #### Import the font to your site
@@ -91,10 +134,6 @@ Now we can use this font to style our body's text by using the `font-family:` at
      }
      ```
 By the way, a little insight in the the trial-and-error process of getting the right selectors: I first tried using `body` as the selector here, but it didn't work. I would have *never* figured out that this selector would work by by using the tips we suggested in the [CSS crash course](#css-crash) to use the inspector and start hovering elements. So, `.book.font-family-1` is what happens to be what pulls the main text of the book. No magic to this, folks. Just a little grit!
-
-:::tip
-Organize your CSS with comments like `/* --insert-comment-- */` to create make-shift section dividers for your CSS, as we've done above.
-:::
 
 #### Confirm `style.css` is linked in `_output.yml`
 
@@ -340,31 +379,6 @@ A little more about what's going on under the hood:
 * **`.page-inner`**: All of our book content is by default inside a container labelled `.page-inner`. We don't want our book content to get stuck hiding behind the big image we just stuck to the top of our page. So, we need to move the book content down by *at least* the height of our image + some wiggle room of about 10px. That's what adding so much `padding-top:` is doing here.
 
 
-
-### Align the toolbar line
-
-This last aesthetic adjustment goes out to everyone who notices the little things. 
-Before we added a logo, you may have noticed that the horizontal line from the toolbar and the TOC did not match up perfectly. This CSS fixes that:
-
-1. **Open** `style.css`.
-2. **Paste** in the following: 
-
-    ```style.css
-    /* The next two rules make the horizontal line go straight across in top navbar */
-        
-    .summary > li:first-child {
-    	height: 50px;
-	    padding-top: 10px;
-	    border-bottom: 1px solid rgba(0,0,0,.07);
-    }
-    
-    .book .book-summary ul.summary li.divider {
-	    height: 0px;
-    }
-    
-    ```
-
-Ahh, fixed. Now doesn't that feel better?
 
 
 ## Usability

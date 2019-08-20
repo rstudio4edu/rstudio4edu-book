@@ -13,7 +13,7 @@ When it's time to edit the `.Rmd`s in your book, there are a couple of rules to 
 
 **Why, you ask?**
 
-In broad strokes, a bookdown site is created when several `.Rmd` files get merged together (in a particular order–but more on that next), resulting in a single (sometimes massive) `.Rmd` file. This monolith of an `.Rmd` then gets rendered into website-ready, HTML files. The `index.Rmd` is the first `.Rmd` in line, so it's the only one that gets its own YAML. 
+In broad strokes, a bookdown site is created when several `.Rmd` files get merged together into a single (sometimes massive) `.Rmd` file. This monolith of an `.Rmd` then gets rendered into website-ready, HTML files. The `index.Rmd` is the first `.Rmd` in line, so it's the only one that gets its own YAML. 
 
 What is sometimes unintuitive (especially for those coming from R Markdown sites) is that new pages are determined by the `# Level 1 headers` in your content (i.e., any heading beginning with a single `#`), not necessarily by distinct `.Rmd` documents in your project. Anytime you use a level 1 header, this becomes a new book chapter with a top level entry in your TOC and also manifests as its own "page" in your book. And voilà, this is how your book chapters are made. 
 
