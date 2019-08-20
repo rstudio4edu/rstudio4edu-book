@@ -6,8 +6,8 @@ knitr::opts_chunk$set(fig.align="center")
 ```
 
 
-```{r, out.width = "65%", echo= FALSE}
-knitr::include_graphics("images/illos/Caring.jpg")
+```{r, echo= FALSE}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 Once you have your published doc in place, it's likely that you will want to change it sooner or later. The key to updating is that you must `r emo::ji("yarn")` *Knit* each time before you push to GitHub--otherwise your changes won't be published. This sounds easy enough, but trust us, it is also easy enough to forget!
@@ -21,12 +21,12 @@ Here's what the change-my-doc workflow looks like for me:
 
 ## Live editing
 
-<div class=side-by-side>
-<div class=side1>
+<div class="side-by-side">
+<div class="side1">
 Whenever you are editing a single R Markdown file, and outputting to HTML format, you can turn on "live reload" while you work. This means that, after turning it on, every time you *Save* your updated output re-renders in your RStudio viewer pane, and also in a browser window if you open it up.
 </div>
 
-<div class=side2>
+<div class="side2">
 ```{r echo = FALSE, fig.cap="Demo of R Markdown live reload from [Yihui Xie](https://yihui.name/en/2019/02/ultimate-inf-mr/)", fig.link="https://yihui.name/en/2019/02/ultimate-inf-mr/"}
 knitr::include_graphics("https://user-images.githubusercontent.com/163582/53144527-35f7a500-3562-11e9-862e-892d3fd7036d.gif")
 ```
@@ -55,193 +55,13 @@ Now, make a small change to your document, save, and watch the preview reload!
 You'll need to save this file first, before using the "Infinite Moon Reader".
 :::
 
+## Care for your code {#care-code}
 
-## Care for your text {#text-care}
+### Use keyboard shortcuts
 
-<div class = "side-by-side">
-<div class = "side1">
+To insert R code chunks, you can use the ![](images/doc-insert-chunk.png){width=5%} button, or you could use keyboard shortcuts
 
-```{r echo = FALSE, fig.link=c("https://commonmark.org/help/tutorial/",NA)}
-knitr::include_graphics("images/screenshots/md-tutorial.png")
-knitr::include_graphics("images/screenshots/rstudio-md-quick.png")
-```
-
-</div>
-
-<div class = "side2">
-
-\
-
-One of the not-very-secret weapons of the most skilled R Markdown users is knowing Markdown inside and out. If you haven't done so already, take 10 minutes to do an [interactive Markdown tutorial](https://commonmark.org/help/tutorial/). 
-
-\
-
-\
-
-\
-
-\
-
-From within the RStudio IDE, you can also access a *"Markdown Quick Reference"* from the **Help** menu.
-
-</div>
-</div>
-
-### Headers
-
-Headers are useful for organizing your document into sections, and with Markdown formatting you can have up to 6 types/sizes of headers. Use a `#` symbol before the label to create a new header.
-
-
-<div class = "split">
-<div class = "split1">
-
-```markdown
-# HEADER 1
-
-## HEADER 2
-
-### HEADER 3
-
-#### HEADER 4
-
-##### HEADER 5
-
-###### HEADER 6
-```
-
-</div>
-<div>
-
-<h1 style="margin-top: 0em;">Header 1</h1>
-<h2 style="margin-top: 0em;">Header 2</h2>
-<h3 style="margin-top: 0em;">Header 3</h3>
-<h4 style="margin-top: 0em;">Header 4</h4>
-<h5 style="margin-top: 0em;">Header 5</h5>
-<h6 style="margin-top: 0em;">Header 6</h6>
-
-</div>
-</div>
-
-\
-
-The RStudio IDE has several built-in features made to improve quality of life for R Markdown users.
-
-\
-
-<div class = "side-by-side">
-<div class = "side1">
-
-```{r md-nav, echo=FALSE, fig.cap="RStudio code navigator", fig.link='https://r4ds.had.co.nz/', fig.align="center", out.width = "80%"}
-knitr::include_graphics("https://r4ds.had.co.nz/screenshots/rmarkdown-chunk-nav.png")
-```
-
-</div>
-<div class = "side2">
-
-One feature is the drop-down code navigator in the bottom-left of your file editor as shown in Figure \@ref(fig:md-nav) (from the [R for Data Science book](https://r4ds.had.co.nz/)).
-
-As you can see, this uses your Markdown headers to allow you to navigate around your `.Rmd` file. 
-
-</div>
-</div>
-
-\
-
-You can also use the RStudio outline pane, as shown in Figure \@ref(fig:md-outline) (from the [RStudio blog](https://rviews.rstudio.com/2016/11/11/easy-tricks-you-mightve-missed/)).
-
-```{r md-outline, echo=FALSE, fig.cap="RStudio outline pane", out.width="80%", fig.link='https://rviews.rstudio.com/2016/11/11/easy-tricks-you-mightve-missed/', fig.align="center"}
-knitr::include_graphics("https://www.rstudio.com/wp-content/uploads/2016/11/tip_outline.gif")
-```
-
-### Add Text & Images
-
-Let's take a lightly-edited snippet from a [Wikipedia about "The Great British Bake Off"](https://en.wikipedia.org/wiki/The_Great_British_Bake_Off). On the left, you can see the raw Markdown and on the right, the rendered version.
-
-<div class = "split">
-<div class = "split1">
-
-```markdown
-# The Great British Bake Off
-
-The Great British Bake Off (also called 
-*Bake Off* or *GBBO*) is a British 
-television baking competition.
-
-In the first series, the location of 
-the cast and crew moves from town to town 
-each week, with a different baking 
-**theme** each week:
-
-1. Cakes
-1. Biscuits
-1. Bread
-1. Puddings
-1. Pastry
-1. Tea Party
-
-In each episode, the amateur bakers 
-are given three challenges based on 
-that week's theme:
-
-- A signature bake,
-- a technical challenge,
-- and a show-stopper. 
-
-
-[Photo:](https://en.wikipedia.org/wiki/Macaron)
-
-Vanilla Macaron, Michelle Naherny 
-![](http://bit.ly/vanilla-macaron)
-```
-
-</div>
-
-<div>
-
-<h4 style="margin-top: 0em;">The Great British Bake Off</h4>
-
-The Great British Bake Off (also called *Bake Off* or *GBBO*) is a British television baking competition.
-
-In the first series, the location of the cast and crew moves from town to town each week, with a different baking **theme** each week:
-
-1. Cakes
-1. Biscuits
-1. Bread
-1. Puddings
-1. Pastry
-1. Tea Party (Final)
-
-In each episode, the amateur bakers are given three challenges based on that week's theme:
-
-- A signature bake,
-- a technical challenge,
-- and a show-stopper. 
-
-
-[Photo:](https://en.wikipedia.org/wiki/Macaron)
-
-Vanilla Macaron, Michelle Naherny 
-![](http://bit.ly/vanilla-macaron)
-</div>
-</div>
-
-### Add white space
-
-Let your code chunks breathe! Bonus: it improves the readability of your narrative. This is unfortunately a bit manual. But--if you don't plan on doing any CSS, then we highly recommend doing the below:
-
-* **Add white space** in the body of your .Rmd file by including either a `<br>` or a `\` on its own line with a blank line above and below it. At a minimum, we recommend doing before top-level section headers.  
-
-<div class = col2>
-
-![](images/rmd_custom/squished1.png)
-
-<br>
-
-![](images/rmd_custom/white_space1.png)
-
-</div>
-
-## Care for your code {#code-care}
+    the keyboard shortcut Ctrl + Alt + I (OS X: Cmd + Option + I)
 
 ### Add a setup code chunk {#knitr-setup}
 
@@ -298,7 +118,7 @@ starwars %>%
 
 Our `setup` code chunk above affects *all* code chunks. It is called a global chunk option for that reason. You can (and should) use individual chunk options too, but setting up some nice ones that apply to all code chunks can save you time and can lessen your cognitive load as you create your content.
 
-### Name your code chunks
+### Name your code chunks  {#knitr-name}
 
 Remember how we [advised you set your `fig.path`?](#knitr-setup) One of the best things you can do for yourself is to *name your code chunks*. 
 

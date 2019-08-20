@@ -50,17 +50,18 @@ You can read more of Greg's advice for [teaching in person](http://teachtogether
 Using R Markdown document templates, you can put together a streamlined static or interactive lesson for learners to engage with. You can follow along with this cookbook, or you can download the demo repositories modify as much as you'd like. 
 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
 ```{r echo = FALSE, fig.link = "#make-doc"}
-knitr::include_graphics("images/illos/intro-rmd.jpg")
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Make a document](#make-doc)</h4>
+#### [Make a document](#make-doc)
+
 You will build a bare-bones R Markdown document from a template and publish it. We make only the most minimal changes to content and style necessary to get you a shareable link.
 
 </div>
@@ -68,17 +69,36 @@ You will build a bare-bones R Markdown document from a template and publish it. 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, fig.link = "#doc-care"}
-knitr::include_graphics("images/illos/Caring.jpg")
+```{r, echo= FALSE, fig.link = "#doc-yours"}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Caring for your document](#doc-care)</h4>
+#### [Make it yours](#doc-yours)
+
+You'll personalize your document's content here by adding your words, R code, and R output like plots to your lesson.
+
+</div>
+</div>
+
+\
+
+<div class = "side-by-side no-anchor">
+<div class = "side1">
+
+```{r, echo= FALSE, fig.link = "#doc-care"}
+knitr::include_graphics("images/illos/insert.jpg")
+```
+
+</div>
+<div class = "side2">
+
+#### [Caring for your document](#doc-care)
 You'll develop a workflow for editing your document, adding bells and whistles, and improving your R Markdown quality of life.
 
 </div>
@@ -86,17 +106,17 @@ You'll develop a workflow for editing your document, adding bells and whistles, 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#doc-dress"}
-knitr::include_graphics("images/illos/Dressup.jpg")
+```{r, echo= FALSE, fig.link = "#doc-dress"}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Dress it up](#doc-dress)</h4>
+#### [Dress it up](#doc-dress)
 
 Here, you'll find instructions for no-fuss document customizations that leverage built-in features that *do not* rely on knowing, learning, or using CSS.
 
@@ -105,14 +125,18 @@ Here, you'll find instructions for no-fuss document customizations that leverage
 
 \
 
-<div class = side-by-side>
-<div class = side1>
-<!--todo: insert fancy image here?-->
+<div class = "side-by-side no-anchor">
+<div class = "side1">
+
+```{r, echo= FALSE, fig.link = "#doc-fancy"}
+knitr::include_graphics("images/illos/insert.jpg")
+```
+
 </div>
 
-<div class = side2>
+<div class = "side2">
 
-<h4>[Make it fancier](#doc-fancy)</h4>
+#### [Make it fancier](#doc-fancy)
 
 In the final chapter, you'll learn about document customizations that require some CSS and HTML.
 
@@ -206,14 +230,18 @@ doc_inspo %>%
 
 # Make a document {#make-doc}
 
-<center>![](images/illos/intro-rmd.jpg){width=70%}</center>
+```{r, out.width = "70%", echo= FALSE}
+knitr::include_graphics("images/illos/insert.jpg")
+```
+
 
 The simplest way to start with R Markdown is to use the boilerplate template that ships with RStudio. But first, we need to talk about hygiene briefly.
 
 Make sure you set up a folder for this new document you are making. For now, let's just consider that this folder will house a single R Markdown document.
 
 ## Getting set up {#doc-setup}
-```{r, out.width = "20%", fig.align='center', echo= FALSE}
+
+```{r, out.width = "20%", echo= FALSE}
 knitr::include_graphics("images/illos/Gears.jpg")
 ```
 
@@ -452,7 +480,7 @@ Go ahead and stage all your changed files, commit, and push to GitHub.
 
 Now let's publish the page.
 
-## Make a living, breathing link! {#doc-link}
+## Make a living, breathing document! {#doc-alive}
 
 The last step is to go online to the GitHub website and tell it where to find our website-ready doc (i.e., the knitted `.html` file):
 

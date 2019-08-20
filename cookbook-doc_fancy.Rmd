@@ -6,8 +6,8 @@ knitr::opts_chunk$set(fig.align="center")
 ```
 
 
-```{r, out.width = "65%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/illos/Fancy-book.jpg")
+```{r, o echo= FALSE}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 ## Extra packages

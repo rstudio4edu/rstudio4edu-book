@@ -6,13 +6,13 @@ knitr::opts_chunk$set(fig.align="center")
 ```
 
 
-```{r, out.width = "65%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/rmd_custom/Dress.jpg")
+```{r, out.width = "65%", echo= FALSE}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 Once you have the website in place, it's likely that you will want to update it periodically or add new pages. The key to updating is that you must build your site or use `rmarkdown::render_site()` each time before you push to GitHub--otherwise your changes wouldn't make it into your `docs/` folder. And if it's not in the `docs/` then GitHub pages will not be able to find it. 
 
-## Use a bootswatch theme
+## Use a bootswatch theme {#doc-theme}
 
 For a single R Markdown document, knitted to the HTML output format, adding a theme is so dead simple that you have no good excuses for not using one.  You have `r length(rmarkdown:::themes())` theme options: 
 
@@ -29,7 +29,7 @@ yml_empty() %>%
   asis_yaml_output()
 ```
 
-## Add a floating table of contents {#rmd-TOC}
+## Add a floating table of contents  {#doc-toc}
 
 In the `_site.yml` file, you can add a [table of contents](https://bookdown.org/yihui/rmarkdown/html-document.html#table-of-contents) either as a static list of links at the top of the page, or a floating sidebar. We recommend adding a floating TOC, which means adding two lines to your document's YAML.
   
@@ -64,9 +64,9 @@ We encourage you to leave these default settings, but know that you can [change 
 
 You *can* also [number your sections](https://bookdown.org/yihui/rmarkdown/html-document.html#section-numbering), but we find it easier to stick to good top-level headers as the TOC organizing principle.
 
-## Customize code highlighter
+## Customize code highlighter  {#doc-highlight}
 
-## Add images
+## Add images  {#doc-images}
 
 ### Markdown images
 ![](doggy.jpeg){width=50%} ![](kitty.jpeg){width=50%}
