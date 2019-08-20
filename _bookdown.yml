@@ -31,6 +31,7 @@ rmd_files: [
   "cookbook-pkg_learnr.Rmd", 
             
   "cookbook-rmd.Rmd",
+  "cookbook-rmd_yours.Rmd",
   "cookbook-rmd_care.Rmd",
   "cookbook-rmd_dress.Rmd",
   "cookbook-rmd_fancy.Rmd",

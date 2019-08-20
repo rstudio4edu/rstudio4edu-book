@@ -7,7 +7,10 @@ knitr::opts_chunk$set(fig.align="center")
 
 # Introduction {-#intro-rmd}
 
-<center>![](images/illos/rmd_site.jpg){width=30%}</center>
+```{r echo = FALSE, out.width="30%"}
+knitr::include_graphics("images/illos/rmd-base.jpg")
+```
+
 
 This is a cookbook intended for folks who would like to put together a site to help them organize and deliver their teaching materials to learners. An R Markdown site is the most straightforward way to compile a collection of R Markdown documents.
 
@@ -16,17 +19,17 @@ This is a cookbook intended for folks who would like to put together a site to h
 Using R Markdown project templates, you can put together a bare-bones site in no time at all. Here, we will show you an example of how to do this by making a demo site. You can follow along with this cookbook, or you can download the demo repositories modify as much as you'd like. 
 
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
 ```{r echo = FALSE, fig.link = "#make-rmd"}
-knitr::include_graphics("images/illos/intro-rmd.jpg")
+knitr::include_graphics("images/illos/rmd-make.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Make a site](#make-rmd)</h4>
+#### [Make a site](#make-rmd)
 You will build a bare-bones R Markdown website from a site skeleton and publish it. We make only the most minimal changes to content and style necessary to get you a shareable website.
 
 </div>
@@ -34,17 +37,35 @@ You will build a bare-bones R Markdown website from a site skeleton and publish 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, fig.link = "#rmd-care"}
-knitr::include_graphics("images/illos/Caring.jpg")
+```{r, echo= FALSE, fig.link = "#rmd-yours"}
+knitr::include_graphics("images/illos/insert.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Caring for your site](#rmd-care)</h4>
+#### [Make it yours](#rmd-yours)
+You'll personalize your content here by adding new pages to your site and growing your navigation bar.
+
+</div>
+</div>
+
+\
+
+<div class = "side-by-side no-anchor">
+<div class = "side1">
+
+```{r, echo= FALSE, fig.link = "#rmd-care"}
+knitr::include_graphics("images/illos/rmd-care.jpg")
+```
+
+</div>
+<div class = "side2">
+
+#### [Caring for your site](#rmd-care)
 You'll develop a workflow for editing your site, adding new content, and hiding pages that are works-in-progress.
 
 </div>
@@ -52,17 +73,17 @@ You'll develop a workflow for editing your site, adding new content, and hiding 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-dress"}
-knitr::include_graphics("images/illos/Dressup-book.jpg")
+```{r, echo= FALSE, out.width="50%", fig.link = "#rmd-dress"}
+knitr::include_graphics("images/illos/rmd-dressup.jpg")
 ```
 
 </div>
-<div class = side2>
+<div class = "side2">
 
-<h4>[Dress it up](#rmd-dress)</h4>
+#### [Dress it up](#rmd-dress)
 
 Here, you'll find instructions for no-fuss website customizations that leverage built-in features that *do not* rely on knowing, learning, or using CSS.
 
@@ -71,18 +92,18 @@ Here, you'll find instructions for no-fuss website customizations that leverage 
 
 \
 
-<div class = side-by-side>
-<div class = side1>
+<div class = "side-by-side no-anchor">
+<div class = "side1">
 
-```{r, fig.align='center', echo= FALSE, out.width="50%", fig.link = "#rmd-fancy"}
-knitr::include_graphics("images/illos/Dressup.jpg")
+```{r, echo= FALSE, out.width="50%", fig.link = "#rmd-fancy"}
+knitr::include_graphics("images/illos/rmd-fancy.jpg")
 ```
 
 </div>
 
-<div class = side2>
+<div class = "side2">
 
-<h4>[Make it fancier](#rmd-fancy)</h4>
+#### [Make it fancier](#rmd-fancy)
 
 In the final chapter, you'll learn about website customizations that require some CSS and HTML.
 
@@ -174,7 +195,10 @@ Let's get started!
 
 # Make a site {#make-rmd}
 
-<center>![](images/illos/intro-rmd.jpg){width=70%}</center>
+```{r echo = FALSE, out.width="70%"}
+knitr::include_graphics("images/illos/rmd-make.jpg")
+```
+
 
 ## tl;dr
 

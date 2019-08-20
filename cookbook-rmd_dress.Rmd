@@ -5,8 +5,8 @@ source("common.R")
 knitr::opts_chunk$set(fig.align="center")
 ```
 
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/rmd_custom/Dressup.jpg")
+```{r, out.width = "30%", echo= FALSE}
+knitr::include_graphics("images/illos/rmd-dressup.jpg")
 ```
 
 The focus of this section is to show you "built in" ways for you to change the way your site looks and feels *without needing any custom style*. What does this mean? This means you don't need to know or use [CSS, otherwise known as Cascading Style Sheets](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) to make any of the changes we demo below. 
@@ -59,8 +59,8 @@ yum_yml %>%
 
 ## One YAML to rule them all {#rmd-one-yaml}
 
-```{r, out.width = "30%", fig.align='center', echo= FALSE}
-knitr::include_graphics("images/insert.jpg")
+```{r, out.width = "30%", echo= FALSE}
+knitr::include_graphics("images/illos/orchestra.jpg")
 ```
 
 Now for a closer look at `_site.yml`. This file is like the orchestra conductor (?<!--TODO: Desiree / lifeblood was throwing me but not attached to this analogy-->) of our site.
