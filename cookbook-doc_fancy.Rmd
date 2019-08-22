@@ -6,9 +6,10 @@ knitr::opts_chunk$set(fig.align="center")
 ```
 
 
-```{r, echo= FALSE}
-knitr::include_graphics("images/illos/insert.jpg")
+```{r echo = FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/doc-fancy.jpg")
 ```
+
 
 ## Extra packages
 
@@ -29,14 +30,9 @@ divs
 - [ ] [tabsets](https://bookdown.org/yihui/rmarkdown/html-document.html#tabbed-sections)
          - think about good use cases
 - [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
-- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
+- [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)  
 
 
-```{r echo = FALSE, out.width="40%"}
-knitr::include_graphics("images/illos/doc-fancy.jpg")
-```
-
-Now it's time to customize our single lesson even further. We can do a little bit of HTML and CSS work to add-on some fancy features.
 
 ```{r include = FALSE}
 # remotes::install_github("r-lib/ymlthis")
@@ -45,18 +41,132 @@ library(dplyr)
 ```
 
 
+Now it's time to customize our single lesson even further. We can do a little bit of HTML and CSS work to add-on some fancy features.
+
+
 ## Before you begin
 
-* If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course](#css-crash).
-* We'll also need to 
+If you're starting here, we assume that by this point you should have already:
+
+* Updated your single lesson with your own content in the [Make it yours](#doc-yours) section. (For our demo that follows, we'll keep going with the boilerplate content since at this point everyone will have different content anyhow). 
+
+* At a minimum, added a few elements from the [Dress it up section](#doc-dress), specifically: 
+    * A theme (we've chosen `flatly`)
+    * A floating table of contents
+    * Code highlighting (we chose `tango`)
+
+So that you know where *we're* starting, here's what our YAML frontmatter looks like right now:
+
+<div class="side-by-side">
+
+<div class="side1">
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_title("A demo single lesson") %>% 
+  yml_author("Desirée De Leon") %>% 
+  yml_date() %>% 
+  yml_output(html_document(
+    theme = "flatly",
+    highlight = "tango",
+    toc = TRUE,
+    toc_float = TRUE)) %>% 
+  asis_yaml_output()
+```
+</div>
+
+<div class="side2">
+
+![](images/screenshots/doc-fancy-start.png)
+
+</div>
+
+</div> 
+
+If this is your first time having a go at CSS, then you might want to check out our [CSS crash course](#css-crash) so that you have a sense for how/why we're doing what we're doing---otherwise, buckle in for the ride!
+
+## Include a css file
+
+If you want to add *any* custom styling to your doc, the first thing you'll need to do is to create a CSS file in your project directory and then tell R Markdown that it exists. 
+
+1. Go to File > New File > Text File
+1. Save this file as `style.css` in your project directory. May as well keep this file open because we're about to add a bunch of stuff to it!
+1. Open the `.Rmd` file you're working on.
+1. In the YAML, reference the new CSS file by adding the `css:` option followed by its filepath.
+
+  ```{r echo = FALSE}
+  yml_empty() %>%
+  yml_output(html_document(css = "style.css")) %>% 
+  asis_yaml_output(fences = FALSE)
+  ```
+1. Save your changes.
+
+Now you're all set to start CSS-ing!
 
 ## Branding and aesthetics
 
-### Google Fonts
+We'll start by making changes related to the look and feel of your doc. 
 
-### White Space
+  * [Add a Google font](#doc-font)
+  * [Add a white space](#doc-white-space)
+  * [Add a logo](#doc-logo)
 
-### Add a logo
+
+### Google Fonts {#doc-font}
+
+To change the appearance of your text with a new font, you need to:
+
+  * Pick a Google font
+  * Add it to your CSS file
+  * Style specific text using CSS selectors
+  * Make sure your CSS file is linked in your YAML (and if you've been following along with us, it already is).
+  
+#### Select and import your Google font's script
+
+1. Go to [https://fonts.google.com/](https://fonts.google.com/) and pick a font for your **lesson's main body text**. We'll choose `Muli`, but `Lato` and `Source Sans Pro` are other nice options.
+    
+1. Select the font you want by clicking on the upper red `+` sign, and navigate to the small pop up window. 
+
+    ```{r select-font, echo = FALSE, out.width="50%", fig.cap= "Selecting a Google font"}
+    knitr::include_graphics("images/screenshots/muli-select.png")
+    
+    ```
+  
+1. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use (because it slows down your lesson's loading time ever-so-slightly when you add more). In addition to regular, we're choosing one italic and one bold. 
+
+    ```{r font-customize, echo = FALSE, out.width="50%", fig.cap="Choosing additional font weights and styles"}
+    knitr::include_graphics("images/screenshots/google-choices.png")
+    ```
+
+1. Now click on `EMBED` and look under the `@IMPORT` tab. **Copy the code within the `<style>` tags** (you don't need the style tags themselves). We will also need the second code chunk in a couple steps that says `Specify in CSS`, so keep this page open to come back to that.
+
+    ```{r googleimport, echo = FALSE, out.width="50%", fig.cap="Getting the script to import your Google Font"}
+    knitr::include_graphics("images/screenshots/google-import.png")
+    ```
+
+:::design
+We recommend going with sans-serif fonts (i.e. no little feet on the letters) for the main text because they're easier to read at smaller sizes on screens compared to serif fonts. Don't pick anything too narrow, too wide, or ornate.)
+:::
+
+#### Import the font to your lesson
+
+1. Back in the RStudio IDE, **open** up your `style.css` file.
+1. On the very first line, paste in the Google Font import code for the `Muli` font. This makes the font available within your bookdown site.
+
+    ```style.css
+    @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
+    ```
+
+:::tip
+You might see others import Google fonts by embedding the script (with `<script>` tags) in an HTML file instead. This is perfectly legitimate. But if you're just starting out, it's easier to keep all the font stuff together in a CSS file, which is why we're doing it this way.
+:::
+
+
+### Links
+
+### White Space {#doc-white-space}
+
+### Add a logo {#doc-logo}
 
 We have three options:
 
@@ -67,17 +177,16 @@ We have three options:
 #### Above the title?
 
 
-### Hero image
+### Hero image {#doc-hero}
 
-### Footer
-
-
-
-## Table of contents (TOC)
+### Footer {#doc-footer}
 
 
-## Questions and Exercises
 
+## Table of contents (TOC) {#doc-custom-toc}
+
+
+## Questions counter {#doc-q}
 
 
 
