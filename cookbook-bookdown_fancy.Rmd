@@ -754,7 +754,7 @@ Adding to the TOC style rules we started above, now we'll change the font, color
     
     ```
     
-:::note
+:::tip
 When you add a `border-left:` with a thickness of `4px`, it will shift over the text by `4px`, too. So, compensate for this by overriding the original `padding-left: 15px` that we set in an earlier style rule with a new `padding-left:` that is `4px` less. That's why we ended up with `11px` here. The `!important` is what signals the override. 
 :::
 
