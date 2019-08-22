@@ -66,6 +66,14 @@ You *can* also [number your sections](https://bookdown.org/yihui/rmarkdown/html-
 
 ## Customize code highlighter  {#doc-highlight}
 
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_output(html_document(
+    highlight = "tango")) %>% 
+  asis_yaml_output()
+```
+
+
 ## Add images  {#doc-images}
 
 ### Markdown images
