@@ -94,7 +94,7 @@ Organize your CSS using comments like `/* --insert-comment-- */` to create make-
 
 ### Google fonts {#book-font}
 
-<!-- Thought: could refer folks to use Bookdown theme Editor Addin (hebrew senior life). However, using this will generate a `style.css` that will override any other existing css in root directory. Also, generates messy CSS, so hard to edit later.  -->
+<!-- Thought: could refer folks to use Bookdown theme Editor Addin (hebrew senior life). However, using this will generate a `style.css` that will override any other existing style.css file in their root directory. Also, the addin ouputs CSS that is in a long, single line of code, so it's also hard to parse or edit later. This makes me kind of relucant to recommend it--unless the things that it tweaks are literally the only things that people want to change in their book CSS-->
 
 To change the appearance of your text with a new font, you need to:
 
@@ -113,7 +113,7 @@ To change the appearance of your text with a new font, you need to:
     
     ```
   
-1. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use (because it slows down your site's loading time every so slightly when you add more). In addition to regular, we're choosing one italic and one bold. 
+1. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use (because it slows down your site's loading time ever-so-slightly when you add more). In addition to regular, we're choosing one italic and one bold. 
 
     ```{r font-customize, echo = FALSE, out.width="50%", fig.cap="Choosing additional font weights and styles"}
     knitr::include_graphics("images/screenshots/google-choices.png")
