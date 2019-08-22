@@ -68,7 +68,7 @@ Unfortunately, you'll be stuck with the default teal color for the footer unless
 
 ### Appendix
 
-Turn any content in your `.Rmd` into an appendeix by creating a new level 1 or 2 header followed by `{.appendix}` Distill page. Any content that follows will be automatically added to the end of your page, alongside the footnotes and the reference list. 
+Turn any content in your `.Rmd` into an appendix by creating a new level 1 or 2 header followed by `{.appendix}` Distill page. Any content that follows will be automatically added to the end of your page, alongside the footnotes and the reference list. 
 
 ```
 # Acknowledgments {.appendix}
@@ -125,7 +125,9 @@ We can also add a logo to our site, which will appear on the left side of the na
 
 1. **Save the logo** you want to use in your project directory. You don't have to, but we recommend keeping a subfolder called `images/` where you can place all image files for your site.  
 2. **Open your `_site.yml`** file.
-3. **Add the lines below** underneath the navbar options in the `_site.yml` file. Enter the file path to the logo on the  `image:` line. If you want your logo to link to a website, enter the link address on the `href:` line.
+3. **Add a `logo:` field** underneath the navbar options in the `_site.yml` file. 
+    * Enter the file path to the logo on the  `image:` line. 
+    * If you want your logo to link to a website, enter the link address on the `href:` line.
 
 <!-- TODO: use ymlthis -->
 
@@ -144,7 +146,7 @@ navbar:
 </div>
 <div class="side2">
 
-![](images/screenshots/distill-navbar-logo.png)
+![](images/screenshots/distlil-navbar-logo.png)
 
 </div>
 </div>
@@ -154,15 +156,15 @@ navbar:
 You know the little tiny icon on the left side of most of your your browser tabs? That's a favicon, and here's how you include one: 
 
 1. **Save the image** you want to use in your project directory (or in an `images/` folder). For best results this image should be square. Don't have an image? [Make a favicon with text or an emoji](https://favicon.io/), and then download and move the `.ico` file into your project directory.
-2. **Open your `_site.yml`** file.
-3. **Add `favicon: <insert-path-to-favicon.ico>`**
+2. **Open** your `_site.yml` file.
+3. **Add** `favicon: <insert-path-to-favicon.ico>`.
 
 <div class="side-by-side">
 <div class="side1">
 
 <!-- TODO: replace with ymlthis -->
 
-```{r, eval = FALSE}
+```
 name: "basic-course-distill"
 title: "Demo Website"
 description: |

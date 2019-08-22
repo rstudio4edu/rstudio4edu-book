@@ -419,6 +419,11 @@ Now we'll get to the good stuff! Let's put this on the internet!
 
 ## Make a living, breathing site! {#rmd-living}
 
+```{r echo = FALSE, out.width="65%"}
+knitr::include_graphics("images/illos/rmd-live.jpg")
+```
+
+
 We have built some out-of-the-box content and pushed to GitHub. Now we'll go back to the GitHub website and tell it where to find our website-ready files:
 
 

@@ -30,3 +30,61 @@ divs
          - think about good use cases
 - [ ] [dropdown in tabsets](https://github.com/rstudio/rmarkdown/pull/1405)
 - [ ] [code folding](https://rmarkdown-docs.netlify.com/reference/html_document.html)
+
+
+```{r echo = FALSE, out.width="40%"}
+knitr::include_graphics("images/illos/doc-fancy.jpg")
+```
+
+Now it's time to customize our single lesson even further. We can do a little bit of HTML and CSS work to add-on some fancy features.
+
+```{r include = FALSE}
+# remotes::install_github("r-lib/ymlthis")
+library(ymlthis)
+library(dplyr)
+```
+
+
+## Before you begin
+
+* If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course](#css-crash).
+* We'll also need to 
+
+## Branding and aesthetics
+
+### Google Fonts
+
+### White Space
+
+### Add a logo
+
+We have three options:
+
+#### Above the TOC
+
+#### Next to the Title
+
+#### Above the title?
+
+
+### Hero image
+
+### Footer
+
+
+
+## Table of contents (TOC)
+
+
+## Questions and Exercises
+
+
+
+
+
+
+
+
+
+
+

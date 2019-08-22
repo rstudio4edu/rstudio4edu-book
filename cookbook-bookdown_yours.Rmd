@@ -8,7 +8,7 @@ library(ymlthis)
 
 
 ```{r echo = FALSE, out.width="65%"}
-knitr::include_graphics("images/illos/insert.jpg")
+knitr::include_graphics("images/illos/yours-book.jpg")
 ```
 
 ## Creating new chapters {#book-new-ch}

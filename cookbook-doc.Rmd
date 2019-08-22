@@ -230,8 +230,8 @@ doc_inspo %>%
 
 # Make a document {#make-doc}
 
-```{r, out.width = "70%", echo= FALSE}
-knitr::include_graphics("images/illos/insert.jpg")
+```{r, out.width = "40%", echo= FALSE}
+knitr::include_graphics("images/illos/doc-base.jpg")
 ```
 
 
@@ -481,6 +481,10 @@ Go ahead and stage all your changed files, commit, and push to GitHub.
 Now let's publish the page.
 
 ## Make a living, breathing document! {#doc-alive}
+
+```{r echo = FALSE, out.width="65%"}
+knitr::include_graphics("images/illos/doc-live.jpg")
+```
 
 The last step is to go online to the GitHub website and tell it where to find our website-ready doc (i.e., the knitted `.html` file):
 

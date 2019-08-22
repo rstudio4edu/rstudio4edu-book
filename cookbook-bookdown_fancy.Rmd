@@ -23,7 +23,7 @@ library(dplyr)
 
 * If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course](#css-crash).
 * To stay organized, we recommend creating a folder called `assets/` in your project directory and moving the CSS file called `style.css` that came with your skeletal book into that folder.
-* AND, if you just followed the previous suggestion, then you'll also want to update your `_output.yml` file to show this change:
+* If you just followed the previous suggestion, then you'll also want to update your `_output.yml` file to show this change:
 
     ```{r, echo = FALSE}
     yml(author = FALSE, date = FALSE) %>% 
@@ -49,8 +49,17 @@ And here's where we're going:
 
 As the old adage goes, you shouldn't just a book by its CSS---but we all know it's a little hard not to. Bring your learners in and have them stay a while with an interface that's welcoming, easy to ready, easy to use, and easy on the eyes. 
 
+<div class="col2">
 
-### Align the toolbar line
+  * [Align the toolbar line](#align-tool)
+  * [Add a Google font](#book-font)
+  * [Add a logo](#book-logo)
+  * [Customize link colors](#book-link-colors)
+  * [Add a hero image](#book-hero)
+
+</div>
+
+### Align the toolbar line {#align-tool}
 
 This first aesthetic adjustment goes out to everyone who notices the little things. 
 
@@ -89,30 +98,30 @@ Organize your CSS using comments like `/* --insert-comment-- */` to create make-
 
 To change the appearance of your text with a new font, you need to:
 
-* Pick a Google font
-* Add it to your CSS file
-* Style specific text using CSS selectors
-* Make sure your CSS file is linked to `_output.yml` (and if you've been following along and using the book skeleton, it already will be).
+  * Pick a Google font
+  * Add it to your CSS file
+  * Style specific text using CSS selectors
+  * Make sure your CSS file is linked to `_output.yml` (and if you've been following along and using the book skeleton, it already will be).
 
 #### Select and import your Google font's script
 1. Go to [https://fonts.google.com/](https://fonts.google.com/) and pick a font for your **book's main body text**. We'll choose `Muli`, but `Lato` and `Source Sans Pro` are other nice options.
     
 1. Select the font you want by clicking on the upper red `+` sign, and navigate to the small pop up window. 
 
-    ```{r, echo = FALSE, out.width="50%"}
+    ```{r select-font, echo = FALSE, out.width="50%", fig.cap= "Selecting a Google font"}
     knitr::include_graphics("images/screenshots/muli-select.png")
     
     ```
   
 1. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use (because it slows down your site's loading time every so slightly when you add more). In addition to regular, we're choosing one italic and one bold. 
 
-    ```{r, echo = FALSE, out.width="50%"}
+    ```{r font-customize, echo = FALSE, out.width="50%", fig.cap="Choosing additional font weights and styles"}
     knitr::include_graphics("images/screenshots/google-choices.png")
     ```
 
 1. Now click on `EMBED` and look under the `@IMPORT` tab. **Copy the code within the `<style>` tags** (you don't need the style tags themselves). We will also need the second code chunk in a couple steps that says `Specify in CSS`, so keep this page open to come back to that.
 
-    ```{r google-import, echo = FALSE, out.width="50%"}
+    ```{r googleimport, echo = FALSE, out.width="50%", fig.cap="Getting the script to import your Google Font"}
     knitr::include_graphics("images/screenshots/google-import.png")
     ```
 
@@ -151,7 +160,7 @@ We have our fonts imported, but now we have to let site know which text gets wha
     ```
      
     * The `.book.font-family-1` selects the book's main text. 
-    * The CSS within the curly brackets `{}` comes the second code chunk that we got from Google Fonts \@ref(fig:google-import).
+    * The CSS within the curly brackets `{}` comes the second code chunk that we got from Google Fonts (see Fig \@ref(fig:googleimport)).
     * The `sans-serif` part is a backup--it tells the browser to use any old sans-serif font in case there's a problem rendering `Muli`.
 
 :::tip
@@ -171,6 +180,7 @@ If you've been following along using the book skeleton, then there's nothing mor
       asis_yaml_output(fences = FALSE) 
     
     ```
+
 
 #### Build, assess, and style more
 
@@ -281,7 +291,7 @@ Let's do it!
 Make sure that your logo file makes it into the `images/` folder that lives *inside* the `docs/` folder. This is *supposed to* happen automatically when your book is built, but we find that there's a bit of mystery around this actually being the case. If you don't see your logo file in `docs/images/`, then just break one of our golden RMD rules, and copy your logo file there manually. 
 :::
 
-### Custom link colors
+### Custom link colors {#book-link-colors}
 
 Links are great ways to pepper your site with an accent color without it becoming too overwhelming. Let's style the links' regular appearance and also what they will look like when hovered over.
 
@@ -334,7 +344,7 @@ Let's get started:
     ```{r, eval=FALSE}
     <link href="style.css" rel="stylesheet">
     <div class="hero-image-container"> 
-      <img class= "hero-image" src="../images/books.jpg">
+      <img class= "hero-image" src="../images/books.png">
     </div>
     ```
 
@@ -380,7 +390,7 @@ Finally, we add CSS to the `styles.css` file to style and position the image in 
       left: 0;
       right: 0;
       height: 390px;
-      background-color: #3fb5bd;
+      background-color: #133454;
     }
     
     .hero-image {
@@ -395,7 +405,7 @@ Finally, we add CSS to the `styles.css` file to style and position the image in 
 
     ```
     
-1. **Change the `background-color:`** to a color that that will match your image. Why does an image need a background color? This is important because it will give the container some "placeholder" content while your image loads or in case your image doesn't load. 
+1. **Change the `background-color:`** to a color that that will match your image. Why does an image need a background color? This is important because it will give the container some "placeholder" content while your image loads or in case your image doesn't render. (If your hero image has some transparency, then your background color *will* be visible).
 
 1. Note: The **`height:`** of **`.hero-image-container`** must be the same height that you choose for the `.hero-image`. The height you choose is up to you. It does not necessarily have the be the same height as your image file.
 

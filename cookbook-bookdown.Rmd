@@ -423,6 +423,11 @@ Everything should now be in your GitHub repo, but it's not yet a working bookdow
 
 ## Make a living, breathing site! {#book-living}
 
+```{r echo = FALSE, out.width="65%"}
+knitr::include_graphics("images/illos/book-live.jpg")
+```
+
+
 It's now time to tell GitHub where to find our website-ready files:
 
 ```{r, child= "modules/github-pages.Rmd"}
