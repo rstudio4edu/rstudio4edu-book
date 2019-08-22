@@ -21,13 +21,18 @@ library(dplyr)
 
 ## Before you begin
 
-* If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course]{#css-crash}.
-* For organization purposes, we recommend creating a folder called `assets/` in your project directory and moving the CSS file called `style.css` that came with your skeletal book into that folder.
+* If this is your first time dipping your toe into styling with CSS, you might want to check out our [CSS crash course](#css-crash).
+* To stay organized, we recommend creating a folder called `assets/` in your project directory and moving the CSS file called `style.css` that came with your skeletal book into that folder.
 * AND, if you just followed the previous suggestion, then you'll also want to update your `_output.yml` file to show this change:
-    ```{r, eval= FALSE}
-    bookdown::gitbook: 
-      css: assets/style.css
+
+    ```{r, echo = FALSE}
+    yml(author = FALSE, date = FALSE) %>% 
+        yml_output(bookdown::gitbook(css = "assets/style.css")
+        ) %>% 
+    yml_pluck("output") %>% 
+    asis_yaml_output(fences = FALSE) 
     ```
+
 * Also, if you don't already have one, create an `image/` folder in your project directory.
 
 ## Anatomy of a fancy book 
@@ -35,7 +40,7 @@ Here's where we're starting:
 
 <!-- [SCREENSHOT OF PLAIN BOOK] -->
 
-<!-- And here's where we're going: -->
+And here's where we're going:
 
 <!-- [SCREENSHOT OF FANCY BOOK, ANNOTATED] -->
 
@@ -49,12 +54,13 @@ As the old adage goes, you shouldn't just a book by its CSS---but we all know it
 
 This first aesthetic adjustment goes out to everyone who notices the little things. 
 
-You may have noticed that the horizontal line from the toolbar and the TOC do not match up perfectly. This CSS fixes that:
+You may have noticed that the horizontal line from the toolbar and the TOC do not match up perfectly. This CSS will fix that:
 
 1. **Open** `style.css`.
-2. **Paste** in the following: 
+1. **Paste** in the following, after any code that was already in here. 
 
     ```style.css
+    
     /* The next two rules make the horizontal line go straight across in top navbar */
         
     .summary > li:first-child {
@@ -68,7 +74,8 @@ You may have noticed that the horizontal line from the toolbar and the TOC do no
     }
     
     ```
-3. **Save and Build** your book to see how it looks.
+1. Make sure each line within each of the curly braces `{}` ends with a semicolon `;`.
+1. **Save and Build** your book to see how it looks.
 
 Ahh, fixed. Now doesn't that feel better?
 
@@ -78,59 +85,60 @@ Organize your CSS using comments like `/* --insert-comment-- */` to create make-
 
 ### Google fonts {#book-font}
 
-<!-- Thought: could refer folks to use Bookdown theme Editor Addin. However, using this will generate a `style.css` that will override any other existing css in root directory. Also, generates messy CSS, so hard to edit later.  -->
+<!-- Thought: could refer folks to use Bookdown theme Editor Addin (hebrew senior life). However, using this will generate a `style.css` that will override any other existing css in root directory. Also, generates messy CSS, so hard to edit later.  -->
 
 To change the appearance of your text with a new font, you need to:
 
 * Pick a Google font
-* Add it to your CSS
-* Style your text with CSS
+* Add it to your CSS file
+* Style specific text using CSS selectors
 * Make sure your CSS file is linked to `_output.yml` (and if you've been following along and using the book skeleton, it already will be).
 
 #### Select and import your Google font's script
 1. Go to [https://fonts.google.com/](https://fonts.google.com/) and pick a font for your **book's main body text**. We'll choose `Muli`, but `Lato` and `Source Sans Pro` are other nice options.
+    
+1. Select the font you want by clicking on the upper red `+` sign, and navigate to the small pop up window. 
+
+    ```{r, echo = FALSE, out.width="50%"}
+    knitr::include_graphics("images/screenshots/muli-select.png")
+    
+    ```
+  
+1. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use (because it slows down your site's loading time every so slightly when you add more). In addition to regular, we're choosing one italic and one bold. 
+
+    ```{r, echo = FALSE, out.width="50%"}
+    knitr::include_graphics("images/screenshots/google-choices.png")
+    ```
+
+1. Now click on `EMBED` and look under the `@IMPORT` tab. **Copy the code within the `<style>` tags** (you don't need the style tags themselves). We will also need the second code chunk in a couple steps that says `Specify in CSS`, so keep this page open to come back to that.
+
+    ```{r google-import, echo = FALSE, out.width="50%"}
+    knitr::include_graphics("images/screenshots/google-import.png")
+    ```
 
 :::design
-We recommend a sans-serif font (i.e. no little feet on the letters) because it's easier to read at smaller sizes on screens compared to serif fonts. Don't pick anything too narrow, too wide, or ornate.)
+We recommend going with sans-serif fonts (i.e. no little feet on the letters) for the main text because they're easier to read at smaller sizes on screens compared to serif fonts. Don't pick anything too narrow, too wide, or ornate.)
 :::
-    
-2. Select the font you want by clicking on the upper red `+` sign, and navigate to the small pop up window. 
-
-```{r, echo = FALSE, out.width="50%"}
-knitr::include_graphics("images/screenshots/muli-select.png")
-```
-3. Click on the `CUSTOMIZE` tab, and select the extra font weights and styles you want. Don't check any that you don't think you'll use. In addition to regular, we're choosing one italic and one bold. 
-
-```{r, echo = FALSE, out.width="50%"}
-knitr::include_graphics("images/screenshots/google-choices.png")
-```
-
-4. Now click on `EMBED` and look under the `@IMPORT` tab. **Copy the code within the `<style>` tags** (you don't need the style tags themselves). We will also need the second code chunk in a couple steps that says `Specify in CSS`, so keep this page open to come back to that.
-
-```{r, echo = FALSE, out.width="50%"}
-knitr::include_graphics("images/screenshots/google-import.png")
-```
-
 
 #### Import the font to your site
 
-1. Back in the RStudio IDE, **open up your `style.css`** file.
-1. On the very first line paste in the Google Font import code for the Muli font. Don't include the `<style>` tags. This makes the font available within your bookdown site.
+1. Back in the RStudio IDE, **open** up your `style.css` file.
+1. On the very first line, paste in the Google Font import code for the `Muli` font. This makes the font available within your bookdown site.
 
     ```style.css
     @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
     ```
 
 :::tip
-It is also perfectly legitimate to import your font by embedding the script (with `<script>` tags) in an HTML file. But if you're beginning, it's easier to just keep all the font stuff together in the CSS file. 
+You might see others import Google fonts by embedding the script (with `<script>` tags) in an HTML file instead. This is perfectly legitimate. But if you're just starting out, it's easier to keep all the font stuff together in a CSS file, which is why we're doing it this way.
 :::
 
 
-#### Style your text
+#### Style specific text using CSS selectors
 
-Now we can use this font to style our body's text by using the `font-family:` attribute. 
+We have our fonts imported, but now we have to let site know which text gets what font. We want to apply the `Muli` font to our body's text by using the `font-family:` property. 
 
-1. Add the following to the CSS. This code in the curly brackets came from that second code chunk on the Google Fonts page:
+1. Add the following style rules to `style.css` beneath the other CSS we've already added. 
 
     ```style.css
       
@@ -139,38 +147,46 @@ Now we can use this font to style our body's text by using the `font-family:` at
     .book.font-family-1 {
       font-family: 'Muli', sans-serif;
      }
-     ```
-By the way, a little insight in the the trial-and-error process of getting the right selectors: I first tried using `body` as the selector here, but it didn't work. I would have *never* figured out that this selector would work by by using the tips we suggested in the [CSS crash course](#css-crash) to use the inspector and start hovering elements. So, `.book.font-family-1` is what happens to be what pulls the main text of the book. No magic to this, folks. Just a little grit!
+     
+    ```
+     
+    * The `.book.font-family-1` selects the book's main text. 
+    * The CSS within the curly brackets `{}` comes the second code chunk that we got from Google Fonts \@ref(fig:google-import).
+    * The `sans-serif` part is a backup--it tells the browser to use any old sans-serif font in case there's a problem rendering `Muli`.
+
+:::tip
+**The perfect selector**: By the way, a little insight in the the trial-and-error process of getting the right selectors: I first tried using `body` as the selector here, but it didn't work. I would have *never* figured out that this selector would work by by using the tips we suggested in the [CSS crash course](#css-crash) to use the inspector and start hovering elements. So, `.book.font-family-1` happens to be what identifies the main text of the book. No magic to this, folks. Just a little grit!
+:::
+
 
 #### Confirm `style.css` is linked in `_output.yml`
 
-If you've been following along using the book skeleton, then you are all set, and there's nothing for you to do here. But just for completeness, we'll point out that your all your hard CSS work will only be applied if your book knows about it. And it will know if you reference `style.css` in `_output.yml`:
+If you've been following along using the book skeleton, then there's nothing more you need to do to apply this font. But just for completeness, we'll point out that if we were building our book from scratch without the skeleton, then in order for your hardwork in CSS to be work, we would need to tell bookdown that our CSS file exists by referencing `style.css` in `_output.yml`:  
 
     ```{r, echo = FALSE}
-    yml(author = FALSE, date = FALSE) %>% 
-        yml_output(bookdown::gitbook(css = "assets/style.css")
-        ) %>% 
+    
+      yml(author = FALSE, date = FALSE) %>% 
+      yml_output(bookdown::gitbook(css = "assets/style.css")) %>% 
       yml_pluck("output") %>% 
       asis_yaml_output(fences = FALSE) 
+    
     ```
 
 #### Build, assess, and style more
 
 Build and preview your book. Do you like the font that you chose? Now you can go back and pick fonts for other elements of your book.
 
-1. Choose another Google Font for your **book headers and title** and repeat the steps above to add your header fonts to your CSS, using the selectors below to fonts to your headers, title, and subtitle (if you have one): 
+1. Choose another Google Font for your **book headers and title** and repeat the steps above to add your header fonts to your CSS, using the selectors below to fonts to your headers, title, and subtitle (if you have one). 
 
-:::design
-Header fonts can have some more pizazz `r emo::ji("sparkles")`, but stay away from the intense fonts like handwritings or very artsy looking things, unless you're only applying it to the book title for dramatic effect.
-:::
-
-2. Optionally, we also change the `color:` and `font-size:` for the title and headers. 
+    * We chose `Prata` as our header font, and we added its import line of code right beneath where we imported `Muli` earlier:
 
     ```style.css
       @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
       @import url('https://fonts.googleapis.com/css?family=Prata&display=swap');
       
     ```
+1. Optionally, we also change the `color:` and `font-size:` for the title and headers.
+
 
     ```style.css
     /*------------- Body and header text---------------- */
@@ -196,30 +212,32 @@ Header fonts can have some more pizazz `r emo::ji("sparkles")`, but stay away fr
     }
     
     ```
+    
+    * The selector `h1, h2, h3, h4` separated by commas means that the styles will be applied to an element on our site that has *any* of the these classes--in this case, all level 1 through level 4 headers.
 
 :::design
-
-You can add interest to text on your page without being distracting by choosing very dark flavors of your accent color as an alternative to choosing black. For example, when using a [color picker](https://htmlcolorcodes.com/color-picker/), slide down to the darkest, *almost*-black-but-not-quite version of your color of choice. Consider using this for your body text's or headers' color.
-
+**Header fonts**: Header fonts can have some more pizazz `r emo::ji("sparkles")`, but stay away from the intense fonts like handwritings or very artsy looking things, unless you're only applying it to the book title for dramatic effect.
 :::
 
+:::design
+**Picking colors**: You can add interest to text on your page without being distracting by choosing very dark flavors of your accent color as an alternative to choosing black. For example, when using a [color picker](https://htmlcolorcodes.com/color-picker/), slide down to the darkest, *almost-pure-black-but-not-quite* version of your color of choice. Consider using this for your body text's or headers' color.
+:::
 
 ### Add a logo {#book-logo}
 
 We'll add a logo above our table of contents, taking advantage of some of the infrastructure that the book skeleton gave us in `_output.yml`. You need:
 
-* A logo file, better if it's a PNG with a transparent background.
-* Edit `_output.yml`
-* Style the logo with CSS
+* A logo file. It's better if it's a PNG with a transparent background.
+* To edit `_output.yml`
+* To set the logo's size with CSS
 
+Let's do it!  
 
 1. **Place your logo image in the `image/` folder**.
 
-1. **Open `_output.yml`**, and add two things:
+1. **Open** `_output.yml` and add two things:
     * `class="toc-logo"` inside the opening `<li>` tag.
     * Replace the "header text" that used to be within the two `<a>`tags  and replace it with: `<img src="images/logo-black.png">`.
-
-<!-- replace with ymlthis -->
 
     ```{r, eval = FALSE}
       bookdown::gitbook:
@@ -230,10 +248,11 @@ We'll add a logo above our table of contents, taking advantage of some of the in
             before: |
               <li class="toc-logo"><a href="./"><img src="images/logo-black.png"></a></li>
     ```
-We have to add the `class="toc-logo"` in addition to the `<img>` tag, so that we can style this image in the next step with CSS. 
+    
+    * We have to add the `class="toc-logo"` in addition to the `<img>` tag, so that we can style this image in the next step with CSS. 
 
-3. **Open `style.css`**. 
-4. **Add** the following to your CSS. This will make space for your logo image above your TOC.
+1. **Open `style.css`**. 
+1. **Add** the following to your CSS. This will make space for your logo image above your TOC.
 
     ```style.css
     /*--- LOGO ---*/
@@ -254,8 +273,9 @@ We have to add the `class="toc-logo"` in addition to the `<img>` tag, so that we
       height: auto !important; 
     }
     ```
-5. **Build** and preview your handywork. 
-6. Go back to the CSS and adjust the `width:` parameter of `.toc-logo` to adjust the size of your logo.
+    
+1. **Build** and preview your handywork. 
+1. Go back to the CSS and adjust the `width:` parameter of `.toc-logo` to adjust the size of your logo.
 
 :::gotcha
 Make sure that your logo file makes it into the `images/` folder that lives *inside* the `docs/` folder. This is *supposed to* happen automatically when your book is built, but we find that there's a bit of mystery around this actually being the case. If you don't see your logo file in `docs/images/`, then just break one of our golden RMD rules, and copy your logo file there manually. 
@@ -284,6 +304,7 @@ Links are great ways to pepper your site with an accent color without it becomin
     }
     
     ```
+    
 1. Choose a color for all the links in the main text. A safe bet is to choose something that is similar-ish to what we chose for our `.title` color. Replace the `#`hexcode with the one for your color of choice in the top style rule above.
 
 1. Choose a second color that's a bit darker or ligher, that will be the link color when you hover over it. Replace the `#`hexcode with the one for your color of choice in the bottom style rule.
@@ -308,7 +329,7 @@ Let's get started:
 
 1. **Create a new HTML file** by going to *File* > *New File* > *Text File*. 
 
-1. **Paste** these contents into the file.
+1. **Paste** these contents at the top of the file.
 
     ```{r, eval=FALSE}
     <link href="style.css" rel="stylesheet">
@@ -317,14 +338,18 @@ Let's get started:
     </div>
     ```
 
-1. **Replace the file path** to the image with your own.
+    *  `<link href="style.css" rel="stylesheet">` will allow any content we put in this HTML file to be styled by the CSS file we've been working on. 
+    * The `<div class="hero-image-container"> </div> tags will serve as the "container" for our image. The reason we bother with putting our image in a "container" at all is because this can make it easier to position and size our image later on the page. We give it a class name `"hero-image-container"` because that's what we'll use as a selector to style it in our CSS. 
+    * The <img> tag itself is where we actually specify the image path.
+    
+1. **Replace the file path** to the image (what comes within `src= " "`) with your own file path.
 
-1. **Save** this file in your project directory, ideally inside of the `assets/` folder. Name it `hero-image.html`. You can choose a different name. 
+1. **Save** this HTML file in your project directory, ideally inside of the `assets/` folder. Name it `hero-image.html`. You can choose a different name. 
 
 
 #### Add the HTML file to `_output.yml`
 
-Now we tell bookdown that this HTML exists and that we want its contents (our image) to be the *first* thing in the `<body>` tag:
+Now we tell bookdown that this HTML exists and that we want its contents (our image) to be the *first* thing in the `<body>` tag of our site:
 
 1. **Open** up `_output.yml`.
 1. **Add** the `includes:` and `before_body:` options with a path to your `hero-image.html` file.
@@ -448,13 +473,13 @@ The next three additions are less about aesthetics and more about making your bo
 
 5. **Use the div tips**, in any of your `.Rmd`s. For example, here's what it looks like to use the `div.puzzle` one: 
 
-    ```
+    ```.rmd
     :::puzzle
     You use a div tip by writing `:::` following by the name that you assigned to it in the CSS after the `div`.
     :::
     
     ```
-Which makes: 
+Which makes a div tip that looks like this:
 
 :::puzzle
 You use a div tip by writing `:::` following by the name that you assigned to it in the CSS after the `div`.
@@ -472,10 +497,11 @@ Here's what we're going to use to make anchor links:
 * Some **CSS** style rules.
 * **Linking our HTML file to `_output.yml`**.
 
-#### Add javascript to make anchor links for all section headers
+#### Add javascript to make anchor links for all section headers {#book-anchor-js}
 
-1. In RStudio, **go to *File* > *New File* > *Text File* **
-1. **Paste** the javascript below into this file.
+1. In RStudio, **go to *File* > *New File* > *Text File* **.
+
+1. **Paste** the javascript below into this new file.
 
     ```{r, eval = FALSE}
     $(document).ready(function() {
@@ -491,26 +517,34 @@ Here's what we're going to use to make anchor links:
     
     * This code essentially says, "Wait until the page is loaded and ready, and when it is, find every section header and tack on a link to itself right before that header." The other important thing the javascript file will do is to add a CSS class `"hasAnchor"` to each of the headers. This is part of what will allow to style our anchor links with CSS in a couple steps.  
     
-1. Save this file as `book.js`. (You can give it another name, but the convention is usually to name the Javascript file after the project you're using it for.) Save this file in your working directory or in the `assets/` folder.  
+1. Save the file as `book.js`. (You can give it another name, but the convention is usually to name it file after the project you're using it for.) Save this file in your working directory or in the `assets/` folder.  
 
 Phew--you're done with the javascript code now!
 
 #### Embed `book.js` into HTML file
 We’ll make an HTML file that will refer to our javascript file.
 
-1. Paste the line below into this file. Modify the path in quotes to point to your javascript file if yours is not in your working directory. (*Note*: This little line of code will be automatically injected within our bookdown's existing `<html>` and `<head>` tags, when we later use `includes: in_header:`, so there's no need to include these tags in this HTML file, but nothing bad will happen if you do). 
+1. In RStudio, **go to *File* > *New File* > *Text File* **.
+
+1. **Paste** the line below into this new file.
 
     ```{r, eval = FALSE}
     <script src="book.js"></script>
     ```
 
-1. Save this file as `header.html` in your project directory or in the `assets/` folder. You can choose a different name if you'd like. 
+1. **Modify the path in quotes** to point to your javascript file if yours is not in your working directory. 
+1. **Save this file** as `header.html` in your project directory or in the `assets/` folder. You can choose a different name if you'd like. 
+
+:::tip
+*No <head> tags needed*: If you have a little experience with javascript, then you may know that any javascript `<script>` tags usually need to be placed within `<head>` tags, too. We don't need to use these here because this little line of code will be automatically injected within our bookdown's existing `<head>` tags when we use `includes: in_header:` in a few steps.
+:::
 
 #### Add CSS to show anchor links
 
 In our javascript code, we had the class `"hasAnchor"` be programatically added to our sections headers. So, we can now style them so that each time we hover over the section header, the anchor link icon will become visible. 
 
-1. Open your `style.css` file. Paste the CSS styles below to this file.
+1. **Open** your `style.css` file. 
+1. **Paste** the CSS below to this file. These will govern the anchor link icon's position, size, and color.
 
     ```{r, eval = FALSE}
 /* -----------Section anchors -------------*/
@@ -549,8 +583,8 @@ a.anchor {
 
 We created all the anchor link infrastructure, now we just need to tell bookdown about it by referencing it in our `_output.yml`.
 
-1. Open `_output.yml`, located in your project directory
-1. Reference your HTML file with the `includes: in_header:` option underneath `bookdown::gitbook`. Make sure CSS file is also referenced. This part of your `_output.yml` should look something like this:
+1. **Open** `_output.yml`, located in your project directory
+1. **Reference your HTML file** with the `includes: in_header:` option underneath `bookdown::gitbook`. Make sure CSS file is also referenced. This part of your `_output.yml` should look something like this:
 
     ```{r echo = FALSE}
     yml(author = FALSE, date = FALSE) %>% 
@@ -562,7 +596,7 @@ We created all the anchor link infrastructure, now we just need to tell bookdown
       asis_yaml_output(fences = FALSE) 
     ```
 
-1. Save and build your book to check that everything has worked!
+1. **Save and build** your book to check that everything has worked!
 
 
 
@@ -570,14 +604,15 @@ We created all the anchor link infrastructure, now we just need to tell bookdown
 
 Here's what we're going to need to make copy to clipboard buttons:
 
-* **A little javascript** in a .js file (we can add on to the .js file we used to make the anchor links).
+* **A little javascript** in a .js file (we can add on to the [.js file](#book-anchor-js) we used to make the anchor links).
 * **An HTML file** --we can use the same one we created for the anchor links above.
 * One **CSS** style rule
 * **Linking our HTML file to `_output.yml`** (you already did this if you created the [anchor links](#anchor-ouput)).
 
 
+1. **Open** `book.js` that you created for making section anchors. If you didn't make section anchors, then go back and do 1) and 3) from [this section](#book-anchor-js).
 
-1. Add the javascript: paste the following into into the `book.js` file located in the `assets/` folder. 
+1. **Paste** the following javasript into into the `book.js` file, beneath the other javascript from your section anchors. 
 
 ```
 $(document).ready(function() {
@@ -599,7 +634,8 @@ $(document).ready(function() {
 
 ```
 
-1. Open `style.css` and add the following to style the appearance of the button:
+1. **Open** `style.css`.
+1. **Add** the following to style the appearance of the button:
 
 ```style.css
 .copy {
@@ -633,9 +669,11 @@ Now comes the time to style the TOC. It's a huge part of the book's appearance, 
 
 1. **Open** `style.css`.
 1. **Paste** in the CSS below. The selector for the Table of Contents is `.book-summary`. 
-1. The `border-right: none` parameter removes the line that separates the TOC by default. If you want to keep that, then just remove this. Or alternatively, style it differently by replacing `none` with something like `5px #5699cc solid`, for example.
+1. The `border-right: none` parameter removes the line that separates the TOC by default. 
+    * If you want to keep the little line, then either remove `border-right: none;` below, so that bookdown will keep the default line.
+    * Alternatively, style the line differently by replacing `none` with a different thickness, color, and line-type (e.g. `border-right: 5px #5699cc solid`).
 
-    ```
+    ```style.css
     /*------------ TOC --------------*/
 
     .book .book-summary {
@@ -645,18 +683,16 @@ Now comes the time to style the TOC. It's a huge part of the book's appearance, 
     ```
 
 :::design
-
 We chose white as the background color for the TOC because we think it helps "open up" the space. But feel free to experiment here.
-
 :::
 
 ### Style the TOC links
 
 Adding to the TOC style rules we started above, now we'll change the font, color, active, and hover behavior for all the links. 
 
-1. To **change the TOC font**, paste in the CSS below. You'll have to choose from a font that you already imported [earlier](#book-font). 
+1. **Change the TOC font**, paste in the CSS below. You'll have to choose from a font that you already imported [earlier](#book-font). 
 
-    ```
+    ```style.css
     .summary{
     font-family: 'Muli', sans-serif;
     }
@@ -668,6 +704,7 @@ Adding to the TOC style rules we started above, now we'll change the font, color
     ```style.css
 
       /* all TOC list items, basically */
+      
     .book .book-summary ul.summary li a, 
     .book .book-summary ul.summary li span {
       padding-top: 8px;
@@ -678,11 +715,6 @@ Adding to the TOC style rules we started above, now we'll change the font, color
     }
     
     ```
-    
-:::design
-We like choosing TOC text colors that aren't too flashy. Save the pops of color for hovering or active link behavior. Here we went with the same dark color that we used for  `h1`, `h2`, etc. 
-:::
-  
 
 1. **For different color for links that are hovered**, you can add the CSS rule below. 
 
@@ -713,6 +745,10 @@ We like choosing TOC text colors that aren't too flashy. Save the pops of color 
 When you add a `border-left:` with a thickness of `4px`, it will shift over the text by `4px`, too. So, compensate for this by overriding the original `padding-left: 15px` that we set in an earlier style rule with a new `padding-left:` that is `4px` less. That's why we ended up with `11px` here. The `!important` is what signals the override. 
 :::
 
+:::design
+We like choosing TOC text colors that aren't too flashy. Save the pops of color for hovering or active link behavior. Here we went with the same dark color that we used for  `h1`, `h2`, etc. 
+:::
+
 ### Hierarchy styling
 
 Lastly, we make it clearer which chapters belong to the same part by styling the Part titles a bit differently. 
@@ -729,9 +765,9 @@ Lastly, we make it clearer which chapters belong to the same part by styling the
 
     ```
 
-2. We added **`margin-top: 1em`** for some much needed space above each Part title.  
-3. We choose a **`color:`** that is similar to the dark blue of the links, but even closer towards black on that spectrum without going all the way to black (`#000000`).
-4. By default, bookdown gives Part titles an opacity that makes them appear light-colored. We have to override this, by choosing an opacity of `1`. 
+1. We added **`margin-top: 1em`** for some much needed space above each Part title.  
+1. We choose a **`color:`** that is similar to the dark blue of the links, but even closer towards black on that spectrum without going all the way to black (`#000000`).
+1. By default, bookdown gives Part titles an opacity that makes them appear light-colored. We have to override this, by choosing an opacity of `1`. 
 
 Now time to build and preview your fancy book!
 

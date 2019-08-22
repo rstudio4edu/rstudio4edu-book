@@ -162,7 +162,7 @@ You know the little tiny icon on the left side of most of your your browser tabs
 
 <!-- TODO: replace with ymlthis -->
 
-```
+```{r, eval = FALSE}
 name: "basic-course-distill"
 title: "Demo Website"
 description: |

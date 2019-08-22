@@ -73,7 +73,7 @@ We'll need to use the three different bookdown YAML files to turn on these featu
     * `_bookdown.yml`
     * `index.Rmd`
     
-1. **Remove output types we don't need:`** from `_output.yml`. All of our cookbook content will only deal with the `gitbook` output from here on out. This means you can get rid of this part of the YAML in `_output.yml`:
+1. **Remove output types we don't need:** from `_output.yml`. All of our cookbook content will only deal with the `gitbook` output from here on out. This means you can get rid of this part of the YAML in `_output.yml`:
 
     ```output.yml
     bookdown::pdf_book:
@@ -103,15 +103,13 @@ We can control whether our TOC will show all sections or subsections by default.
 * **Open `_output.yml`**
 * **Add `collapse: section`** as a `toc:` option.
 
-<!-- TODO replace with ymlthis -->
-
     ```_output.yml
     bookdown::gitbook:
       css: style.css
       config:
-       toc:
+        toc:
           collapse: section
-         before: |
+          before: |
            <li><a href="./">A Minimal Book Example</a></li>
           after: |
             <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -122,7 +120,7 @@ We can control whether our TOC will show all sections or subsections by default.
 
 The **`chapter_name:`** option is what determines whether your level one headers will say "Chapter 1" or "Section 1" or "Module 1"---whatever prefix you'd like. In our example demo book, we'll leave this as `"Chapter "`, but if you wanted to change it, you would do this:
 
-1. **Open `_bookdown.yml`**.
+1. **Open** `_bookdown.yml`.
 1. **Replace `"Chapter "` with your prefix of choice**. Don't forget the space after the name within the quotes.
 
     ```{r, echo = FALSE}
@@ -146,9 +144,9 @@ The **`chapter_name:`** option is what determines whether your level one headers
 
 ### Section (un)numbering
 
-By default bookdown numbers all of your headings. If you don't like this, then you have to de-number the manually. **Within any `.Rmd`** you can do this if you:
+By default bookdown numbers all of your headings. If you don't like this, then you have to un-number them manually. **Within any `.Rmd`** you can do this if you:
 
-* Add an `{-}` after each heading you want unnumbered .
+* Add an `{-}` after each heading you want unnumbered.
 * If your section has an ID within brackets already, just add the `-` in front, for example:
 
 ```
@@ -161,10 +159,10 @@ We recommend keeping the numbering on for all of your chapters, except for the h
 
 Let's remove numbering for the initial chapter of our minimal book, to make it clear it's a preface:
 
-* Open `index.Rmd`.
-* Change the level one header to be `# Prerequisites {-}`
-* Save and build your book.
-* Notice that once you do, the numbering of all the following sections is automatically adjusted. 
+1. Open `index.Rmd`.
+1. Change the level one header to be `# Prerequisites {-}`
+1. Save and build your book.
+1. Notice that once you do, the numbering of all the following sections is automatically adjusted. 
 
 ### Group chapters into parts {#book-parts}
 If you have a bunch of chapters, it can be helpful to group some of them together (e.g., by semester, quarter, or content themes). You can create a book part **within any `.Rmd` file** by adding the following at the top of any `.Rmd`:
@@ -175,13 +173,15 @@ If you have a bunch of chapters, it can be helpful to group some of them togethe
 If you don't want your part to be numbered with a Roman numeral, then you must instead write: 
 
 ```
-# (PART\*) My Part Title {-}`
+# (PART\*) My Part Title {-}
 ```
 
 Let's create two unnumbered parts for our demo book:
 
-* Open the `01-intro.Rmd` file and add `# (PART\*) First Semester {-}` as the first line. 
-* Open `04-methods.Rmd` file and `# (PART\*) Second Semester {-}` as the first line. 
+1. **Open** the `01-intro.Rmd` file.
+1. **Add** `# (PART\*) First Semester {-}` as the first line. 
+1. **Open** `04-methods.Rmd` file.
+1. **Add** `# (PART\*) Second Semester {-}` as the first line. 
 
 
 ### Appendix {#book-appendix}
@@ -253,35 +253,33 @@ Let's make the following changes to our TOC header:
 1. Create a new TOC header with the `before:` option by **replacing the `"A Minimal Book Example"`** with **`"Demo Book"`** instead.
 1. FYI, the **`after:`** field is for the TOC footer. We'll leave this as-is for now.
 
-<!--TODO replace with ymlthis -->
-
-```_output.yml
-bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      collapse: section
-      before: |
-        <li><a href="./">Demo Book</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
-```
+    ```_output.yml
+    bookdown::gitbook:
+      css: style.css
+      config:
+        toc:
+          collapse: section
+          before: |
+            <li><a href="./">Demo Book</a></li>
+          after: |
+            <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        download: ["pdf", "epub"]
+    ```
 ### Code highlighting
 
 Let's style the colors that we'll be used in our code chunks. Highlight styles work the same as they would in an RMD site. The options here are `default`, `tango`, `pygments`, `kate`, `monochrome`, `espresso`, `zenburn`, and `haddock`.
 
 Let's try it:
 
-1. **Open `_output.yml`**
-1. **Add the `highlight:` field and choose `tango`.
+1. **Open** `_output.yml`.
+1. **Add** the `highlight:` field and choose `tango`.
 
     ```_output.yml
     bookdown::gitbook:
      highlight: tango
       css: style.css
       config:
-       toc:
+        toc:
           collapse: section
           before: |
             <li><a href="./">Demo Book</a></li>
@@ -293,12 +291,12 @@ Let's try it:
 ## Edits and source code
 
 * Solicit edits via GitHub
-* See the `Rmd`
+* See the `.Rmd` source code
 
 Let's add an edit icon the toolbar so that it's easier for collaborators to give feedback and suggestions. When they click it, it will invite them to make changes on GitHub to the current book page. 
 
 <center>![](images/screenshots/book-edit.png){width=50%}</center>
-1. **Open `_output.yml`**
+1. **Open** `_output.yml`.
 1. Create **`edit:`**, **`link:`**, and **`text`:** fields like you see below:
 
     ```_output.yml
@@ -306,7 +304,7 @@ Let's add an edit icon the toolbar so that it's easier for collaborators to give
      highlight: tango
       css: style.css
       config:
-       edit:
+        edit:
           link: https://github.com/username/repository/edit/master/%s
           text: "Suggest an edit"
         toc:
@@ -318,9 +316,9 @@ Let's add an edit icon the toolbar so that it's easier for collaborators to give
         download: ["pdf", "epub"]
     ```
 
-1. Replace the parts of the URL that say "username" and "respository" with your own. 
+1. **Replace** the parts of the URL that say "username" and "respository" with your own. 
 1. Make sure the URL ends with `/edit/master/%s`.
-1. Add a message to the `text:` field. Something like `"suggest an edit"`. This is what your user will see when they hover over the Edit link in the toolbar.
+1. **Add a message** to the `text:` field. Something like `"suggest an edit"`. This is what your user will see when they hover over the Edit link in the toolbar.
 
 Save, build, and see that your edit icon works!
     
@@ -328,8 +326,8 @@ Save, build, and see that your edit icon works!
 
 While we're in `_output.yml`, we can add another field that will let your user see the source `.Rmd` code for the page. When your user clicks on the "download" icon, a new tab will open that shows them the `.Rmd` code used to generate the page they're viewing (you have to have an `edit:` field for this to work). This isn't technically a download, but still useful. Without specifying anything for this option, bookdown will look for other versions of your book (like PDFs or EPUB) to provide as a download. If you don't want this, then you need to set `download: no`. 
 
-1. **Open `_output.yml`**.
-1. After the `download:` option, replace `"pdf", "epub"` with `"rmd"`. Since we [removed](#before-book-dress) the `pdf_book` and `epub_book` output, the "download" PDF and EPUB options wouldn't have worked anyway. 
+1. **Open** `_output.yml`.
+1. After the `download:` option, **replace** `"pdf", "epub"` with `"rmd"`. Since we [removed](#before-book-dress) the `pdf_book` and `epub_book` output, the "download" PDF and EPUB options wouldn't have worked anyway. 
 
     ```_output.yml
     bookdown::gitbook:
@@ -359,8 +357,10 @@ While we're in `_output.yml`, we can add another field that will let your user s
 When you turn sharing on, it's easier for people to give your book a shoutout on twitter or find their way to your repo. This is good! We suggest using only these sharing icons and disabling the rest with `all: no`. Setting `github: yes` here is just one of the steps you need for the GitHub link to work. You also have to add your GitHub account and repo name to the `index.Rmd` YAML as we described above. 
 
 1. **Open** `_output.yml`.
-1. Add a `sharing:` field and set `github: yes`, `facebook: no`, `twitter: yes`, `all: no`.
-    * Mind your indentation (remember, YAMLS are fussy!)
+1. **Add** a `sharing:` field. 
+1. **Set** `github: yes`, `facebook: no`, `twitter: yes`, `all: no`.
+    * Mind your indentation (remember, YAMLS are fussy!)  
+    
 
     ```_output.yml
     bookdown::gitbook:
@@ -384,22 +384,23 @@ When you turn sharing on, it's easier for people to give your book a shoutout on
           all: no
     ```
     * The Twitter icon is now set--but we're only halfway there to get the GitHub icon to work. 
+    
 1. **Open** `index.Rmd`. 
-1. Add the field `github-repo:` followed by your `"username/repo"`. 
+1. **Add** the field `github-repo:` followed by your `"username/repo"`. 
 
-```{r, echo = FALSE}
-ymlthis::yml_empty() %>%
-  yml_title("A Minimal Book Example") %>%
-  yml_author("Yihui Xie") %>%
-  yml_date("`r Sys.Date()`") %>%
-  yml_bookdown_site() %>%
-  yml_toplevel(documentclass = "book") %>%
-  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-  yml_toplevel("biblio-style" = "apalike") %>% 
-  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-  yml_toplevel("github-repo" = "your-github/your-repo") %>%
-  asis_yaml_output(fences = TRUE)
-```
+    ```{r, echo = FALSE}
+    ymlthis::yml_empty() %>%
+    yml_title("A Minimal Book Example") %>%
+    yml_author("Yihui Xie") %>%
+    yml_date("`r Sys.Date()`") %>%
+    yml_bookdown_site() %>%
+    yml_toplevel(documentclass = "book") %>%
+    yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+    yml_toplevel("biblio-style" = "apalike") %>% 
+    yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+    yml_toplevel("github-repo" = "your-github/your-repo") %>%
+    asis_yaml_output(fences = TRUE)
+    ```
 
 Now, the GitHub icon will go to your book's repo.
 
@@ -417,22 +418,22 @@ You know the little tiny icon that gets placed in the corner of your browser tab
 1. **Open** `index.Rmd`.
 1. **Add** `favicon: <"images/favicon.ico">` in the YAML, replacing the filepath in quotes with your own.
 
-```{r, echo = FALSE}
-ymlthis::yml_empty() %>%
-  yml_title("A Minimal Book Example") %>%
-  yml_author("Yihui Xie") %>%
-  yml_date("`r Sys.Date()`") %>%
-  yml_bookdown_site() %>%
-  yml_toplevel(documentclass = "book") %>%
-  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-  yml_toplevel("biblio-style" = "apalike") %>% 
-  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-  yml_site_opts(favicon = "images/favicon.ico") %>%
-  yml_toplevel("cover-image" = "images/logo-black.png") %>%
-  yml_toplevel("github-repo" = "your-github/your-repo") %>%
-  yml_toplevel("url" = "https://github.com/dcossyleon/fake_book") %>%
-  asis_yaml_output(fences = TRUE)
-```
+    ```{r, echo = FALSE}
+    ymlthis::yml_empty() %>%
+    yml_title("A Minimal Book Example") %>%
+    yml_author("Yihui Xie") %>%
+    yml_date("`r Sys.Date()`") %>%
+    yml_bookdown_site() %>%
+    yml_toplevel(documentclass = "book") %>%
+    yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+    yml_toplevel("biblio-style" = "apalike") %>% 
+    yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+    yml_site_opts(favicon = "images/favicon.ico") %>%
+    yml_toplevel("cover-image" = "images/logo-black.png") %>%
+    yml_toplevel("github-repo" = "your-github/your-repo") %>%
+    yml_toplevel("url" = "https://github.com/dcossyleon/fake_book") %>%
+    asis_yaml_output(fences = TRUE)
+    ```
 
 :::tip
 **Note**: In the example above, we can use ICO files (with the `.ico` extension) which are preferred because of better rendering across most browsers, but other images types like PNGs work too. 
@@ -447,29 +448,30 @@ Finally, we'll change what happens what happens when we share preview links of o
 
 Let's update our `index.Rmd` with the following: 
 
-1.  **Update the description** of our demo book to say "A work in progress."
+1. **Update the description** of our demo book to say "A work in progress."  
+
 1. **Add a cover image** by adding a path to our logo (or a url to any image--you can always try one of [these](https://unsplash.com/) if you need a placeholder). 
+
 1.  Now is also a good time to update your `Title` and `Author` fields if you haven't already. 
 
 
-```{r, echo = FALSE}
-ymlthis::yml_empty() %>%
-  yml_title("Demo Book") %>%
-  yml_author(c("Desiree De Leon", "Alison Hill")) %>%
-  yml_date("`r Sys.Date()`") %>%
-  yml_bookdown_site() %>%
-  yml_toplevel(documentclass = "book") %>%
-  yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
-  yml_toplevel("biblio-style" = "apalike") %>% 
-  yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
-  yml_site_opts(favicon = "images/favicon.ico") %>%
-  yml_toplevel("cover-image" = "images/logo-black.png") %>%
-  yml_toplevel("github-repo" = "your-github/your-repo") %>%
-  yml_toplevel("url" = "https://dcossyleon.github.io/fake_book/") %>%
-  asis_yaml_output(fences = TRUE)
-```
+    ```{r, echo = FALSE}
+      ymlthis::yml_empty() %>%
+      yml_title("Demo Book") %>%
+      yml_author(c("Desiree De Leon", "Alison Hill")) %>%
+      yml_date("`r Sys.Date()`") %>%
+      yml_bookdown_site() %>%
+      yml_toplevel(documentclass = "book") %>%
+      yml_citations(c("book.bib", "packages.bib"), link_citations = TRUE) %>%
+      yml_toplevel("biblio-style" = "apalike") %>% 
+      yml_toplevel(description = "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.") %>% 
+      yml_site_opts(favicon = "images/favicon.ico") %>%
+      yml_toplevel("cover-image" = "images/logo-black.png") %>%
+      yml_toplevel("github-repo" = "your-github/your-repo") %>%
+      yml_toplevel("url" = "https://dcossyleon.github.io/fake_book/") %>%
+      asis_yaml_output(fences = TRUE)
+    ```
 
-<!---do we REALLY need url?-->
 
 :::gotcha
 The formatting for `url` is really important, and weird: 
@@ -477,6 +479,9 @@ The formatting for `url` is really important, and weird:
 + You must use a forward slash `\` before the colon to "escape" it. 
 + The `url` **must** end with a back slash `/` in order for the `cover-image` to render. 
 :::
+
+<!---do we REALLY need url? What does it do?? -->
+
 
 \
 
