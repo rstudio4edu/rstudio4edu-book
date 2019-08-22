@@ -473,7 +473,7 @@ The next three additions are less about aesthetics and more about making your bo
 
 5. **Use the div tips**, in any of your `.Rmd`s. For example, here's what it looks like to use the `div.puzzle` one: 
 
-    ```.rmd
+    ```
     :::puzzle
     You use a div tip by writing `:::` following by the name that you assigned to it in the CSS after the `div`.
     :::
@@ -481,10 +481,13 @@ The next three additions are less about aesthetics and more about making your bo
     ```
 Which makes a div tip that looks like this:
 
+<center style="width: 80%; margin: 0 auto;">
+
 :::puzzle
-You use a div tip by writing `:::` following by the name that you assigned to it in the CSS after the `div`.
+You use a div tip by writing `:::` followed by the name that you assigned to it in the CSS after the `div`.
 :::
 
+</center>
 
 ### Anchor links {#book-anchor}
 
