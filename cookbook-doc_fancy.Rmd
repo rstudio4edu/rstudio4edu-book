@@ -193,7 +193,6 @@ We have our font imported, but now we have to be explicit with R Markdown about 
 1. Let's also **specify the font size** to be `19px` by adding the `font-size:` property. 
 
     ```style.css
-      
      /*------------- Whole Document---------------- */
 
     body {
@@ -228,12 +227,11 @@ Remember that in order for any of your CSS to take effect, your `style.css` file
 
 Next we'll change the color and hover behavior of our links.
 
-1. We add onto our `style.css` file. 
-1. Use the `a` selector to select all links in your lesson.
-1. Use the `color:` property, followed by a color code, called a hexcode. You can use a [color picker](https://htmlcolorcodes.com/color-picker/) to find a hexcode color that you like.
+1. **Open** your `style.css` file. 
+1. Use the **`a` selector** to select all links in your lesson.
+1. Use the **`color:` property**, followed by a color code, called a hexcode. You can use a [color picker](https://htmlcolorcodes.com/color-picker/) to find a hexcode color that you like.
 
-
-    ```
+    ```style.css
     /*----------------- links ---------------------*/
     
     a { 
@@ -243,13 +241,13 @@ Next we'll change the color and hover behavior of our links.
 
     * This has changed the color of a regular link, but if we want to change the color of the link when we hover over it, we use `a:hover` as our new selector.
 
-1. Make the hover color a little bit darker than the base link color by adding the style rule below:
+1. **Specify what happens when a link is hovered** by adding the style rule below. We make our hovered links a darker color:
 
-  ```
-    a:hover {
-      color: #396892; /* darker color when hovering */
-    }
-  ```
+    ```style.css
+      a:hover {
+        color: #396892; /* darker color when hovering */
+      }
+    ```
 
 <center>![](images/screenshots/doc-link.png){width=50%}</center>
 
@@ -262,10 +260,9 @@ We'll add a logo above our table of contents. The main way we're going to do thi
 
 
 1. **Add** your logo image to your project directory.
-
 1. **Paste** the CSS style rule below. We'll break it down in a second.
 
-    ```
+    ```style.css
     /*----------LOGO above TOC---------*/
 
     #TOC::before {
@@ -286,8 +283,8 @@ We'll add a logo above our table of contents. The main way we're going to do thi
     * In this case, our pseudo-element is a blank box--that's why it says `content: "";`. There's nothing in there. But--we *do* give our blank box some dimension with the `height:` property.
     * The blank box is no longer blank when we use our logo as its background image.
     
-1. Change the image url to use your own image.
-1. Knit and check out the results. If you need to adjust the size of your logo, you can fiddle with the `height:` property in the CSS above.
+1. **Change** the image url to use your own image.
+1. **Knit** and check out the results. If you need to adjust the size of your logo, you can fiddle with the `height:` property in the CSS above.
 
 #### A second logo option
 
@@ -302,7 +299,6 @@ If you chose not to use a floating table of contents, then adding a logo the way
 1. **Paste** this CSS rule into your CSS file:
 
    ```style.css
-    
      #header.fluid-row::before {
       content: "";
       height: 150px;
@@ -316,8 +312,8 @@ If you chose not to use a floating table of contents, then adding a logo the way
     
     ```
   
-1. Edit the image url to be your own image file path. 
-1. Save your changes and knit your `.Rmd` lesson to see your logo. You can fiddle with the `height:` property to adjust the logo size. 
+1. **Edit** the image url to be your own image file path. 
+1. **Save** your changes and **knit** your `.Rmd` lesson to see your logo. You can fiddle with the `height:` property to adjust the logo size. 
 
 
 #### A third logo option
@@ -354,19 +350,19 @@ Now we have a containter (via our HTML file), but R Markdown needs to know where
 1. **Open** your `.Rmd` file.
 1. **Add** the `includes:` and `before_body:` lines. 
 
-```{r echo = FALSE}
-yml_empty() %>% 
-  yml_title("A demo single lesson") %>% 
-  yml_author("Desirée De Leon") %>% 
-  yml_date() %>% 
-  yml_output(html_document(
+    ```{r echo = FALSE}
+    yml_empty() %>% 
+     yml_title("A demo single lesson") %>% 
+      yml_author("Desirée De Leon") %>% 
+      yml_date() %>% 
+      yml_output(html_document(
         includes = includes2(before_body = "logo-option.html"), 
         theme = "flatly",
         highlight = "tango",
         toc = TRUE,
         toc_float = FALSE)) %>% 
-  asis_yaml_output()
-```
+      asis_yaml_output()
+    ```
 
 1. **Edit** the filename to be your HTML file if you chose a different file name.
 1. **Save** your changes.
@@ -382,7 +378,6 @@ Here's how that goes down:
 1. **Paste** this CSS rule into your CSS file:
 
     ```style.css
-  
     .upper-right-logo {
       margin-top: 20px;
       background-image: url("logo-black.png");
@@ -407,7 +402,6 @@ If you added white space manually in the \@ref(#doc-breathe) section, you can re
     
 
     ```style.css
-    
     /*----------------ADDING WHITE SPACE-------------*/
     
     .title {
@@ -419,14 +413,32 @@ If you added white space manually in the \@ref(#doc-breathe) section, you can re
     
     <center>![](images/screenshots/doc-space-title.png){width=50%}</center>
     
+1. But this leaves our logo squished up at the top of our page--so let's adjust our earlier style rule that we used for our logo, by increase its top `margin` to `2.75em` also. When a margin has four numbers, the first value applies to the top.
 
-2. Let's add white space in between our other headers. We want there to be a little more white space above our highest level headers (h1) than above our headers lower in the hierarchy (so that sections are more clearly delineated), so we'll style the h1 headers separately from the other headers.  
 
-    * The selector `.section h1`, `.section h2`, etc. selects only headers within a section (in other words, this excludes the title and subtitle, which are also technically h1 and h2 headers--but which don't exist inside the "section" content of the page.)
+    ```style.css
+      /*----------LOGO above TOC---------*/
+
+    #TOC::before {
+      content: "";
+      display: block;
+      height: 200px;
+      margin: 2.75em 20px 40px 20px;
+      background-image: url("logo-black.png");
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    ```
+
+    <center>![](images/screenshots/doc-space-logo.png){width=50%}</center>
+    
+
+3. Let's add white space in between our other headers. We want there to be a little more white space above our highest level headers (h1) than above our headers lower in the hierarchy (so that sections are more clearly delineated), so we'll style the h1 headers separately from the other headers.  
     
 
     ```style.css
-    
     .section h1 {
       margin-top: 2.5em !important;
       margin-bottom: 0.75em;
@@ -442,29 +454,37 @@ If you added white space manually in the \@ref(#doc-breathe) section, you can re
     
     ```
     
+    * The selector `.section h1`, `.section h2`, etc. selects only headers within a section (in other words, this excludes the title and subtitle, which are also technically h1 and h2 headers--but which don't exist inside the "section" content of the page.)
     
-3. We added white space in between our headers, but we can also add space in between the TOC and the body content, which right now is so squished together. Let's increase the space--but only when the screen is wide enough to allow it. For this, we'll have to use our first media-query. 
-
-  * A media query is like an additional outer rule that says, "hey, only apply the CSS rule inside if [insert condition about screen width here] is met". Media queries are useful for styling something different on a big screen than you would on mobile, etc.
-
-  * In the case below, we only increase the space between the TOC and the body content if your user's browser screen is *at least* `992px` wide:
-
+    <center>![](images/screenshots/doc-space-sections.png){width=50%}</center>
 
     
+4. We added white space in between our headers, but we can also add space in between the TOC and the body content, which right now is so squished together. Let's increase the space--but only when the screen is wide enough to allow it. For this, we'll have to use our first media-query. 
+
+     * A media query is like an additional outer rule that says, "hey, only apply the CSS rule inside if [insert condition about screen width here] is met". Media queries are useful for styling something different on a big screen than you would on mobile, etc.
+
+      * In the case below, we only increase the space between the TOC and the body content if your user's browser screen is *at least* `992px` wide:
+
+<div class="side-by-side">
+  <div class="side1">
     ```style.css
-    
     /* Space Between TOC and Righthand side content on large screens */
     
     @media (min-width: 992px) {
       .col-md-9 {
         width: 75%;
-        padding-left: 4em !important;
+        padding-left: 5em !important;
       }
     }
+    ```
+  </div>
+  <div class="side2">
+    ```{r, echo = FALSE, out.width="100%"}
+    knitr::include_graphics("images/screenshots/doc-space-toc-body.png")
     
     ```
-    
-
+  </div>
+</div>
 
 ### Hero image {#doc-hero}
 
@@ -477,9 +497,54 @@ If you added white space manually in the \@ref(#doc-breathe) section, you can re
 
 ## Questions counter {#doc-q}
 
+The CSS you need:
 
 
+    ```style.css
+      /* -----------Question counter ---------*/
 
+    body {
+      counter-reset: li;
+    }
+
+    .question ol {
+	    /* Remove the default left padding */
+	    padding-left: 0;
+    }
+
+    .question ol>li {
+    	/* Create a positioning context */
+	    position: relative;
+	    /* Disable the normal item numbering */
+	    list-style: none;
+	    width: 90%;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+	    padding-right: 0;
+	    padding-left: 120px;
+    }
+
+    .question ol>li:before,
+    .question ol>p>li:before{
+    	/* Use the counter as content */
+	    content: "Question " counter(li) ": ";
+	    /* Increment the counter by 1 */
+	    counter-increment: li;
+	    position: absolute;
+	    color: #5ebccf;
+	    left: -0.5px;
+	    font-weight: bold;
+    }
+
+    .question ol ol {
+      counter-reset: subitem;
+    }
+    
+    ```
+    
+How to use the Question counter:
+
+* enclose your list items that you want to be exercise questions with special `<div class="question">` `</div>` tags.
 
 
 
