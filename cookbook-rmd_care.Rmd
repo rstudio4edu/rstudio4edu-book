@@ -28,3 +28,19 @@ Here's what the add-new-pages workflow looks like for me:
 knitr::include_graphics("images/illos/rmd-hide.jpg")
 ```
 Have an R Markdown file that you'd like to keep under wraps? If you leave it off of your navbar and don't link to it elsewhere, then it's unlikely anyone will ever see it, but it will still be rendered when you build your site. If you don't want the `.Rmd` to be rendered at all, then save it with a filename that begins with an underscore `_`. All files with underscores get passed over when it's time to render the site (but they'll still be in your repository).
+
+
+## Staying organized
+
+- Say something about all the files
+- You *could* group your Rmds into folders-- a folder for labs, a folder for readings, etc. But the downside is that you'd have to knit each file in the directory individually in order for it to end up in the docs/ folder. But then the following scenario can happen:
+
+<running to class, pages not updated, takes a long time, blerghh>
+
+
+## Troubleshooting
+-did you forget to knit a page-- click build site.
+-inspect your docs folder
+-can always delete your docs/ folder and have a fresh start. rebuild site.
+-triple check your YAML
+

@@ -10,8 +10,6 @@ knitr::opts_chunk$set(fig.align="center")
 knitr::include_graphics("images/illos/yours-rmd.jpg")
 ```
 
-
-
 ## Adding new pages {#add-rmd}
 
 Adding new pages to your site means adding new `.Rmd` files to your site's project root directory. You can do this in RStudio using *File > New File > R Markdown*. Delete the default YAML except for the title and all text/code in the document, then edit away.
@@ -24,15 +22,15 @@ To make a new page actually findable from your site, you'll need to *also* make 
 
 1. The **name of the `.html` file** that corresponds to the `.Rmd` file you're adding; this is the page's `href`
 
-Let's say we create a new file called `labs.Rmd`. We want to add the link to the rendered page `labs.html` to our upper navbar next to "Home" and "Lectures", so we would add the following to our YAML:
+Let's say we create a new file called `readings.Rmd`. We want to add the link to the rendered page `readingss.html` to our upper navbar next to "Home" and "About", so we would add the following to our YAML:
 
 ```{r echo = FALSE}
 yml_empty() %>%
   yml_navbar(
     left = list(
       navbar_page("Home", href = "index.html"),
-      navbar_page("Lectures", href = "lectures.html"),
-      navbar_page("Labs", href = "labs.html")
+      navbar_page("About", href = "about.html"),
+      navbar_page("Readings", href = "readings.html")
     )) %>% 
   asis_yaml_output(fences = FALSE)
 ```
@@ -47,14 +45,14 @@ Save the changes to `_site.yml`, build, and preview to see the new page appear i
 ```{r echo = FALSE}
 yml_empty() %>% 
   yml_site_opts(
-    name = "YUM-101",
+    name = "My Website",
     output_dir =  "docs"
     ) %>% 
   yml_navbar(
     left = list(
       navbar_page("Home", href = "index.html"),
-      navbar_page("Lectures", href = "lectures.html"),
-      navbar_page("Labs", href = "labs.html")
+      navbar_page("About", href = "about.html"),
+      navbar_page("Readings", href = "readings.html")
     )) %>% 
   asis_yaml_output(fences = FALSE)
 ```
@@ -62,7 +60,7 @@ yml_empty() %>%
 </div>
 
 <div class= side2>
-![](images/rmd_custom/new_page.png)
+![](images/screenshots/rmd-grow-nav.png)
 
 </div>
 </div>
@@ -80,14 +78,14 @@ yml_empty() %>%
 
 \
 
-If we added the page for `labs.Rmd` to the right of our navbar instead:
+If we added the page for `rmd.Rmd` to the right of our navbar instead:
 <div class = side-by-side>
 <div class = side1>
 
 ```{r echo = FALSE}
 yml_empty() %>% 
   yml_site_opts(
-    name = "YUM-101",
+    name = "My Website",
     output_dir =  "docs"
     ) %>% 
   yml_navbar(
@@ -96,17 +94,76 @@ yml_empty() %>%
       navbar_page("Lectures", href = "lectures.html")
     ),
     right = list(
-      navbar_page("Labs", href = "labs.html")
+      navbar_page("Readings", href = "readings.html")
     )) %>% 
   asis_yaml_output(fences = FALSE)
 ```
 
 </div>
 
+  <div class= side2>
+
+    ![](images/screenshots/rmd-grow-nav-right.png)
+  </div>
+</div>
+
+
+## Add a dropdown menu {#rmd-menu}
+
+At some point, you may realize that you need room to grow with your navbar and the content you have planned to create and share. When you do, you may want to use dropdown menus. You can create a dropdown menu to add *many* more pages to the site without taking up space in your navbar. Let's say we had a course with several modules, and we decided to create a separate R Markdown document for each module of readings in this course. We could create a dropdown menu called "Readings" and link to each of the readings pages underneath that. 
+
+See how we do this in the YAML below:
+
+1. We'll start by getting rid of the single `readings.Rmd` that we linked in our navbar. 
+1. **Add a new `- text:` field** followed by the heading that you want to use for your dropdown. I'm going to call mine "Readings". 
+1. **Add** a `menu:` field. Nothing else goes on this line.
+1. Now **add** the pages that will go under this menu with their own `- text:` and `href:` fields. 
+1. **Repeat** the previous step until you've added all the pages for this dropdown. We're adding 4 new pages under our menu.
+
+
+<div class = side-by-side>
+<div class = side1>
+
+```{r echo = FALSE, warning = FALSE}
+yml_empty() %>% 
+  yml_navbar(
+    title = "My Website",
+    left = list(
+      navbar_page("Home", href = "index.html"),
+      navbar_page("About", href = "about.html"),
+      navbar_page("Readings", 
+                  menu = list(
+                    navbar_page("Module 1", href = "readings-module1.html"),
+                    navbar_page("Module 2", href = "readings-module2.html"),
+                    navbar_page("Module 3", href = "readings-module3.html"),
+                    navbar_page("Module 4", href = "readings-module4.html")
+                    )
+                  )
+      )
+    ) %>% 
+  asis_yaml_output(fences = FALSE)
+```
+
+
+</div>
+
 <div class= side2>
-
-<!--todo: insert new screenshot here-->
+![](images/screenshots/rmd-dropdown1.png)
 
 </div>
 </div>
+
+## Add your content
+Now that you know how to add and link new pages to your site, you're ready to make your site your own with your own content. 
+
+Creating this for a workshop? A course? Need ideas of what to include? Check out our [Organization]() page.
+
+## Recap
+
+In this section you: 
+
+* Added new pages
+* Grew your navbar
+* Added a dropdown menu
+* Added your own content to your site
 

@@ -174,7 +174,7 @@ We recommend going with sans-serif fonts (i.e. no little feet on the letters) fo
 #### Import the font to your lesson
 
 1. Back in the RStudio IDE, **open** up your `style.css` file.
-1. On the very first line, **paste in the Google Font import code** for the `Muli` font. This makes the font available within your bookdown site.
+1. On the very first line, **paste in the Google Font import code** for the `Muli` font. This makes the font available--but doesn't actually *use* it yet.
 
     ```style.css
     @import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700&display=swap');
