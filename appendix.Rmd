@@ -20,7 +20,7 @@ a {
 
 You begin with the element's "label" (technically called a *selector*). Within curly braces, `{ }`, you can include as many different style properties as you'd like for that element. Each new property must end with a `;`.  What are your options for properties to style? [There are many](https://www.w3schools.com/cssref/), but don't feel overwhelmed-- just pick one or two things to change as you start out.
 
-## Determining the right selector
+## What's in a name?
 
 How could you have known that the selector for links was an `a`? The answer is by opening up your existing website, and right-clicking anywhere on the page and clicking on *Inspect* (in Chrome browsers) or *Inspect Element* (in Firefox).
 
@@ -30,8 +30,6 @@ Clicking on this will open a small set of windows inside of your browser called 
 
 In the lower left pane of the subwindow, click on the icon of a rectangle with an arrow. Now as you hover and then click on anything in your website, you will see the contents of the developer tools change. The pane on the right shows the CSS styles that are applied. 
 
-
-[NEED TO SWITCH TO SCREENSHOT WITH COURSE DEMO SITE]
 <br>
 
 ![](images/inspect2.png)
@@ -61,184 +59,62 @@ There's a lot more we could say about CSS here. But it's faster and more rewardi
 [1. EXAMPLES OF CLASSES AS CSS SELECTORS. (WHY DO SOME SELECTORS BEGIN WITH . AND OTHERS DON'T?)]
 [2. MULTIPLE ATTRIBUTES. COMBINING THEM WITH `.` vs separated by spaces ]
 
+## How do I change the color of....?
 
-# Timeline
+I'm going to model how I would go about changing the color of the navbar of an RMD site. We'll use the developer tools to try out different options in real time.
 
-Here we can put weekly goals to make sure we are staying on target. 
+1. Pull up your site and right click to open the developer tools. 
+1. When we click on the navigation bar, we see that it highlights a certain line of HTML in the left pane of the developer tools. Look for anything that says `class = `. The values that follow `class` are the CSS selectors that are currently styling our navigation bar. 
 
-Complete by the end of:
+In this case, our navbar has three classes `navbar`, `navbar-default`, and `navbar-fixed-top`. 
 
-Week 12 (Aug 23): Wrap up, refine, style, check --complete book!
-
-Week 11 (Aug 16): Add miscellaneous content (illos, quotes, etc.) / Clean commits, etc.
-
-Week 10 (Aug 9): other rstudio4edu content: Connect, Cloud, etc.
-
-Week 9 (Aug 2): Complete Blogdown cookbook
-
-Week 8 (July 26): Complete Bookdown cookbook
-
-Week 7 (July 19): Work on beginning content: Flowcharts, etc. 
-                  * Distill and Fancy RMd
-
-Week 6 (July 12): Complete RMD/ Distill
-
-Week 5 (July 5): Re-worked Package Cookbook / Start Bookdown cookbook
-
-Week 4 (June 28): Outlining RMD tutorial
-
-Week 3 (June 21):
-
-# Outline of Content & Deliverables
-
-## Works in Progress
-
-The table below shows the tutorials that are in progress or soon-to-be in progress.
-  
-  [WHAT IS THE BEST WAY TO MAKE/ CODE THIS TABLE? ]
-  
-```{r library, message=FALSE, warning=FALSE, include=FALSE}
-library(DT)
-library(tidyverse)
-```
-<!--
-```{r create_tbl, include=FALSE}
-tbl <- 
-  tibble::tribble(
-    ~Tool,        ~Tutorial,         ~'Demo Site',          ~Repo,
-    #-----------|---------------------|--------------------|-------------------------------------------------
-    "Package",  "How to make a package", "NA",              '<a href= "https://github.com/rstudio4edu/testpackage">test package</a>',
-    "RMD site", "Basic Fundamentals",    "NA",              "TBA", 
-    "RMD site",  "Custom Site Tutorial",   '<a href="https://rstudio4edu.github.io/basic-workshop-site/">Custom Workshop site</a>', '<a href="https://rstudio4edu.github.io/basic-workshop-site/">basic-workshop-site</a>',
-    "RMD site",  "Custom Site Tutorial",     '<a href="https://rstudio4edu.github.io/basic-course-website/"> Custom Course site</a>', '<a href="https://github.com/rstudio4edu/basic-course-website">basic-course-website</a>',
-    "RMD site ",  "Fancy R Markdown Sites",   '<a href="https://rstudio4edu.github.io/fancy-workshop-site/">Fancy Workshop site</a>', '<a href="https://github.com/rstudio4edu/fancy-workshop-site" >fancy-workshop-site</a>',
-    "RMD site",   "Fancy R Markdown Sites",    '<a href="https://rstudio4edu.github.io/fancy-course-site"> Fancy Course Site</a>',                    '<a href="https://github.com/rstudio4edu/fancy-course-site">fancy-course-site</a>')
-```
+    ![](images/navbar.png)
 
 
-```{r use_dt, echo=FALSE}
-tbl %>% DT::datatable(escape = FALSE, options=list(dom ="t"))
-```
+
+In the righthand pane of the developer tools. we see these classes being used in the CSS (notice that a class needs to have a `.` before it in when it's a selector--but a tag, like the link example above, does not). 
+
+[SAY SOMETHING ABOUT THE ORDER EACH ARE LISTED?]
+
+
+
+1. Let's choose the first CSS selector `.navbar` and play around with it in this pane to decide what color we'd like.
+1. Type `background-color:` followed by any [HEX code or rgb code](https://www.google.com/search?q=color+picker) and press `Enter`. You can also click on the small color square to use sliders to set the color and transparency of your navigation bar. I'm selecting _________ color.  
+
+    <center>![](images/color_picker.png){width=200px}</center>
 
 <br>
 
-Now, coding the table a second way, so as not to use HTML explicitly. But now everything is a link.
---> 
-
-<br>
+1. When you change the color in the developer tools, you should see the element on your site also changing in real-time. Cool, huh? If you don't see the color changing on your site, then it means you either have the wrong selector OR it means that something else is overriding your color choice (do you see a strikethrough line through what you just wrote?). You can force it to go with your choice by adding `!important` to the end of line you added, right before the `;`.
 
 
-```{r, echo = FALSE, message = FALSE}
-library(dplyr)
-library(knitr)
-library(kableExtra)
-```
+1. Now we need to immortalize your color choice by putting your selector and your color choice in a CSS file. 
 
-```{r, echo = FALSE}
-tbl <- tibble(Tool = c("Package", 
-                       rep("RMD site", 5), 
-                       "Distill site", 
-                       "Bookdown"),
-              `Tutorial` = c("How to make a package",
-                              "Basic fundamentals", 
-                              rep("Custom site tutorial", 2), 
-                              rep("Fancy R Markdown Sites", 2), 
-                              "Make a Distill site",
-                              "Make a book"),
-              `Demo site` = c(NA,
-                              NA,
-                              "Custom workshop site",
-                              "Custom course site",
-                              "Fancy workshop site", 
-                              "Fancy course site", 
-                              "Basic course Distill", 
-                              "Basic course book"),
-              `GitHub repo` = c("testpackage",
-                                NA,
-                                "basic-workshop-site",
-                                "basic-course-website",
-                                "fancy-workshop-site",
-                                "fancy-course-site",
-                                "basic-course-distill", 
-                                "basic-course-book")
-              )
+1. Make a CSS file (file > new file > text file > save as style.css) and paste something like this into it.
 
-tutorial_url <- c("intro-dry.html",
-              "Basic Fundamentals", 
-              "cookbook-rmd.html",
-              "cookbook-rmd.html",
-              "cookbook-rmd-fancy.html",
-              "cookbook-rmd-fancy.html", 
-              "cookbook-distill.html",
-              "cookbook-bookdown.html")
+```style.css
 
-demo_url <- c(NA,
-              NA, 
-              "https://rstudio4edu.github.io/basic-workshop-site/",
-              "https://rstudio4edu.github.io/basic-course-website/",
-              "https://rstudio4edu.github.io/fancy-workshop-site/",
-              "https://rstudio4edu.github.io/basic-course-distill", 
-              "https://rstudio4edu.github.io/basic-course-book")
-
-repo_url <- c("https://github.com/rstudio4edu/testpackage",
-              NA,
-              "https://github.com/rstudio4edu/basic-workshop-site",
-              "https://github.com/rstudio4edu/basic-course-website",
-              "https://github.com/rstudio4edu/fancy-workshop-site",
-              "https://github.com/rstudio4edu/fancy-course-site", 
-              "https://github.com/rstudio4edu/basic-course-distill",
-              "https://github.com/rstudio4edu/basic-course-book")
-
- tbl %>% 
-  mutate(
-    Tutorial = cell_spec(`Tutorial`, "html", link = tutorial_url),
-    `Demo site` = cell_spec(`Demo site`, "html", link = demo_url),
-    `GitHub repo` = cell_spec(`GitHub repo`, "html", link = repo_url)) %>%
-  kable("html", escape = FALSE) %>%
-  kable_styling(bootstrap_options = c("hover")) 
-
+.navbar {
+  background-color: #fcfcfc;
+}
 
 ```
 
-## Tutorial Descriptions
+1. Link your CSS file to your R Markdown site/blog/tool...see the specific cookbook for how to do this for your particular tool.
 
-### Package
+1. Build your site--do you see your CSS style taking effect?
 
-* Most basic package will start right off the bat with data. 
 
-   
-### R Markdown Basic Fundamentals
 
-* Alison
-* Single page tutorial
-* Review syntax
-      + See: [items to include](https://github.com/rstudio4edu/rmd-tutorial-workshop/issues/5)    
-      
-### Custom R Markdown Site
-* Applies to both workshops and courses
-* Customization within YAML including [these items](https://github.com/rstudio4edu/rmd-tutorial-workshop/issues/5)
-* In two parts (chapters?): 
-  + How to Build it 
-  + What to include in it (could be its own chapter-- or two?): content to be tailored for Workshop use and Courses use
-      
-### Add-on: How to Build a Fancy R Markdown Site
-  + Applies to both workshops and courses
-  + Covers anything that would require CSS
-     
+
     
 # Backlog
 
 Here is a list of items that would be cool to include, but are lower priority. 
 
-<br>
+\
 
-<br>
-
-
-
-* Anchor headings
-
-* Copy/ Paste clipboard
+\
 
 * [timer function for workshops]
 
@@ -278,7 +154,7 @@ Other pursuits:
 
 # Teaching and Learning with Jupyter Book Review
 
-Here is Desiree's impression of the Jupyter Book. 
+Desiree's thoughts: 
 
 
 __Good stuff__
@@ -296,10 +172,6 @@ __Stuff I don't like as much__
 * Needs way more color, pictures, graphics. I think there is too much text for this to be an effective way of "selling" the notebooks. You have to read a lot of prefaces before you get to the practical implementations and concrete examples.
 * Tone is kinda dry
 * Not sure if it's the layout, but I think just by nature of it being a book, it doesn't feel like as a user that I can or should skip around to only the sections I need. It's hard to know which sections will be most useful to me when I "arrive" to this resource.
-
-# General Bookdown Questions
-
-* What is the main takeaway from the `<meta>` tags (slide 25) in the bookdown workshop/tutorial?
 
 
 # R Markdown Themes {#rmd-themes}
