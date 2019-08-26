@@ -162,6 +162,8 @@ We have our font imported, but now we have to be explicit with R Markdown about 
 
 4. Time to admire your handiwork and decide whether or not you like it. You can repeat the steps above to apply different fonts to different parts of your lesson. For example, you could create another style rule using `.title` instead of `body` to apply a different font to the Title of your lesson. 
 
+<!-- TODO: we also have to import the font Lora so that our rstudio4edu footer link will render properly later  -->
+
 Remember that in order for any of your CSS to take effect, your `style.css` file has to first be referenced in your YAML.
 </div>
 
@@ -800,7 +802,7 @@ a.dropdown-toggle:hover {
   }
 
 /* Navbar Links when hovered*/
-
+.navbar-default .dropdown-menu>.active>a
 .navbar-default .navbar-nav>.active>a:hover, 
 .navbar-default .navbar-nav:hover, 
 .navbar-default .navbar-nav>li>a:hover, 
@@ -920,16 +922,18 @@ Let's also add a footer. You need to:
 Here's how we do this:
 
 1. Create your HTML file. 
-1. Save it in your project directory. Name it footer.html. You can choose a different name.
+1. Save it in your project directory. Name it `footer.html`. You can choose a different name.
 1. Paste something like this in the file:
 
 ```footer.html
 
-<hr> 
-
 <div class="footer"> 
+  
+  <hr> 
+  
+  <p> <!--your custom footer text can go here--> </p>
 
-  <p class="rstudio4edu-footer">This site was created with an <a class="rstudio4edu" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="footer logo" src="logo-mark-rstudio4edu.png"> rstudio4edu</a> template.</p>
+  <p class="rstudio4edu-footer">This site was created with an <a class="rstudio4edu-link" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="rstudio4edu-footer-logo" src="logo-mark-rstudio4edu.png">&nbsp;rstudio4edu</a> template.</p>
 
 
 </div>
@@ -940,13 +944,13 @@ Here's how we do this:
 
 ```
 
-<hr> 
-
 <div class="footer"> 
-
+  
+  <hr> 
+  
   <p> This content is licensed under the CC-BY license. </p>
 
-  <p class="rstudio4edu-footer">This site was created with an <a class="rstudio4edu" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="footer logo" src="logo-mark-rstudio4edu.png"> rstudio4edu</a> template.</p>
+  <p class="rstudio4edu-footer">This site was created with an <a class="rstudio4edu-link" href="https://rstudio4edu.github.io/rstudio4edu-book/"> <img class="rstudio4edu-footer-logo" src="logo-mark-rstudio4edu.png">&nbsp;rstudio4edu</a> template.</p>
 
 
 </div>
