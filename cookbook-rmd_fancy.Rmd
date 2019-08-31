@@ -28,6 +28,7 @@ For the demo that follows, I'll keep using the RMD site skeleton with a few addi
 * Turned on a floating table of contents
 * Added github and twitter icons to the navbar
 * We chosen yeti as our theme
+    * A note about choosing a theme. To start out, choose a theme whose navbar most closely matches what you're final vision is. For example, if you want your navbar (and dropdown menus) to be dark with a light colored text, then sticking with Yeti is cool. But if you want a light colored navbar with dark text, sticking with Yeti as the base theme would mean you have *a lot* more CSS that will need adjusting, and you're better off using a theme like `default` as your baseline.
 
 
 ## Anatomy of a fancy R Markdown page
