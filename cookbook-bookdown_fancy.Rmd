@@ -729,7 +729,7 @@ Adding to the TOC style rules we started above, now we'll change the font, color
     
     ```
 
-1. **For different color for links that are hovered**, you can add the CSS rule below. 
+1. **For a different color for links that are hovered**, you can add the CSS rule below. 
 
     ```style.css
     
@@ -766,6 +766,8 @@ We like choosing TOC text colors that aren't too flashy. Save the pops of color 
 
 Lastly, we make it clearer which chapters belong to the same part by styling the Part titles a bit differently. 
 
+**Give breathing room, darken, and make uppercase**
+
 1. Copy and paste the CSS rule below.
 
     ```
@@ -781,6 +783,19 @@ Lastly, we make it clearer which chapters belong to the same part by styling the
 1. We added **`margin-top: 1em`** for some much needed space above each Part title.  
 1. We choose a **`color:`** that is similar to the dark blue of the links, but even closer towards black on that spectrum without going all the way to black (`#000000`).
 1. By default, bookdown gives Part titles an opacity that makes them appear light-colored. We have to override this, by choosing an opacity of `1`. 
+1. We also make these Part title uppercase.
+
+**Unnumbered first chapters**
+
+If you're using Parts for your book, then you might want to use the first (unnumbered) chapter of each part as an intro chapter to that Part. You can style this ununumbered chapter differently with the following CSS. We make it uppercase.
+
+
+    ```style.css
+    /* grabs first .chapter immediately after .part...but only those ch without numbers */
+    .part + li[data-level=""] { 
+     text-transform: uppercase;
+    }
+    ```
 
 Now time to build and preview your fancy book!
 
