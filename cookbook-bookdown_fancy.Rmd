@@ -92,6 +92,19 @@ Ahh, fixed. Now doesn't that feel better?
 Organize your CSS using comments like `/* --insert-comment-- */` to create make-shift section dividers for your CSS, as we've done above.
 :::
 
+### Symmetrical code chunks
+
+Another small thing you may have noticed is that the code chunks in bookdown don't have equal spacing above and below the code. Let's change that with the CSS below:
+
+```
+/*____Code Chunks____*/
+
+.sourceCode pre {
+  margin: 0 !important; /* makes space above and below symmetrical*/
+}
+```
+
+
 ### Google fonts {#book-font}
 
 <!-- Thought: could refer folks to use Bookdown theme Editor Addin (hebrew senior life). However, using this will generate a `style.css` that will override any other existing style.css file in their root directory. Also, the addin ouputs CSS that is in a long, single line of code, so it's also hard to parse or edit later. This makes me kind of relucant to recommend it--unless the things that it tweaks are literally the only things that people want to change in their book CSS-->
