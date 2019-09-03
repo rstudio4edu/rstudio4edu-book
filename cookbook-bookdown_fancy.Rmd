@@ -102,6 +102,11 @@ Another small thing you may have noticed is that the code chunks in bookdown don
 .sourceCode pre {
   margin: 0 !important; /* makes space above and below symmetrical*/
 }
+
+.sourceCode {
+  margin-bottom: 0.85em; /* adds same amount of margin as a <p> would */
+}
+
 ```
 
 
@@ -163,7 +168,6 @@ We have our fonts imported, but now we have to let site know which text gets wha
 1. Add the following style rules to `style.css` beneath the other CSS we've already added. 
 
     ```style.css
-      
      /*------------- Body and header text---------------- */
 
     .book.font-family-1 {
@@ -186,12 +190,10 @@ We have our fonts imported, but now we have to let site know which text gets wha
 If you've been following along using the book skeleton, then there's nothing more you need to do to apply this font. But just for completeness, we'll point out that if we were building our book from scratch without the skeleton, then in order for your hardwork in CSS to be work, we would need to tell bookdown that our CSS file exists by referencing `style.css` in `_output.yml`:  
 
     ```{r, echo = FALSE}
-    
       yml(author = FALSE, date = FALSE) %>% 
       yml_output(bookdown::gitbook(css = "assets/style.css")) %>% 
       yml_pluck("output") %>% 
       asis_yaml_output(fences = FALSE) 
-    
     ```
 
 
@@ -314,7 +316,6 @@ Links are great ways to pepper your site with an accent color without it becomin
 1. Paste the following into `style.css` to accomplish this. And yes, the CSS selectors for the links are annoyingly long and specific. 
 
     ```style.css
-
     /*-----Body Links-------*/
 
     .book .book-body .page-wrapper .page-inner section.normal a {
@@ -455,7 +456,6 @@ The next three additions are less about aesthetics and more about making your bo
 2. Paste the following two style rules into your CSS file:
 
     ```style.css
-
     /* -----------Sidebar div tips------------- */
     /* from r-pkgs.org*/
 
