@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 20 Make it fancier | rstudio4edu</title>
+  <meta name="description" content="A work-in-progress" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 20 Make it fancier | rstudio4edu" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rstudio4edu.github.io/rstudio4edu-book/" />
+  <meta property="og:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+  <meta property="og:description" content="A work-in-progress" />
+  <meta name="github-repo" content="Chapter 20 Make it fancier | rstudio4edu/rstudio4edu-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 20 Make it fancier | rstudio4edu" />
+  
+  <meta name="twitter:description" content="A work-in-progress" />
+  <meta name="twitter:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+
+<meta name="author" content="Desirée De Leon" />
+<meta name="author" content="Alison Hill" />
+
+
+<meta name="date" content="2019-09-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="rmd-dress.html"/>
+<link rel="next" href="intro-distill.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/jszip-1.10.16/jszip.min.js"></script>
+<script src="libs/pdfmake-1.10.16/pdfmake.min.js"></script>
+<script src="libs/pdfmake-1.10.16/vfs_fonts.js"></script>
+<link href="libs/dt-ext-buttons-1.10.16/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.16/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.print.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/logo/logo-rstudio4edu.png"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li><a href="index.html#why-rstudio4edu">Why <code>rstudio4edu</code>?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i>Philosophy</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-you"><i class="fa fa-check"></i>Who are you?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-is-in-this-handbook"><i class="fa fa-check"></i>What is in this handbook?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-did-we-leave-out"><i class="fa fa-check"></i>What did we leave out?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-we"><i class="fa fa-check"></i>Who are we?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing"><i class="fa fa-check"></i>Contributing</a></li>
+</ul></li>
+<li class="part"><span><b>Four basic ingredients</b></span></li>
+<li class="chapter" data-level="1" data-path="edu-stack.html"><a href="edu-stack.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
+<li class="chapter" data-level="1.1" data-path="edu-stack.html"><a href="edu-stack.html#capital-r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-ide"><i class="fa fa-check"></i><b>1.2.1</b> The RStudio IDE</a></li>
+<li class="chapter" data-level="1.2.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-proj"><i class="fa fa-check"></i><b>1.2.2</b> RStudio Projects</a></li>
+<li class="chapter" data-level="1.2.3" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.2.3</b> RStudio.cloud</a></li>
+<li class="chapter" data-level="1.2.4" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-pro"><i class="fa fa-check"></i><b>1.2.4</b> Pro Products</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="edu-stack.html"><a href="edu-stack.html#github"><i class="fa fa-check"></i><b>1.3</b> GitHub</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-you"><i class="fa fa-check"></i><b>1.3.1</b> GitHub for you</a></li>
+<li class="chapter" data-level="1.3.2" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-them"><i class="fa fa-check"></i><b>1.3.2</b> GitHub for them</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="edu-stack.html"><a href="edu-stack.html#communication-platform"><i class="fa fa-check"></i><b>1.4</b> Communication platform</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#data-int"><i class="fa fa-check"></i><b>2.1</b> Data from R packages</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#data-github"><i class="fa fa-check"></i><b>2.2</b> Data stored on GitHub</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#data-ext"><i class="fa fa-check"></i><b>2.3</b> Data from other sources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lessons.html"><a href="lessons.html"><i class="fa fa-check"></i><b>3</b> Lessons</a><ul>
+<li class="chapter" data-level="3.1" data-path="lessons.html"><a href="lessons.html#lit-history"><i class="fa fa-check"></i><b>3.1</b> A very brief history</a></li>
+<li class="chapter" data-level="3.2" data-path="lessons.html"><a href="lessons.html#pep-talk"><i class="fa fa-check"></i><b>3.2</b> A very brief pep-talk</a></li>
+<li class="chapter" data-level="3.3" data-path="lessons.html"><a href="lessons.html#lit-make"><i class="fa fa-check"></i><b>3.3</b> Literate lesson-making</a></li>
+<li class="chapter" data-level="3.4" data-path="lessons.html"><a href="lessons.html#make-it-work"><i class="fa fa-check"></i><b>3.4</b> Make it work</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="lessons.html"><a href="lessons.html#make-it-work-for-you"><i class="fa fa-check"></i><b>3.4.1</b> Make it work for you</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lessons.html"><a href="lessons.html#make-it-work-for-them"><i class="fa fa-check"></i><b>3.4.2</b> Make it work for them</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lessons.html"><a href="lessons.html#lit-deliver"><i class="fa fa-check"></i><b>3.5</b> Literate lesson-delivery</a></li>
+<li class="chapter" data-level="3.6" data-path="lessons.html"><a href="lessons.html#lit-share"><i class="fa fa-check"></i><b>3.6</b> Literate lesson-sharing</a></li>
+<li class="chapter" data-level="3.7" data-path="lessons.html"><a href="lessons.html#sample-rmds"><i class="fa fa-check"></i><b>3.7</b> Sample Rmds</a></li>
+<li class="chapter" data-level="3.8" data-path="lessons.html"><a href="lessons.html#sharing"><i class="fa fa-check"></i><b>3.8</b> Sharing</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="lessons.html"><a href="lessons.html#share-source-code"><i class="fa fa-check"></i><b>3.8.1</b> Share source code</a></li>
+<li class="chapter" data-level="3.8.2" data-path="lessons.html"><a href="lessons.html#share-readable-output"><i class="fa fa-check"></i><b>3.8.2</b> Share readable output</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="lessons.html"><a href="lessons.html#lesson-delivery-sharing"><i class="fa fa-check"></i><b>3.9</b> Lesson delivery &amp; sharing</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="lessons.html"><a href="lessons.html#live-coding"><i class="fa fa-check"></i><b>3.9.1</b> Live coding</a></li>
+<li class="chapter" data-level="3.9.2" data-path="lessons.html"><a href="lessons.html#screencast"><i class="fa fa-check"></i><b>3.9.2</b> Screencast</a></li>
+<li class="chapter" data-level="3.9.3" data-path="lessons.html"><a href="lessons.html#online-tutorials"><i class="fa fa-check"></i><b>3.9.3</b> Online tutorials</a></li>
+<li class="chapter" data-level="3.9.4" data-path="lessons.html"><a href="lessons.html#remote-workshops-webinars"><i class="fa fa-check"></i><b>3.9.4</b> Remote workshops &amp; webinars</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="organization.html"><a href="organization.html"><i class="fa fa-check"></i><b>4</b> Organization</a><ul>
+<li class="chapter" data-level="" data-path="organization.html"><a href="organization.html#intro-org"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="4.1" data-path="organization.html"><a href="organization.html#for-courses"><i class="fa fa-check"></i><b>4.1</b> For Courses</a></li>
+<li class="chapter" data-level="4.2" data-path="organization.html"><a href="organization.html#for-workshops"><i class="fa fa-check"></i><b>4.2</b> For Workshops</a></li>
+<li class="chapter" data-level="4.3" data-path="organization.html"><a href="organization.html#for-online-tutorials"><i class="fa fa-check"></i><b>4.3</b> For Online Tutorials</a></li>
+<li class="chapter" data-level="4.4" data-path="organization.html"><a href="organization.html#types-of-r-markdown-collections"><i class="fa fa-check"></i><b>4.4</b> Types of R Markdown collections</a></li>
+<li class="chapter" data-level="4.5" data-path="organization.html"><a href="organization.html#choose-your-collections-wisely"><i class="fa fa-check"></i><b>4.5</b> Choose your collections wisely</a></li>
+<li class="chapter" data-level="4.6" data-path="organization.html"><a href="organization.html#meta"><i class="fa fa-check"></i><b>4.6</b> Meta</a></li>
+<li class="chapter" data-level="4.7" data-path="organization.html"><a href="organization.html#showtime"><i class="fa fa-check"></i><b>4.7</b> Showtime</a></li>
+</ul></li>
+<li class="part"><span><b>Education cookbooks</b></span></li>
+<li class="chapter" data-level="" data-path="how-to-use-the-cookbooks.html"><a href="how-to-use-the-cookbooks.html"><i class="fa fa-check"></i>How to use the cookbooks</a></li>
+<li class="part"><span><b>I Cookbook: R Markdown Lessons</b></span></li>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html#what-are-we-making"><i class="fa fa-check"></i>What are we making?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="make-doc.html"><a href="make-doc.html"><i class="fa fa-check"></i><b>5</b> Make a document</a><ul>
+<li class="chapter" data-level="5.1" data-path="make-doc.html"><a href="make-doc.html#doc-setup"><i class="fa fa-check"></i><b>5.1</b> Getting set up</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="make-doc.html"><a href="make-doc.html#update-packages"><i class="fa fa-check"></i><b>5.1.1</b> Update packages</a></li>
+<li class="chapter" data-level="5.1.2" data-path="make-doc.html"><a href="make-doc.html#doc-proj-first"><i class="fa fa-check"></i><b>5.1.2</b> Make a project</a></li>
+<li class="chapter" data-level="5.1.3" data-path="make-doc.html"><a href="make-doc.html#markdown"><i class="fa fa-check"></i><b>5.1.3</b> Get to know Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="make-doc.html"><a href="make-doc.html#doc-template"><i class="fa fa-check"></i><b>5.2</b> Make a document</a></li>
+<li class="chapter" data-level="5.3" data-path="make-doc.html"><a href="make-doc.html#doc-orient"><i class="fa fa-check"></i><b>5.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="5.4" data-path="make-doc.html"><a href="make-doc.html#doc-push"><i class="fa fa-check"></i><b>5.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="5.5" data-path="make-doc.html"><a href="make-doc.html#doc-knit"><i class="fa fa-check"></i><b>5.5</b> Knit to HTML</a></li>
+<li class="chapter" data-level="5.6" data-path="make-doc.html"><a href="make-doc.html#doc-push2"><i class="fa fa-check"></i><b>5.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="5.7" data-path="make-doc.html"><a href="make-doc.html#doc-alive"><i class="fa fa-check"></i><b>5.7</b> Make a living, breathing document!</a></li>
+<li class="chapter" data-level="5.8" data-path="make-doc.html"><a href="make-doc.html#uplevel-your-workflow"><i class="fa fa-check"></i><b>5.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="doc-yours.html"><a href="doc-yours.html"><i class="fa fa-check"></i><b>6</b> Make it yours</a><ul>
+<li class="chapter" data-level="6.1" data-path="doc-yours.html"><a href="doc-yours.html#doc-code"><i class="fa fa-check"></i><b>6.1</b> Add code</a></li>
+<li class="chapter" data-level="6.2" data-path="doc-yours.html"><a href="doc-yours.html#doc-md"><i class="fa fa-check"></i><b>6.2</b> Embrace Markdown</a></li>
+<li class="chapter" data-level="6.3" data-path="doc-yours.html"><a href="doc-yours.html#doc-headers"><i class="fa fa-check"></i><b>6.3</b> Add structure with headers</a></li>
+<li class="chapter" data-level="6.4" data-path="doc-yours.html"><a href="doc-yours.html#doc-narrative"><i class="fa fa-check"></i><b>6.4</b> Add narrative</a></li>
+<li class="chapter" data-level="6.5" data-path="doc-yours.html"><a href="doc-yours.html#doc-breathe"><i class="fa fa-check"></i><b>6.5</b> Add space</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="doc-care.html"><a href="doc-care.html"><i class="fa fa-check"></i><b>7</b> Caring for your document</a><ul>
+<li class="chapter" data-level="7.1" data-path="doc-care.html"><a href="doc-care.html#live-editing"><i class="fa fa-check"></i><b>7.1</b> Live editing</a></li>
+<li class="chapter" data-level="7.2" data-path="doc-care.html"><a href="doc-care.html#care-code"><i class="fa fa-check"></i><b>7.2</b> Care for your code</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="doc-care.html"><a href="doc-care.html#use-keyboard-shortcuts"><i class="fa fa-check"></i><b>7.2.1</b> Use keyboard shortcuts</a></li>
+<li class="chapter" data-level="7.2.2" data-path="doc-care.html"><a href="doc-care.html#knitr-setup"><i class="fa fa-check"></i><b>7.2.2</b> Add a setup code chunk</a></li>
+<li class="chapter" data-level="7.2.3" data-path="doc-care.html"><a href="doc-care.html#knitr-name"><i class="fa fa-check"></i><b>7.2.3</b> Name your code chunks</a></li>
+<li class="chapter" data-level="7.2.4" data-path="doc-care.html"><a href="doc-care.html#print-pretty-packages"><i class="fa fa-check"></i><b>7.2.4</b> Print pretty packages</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="doc-care.html"><a href="doc-care.html#self-care"><i class="fa fa-check"></i><b>7.3</b> Care for your self</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="doc-care.html"><a href="doc-care.html#doc-here"><i class="fa fa-check"></i><b>7.3.1</b> Use portable file paths</a></li>
+<li class="chapter" data-level="7.3.2" data-path="doc-care.html"><a href="doc-care.html#name-your-files-nicely"><i class="fa fa-check"></i><b>7.3.2</b> Name your files nicely</a></li>
+<li class="chapter" data-level="7.3.3" data-path="doc-care.html"><a href="doc-care.html#add-notes-to-self"><i class="fa fa-check"></i><b>7.3.3</b> Add notes to self</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="design-a-how-to.html"><a href="design-a-how-to.html"><i class="fa fa-check"></i><b>8</b> Design a how-to</a><ul>
+<li class="chapter" data-level="8.1" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-download"><i class="fa fa-check"></i><b>8.1</b> Share the source code</a></li>
+<li class="chapter" data-level="8.2" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-show-data"><i class="fa fa-check"></i><b>8.2</b> Show the data</a></li>
+<li class="chapter" data-level="8.3" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-share-data"><i class="fa fa-check"></i><b>8.3</b> Share the data</a></li>
+<li class="chapter" data-level="8.4" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-folding"><i class="fa fa-check"></i><b>8.4</b> Code Folding</a></li>
+<li class="chapter" data-level="8.5" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-results"><i class="fa fa-check"></i><b>8.5</b> Show code, hide results</a></li>
+<li class="chapter" data-level="8.6" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-plots"><i class="fa fa-check"></i><b>8.6</b> Show code, hide plots</a></li>
+<li class="chapter" data-level="8.7" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-results-hide-code"><i class="fa fa-check"></i><b>8.7</b> Show results, hide code</a></li>
+<li class="chapter" data-level="8.8" data-path="design-a-how-to.html"><a href="design-a-how-to.html#interactively-hideshow-code"><i class="fa fa-check"></i><b>8.8</b> Interactively hide/show code</a></li>
+<li class="chapter" data-level="8.9" data-path="design-a-how-to.html"><a href="design-a-how-to.html#hide-everything"><i class="fa fa-check"></i><b>8.9</b> Hide everything</a></li>
+<li class="chapter" data-level="8.10" data-path="design-a-how-to.html"><a href="design-a-how-to.html#reuse-your-code"><i class="fa fa-check"></i><b>8.10</b> Reuse your code</a></li>
+<li class="chapter" data-level="8.11" data-path="design-a-how-to.html"><a href="design-a-how-to.html#two-plots-side-by-side"><i class="fa fa-check"></i><b>8.11</b> Two plots side-by-side</a></li>
+<li class="chapter" data-level="8.12" data-path="design-a-how-to.html"><a href="design-a-how-to.html#include-verbatim-code-chunks"><i class="fa fa-check"></i><b>8.12</b> Include verbatim code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="doc-dress.html"><a href="doc-dress.html"><i class="fa fa-check"></i><b>9</b> Dress it up!</a><ul>
+<li class="chapter" data-level="9.1" data-path="doc-dress.html"><a href="doc-dress.html#doc-theme"><i class="fa fa-check"></i><b>9.1</b> Use a bootswatch theme</a></li>
+<li class="chapter" data-level="9.2" data-path="doc-dress.html"><a href="doc-dress.html#doc-toc"><i class="fa fa-check"></i><b>9.2</b> Add a floating table of contents</a></li>
+<li class="chapter" data-level="9.3" data-path="doc-dress.html"><a href="doc-dress.html#doc-highlight"><i class="fa fa-check"></i><b>9.3</b> Customize code highlighter</a></li>
+<li class="chapter" data-level="9.4" data-path="doc-dress.html"><a href="doc-dress.html#doc-images"><i class="fa fa-check"></i><b>9.4</b> Add images</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="doc-dress.html"><a href="doc-dress.html#markdown-images"><i class="fa fa-check"></i><b>9.4.1</b> Markdown images</a></li>
+<li class="chapter" data-level="9.4.2" data-path="doc-dress.html"><a href="doc-dress.html#use-knitrinclude_graphics"><i class="fa fa-check"></i><b>9.4.2</b> Use <code>knitr::include_graphics()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="doc-dress.html"><a href="doc-dress.html#section"><i class="fa fa-check"></i><b>9.5</b> </a></li>
+<li class="chapter" data-level="9.6" data-path="doc-dress.html"><a href="doc-dress.html#upgrade-your-output-format"><i class="fa fa-check"></i><b>9.6</b> Upgrade your output format</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="doc-dress.html"><a href="doc-dress.html#bookdownhtml_document2"><i class="fa fa-check"></i><b>9.6.1</b> <code>bookdown::html_document2</code></a></li>
+<li class="chapter" data-level="9.6.2" data-path="doc-dress.html"><a href="doc-dress.html#distilldistill_article"><i class="fa fa-check"></i><b>9.6.2</b> <code>distill::distill_article</code></a></li>
+<li class="chapter" data-level="9.6.3" data-path="doc-dress.html"><a href="doc-dress.html#tuftetufte_html"><i class="fa fa-check"></i><b>9.6.3</b> <code>tufte::tufte_html</code></a></li>
+<li class="chapter" data-level="9.6.4" data-path="doc-dress.html"><a href="doc-dress.html#learnrtutorial"><i class="fa fa-check"></i><b>9.6.4</b> <code>learnr::tutorial</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="doc-fancy.html"><a href="doc-fancy.html"><i class="fa fa-check"></i><b>10</b> Make it fancier</a><ul>
+<li class="chapter" data-level="10.1" data-path="doc-fancy.html"><a href="doc-fancy.html#extra-packages"><i class="fa fa-check"></i><b>10.1</b> Extra packages</a></li>
+<li class="chapter" data-level="10.2" data-path="doc-fancy.html"><a href="doc-fancy.html#use-bootswatch-css"><i class="fa fa-check"></i><b>10.2</b> Use bootswatch CSS</a></li>
+<li class="chapter" data-level="10.3" data-path="doc-fancy.html"><a href="doc-fancy.html#include-or-not"><i class="fa fa-check"></i><b>10.3</b> include or not?</a></li>
+<li class="chapter" data-level="10.4" data-path="doc-fancy.html"><a href="doc-fancy.html#before-you-begin"><i class="fa fa-check"></i><b>10.4</b> Before you begin</a></li>
+<li class="chapter" data-level="10.5" data-path="doc-fancy.html"><a href="doc-fancy.html#include-a-css-file"><i class="fa fa-check"></i><b>10.5</b> Include a css file</a></li>
+<li class="chapter" data-level="10.6" data-path="doc-fancy.html"><a href="doc-fancy.html#branding-and-aesthetics"><i class="fa fa-check"></i><b>10.6</b> Branding and aesthetics</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-font"><i class="fa fa-check"></i><b>10.6.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="10.6.2" data-path="doc-fancy.html"><a href="doc-fancy.html#links"><i class="fa fa-check"></i><b>10.6.2</b> Links</a></li>
+<li class="chapter" data-level="10.6.3" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-logo"><i class="fa fa-check"></i><b>10.6.3</b> Add a logo</a></li>
+<li class="chapter" data-level="10.6.4" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-white-space"><i class="fa fa-check"></i><b>10.6.4</b> White Space</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-custom-toc"><i class="fa fa-check"></i><b>10.7</b> Table of contents (TOC)</a></li>
+<li class="chapter" data-level="10.8" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-q"><i class="fa fa-check"></i><b>10.8</b> Questions counter</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="doc-trouble.html"><a href="doc-trouble.html"><i class="fa fa-check"></i><b>11</b> Trouble-shooting</a></li>
+<li class="part"><span><b>II Cookbook: Packages etc.</b></span></li>
+<li class="chapter" data-level="" data-path="intro-dry.html"><a href="intro-dry.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="12" data-path="data-pkg.html"><a href="data-pkg.html"><i class="fa fa-check"></i><b>12</b> Create a data package</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-pkg.html"><a href="data-pkg.html#is-this-tutorial-for-you"><i class="fa fa-check"></i><b>12.1</b> Is this tutorial for you?</a></li>
+<li class="chapter" data-level="12.2" data-path="data-pkg.html"><a href="data-pkg.html#mental-framework"><i class="fa fa-check"></i><b>12.2</b> Mental Framework</a></li>
+<li class="chapter" data-level="12.3" data-path="data-pkg.html"><a href="data-pkg.html#part-1-getting-set-up"><i class="fa fa-check"></i><b>12.3</b> Part 1: Getting set up</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="data-pkg.html"><a href="data-pkg.html#packages"><i class="fa fa-check"></i><b>12.3.1</b> Packages</a></li>
+<li class="chapter" data-level="12.3.2" data-path="data-pkg.html"><a href="data-pkg.html#two-getting-started-workflows"><i class="fa fa-check"></i><b>12.3.2</b> Two getting-started workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="data-pkg.html"><a href="data-pkg.html#part-2-add-some-clean-data"><i class="fa fa-check"></i><b>12.4</b> Part 2: Add some clean data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="data-pkg.html"><a href="data-pkg.html#with-built-in-data"><i class="fa fa-check"></i><b>12.4.1</b> With built-in data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="data-pkg.html"><a href="data-pkg.html#start-with-your-own-data"><i class="fa fa-check"></i><b>12.4.2</b> Start with your OWN Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="data-pkg.html"><a href="data-pkg.html#part-3-check"><i class="fa fa-check"></i><b>12.5</b> Part 3: Check!</a></li>
+<li class="chapter" data-level="12.6" data-path="data-pkg.html"><a href="data-pkg.html#part-4-document-the-datasets"><i class="fa fa-check"></i><b>12.6</b> Part 4: Document the datasets</a></li>
+<li class="chapter" data-level="12.7" data-path="data-pkg.html"><a href="data-pkg.html#part-5-document-the-package"><i class="fa fa-check"></i><b>12.7</b> Part 5: Document the package</a></li>
+<li class="chapter" data-level="12.8" data-path="data-pkg.html"><a href="data-pkg.html#part-6-build-and-install"><i class="fa fa-check"></i><b>12.8</b> Part 6: Build and Install!</a></li>
+<li class="chapter" data-level="12.9" data-path="data-pkg.html"><a href="data-pkg.html#part-7-deliver"><i class="fa fa-check"></i><b>12.9</b> Part 7: Deliver</a></li>
+<li class="chapter" data-level="12.10" data-path="data-pkg.html"><a href="data-pkg.html#caring-for-your-package"><i class="fa fa-check"></i><b>12.10</b> Caring for your package</a><ul>
+<li class="chapter" data-level="12.10.1" data-path="data-pkg.html"><a href="data-pkg.html#a-review"><i class="fa fa-check"></i><b>12.10.1</b> A review</a></li>
+<li class="chapter" data-level="12.10.2" data-path="data-pkg.html"><a href="data-pkg.html#package-accessories"><i class="fa fa-check"></i><b>12.10.2</b> Package accessories</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="data-pkg.html"><a href="data-pkg.html#tldr"><i class="fa fa-check"></i><b>12.11</b> tldr;</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rmd-templates.html"><a href="rmd-templates.html"><i class="fa fa-check"></i><b>13</b> Create R Markdown templates</a><ul>
+<li class="chapter" data-level="13.1" data-path="rmd-templates.html"><a href="rmd-templates.html#why-do-this"><i class="fa fa-check"></i><b>13.1</b> Why do this?</a></li>
+<li class="chapter" data-level="13.2" data-path="rmd-templates.html"><a href="rmd-templates.html#step-1-create-files-and-folders"><i class="fa fa-check"></i><b>13.2</b> Step 1: Create files and folders</a></li>
+<li class="chapter" data-level="13.3" data-path="rmd-templates.html"><a href="rmd-templates.html#step-2-create-your-template"><i class="fa fa-check"></i><b>13.3</b> Step 2: Create your template</a></li>
+<li class="chapter" data-level="13.4" data-path="rmd-templates.html"><a href="rmd-templates.html#step-3-confirm-that-your-template-is-accessible"><i class="fa fa-check"></i><b>13.4</b> Step 3: Confirm that your template is accessible</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="proj-templates.html"><a href="proj-templates.html"><i class="fa fa-check"></i><b>14</b> Create RStudio project templates</a><ul>
+<li class="chapter" data-level="14.1" data-path="proj-templates.html"><a href="proj-templates.html#why-do-this-1"><i class="fa fa-check"></i><b>14.1</b> Why do this?</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>15</b> Add interactive tutorials</a><ul>
+<li class="chapter" data-level="15.1" data-path="learnr.html"><a href="learnr.html#part-1-including-a-learnr-tutorial"><i class="fa fa-check"></i><b>15.1</b> PART 1: Including a <span>LearnR</span> tutorial</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="learnr.html"><a href="learnr.html#why-do-this-2"><i class="fa fa-check"></i><b>15.1.1</b> Why do this?</a></li>
+<li class="chapter" data-level="15.1.2" data-path="learnr.html"><a href="learnr.html#step-1-create-files-and-directories"><i class="fa fa-check"></i><b>15.1.2</b> Step 1: Create files and directories</a></li>
+<li class="chapter" data-level="15.1.3" data-path="learnr.html"><a href="learnr.html#step-2-customize-your-tutorial"><i class="fa fa-check"></i><b>15.1.3</b> Step 2: Customize your tutorial</a></li>
+<li class="chapter" data-level="15.1.4" data-path="learnr.html"><a href="learnr.html#step-3-add-additional-subdirectory"><i class="fa fa-check"></i><b>15.1.4</b> Step 3: Add additional subdirectory</a></li>
+<li class="chapter" data-level="15.1.5" data-path="learnr.html"><a href="learnr.html#step-4-run-your-tutorial"><i class="fa fa-check"></i><b>15.1.5</b> Step 4: Run your tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="learnr.html"><a href="learnr.html#part-5-final-steps"><i class="fa fa-check"></i><b>15.2</b> PART 5: FINAL STEPS</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="learnr.html"><a href="learnr.html#optionally-document-the-package-as-a-whole"><i class="fa fa-check"></i><b>15.2.1</b> (Optionally) Document the package as a whole</a></li>
+<li class="chapter" data-level="15.2.2" data-path="learnr.html"><a href="learnr.html#create-a-readme.rmd-file"><i class="fa fa-check"></i><b>15.2.2</b> Create a README.Rmd file</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="learnr.html"><a href="learnr.html#troubleshooting"><i class="fa fa-check"></i><b>15.3</b> Troubleshooting</a></li>
+<li class="chapter" data-level="15.4" data-path="learnr.html"><a href="learnr.html#miscellaneous-nice-to-know"><i class="fa fa-check"></i><b>15.4</b> Miscellaneous / Nice to Know</a></li>
+<li class="chapter" data-level="15.5" data-path="learnr.html"><a href="learnr.html#other-community-resources-on-package-making"><i class="fa fa-check"></i><b>15.5</b> Other community resources on package-making:</a></li>
+</ul></li>
+<li class="part"><span><b>III Cookbook: R Markdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#what-are-we-making-1"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#pros-and-cons-of-using-rmd-sites"><i class="fa fa-check"></i>Pros and cons of using Rmd sites</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#is-this-cookbook-for-you"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#other-learning-resources"><i class="fa fa-check"></i>Other learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="make-rmd.html"><a href="make-rmd.html"><i class="fa fa-check"></i><b>16</b> Make a site</a><ul>
+<li class="chapter" data-level="16.1" data-path="make-rmd.html"><a href="make-rmd.html#tldr-1"><i class="fa fa-check"></i><b>16.1</b> tl;dr</a></li>
+<li class="chapter" data-level="16.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-setup"><i class="fa fa-check"></i><b>16.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="make-rmd.html"><a href="make-rmd.html#update-packages-1"><i class="fa fa-check"></i><b>16.2.1</b> Update packages</a></li>
+<li class="chapter" data-level="16.2.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-proj-first"><i class="fa fa-check"></i><b>16.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="16.2.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-skeleton"><i class="fa fa-check"></i><b>16.2.3</b> Make a site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-orientation"><i class="fa fa-check"></i><b>16.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="16.4" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push"><i class="fa fa-check"></i><b>16.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="16.5" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-output"><i class="fa fa-check"></i><b>16.5</b> Change output directory</a></li>
+<li class="chapter" data-level="16.6" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-nojekyll"><i class="fa fa-check"></i><b>16.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="16.7" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-build"><i class="fa fa-check"></i><b>16.7</b> Build your site</a></li>
+<li class="chapter" data-level="16.8" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push2"><i class="fa fa-check"></i><b>16.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="16.9" data-path="make-rmd.html"><a href="make-rmd.html#rmd-living"><i class="fa fa-check"></i><b>16.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="16.10" data-path="make-rmd.html"><a href="make-rmd.html#rmd-uplevel"><i class="fa fa-check"></i><b>16.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmd-yours.html"><a href="rmd-yours.html"><i class="fa fa-check"></i><b>17</b> Make it yours</a><ul>
+<li class="chapter" data-level="17.1" data-path="rmd-yours.html"><a href="rmd-yours.html#add-rmd"><i class="fa fa-check"></i><b>17.1</b> Adding new pages</a></li>
+<li class="chapter" data-level="17.2" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-grow"><i class="fa fa-check"></i><b>17.2</b> Grow your navbar</a></li>
+<li class="chapter" data-level="17.3" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-menu"><i class="fa fa-check"></i><b>17.3</b> Add a dropdown menu</a></li>
+<li class="chapter" data-level="17.4" data-path="rmd-yours.html"><a href="rmd-yours.html#add-your-content"><i class="fa fa-check"></i><b>17.4</b> Add your content</a></li>
+<li class="chapter" data-level="17.5" data-path="rmd-yours.html"><a href="rmd-yours.html#recap"><i class="fa fa-check"></i><b>17.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="rmd-care.html"><a href="rmd-care.html"><i class="fa fa-check"></i><b>18</b> Caring for your site</a><ul>
+<li class="chapter" data-level="18.1" data-path="rmd-care.html"><a href="rmd-care.html#hide-rmd"><i class="fa fa-check"></i><b>18.1</b> Hiding pages</a></li>
+<li class="chapter" data-level="18.2" data-path="rmd-care.html"><a href="rmd-care.html#staying-organized"><i class="fa fa-check"></i><b>18.2</b> Staying organized</a></li>
+<li class="chapter" data-level="18.3" data-path="rmd-care.html"><a href="rmd-care.html#troubleshooting-1"><i class="fa fa-check"></i><b>18.3</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="rmd-dress.html"><a href="rmd-dress.html"><i class="fa fa-check"></i><b>19</b> Dress it up!</a><ul>
+<li class="chapter" data-level="19.1" data-path="rmd-dress.html"><a href="rmd-dress.html#before-you-begin-1"><i class="fa fa-check"></i><b>19.1</b> Before you begin</a></li>
+<li class="chapter" data-level="19.2" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-one-yaml"><i class="fa fa-check"></i><b>19.2</b> One YAML to rule them all</a></li>
+<li class="chapter" data-level="19.3" data-path="rmd-dress.html"><a href="rmd-dress.html#applying-what-you-can-from-a-single-lesson"><i class="fa fa-check"></i><b>19.3</b> Applying what you can from a single lesson</a></li>
+<li class="chapter" data-level="19.4" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-site-theme"><i class="fa fa-check"></i><b>19.4</b> Add a site theme</a></li>
+<li class="chapter" data-level="19.5" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-highlight"><i class="fa fa-check"></i><b>19.5</b> Customize code highlighting</a></li>
+<li class="chapter" data-level="19.6" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-navbar"><i class="fa fa-check"></i><b>19.6</b> Change the navbar color</a></li>
+<li class="chapter" data-level="19.7" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-icons"><i class="fa fa-check"></i><b>19.7</b> Add navbar icons</a></li>
+<li class="chapter" data-level="19.8" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-tidy-menu"><i class="fa fa-check"></i><b>19.8</b> Tidy up the dropdown menu</a></li>
+<li class="chapter" data-level="19.9" data-path="rmd-dress.html"><a href="rmd-dress.html#recap-1"><i class="fa fa-check"></i><b>19.9</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmd-fancy.html"><a href="rmd-fancy.html"><i class="fa fa-check"></i><b>20</b> Make it fancier</a><ul>
+<li class="chapter" data-level="20.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#before-you-begin-2"><i class="fa fa-check"></i><b>20.1</b> Before you begin</a></li>
+<li class="chapter" data-level="20.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#anatomy-of-a-fancy-r-markdown-page"><i class="fa fa-check"></i><b>20.2</b> Anatomy of a fancy R Markdown page</a></li>
+<li class="chapter" data-level="20.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#adding-custom-css-to-your-site"><i class="fa fa-check"></i><b>20.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="20.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#aesthetics-and-branding"><i class="fa fa-check"></i><b>20.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="20.4.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-font"><i class="fa fa-check"></i><b>20.4.1</b> Google fonts</a></li>
+<li class="chapter" data-level="20.4.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#customize-your-links"><i class="fa fa-check"></i><b>20.4.2</b> Customize your links</a></li>
+<li class="chapter" data-level="20.4.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#white-space"><i class="fa fa-check"></i><b>20.4.3</b> White space</a></li>
+<li class="chapter" data-level="20.4.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#logo"><i class="fa fa-check"></i><b>20.4.4</b> Logo</a></li>
+<li class="chapter" data-level="20.4.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-logo"><i class="fa fa-check"></i><b>20.4.5</b> Add a logo</a></li>
+<li class="chapter" data-level="20.4.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-favicon"><i class="fa fa-check"></i><b>20.4.6</b> Add a favicon</a></li>
+<li class="chapter" data-level="20.4.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-hero-image"><i class="fa fa-check"></i><b>20.4.7</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#table-of-contents"><i class="fa fa-check"></i><b>20.5</b> Table of contents</a></li>
+<li class="chapter" data-level="20.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#navigation-bar-styling"><i class="fa fa-check"></i><b>20.6</b> Navigation bar styling</a></li>
+<li class="chapter" data-level="20.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-q"><i class="fa fa-check"></i><b>20.7</b> Questions counter</a></li>
+<li class="chapter" data-level="20.8" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-multiple-css-files"><i class="fa fa-check"></i><b>20.8</b> Add multiple CSS files</a></li>
+<li class="chapter" data-level="20.9" data-path="rmd-fancy.html"><a href="rmd-fancy.html#recap-2"><i class="fa fa-check"></i><b>20.9</b> Recap</a></li>
+</ul></li>
+<li class="part"><span><b>IV Cookbook: Distill sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#what-are-we-making-2"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#distill-vs-r-markdown-site"><i class="fa fa-check"></i>Distill vs R Markdown site</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#is-this-tutorial-for-you-1"><i class="fa fa-check"></i>Is this tutorial for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#other-learning-resources-1"><i class="fa fa-check"></i>Other learning resources</a><ul>
+<li class="chapter" data-level="20.9.1" data-path="intro-distill.html"><a href="intro-distill.html#existing-distill-sites"><i class="fa fa-check"></i><b>20.9.1</b> Existing Distill sites</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="make-distill.html"><a href="make-distill.html"><i class="fa fa-check"></i><b>21</b> Make a Distill site</a><ul>
+<li class="chapter" data-level="21.1" data-path="make-distill.html"><a href="make-distill.html#tldr-2"><i class="fa fa-check"></i><b>21.1</b> tl;dr</a></li>
+<li class="chapter" data-level="21.2" data-path="make-distill.html"><a href="make-distill.html#distill-site-setup"><i class="fa fa-check"></i><b>21.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="make-distill.html"><a href="make-distill.html#packages-1"><i class="fa fa-check"></i><b>21.2.1</b> Packages</a></li>
+<li class="chapter" data-level="21.2.2" data-path="make-distill.html"><a href="make-distill.html#distill-proj-first"><i class="fa fa-check"></i><b>21.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="21.2.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-skeleton"><i class="fa fa-check"></i><b>21.2.3</b> Make a Distill site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-orientation"><i class="fa fa-check"></i><b>21.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="21.4" data-path="make-distill.html"><a href="make-distill.html#distill-push"><i class="fa fa-check"></i><b>21.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="21.5" data-path="make-distill.html"><a href="make-distill.html#distill-site-build"><i class="fa fa-check"></i><b>21.5</b> Build your site</a></li>
+<li class="chapter" data-level="21.6" data-path="make-distill.html"><a href="make-distill.html#distill-push2"><i class="fa fa-check"></i><b>21.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="21.7" data-path="make-distill.html"><a href="make-distill.html#distill-living"><i class="fa fa-check"></i><b>21.7</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="21.8" data-path="make-distill.html"><a href="make-distill.html#distill-uplevel"><i class="fa fa-check"></i><b>21.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="distill-yours.html"><a href="distill-yours.html"><i class="fa fa-check"></i><b>22</b> Make it yours</a><ul>
+<li class="chapter" data-level="22.1" data-path="distill-yours.html"><a href="distill-yours.html#add-distill"><i class="fa fa-check"></i><b>22.1</b> Adding new Distill articles</a></li>
+<li class="chapter" data-level="22.2" data-path="distill-yours.html"><a href="distill-yours.html#distill-grow"><i class="fa fa-check"></i><b>22.2</b> Grow your navbar</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="distill-care.html"><a href="distill-care.html"><i class="fa fa-check"></i><b>23</b> Caring for your Distill site</a><ul>
+<li class="chapter" data-level="23.1" data-path="distill-care.html"><a href="distill-care.html#hide-distill"><i class="fa fa-check"></i><b>23.1</b> Hiding pages</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="distill-care.html"><a href="distill-care.html#switching-from-an-existing-r-markdown-site-to-a-distill-site"><i class="fa fa-check"></i><b>23.1.1</b> Switching from an existing R Markdown site to a Distill site</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="distill-care.html"><a href="distill-care.html#alternatives-and-drawbacks"><i class="fa fa-check"></i><b>23.2</b> Alternatives and drawbacks</a></li>
+<li class="chapter" data-level="23.3" data-path="distill-care.html"><a href="distill-care.html#using-your-distill-site"><i class="fa fa-check"></i><b>23.3</b> Using your Distill site</a></li>
+<li class="chapter" data-level="23.4" data-path="distill-care.html"><a href="distill-care.html#distill-features"><i class="fa fa-check"></i><b>23.4</b> Distill features</a><ul>
+<li class="chapter" data-level="23.4.1" data-path="distill-care.html"><a href="distill-care.html#authors-and-affiliations"><i class="fa fa-check"></i><b>23.4.1</b> Authors and affiliations</a></li>
+<li class="chapter" data-level="23.4.2" data-path="distill-care.html"><a href="distill-care.html#citations"><i class="fa fa-check"></i><b>23.4.2</b> Citations</a></li>
+<li class="chapter" data-level="23.4.3" data-path="distill-care.html"><a href="distill-care.html#hoverable-footnotes"><i class="fa fa-check"></i><b>23.4.3</b> Hoverable footnotes</a></li>
+<li class="chapter" data-level="23.4.4" data-path="distill-care.html"><a href="distill-care.html#asides"><i class="fa fa-check"></i><b>23.4.4</b> Asides</a></li>
+<li class="chapter" data-level="23.4.5" data-path="distill-care.html"><a href="distill-care.html#figure-width"><i class="fa fa-check"></i><b>23.4.5</b> Figure width</a></li>
+<li class="chapter" data-level="23.4.6" data-path="distill-care.html"><a href="distill-care.html#figure-captions-and-cross-references"><i class="fa fa-check"></i><b>23.4.6</b> Figure captions and cross-references</a></li>
+<li class="chapter" data-level="23.4.7" data-path="distill-care.html"><a href="distill-care.html#if-you-like-distill"><i class="fa fa-check"></i><b>23.4.7</b> If you like Distill…</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="distill-dress.html"><a href="distill-dress.html"><i class="fa fa-check"></i><b>24</b> Dress it up!</a><ul>
+<li class="chapter" data-level="24.1" data-path="distill-dress.html"><a href="distill-dress.html#site-sections"><i class="fa fa-check"></i><b>24.1</b> Site sections</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="distill-dress.html"><a href="distill-dress.html#site-footer"><i class="fa fa-check"></i><b>24.1.1</b> Site footer</a></li>
+<li class="chapter" data-level="24.1.2" data-path="distill-dress.html"><a href="distill-dress.html#appendix"><i class="fa fa-check"></i><b>24.1.2</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="distill-dress.html"><a href="distill-dress.html#sharing-1"><i class="fa fa-check"></i><b>24.2</b> Sharing</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="distill-dress.html"><a href="distill-dress.html#reuse-and-licencing"><i class="fa fa-check"></i><b>24.2.1</b> Reuse and licencing</a></li>
+<li class="chapter" data-level="24.2.2" data-path="distill-dress.html"><a href="distill-dress.html#preview-images"><i class="fa fa-check"></i><b>24.2.2</b> Preview images</a></li>
+<li class="chapter" data-level="24.2.3" data-path="distill-dress.html"><a href="distill-dress.html#logo-1"><i class="fa fa-check"></i><b>24.2.3</b> Logo</a></li>
+<li class="chapter" data-level="24.2.4" data-path="distill-dress.html"><a href="distill-dress.html#favicon"><i class="fa fa-check"></i><b>24.2.4</b> Favicon</a></li>
+<li class="chapter" data-level="24.2.5" data-path="distill-dress.html"><a href="distill-dress.html#google-analytics"><i class="fa fa-check"></i><b>24.2.5</b> Google analytics</a></li>
+<li class="chapter" data-level="24.2.6" data-path="distill-dress.html"><a href="distill-dress.html#getting-edits"><i class="fa fa-check"></i><b>24.2.6</b> Getting edits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="distill-fancy.html"><a href="distill-fancy.html"><i class="fa fa-check"></i><b>25</b> Make it fancier</a><ul>
+<li class="chapter" data-level="25.1" data-path="distill-fancy.html"><a href="distill-fancy.html#before-you-begin-3"><i class="fa fa-check"></i><b>25.1</b> Before you begin</a></li>
+<li class="chapter" data-level="25.2" data-path="distill-fancy.html"><a href="distill-fancy.html#anatomy-of-a-fancy-distill-page"><i class="fa fa-check"></i><b>25.2</b> Anatomy of a fancy Distill page</a></li>
+<li class="chapter" data-level="25.3" data-path="distill-fancy.html"><a href="distill-fancy.html#adding-custom-css-to-your-site-1"><i class="fa fa-check"></i><b>25.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="25.4" data-path="distill-fancy.html"><a href="distill-fancy.html#aesthetics-and-branding-1"><i class="fa fa-check"></i><b>25.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="25.4.1" data-path="distill-fancy.html"><a href="distill-fancy.html#google-fonts"><i class="fa fa-check"></i><b>25.4.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="25.4.2" data-path="distill-fancy.html"><a href="distill-fancy.html#larger-logo"><i class="fa fa-check"></i><b>25.4.2</b> Larger logo</a></li>
+</ul></li>
+<li class="chapter" data-level="25.5" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar"><i class="fa fa-check"></i><b>25.5</b> Navbar</a><ul>
+<li class="chapter" data-level="25.5.1" data-path="distill-fancy.html"><a href="distill-fancy.html#more-space-for-the-navbar"><i class="fa fa-check"></i><b>25.5.1</b> More space for the navbar</a></li>
+<li class="chapter" data-level="25.5.2" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar-font-and-text-style"><i class="fa fa-check"></i><b>25.5.2</b> Navbar font and text style</a></li>
+<li class="chapter" data-level="25.5.3" data-path="distill-fancy.html"><a href="distill-fancy.html#transparent-faded-navbar"><i class="fa fa-check"></i><b>25.5.3</b> Transparent, faded navbar</a></li>
+<li class="chapter" data-level="25.5.4" data-path="distill-fancy.html"><a href="distill-fancy.html#animated-hovering"><i class="fa fa-check"></i><b>25.5.4</b> Animated hovering</a></li>
+<li class="chapter" data-level="25.5.5" data-path="distill-fancy.html"><a href="distill-fancy.html#tweak-for-mobile-1"><i class="fa fa-check"></i><b>25.5.5</b> Tweak for mobile</a></li>
+</ul></li>
+<li class="chapter" data-level="25.6" data-path="distill-fancy.html"><a href="distill-fancy.html#appendix-1"><i class="fa fa-check"></i><b>25.6</b> Appendix</a></li>
+<li class="chapter" data-level="25.7" data-path="distill-fancy.html"><a href="distill-fancy.html#footer"><i class="fa fa-check"></i><b>25.7</b> Footer</a><ul>
+<li class="chapter" data-level="25.7.1" data-path="distill-fancy.html"><a href="distill-fancy.html#links-1"><i class="fa fa-check"></i><b>25.7.1</b> Links</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Cookbook: Bookdown book</b></span></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#what-are-we-making-3"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#pros-and-cons-of-using-bookdown-sites"><i class="fa fa-check"></i>Pros and cons of using bookdown sites</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#is-this-cookbook-for-you-1"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#learning-resources"><i class="fa fa-check"></i>Learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="make-book.html"><a href="make-book.html"><i class="fa fa-check"></i><b>26</b> Make a book</a><ul>
+<li class="chapter" data-level="26.1" data-path="make-book.html"><a href="make-book.html#tldr-3"><i class="fa fa-check"></i><b>26.1</b> tl;dr</a></li>
+<li class="chapter" data-level="26.2" data-path="make-book.html"><a href="make-book.html#getting-set-up"><i class="fa fa-check"></i><b>26.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="26.2.1" data-path="make-book.html"><a href="make-book.html#packages-needed"><i class="fa fa-check"></i><b>26.2.1</b> Packages needed</a></li>
+<li class="chapter" data-level="26.2.2" data-path="make-book.html"><a href="make-book.html#book-proj-first"><i class="fa fa-check"></i><b>26.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="26.2.3" data-path="make-book.html"><a href="make-book.html#book-site-skeleton"><i class="fa fa-check"></i><b>26.2.3</b> Make a book skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="make-book.html"><a href="make-book.html#book-site-orientation"><i class="fa fa-check"></i><b>26.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="26.4" data-path="make-book.html"><a href="make-book.html#book-push"><i class="fa fa-check"></i><b>26.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="26.5" data-path="make-book.html"><a href="make-book.html#book-output"><i class="fa fa-check"></i><b>26.5</b> Change output directory</a></li>
+<li class="chapter" data-level="26.6" data-path="make-book.html"><a href="make-book.html#book-nojekyll"><i class="fa fa-check"></i><b>26.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="26.7" data-path="make-book.html"><a href="make-book.html#build-book"><i class="fa fa-check"></i><b>26.7</b> Build your book</a></li>
+<li class="chapter" data-level="26.8" data-path="make-book.html"><a href="make-book.html#book-push2"><i class="fa fa-check"></i><b>26.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="26.9" data-path="make-book.html"><a href="make-book.html#book-living"><i class="fa fa-check"></i><b>26.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="26.10" data-path="make-book.html"><a href="make-book.html#book-uplevel"><i class="fa fa-check"></i><b>26.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="book-yours.html"><a href="book-yours.html"><i class="fa fa-check"></i><b>27</b> Make it yours</a><ul>
+<li class="chapter" data-level="27.1" data-path="book-yours.html"><a href="book-yours.html#book-new-ch"><i class="fa fa-check"></i><b>27.1</b> Creating new chapters</a></li>
+<li class="chapter" data-level="27.2" data-path="book-yours.html"><a href="book-yours.html#book-order"><i class="fa fa-check"></i><b>27.2</b> Putting your chapters in order</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="book-care.html"><a href="book-care.html"><i class="fa fa-check"></i><b>28</b> Caring for your book</a><ul>
+<li class="chapter" data-level="28.1" data-path="book-care.html"><a href="book-care.html#workflow-for-maintenance"><i class="fa fa-check"></i><b>28.1</b> Workflow for maintenance</a></li>
+<li class="chapter" data-level="28.2" data-path="book-care.html"><a href="book-care.html#render-book"><i class="fa fa-check"></i><b>28.2</b> Rendering</a></li>
+<li class="chapter" data-level="28.3" data-path="book-care.html"><a href="book-care.html#use-book"><i class="fa fa-check"></i><b>28.3</b> Using your book</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="book-care.html"><a href="book-care.html#components"><i class="fa fa-check"></i><b>28.3.1</b> Components</a></li>
+<li class="chapter" data-level="28.3.2" data-path="book-care.html"><a href="book-care.html#search"><i class="fa fa-check"></i><b>28.3.2</b> Search</a></li>
+</ul></li>
+<li class="chapter" data-level="28.4" data-path="book-care.html"><a href="book-care.html#hiding-chapters"><i class="fa fa-check"></i><b>28.4</b> Hiding Chapters</a></li>
+<li class="chapter" data-level="28.5" data-path="book-care.html"><a href="book-care.html#book-organized"><i class="fa fa-check"></i><b>28.5</b> Staying organized</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="book-dress.html"><a href="book-dress.html"><i class="fa fa-check"></i><b>29</b> Dress it up!</a><ul>
+<li class="chapter" data-level="29.1" data-path="book-dress.html"><a href="book-dress.html#before-book-dress"><i class="fa fa-check"></i><b>29.1</b> Before you begin</a></li>
+<li class="chapter" data-level="29.2" data-path="book-dress.html"><a href="book-dress.html#organizing"><i class="fa fa-check"></i><b>29.2</b> Organizing</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="book-dress.html"><a href="book-dress.html#collapse-toc-by-subsections"><i class="fa fa-check"></i><b>29.2.1</b> Collapse TOC by (sub)sections</a></li>
+<li class="chapter" data-level="29.2.2" data-path="book-dress.html"><a href="book-dress.html#change-the-chapter-name"><i class="fa fa-check"></i><b>29.2.2</b> Change the chapter name</a></li>
+<li class="chapter" data-level="29.2.3" data-path="book-dress.html"><a href="book-dress.html#section-unnumbering"><i class="fa fa-check"></i><b>29.2.3</b> Section (un)numbering</a></li>
+<li class="chapter" data-level="29.2.4" data-path="book-dress.html"><a href="book-dress.html#book-parts"><i class="fa fa-check"></i><b>29.2.4</b> Group chapters into parts</a></li>
+<li class="chapter" data-level="29.2.5" data-path="book-dress.html"><a href="book-dress.html#book-appendix"><i class="fa fa-check"></i><b>29.2.5</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="book-dress.html"><a href="book-dress.html#aesthetics"><i class="fa fa-check"></i><b>29.3</b> Aesthetics</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="book-dress.html"><a href="book-dress.html#header-and-footer-of-the-toc"><i class="fa fa-check"></i><b>29.3.1</b> Header and footer of the TOC</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="book-dress.html"><a href="book-dress.html#edits-and-source-code"><i class="fa fa-check"></i><b>29.4</b> Edits and source code</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="book-dress.html"><a href="book-dress.html#share-the-source-code"><i class="fa fa-check"></i><b>29.4.1</b> Share the source code</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="book-dress.html"><a href="book-dress.html#polishing-and-sharing"><i class="fa fa-check"></i><b>29.5</b> Polishing and sharing</a><ul>
+<li class="chapter" data-level="29.5.1" data-path="book-dress.html"><a href="book-dress.html#twitter-and-github"><i class="fa fa-check"></i><b>29.5.1</b> Twitter and GitHub</a></li>
+<li class="chapter" data-level="29.5.2" data-path="book-dress.html"><a href="book-dress.html#add-a-favicon-1"><i class="fa fa-check"></i><b>29.5.2</b> Add a favicon</a></li>
+<li class="chapter" data-level="29.5.3" data-path="book-dress.html"><a href="book-dress.html#book-cover-and-description"><i class="fa fa-check"></i><b>29.5.3</b> Book cover and description</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="book-fancy.html"><a href="book-fancy.html"><i class="fa fa-check"></i><b>30</b> Make it fancier</a><ul>
+<li class="chapter" data-level="30.1" data-path="book-fancy.html"><a href="book-fancy.html#before-you-begin-4"><i class="fa fa-check"></i><b>30.1</b> Before you begin</a></li>
+<li class="chapter" data-level="30.2" data-path="book-fancy.html"><a href="book-fancy.html#anatomy-of-a-fancy-book"><i class="fa fa-check"></i><b>30.2</b> Anatomy of a fancy book</a></li>
+<li class="chapter" data-level="30.3" data-path="book-fancy.html"><a href="book-fancy.html#aesthetics-and-branding-2"><i class="fa fa-check"></i><b>30.3</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="30.3.1" data-path="book-fancy.html"><a href="book-fancy.html#align-tool"><i class="fa fa-check"></i><b>30.3.1</b> Align the toolbar line</a></li>
+<li class="chapter" data-level="30.3.2" data-path="book-fancy.html"><a href="book-fancy.html#symmetrical-code-chunks"><i class="fa fa-check"></i><b>30.3.2</b> Symmetrical code chunks</a></li>
+<li class="chapter" data-level="30.3.3" data-path="book-fancy.html"><a href="book-fancy.html#book-font"><i class="fa fa-check"></i><b>30.3.3</b> Google fonts</a></li>
+<li class="chapter" data-level="30.3.4" data-path="book-fancy.html"><a href="book-fancy.html#book-logo"><i class="fa fa-check"></i><b>30.3.4</b> Add a logo</a></li>
+<li class="chapter" data-level="30.3.5" data-path="book-fancy.html"><a href="book-fancy.html#book-link-colors"><i class="fa fa-check"></i><b>30.3.5</b> Custom link colors</a></li>
+<li class="chapter" data-level="30.3.6" data-path="book-fancy.html"><a href="book-fancy.html#book-hero"><i class="fa fa-check"></i><b>30.3.6</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="30.4" data-path="book-fancy.html"><a href="book-fancy.html#usability"><i class="fa fa-check"></i><b>30.4</b> Usability</a><ul>
+<li class="chapter" data-level="30.4.1" data-path="book-fancy.html"><a href="book-fancy.html#custom-div-tips"><i class="fa fa-check"></i><b>30.4.1</b> Custom div tips</a></li>
+<li class="chapter" data-level="30.4.2" data-path="book-fancy.html"><a href="book-fancy.html#book-anchor"><i class="fa fa-check"></i><b>30.4.2</b> Anchor links</a></li>
+<li class="chapter" data-level="30.4.3" data-path="book-fancy.html"><a href="book-fancy.html#copy-to-clipboard"><i class="fa fa-check"></i><b>30.4.3</b> Copy to clipboard</a></li>
+</ul></li>
+<li class="chapter" data-level="30.5" data-path="book-fancy.html"><a href="book-fancy.html#table-of-contents-1"><i class="fa fa-check"></i><b>30.5</b> Table of Contents</a><ul>
+<li class="chapter" data-level="30.5.1" data-path="book-fancy.html"><a href="book-fancy.html#change-toc-background-color"><i class="fa fa-check"></i><b>30.5.1</b> Change TOC background color</a></li>
+<li class="chapter" data-level="30.5.2" data-path="book-fancy.html"><a href="book-fancy.html#style-the-toc-links"><i class="fa fa-check"></i><b>30.5.2</b> Style the TOC links</a></li>
+<li class="chapter" data-level="30.5.3" data-path="book-fancy.html"><a href="book-fancy.html#hierarchy-styling"><i class="fa fa-check"></i><b>30.5.3</b> Hierarchy styling</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Cookbook: Blogdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-blogdown.html"><a href="intro-blogdown.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="31" data-path="make-blogdown.html"><a href="make-blogdown.html"><i class="fa fa-check"></i><b>31</b> Make a site</a></li>
+<li class="chapter" data-level="32" data-path="make-a-site-for-a-workshop.html"><a href="make-a-site-for-a-workshop.html"><i class="fa fa-check"></i><b>32</b> Make a site for a workshop</a></li>
+<li class="chapter" data-level="33" data-path="make-a-site-for-a-course.html"><a href="make-a-site-for-a-course.html"><i class="fa fa-check"></i><b>33</b> Make a site for a course</a></li>
+<li class="chapter" data-level="34" data-path="make-it-fancier-4.html"><a href="make-it-fancier-4.html"><i class="fa fa-check"></i><b>34</b> Make it fancier</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="css-crash.html"><a href="css-crash.html"><i class="fa fa-check"></i><b>A</b> CSS Crash Course</a><ul>
+<li class="chapter" data-level="A.1" data-path="css-crash.html"><a href="css-crash.html#whats-in-a-name"><i class="fa fa-check"></i><b>A.1</b> What’s in a name?</a></li>
+<li class="chapter" data-level="A.2" data-path="css-crash.html"><a href="css-crash.html#how-do-i-change-the-color-of."><i class="fa fa-check"></i><b>A.2</b> How do I change the color of….?</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="backlog.html"><a href="backlog.html"><i class="fa fa-check"></i><b>B</b> Backlog</a></li>
+<li class="chapter" data-level="C" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i><b>C</b> Miscellaneous</a></li>
+<li class="chapter" data-level="D" data-path="spillover-from-distill.html"><a href="spillover-from-distill.html"><i class="fa fa-check"></i><b>D</b> Spillover from distill</a></li>
+<li class="chapter" data-level="E" data-path="teaching-and-learning-with-jupyter-book-review.html"><a href="teaching-and-learning-with-jupyter-book-review.html"><i class="fa fa-check"></i><b>E</b> Teaching and Learning with Jupyter Book Review</a></li>
+<li class="chapter" data-level="F" data-path="rmd-themes.html"><a href="rmd-themes.html"><i class="fa fa-check"></i><b>F</b> R Markdown Themes</a><ul>
+<li class="chapter" data-level="F.0.1" data-path="rmd-themes.html"><a href="rmd-themes.html#default"><i class="fa fa-check"></i><b>F.0.1</b> <code>default</code></a></li>
+<li class="chapter" data-level="F.0.2" data-path="rmd-themes.html"><a href="rmd-themes.html#cerulean"><i class="fa fa-check"></i><b>F.0.2</b> <code>cerulean</code></a></li>
+<li class="chapter" data-level="F.0.3" data-path="rmd-themes.html"><a href="rmd-themes.html#journal"><i class="fa fa-check"></i><b>F.0.3</b> <code>journal</code></a></li>
+<li class="chapter" data-level="F.0.4" data-path="rmd-themes.html"><a href="rmd-themes.html#flatly"><i class="fa fa-check"></i><b>F.0.4</b> <code>flatly</code></a></li>
+<li class="chapter" data-level="F.0.5" data-path="rmd-themes.html"><a href="rmd-themes.html#darkly"><i class="fa fa-check"></i><b>F.0.5</b> <code>darkly</code></a></li>
+<li class="chapter" data-level="F.0.6" data-path="rmd-themes.html"><a href="rmd-themes.html#readable"><i class="fa fa-check"></i><b>F.0.6</b> <code>readable</code></a></li>
+<li class="chapter" data-level="F.0.7" data-path="rmd-themes.html"><a href="rmd-themes.html#spacelab"><i class="fa fa-check"></i><b>F.0.7</b> <code>spacelab</code></a></li>
+<li class="chapter" data-level="F.0.8" data-path="rmd-themes.html"><a href="rmd-themes.html#united"><i class="fa fa-check"></i><b>F.0.8</b> <code>united</code></a></li>
+<li class="chapter" data-level="F.0.9" data-path="rmd-themes.html"><a href="rmd-themes.html#cosmo"><i class="fa fa-check"></i><b>F.0.9</b> <code>cosmo</code></a></li>
+<li class="chapter" data-level="F.0.10" data-path="rmd-themes.html"><a href="rmd-themes.html#lumen"><i class="fa fa-check"></i><b>F.0.10</b> <code>lumen</code></a></li>
+<li class="chapter" data-level="F.0.11" data-path="rmd-themes.html"><a href="rmd-themes.html#paper"><i class="fa fa-check"></i><b>F.0.11</b> <code>paper</code></a></li>
+<li class="chapter" data-level="F.0.12" data-path="rmd-themes.html"><a href="rmd-themes.html#sandstone"><i class="fa fa-check"></i><b>F.0.12</b> <code>sandstone</code></a></li>
+<li class="chapter" data-level="F.0.13" data-path="rmd-themes.html"><a href="rmd-themes.html#simplex"><i class="fa fa-check"></i><b>F.0.13</b> <code>simplex</code></a></li>
+<li class="chapter" data-level="F.0.14" data-path="rmd-themes.html"><a href="rmd-themes.html#yeti"><i class="fa fa-check"></i><b>F.0.14</b> <code>yeti</code></a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="teach-offer.html"><a href="teach-offer.html"><i class="fa fa-check"></i><b>G</b> What should I make</a></li>
+<li class="chapter" data-level="H" data-path="teach-learners.html"><a href="teach-learners.html"><i class="fa fa-check"></i><b>H</b> Teaching learners</a></li>
+<li class="chapter" data-level="I" data-path="teach-day1.html"><a href="teach-day1.html"><i class="fa fa-check"></i><b>I</b> What to do on day 1</a></li>
+<li class="chapter" data-level="J" data-path="licensing-your-content.html"><a href="licensing-your-content.html"><i class="fa fa-check"></i><b>J</b> Licensing your content</a></li>
+<li class="chapter" data-level="K" data-path="remixing-licensed-content.html"><a href="remixing-licensed-content.html"><i class="fa fa-check"></i><b>K</b> Remixing licensed content</a></li>
+<li class="chapter" data-level="L" data-path="community.html"><a href="community.html"><i class="fa fa-check"></i><b>L</b> Community</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rstudio4edu</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <script src="assets/hideOutput.js"></script>
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="images/books.jpg">
+</div>
+<div id="rmd-fancy" class="section level1">
+<h1><span class="header-section-number">Chapter 20</span> Make it fancier</h1>
+<p><img src="images/illos/rmd-fancy.jpg" width="30%" style="display: block; margin: auto;" /></p>
+<p>Once you’ve built the basic structure for your R Markdown site, if you’d like to customize it even further, here are a handful of things you can add.</p>
+<p>The steps below involve a little bit of HTML and CSS work, but you don’t have to have much experience in these methods to be able to build something cool.</p>
+<p>In this section, I’ll walk you through the non-YAML “add ons” to your R Markdown site.</p>
+<p>You’ll get the most out of this chapter if you read through the <a href="css-crash.html#css-crash">CSS crash course</a> before diving in. You’ll want to be familiar with using the Developer Tools of your web browser and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference#Selectors">selectors</a>.</p>
+<div id="before-you-begin-2" class="section level2">
+<h2><span class="header-section-number">20.1</span> Before you begin</h2>
+<p>I’m making a few assumptions that by this point you have already updated your R Markdown site with your own content in the <a href="rmd-yours.html#rmd-yours">Make it yours</a> section and added whatever built-in options you wanted.</p>
+<p>For the demo that follows, I’ll keep using the RMD site skeleton with a few additions. I’ve added a few things to the site skeleton, aside from what we’ve walked through in the previous chapters, so that the following examples make more sense. It is okay that your content does not match up exactly with mine.</p>
+<ul>
+<li>A dropdown menu to the navbar</li>
+<li>Additional level 1 headers to the home page</li>
+<li>Turned on a floating table of contents</li>
+<li>Added github and twitter icons to the navbar</li>
+<li>We chosen yeti as our theme
+<ul>
+<li>A note about choosing a theme. To start out, choose a theme whose navbar most closely matches what you’re final vision is. For example, if you want your navbar (and dropdown menus) to be dark with a light colored text, then sticking with Yeti is cool. But if you want a light colored navbar with dark text, sticking with Yeti as the base theme would mean you have <em>a lot</em> more CSS that will need adjusting, and you’re better off using a theme like <code>default</code> as your baseline.</li>
+</ul></li>
+</ul>
+</div>
+<div id="anatomy-of-a-fancy-r-markdown-page" class="section level2">
+<h2><span class="header-section-number">20.2</span> Anatomy of a fancy R Markdown page</h2>
+<!--todo: add before and after screenshop. Ping Desiree for annotating screenshot -->
+</div>
+<div id="adding-custom-css-to-your-site" class="section level2">
+<h2><span class="header-section-number">20.3</span> Adding custom CSS to your site</h2>
+<ol style="list-style-type: decimal">
+<li>Make a CSS file, by going to <em>File</em> &gt; <em>New File</em> &gt; <em>Text File</em>.</li>
+<li>Save this file in your project directory as <code>style.css</code>.</li>
+<li>Add this <code>css:</code> field to your <code>_site.yml</code>.</li>
+</ol>
+<div class="sourceCode" id="cb122"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">    <span class="fu">css:</span><span class="at"> style.css</span></a></code></pre></div>
+<p>[commit]</p>
+</div>
+<div id="aesthetics-and-branding" class="section level2">
+<h2><span class="header-section-number">20.4</span> Aesthetics and branding</h2>
+<p>Everything that makes your site, look like <em>your</em> site.</p>
+<ul>
+<li>Google fonts</li>
+<li>Link color and hover behavior</li>
+<li>Add a logo</li>
+<li>Favicon</li>
+<li>Hero image</li>
+</ul>
+<div id="rmd-font" class="section level3">
+<h3><span class="header-section-number">20.4.1</span> Google fonts</h3>
+<p>To change the appearance of your text with a new font, you need to:</p>
+<ul>
+<li>Pick a Google font</li>
+<li>Add it to your CSS file</li>
+<li>Style specific text using CSS selectors</li>
+<li>Make sure your CSS file is linked in your <code>_site.yml</code> (and if you’ve been following along, it already is).</li>
+</ul>
+<div id="select-and-import-your-google-fonts-script-1" class="section level4">
+<h4><span class="header-section-number">20.4.1.1</span> Select and import your Google font’s script</h4>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="https://fonts.google.com/">https://fonts.google.com/</a> and pick a font for your <strong>lesson’s main body text</strong>. I’m choosing <code>Muli</code>, but <code>Lato</code> and <code>Source Sans Pro</code> are other nice options.</li>
+</ol>
+<div class="design">
+<p>I recommend going with sans-serif fonts (i.e. no little feet on the letters) for the main text because they’re easier to read at smaller sizes on screens compared to serif fonts. Don’t pick anything too narrow, too wide, or ornate.)</p>
+</div>
+<p><br />
+</p>
+<div class="col2">
+<ol start="2" style="list-style-type: decimal">
+<li><p>Select the font you want by clicking on the upper red <code>+</code> sign, and navigate to the small pop up window.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmd-select-font"></span>
+<img src="images/screenshots/muli-select.png" alt="Selecting a Google font" width="100%" />
+<p class="caption">
+Figure 20.1: Selecting a Google font
+</p>
+</div></li>
+</ol>
+</div>
+<p><br />
+</p>
+<div class="col2">
+<ol start="3" style="list-style-type: decimal">
+<li><p>Click on the <code>CUSTOMIZE</code> tab, and select the extra font weights and styles you want. Don’t check any that you don’t think you’ll use (because it slows down your lesson’s loading time ever-so-slightly when you add more). In addition to regular, I’m choosing one italic and one bold.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmd-font-customize"></span>
+<img src="images/screenshots/google-choices.png" alt="Choosing additional font weights and styles" width="100%" />
+<p class="caption">
+Figure 20.2: Choosing additional font weights and styles
+</p>
+</div></li>
+</ol>
+</div>
+<p><br />
+</p>
+<div class="col2">
+<ol start="4" style="list-style-type: decimal">
+<li><p>Now click on <code>EMBED</code> and look under the <code>@IMPORT</code> tab. <strong>Copy the code within the <code>&lt;style&gt;</code> tags</strong> (you don’t need the style tags themselves). We will also need the second code chunk in a couple steps that says <code>Specify in CSS</code>, so keep this page open to come back to that.</p>
+<div class="figure" style="text-align: center"><span id="fig:rmd-googleimport"></span>
+<img src="images/screenshots/google-import.png" alt="Getting the script to import your Google Font" width="100%" />
+<p class="caption">
+Figure 20.3: Getting the script to import your Google Font
+</p>
+</div></li>
+</ol>
+</div>
+</div>
+<div id="rmd-font-import" class="section level4">
+<h4><span class="header-section-number">20.4.1.2</span> Import the font to your site</h4>
+<ol style="list-style-type: decimal">
+<li>Back in the RStudio IDE, <strong>open</strong> up your <code>style.css</code> file.</li>
+<li><p>On the very first line, <strong>paste in the Google Font import code</strong> for the <code>Muli</code> font. This makes the font available within your site but doesn’t <em>use</em> the font yet.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="im">@import</span> url(<span class="st">&#39;https://fonts.googleapis.com/css?family=Muli:400,400i,700&amp;display=swap&#39;</span>);</a></code></pre></div></li>
+</ol>
+<div class="tip">
+<p>You might see others import Google fonts by embedding the script (with <code>&lt;script&gt;</code> tags) in an HTML file instead. This is perfectly legitimate. But if you’re just starting out, it’s easier to keep all the font stuff together in a CSS file, which is why we’re doing it this way.</p>
+</div>
+</div>
+<div id="apply-the-font-to-your-text-1" class="section level4">
+<h4><span class="header-section-number">20.4.1.3</span> Apply the font to your text</h4>
+<p>We have our font imported, but now we have to be explicit with R Markdown about where to apply it. Let’s create our first CSS style rule below. We will apply the <code>Muli</code> font to our body’s text by using the <code>font-family:</code> property.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Copy and paste</strong> the following style rule to <code>style.css</code> beneath the other line of CSS we’ve already added.</li>
+<li><p>Let’s also <strong>specify the font size</strong> to be <code>19px</code> by adding the <code>font-size:</code> property.</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb124-1" data-line-number="1"> <span class="co">/*------------- Whole Document---------------- */</span></a>
+<a class="sourceLine" id="cb124-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb124-3" data-line-number="3">body {</a>
+<a class="sourceLine" id="cb124-4" data-line-number="4">    <span class="kw">font-family</span>: <span class="st">&#39;Muli&#39;</span>;</a>
+<a class="sourceLine" id="cb124-5" data-line-number="5">    <span class="kw">font-size</span>: <span class="dv">19px</span>;</a>
+<a class="sourceLine" id="cb124-6" data-line-number="6">}</a></code></pre></div></li>
+<li><p><strong>Make sure</strong> that each line within <code>{}</code> ends with a <code>;</code>.</p></li>
+</ol>
+<div class="tip">
+<p><strong>Keep tidy!</strong> Organize your CSS using comments like <code>/* --insert-comment-- */</code> to create make-shift section dividers for your CSS, as we’ve done above. We’ll be adding many style rules, and we’ll want some way to keep track of everything as our CSS file grows.</p>
+</div>
+<p><br />
+</p>
+<div class="side-by-side">
+<div class="side1">
+<ol start="4" style="list-style-type: decimal">
+<li>Time to admire your handiwork and decide whether or not you like it. You can repeat the steps above to apply different fonts to different parts of your lesson. For example, you could create another style rule using <code>.title</code> instead of <code>body</code> to apply a different font to the Title of your lesson.</li>
+</ol>
+<!-- TODO: we also have to import the font Lora so that our rstudio4edu footer link will render properly later  -->
+<p>Remember that in order for any of your CSS to take effect, your <code>style.css</code> file has to first be referenced in your YAML.</p>
+</div>
+<div class="side2">
+<p><img src="images/screenshots/doc-with-font.png" /></p>
+</div>
+</div>
+<p>[commit]</p>
+</div>
+</div>
+<div id="customize-your-links" class="section level3">
+<h3><span class="header-section-number">20.4.2</span> Customize your links</h3>
+<p>Their color, but also what color they turn when you hover over them.</p>
+<pre><code>/* links */
+a { 
+  color: #5ebccf;
+}
+
+a:hover {
+ color: #50a0b0; /* darker color when hovering */
+}</code></pre>
+<p>[commit]</p>
+</div>
+<div id="white-space" class="section level3">
+<h3><span class="header-section-number">20.4.3</span> White space</h3>
+<p>If you added white space manually before in an earlier section with either <br> or <code>\</code>, you can remove them because we’re about to add white space in a less manual way.</p>
+<p>We’ll take advantage of the fact that we know major sections will be divided by section headers, so we’ll tack on some padding on top of each section header.</p>
+<div class="tip">
+<p>We’re adding what seems like <em>a lot</em> of padding–but that’s because our theme by default is going to undo some of this padding with a <em>negative</em> value for the <code>margin-top:</code> property. I know this seems absurd–we won’t get into the details here, but the negative margin is needed so that our headers don’t get hidden behind the navbar when your share links to particular sections of your site.</p>
+</div>
+<p>We’re going to style the title a little differently than the rest of the headers, so we’ll pull it out on its own. It doesn’t need as much space as the other headers do.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="co">/*----------------ADDING WHITE SPACE-------------*/</span></a>
+<a class="sourceLine" id="cb126-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb126-3" data-line-number="3"><span class="fu">.title</span> {</a>
+<a class="sourceLine" id="cb126-4" data-line-number="4">  <span class="kw">margin-top</span>: <span class="dv">2em</span> <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb126-5" data-line-number="5">  <span class="kw">margin-bottom</span>: <span class="dv">0.75em</span>;</a>
+<a class="sourceLine" id="cb126-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb126-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb126-8" data-line-number="8"><span class="fu">.section</span> h1,</a>
+<a class="sourceLine" id="cb126-9" data-line-number="9"><span class="fu">.section</span> h2, </a>
+<a class="sourceLine" id="cb126-10" data-line-number="10"><span class="fu">.section</span> h3, </a>
+<a class="sourceLine" id="cb126-11" data-line-number="11"><span class="fu">.section</span> h4, </a>
+<a class="sourceLine" id="cb126-12" data-line-number="12"><span class="fu">.section</span> h5 { </a>
+<a class="sourceLine" id="cb126-13" data-line-number="13">  <span class="kw">padding-top</span>: <span class="dv">3em</span> <span class="at">!important</span>; <span class="co">/*adding so much padding because theme adds a margin-top: -65px by default */</span></a>
+<a class="sourceLine" id="cb126-14" data-line-number="14">  <span class="kw">margin-bottom</span>: <span class="dv">0.75em</span>;</a>
+<a class="sourceLine" id="cb126-15" data-line-number="15">}</a></code></pre></div>
+<p>[commit]</p>
+<p>We’ll also add more white space in between the TOC and the rest of the body content, but we do this only when we have the space to— in other words, when our user’s screen is large enough.</p>
+<p>For this, we’ll have to use our first media-query.</p>
+<ul>
+<li><p>A media query is like an additional outer rule that says, “hey, only apply the CSS rule inside if [insert condition about screen width here] is met”. Media queries are useful for styling something different on a big screen than you would on mobile, etc.</p></li>
+<li><p>In the case below, we only increase the space between the TOC and the body content if your user’s browser screen is <em>at least</em> <code>992px</code> wide:</p></li>
+</ul>
+<div class="split">
+<div class="split1">
+<div class="sourceCode" id="cb127"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb127-1" data-line-number="1">  <span class="co">/* Space Between TOC and </span></a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="co">  Righthand side content on large screens */</span></a>
+<a class="sourceLine" id="cb127-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb127-4" data-line-number="4"> <span class="im">@media</span> (<span class="kw">min-width</span>: <span class="dv">992px</span>) {</a>
+<a class="sourceLine" id="cb127-5" data-line-number="5">    <span class="fu">.col-md-9</span> {</a>
+<a class="sourceLine" id="cb127-6" data-line-number="6">      <span class="kw">width</span>: <span class="dv">75%</span>;</a>
+<a class="sourceLine" id="cb127-7" data-line-number="7">      <span class="kw">padding-left</span>: <span class="dv">5em</span> <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb127-8" data-line-number="8">    }</a>
+<a class="sourceLine" id="cb127-9" data-line-number="9"> }</a></code></pre></div>
+</div>
+<div class="split2">
+<p><!-- TODO new screenshot --></p>
+<p><img src="images/screenshots/doc-space-toc-body.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<p>[commit]</p>
+</div>
+<div id="logo" class="section level3">
+<h3><span class="header-section-number">20.4.4</span> Logo</h3>
+</div>
+<div id="rmd-logo" class="section level3">
+<h3><span class="header-section-number">20.4.5</span> Add a logo</h3>
+<p>We’ll add a logo above our table of contents. The main way we’re going to do this is by inserting a blank box above our TOC, and then giving the blank container a background image (our logo). We can control how big our logo will be by controlling the size of the box. Here’s what it will look like (if you’re bothered by the outline around it all, don’t worry–we’ll get rid of that in the TOC section):</p>
+<center>
+<img src="images/screenshots/rmd-logo.png" style="width:50.0%" />
+</center>
+<ol style="list-style-type: decimal">
+<li><strong>Add</strong> your logo image to your project directory.</li>
+<li><p><strong>Paste</strong> the CSS style rule below. We’ll break it down in a second.</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb128-1" data-line-number="1"><span class="co">/*----------LOGO above TOC---------*/</span></a>
+<a class="sourceLine" id="cb128-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb128-3" data-line-number="3"><span class="pp">#TOC</span><span class="in">::before</span> {</a>
+<a class="sourceLine" id="cb128-4" data-line-number="4">  <span class="kw">content</span>: <span class="st">&quot;&quot;</span>;</a>
+<a class="sourceLine" id="cb128-5" data-line-number="5">  <span class="kw">display</span>: <span class="dv">block</span>;</a>
+<a class="sourceLine" id="cb128-6" data-line-number="6">  <span class="kw">height</span>: <span class="dv">200px</span>;</a>
+<a class="sourceLine" id="cb128-7" data-line-number="7">  <span class="kw">margin</span>: <span class="dv">2em</span> <span class="dv">20px</span> <span class="dv">40px</span> <span class="dv">20px</span>;</a>
+<a class="sourceLine" id="cb128-8" data-line-number="8">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;logo-black.png&quot;</span>);</a>
+<a class="sourceLine" id="cb128-9" data-line-number="9">  <span class="kw">background-size</span>: contain;</a>
+<a class="sourceLine" id="cb128-10" data-line-number="10">  <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb128-11" data-line-number="11">  <span class="kw">background-repeat</span>: <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb128-12" data-line-number="12">}</a></code></pre></div>
+<ul>
+<li>This uses the selector <code>#TOC</code> to identify our table of contents.</li>
+<li>I use the CSS trick of tacking on a <code>::before</code> to say, “hey, I want you to insert whatever is in this style rule right before our <code>#TOC</code>.” This trick is called using a “pseudo-element” in CSS.</li>
+<li>In this case, my pseudo-element is a blank box–that’s why it says <code>content: &quot;&quot;;</code>. There’s nothing in there. But–I still give my blank box some dimension with the <code>height:</code> property.</li>
+<li>The blank box is no longer blank once I use the logo as its background image.</li>
+</ul></li>
+<li><strong>Change</strong> the image url to use your own image.</li>
+<li><p><strong>Build your site</strong> and check out the results. If you need to adjust the size of your logo, you can fiddle with the <code>height:</code> property in the CSS above.</p></li>
+</ol>
+<div id="a-second-logo-option-1" class="section level4">
+<h4><span class="header-section-number">20.4.5.1</span> A second logo option</h4>
+<p>If you chose not to use a floating table of contents, then adding a logo the way we have above won’t work since there won’t be a <code>#TOC</code> that a logo can go ahead of. So, you can instead place your logo in upper righthand corner, in line with the Title and Author.</p>
+<p><!-- TODO new screenshot --></p>
+<center>
+<img src="images/screenshots/doc-logo-inline.png" style="width:50.0%" />
+</center>
+<ol style="list-style-type: decimal">
+<li><strong>Add</strong> your logo image to your project directory.</li>
+<li><strong>Open</strong> <code>style.css</code>.</li>
+<li><p><strong>Paste</strong> this CSS rule into your CSS file:</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb129-1" data-line-number="1">  <span class="pp">#header</span><span class="fu">.fluid-row</span><span class="in">::before</span> {</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2">   <span class="kw">content</span>: <span class="st">&quot;&quot;</span>;</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3">   <span class="kw">height</span>: <span class="dv">150px</span>;</a>
+<a class="sourceLine" id="cb129-4" data-line-number="4">   <span class="kw">width</span>: <span class="dv">150px</span>;</a>
+<a class="sourceLine" id="cb129-5" data-line-number="5">   <span class="kw">float</span>: <span class="dv">right</span>;</a>
+<a class="sourceLine" id="cb129-6" data-line-number="6">   <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;logo-black.png&quot;</span>);</a>
+<a class="sourceLine" id="cb129-7" data-line-number="7">   <span class="kw">background-size</span>: contain;</a>
+<a class="sourceLine" id="cb129-8" data-line-number="8">   <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb129-9" data-line-number="9">   <span class="kw">background-repeat</span>: <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb129-10" data-line-number="10"> }</a></code></pre></div></li>
+<li><strong>Edit</strong> the image url to be your own image file path.</li>
+<li><p><strong>Save</strong> your changes and <strong>knit</strong> your <code>.Rmd</code> lesson to see your logo. You can fiddle with the <code>height:</code> property to adjust the logo size.</p></li>
+</ol>
+</div>
+<div id="a-third-logo-option-1" class="section level4">
+<h4><span class="header-section-number">20.4.5.2</span> A third logo option</h4>
+<p>But wait–there’s more! Here is a <em>third</em> option for adding a logo if you want it in the upper righthand corner, above the Title and Author fields. I personally like this one the least (asethetically, but also because it’s more involved to implement), but sometimes you might need to do this if you find that your title and content keep running into the logo with option 2.</p>
+<p><!-- TODO new screenshot --></p>
+<center>
+<img src="images/screenshots/doc-logo-above.png" style="width:50.0%" />
+</center>
+<p>To do this, you will need three things:</p>
+<ol style="list-style-type: decimal">
+<li>A different CSS style rule</li>
+<li>An HTML file with one line of code</li>
+<li>To edit <code>_site.yml</code> so you can reference the HTML file</li>
+</ol>
+<div id="create-an-html-container-1" class="section level5">
+<h5><span class="header-section-number">20.4.5.2.1</span> Create an HTML container</h5>
+<p>We need something that we can put our logo into– like an empty container. This is where the HTML file comes in. This file will hold an empty tag inside of it, but we’ll still give the empty tag a name, “upper-right-logo”, so that we can fill it up with our logo later using CSS. Let’s make the HTML file:</p>
+<ol style="list-style-type: decimal">
+<li>From the IDE, you’ll <strong>create a new HTML file</strong> by going to File &gt; New File &gt; Text File.</li>
+<li><p><strong>Paste</strong> the line of code below into the HTML file.</p>
+<pre><code>&lt;div class=&quot;upper-right-logo&quot;&gt; &lt;/div&gt;
+</code></pre></li>
+<li><p><strong>Save</strong> this file as <code>logo-option.html</code>. You can choose a different name if you want.</p></li>
+</ol>
+</div>
+<div id="link-the-html-file-to-your-yaml-1" class="section level5">
+<h5><span class="header-section-number">20.4.5.2.2</span> Link the HTML file to your YAML</h5>
+<p>Now we have a containter (via our HTML file), but R Markdown needs to know where to put it with respect to our page. That’s where <code>_site.yml</code> comes in. We will add two fields to our <code>_site.yml</code>: <code>includes:</code> and <code>before_body: logo-option.html</code>. This is how we have R Markdown place the empty container in the right spot— as the first item in the body tag of our page (the name “before” body is kind of a misnomer).</p>
+<ol style="list-style-type: decimal">
+<li><strong>Open</strong> your <code>.Rmd</code> file.</li>
+<li><p><strong>Add</strong> the <code>includes:</code> and <code>before_body:</code> lines.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb131-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb131-4" data-line-number="4">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb131-5" data-line-number="5">      <span class="fu">before_body:</span><span class="at"> logo-option.html</span></a>
+<a class="sourceLine" id="cb131-6" data-line-number="6">    <span class="fu">theme:</span><span class="at"> yeti</span></a>
+<a class="sourceLine" id="cb131-7" data-line-number="7">    <span class="fu">highlight:</span><span class="at"> tango</span></a>
+<a class="sourceLine" id="cb131-8" data-line-number="8">    <span class="fu">toc:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb131-9" data-line-number="9">    <span class="fu">toc_float:</span><span class="at"> false</span></a>
+<a class="sourceLine" id="cb131-10" data-line-number="10"><span class="ot">---</span></a></code></pre></div></li>
+<li><strong>Edit</strong> the filename to be your HTML file if you chose a different file name.</li>
+<li><p><strong>Save</strong> your changes.</p></li>
+</ol>
+</div>
+<div id="fill-the-container-with-your-logo-1" class="section level5">
+<h5><span class="header-section-number">20.4.5.2.3</span> Fill the container with your logo</h5>
+<p>Finally, the CSS is where we’ll say “take the empty container we created in the HTML file, and make sure it’s yay tall and that it has this logo image as its background, etc.”</p>
+<p>Here’s how that goes down:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Add</strong> your logo image to your project directory.</li>
+<li><strong>Open</strong> <code>style.css</code>.</li>
+<li><p><strong>Paste</strong> this CSS rule into your CSS file:</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="fu">.upper-right-logo</span> {</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2">  <span class="kw">margin-top</span>: <span class="dv">20px</span>;</a>
+<a class="sourceLine" id="cb132-3" data-line-number="3">  <span class="kw">background-image</span>: <span class="fu">url</span>(<span class="st">&quot;logo-black.png&quot;</span>);</a>
+<a class="sourceLine" id="cb132-4" data-line-number="4">  <span class="kw">height</span>: <span class="dv">150px</span>;</a>
+<a class="sourceLine" id="cb132-5" data-line-number="5">  <span class="kw">background-size</span>: contain;</a>
+<a class="sourceLine" id="cb132-6" data-line-number="6">  <span class="kw">background-position</span>: <span class="dv">right</span>;</a>
+<a class="sourceLine" id="cb132-7" data-line-number="7">  <span class="kw">background-repeat</span>: <span class="dv">no-repeat</span>;</a>
+<a class="sourceLine" id="cb132-8" data-line-number="8">}</a></code></pre></div></li>
+<li><strong>Edit</strong> the image url to be your own image file path.</li>
+<li><p><strong>Save</strong> your changes and knit your <code>.Rmd</code> lesson to see your logo. You can fiddle with the <code>height:</code> property to adjust the logo size.</p></li>
+</ol>
+<p>I won’t use this logo option in the demo lesson as we move on to the next steps, but now you know how to do it if you need it.</p>
+</div>
+</div>
+</div>
+<div id="add-a-favicon" class="section level3">
+<h3><span class="header-section-number">20.4.6</span> Add a favicon</h3>
+<p>You know the little tiny icon that gets placed in the corner of your browser tabs or gets placed in the bookmark’s bar? That’s a favicon!</p>
+<center>
+<img src="images/screenshots/rmd-favicon.png" style="width:50.0%" />
+</center>
+<p>To add a favicon you need:</p>
+<ol style="list-style-type: decimal">
+<li>An HTML file with one line of code</li>
+<li>An image to use as your favicon</li>
+<li>To edit <code>_site.yml</code> so you can reference the HTML file.</li>
+</ol>
+<div id="choose-your-favicon-image" class="section level4">
+<h4><span class="header-section-number">20.4.6.1</span> Choose your favicon image</h4>
+<ol style="list-style-type: decimal">
+<li><strong>Choose an image</strong>–don’t have one? You can make one with a <a href="https://favicon.io/">favicon generator</a>. I chose the emoji graduation cap.</li>
+<li><strong>Save</strong> the image you’d like to use as (use a PNG or ICO file) and place it in your project directory (for the best results, use a square or circular image).</li>
+</ol>
+</div>
+<div id="embed-the-favicon-in-an-html-file" class="section level4">
+<h4><span class="header-section-number">20.4.6.2</span> Embed the favicon in an HTML file</h4>
+<ol style="list-style-type: decimal">
+<li>Make a new HTML file by clicking <em>File</em> &gt; <em>New File</em> &gt; <em>Text File</em>.</li>
+<li><p>Insert the following, replacing <code>favicon.ico</code> with your image filename.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">  <span class="op">&lt;</span>link rel=<span class="st">&quot;icon&quot;</span> type=<span class="st">&quot;image/png&quot;</span> href=<span class="st">&quot;favicon.ico&quot;</span><span class="op">/</span><span class="er">&gt;</span></a></code></pre></div></li>
+<li><p>Save this file as <code>header.html</code>. You can choose a different name.</p></li>
+</ol>
+</div>
+<div id="reference-the-html-file-in-_site.yml" class="section level4">
+<h4><span class="header-section-number">20.4.6.3</span> Reference the HTML file in <code>_site.yml</code></h4>
+<p>We want this HTML file to go in the <code>&lt;head&gt;</code> tag of our site. The head tag is like the Font Desk/ admin of our site–and its the place where the favicon will be taken care of.</p>
+<ol style="list-style-type: decimal">
+<li>Open <code>_site.yml</code>.</li>
+<li><p>Under the <code>html_document:</code> section, insert the <code>includes:</code> and <code>in_header</code> options like so:</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb134-2" data-line-number="2">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb134-3" data-line-number="3">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb134-4" data-line-number="4">      <span class="fu">in_header:</span><span class="at"> header.html</span></a></code></pre></div></li>
+</ol>
+<div class="tip">
+<p>If you already have a file that you’ve included with the <code>in_header</code> field, then you can open up that file, and add the favicon line of code at the top of your existing file, OR you can list both header files separately, by listing them within brackets like this: <code>[header.html, &lt;other-file.html&gt;,]</code>. The order you list them in is the order that the browser will use them (which is only really important to know so that if you need to troubleshoot, you can try swapping the order).</p>
+</div>
+<p>[commit]</p>
+</div>
+</div>
+<div id="add-a-hero-image" class="section level3">
+<h3><span class="header-section-number">20.4.7</span> Add a hero image</h3>
+<p>To add the big image at the top of page (a.k.a hero image), we need to make an HTML file containing our image and text.<br />
+Let’s add one to <em>only</em> our homepage.</p>
+<center>
+<img src="images/screenshots/rmd-hero.png" style="width:60.0%" />
+</center>
+<p>We’ll need:</p>
+<ul>
+<li>An HTML file</li>
+<li>To edit the YAML of our index.Rmd</li>
+<li>A image to use as our hero image</li>
+<li>CSS</li>
+<li>To adjust the table of contents positioning</li>
+<li>Aspirational step: to tweak for mobile</li>
+</ul>
+<p><strong>How to do it:</strong></p>
+<div id="make-an-html-file" class="section level4">
+<h4><span class="header-section-number">20.4.7.1</span> Make an HTML file</h4>
+<ol style="list-style-type: decimal">
+<li>Go to <em>File</em> &gt; <em>New File</em> &gt; <em>Text File</em>.</li>
+<li><p>Copy and paste the HTML code below into this file (see Figure <a href="rmd-fancy.html#fig:hero-decode">20.4</a> to decode this!)</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="op">&lt;</span>div class=<span class="st">&quot;hero-image&quot;</span><span class="op">&gt;</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="st">        </span><span class="er">&lt;</span>div class=<span class="st">&quot;image-text&quot;</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3"><span class="st">          </span><span class="er">&lt;</span>div class=<span class="st">&quot;top-text&quot;</span><span class="op">&gt;</span>DATA <span class="dv">101</span><span class="op">&lt;</span><span class="er">/</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb135-4" data-line-number="4"><span class="st">            </span><span class="er">&lt;</span>div class=<span class="st">&quot;bottom-text&quot;</span><span class="op">&gt;</span>Intro to Data Science<span class="op">&lt;</span><span class="er">/</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb135-5" data-line-number="5"><span class="st">        </span><span class="er">&lt;/</span>div<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb135-6" data-line-number="6"><span class="er">&lt;/</span>div<span class="op">&gt;</span></a></code></pre></div></li>
+<li>Replace “DATA 101” with the text that you’d like to see on the top line.</li>
+<li>Replace “DATA SCIENCE” with whatever text you’d like to see on the bottom line.</li>
+<li><p>Close and Save this file in your project directory as <code>hero-image.html</code>. The name of the file does not have to be <code>hero-image</code>.</p></li>
+</ol>
+<p>Here’s what each of the lines in <code>hero-image.html</code> is doing:</p>
+<div class="figure" style="text-align: center"><span id="fig:hero-decode"></span>
+<img src="images/screenshots/hero-decode.jpg" alt="Decoding the hero-image.html file"  />
+<p class="caption">
+Figure 20.4: Decoding the hero-image.html file
+</p>
+</div>
+</div>
+<div id="have-r-markdown-apply-the-html-file" class="section level4">
+<h4><span class="header-section-number">20.4.7.2</span> Have R Markdown apply the HTML file</h4>
+<ol style="list-style-type: decimal">
+<li>Open <code>index.Rmd</code>.</li>
+<li>Reference the HTML file in <code>index.Rmd</code>’s YAML with the <code>includes:</code> and <code>in_header:</code> lines.</li>
+</ol>
+<div class="sourceCode" id="cb136"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="fu">title:</span><span class="at"> My Website</span></a>
+<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb136-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb136-4" data-line-number="4">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb136-5" data-line-number="5">      <span class="fu">in_header:</span><span class="at"> hero-image.html</span></a></code></pre></div>
+<p>This will add the image to ONLY the <code>index.Rmd</code> page of your site, which is appropriate since the index will serve as the homepage. We could have instead added <code>in_header:</code> to our <code>_site.yml</code> to apply the image to EVERY site page (but consider whether this might be visually overwhelming for your site!).</p>
+<p>When you add an <code>in_header:</code> option to a single page’s YAML, it will override the more “global” <code>in_header:</code> option set in <code>_site.yml</code>. So if you still want the global <code>in_header:</code> to apply (e.g. the header.html file that we used for our favicon), then you’ll need to list both files in the single page’s YAML. Like this, for example our index.Rmd YAML now looks like this:</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="fu">title:</span><span class="at"> My Website</span></a>
+<a class="sourceLine" id="cb137-3" data-line-number="3"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb137-4" data-line-number="4">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb137-5" data-line-number="5">    <span class="fu">includes:</span></a>
+<a class="sourceLine" id="cb137-6" data-line-number="6">      <span class="fu">in_header:</span></a>
+<a class="sourceLine" id="cb137-7" data-line-number="7">      <span class="kw">-</span> header.html</a>
+<a class="sourceLine" id="cb137-8" data-line-number="8">      <span class="kw">-</span> hero-image.html</a>
+<a class="sourceLine" id="cb137-9" data-line-number="9"><span class="ot">---</span></a></code></pre></div>
+:::tip
+Including an image like this in the header of the page is kind of a hack (the
+<head>
+<p>tag is supposed to be reserved for admin/ meta stuff of the website only, not really content or images)– so in order for this to work properly if you have two HTML files listed, make sure the <code>hero-image.html</code> is listed last.
+:::</p>
+<p><br />
+</p>
+<div class="design">
+<p><strong>Ooh la la</strong>: Try out a completely blank <code>index.Rmd</code> with nothing but the YAML with a header image for a visually-striking homepage.</p>
+</div>
+</div>
+<div id="choose-your-hero-image" class="section level4">
+<h4><span class="header-section-number">20.4.7.3</span> Choose your hero image</h4>
+<ol style="list-style-type: decimal">
+<li><p>Find the hero image that you’d like to use. It should be something that will still look good even on a variety of different screen sizes. So, patterns usually work. Or landscapes. If you need some ideas, check <a href="https://unsplash.com/">here</a>. In the rstudio4edu template, I also drop in a couple hero image files you can use–including one with a transparent background (a .png, not .jpeg file) so that (in a bit) you can manipulate the background color of it in the CSS.</p></li>
+<li><p>Save this image in your project directory.</p></li>
+</ol>
+</div>
+<div id="styling-the-hero-image" class="section level4">
+<h4><span class="header-section-number">20.4.7.4</span> Styling the hero image</h4>
+<p>You could style this endlessly, but here’s the CSS we’re using. Each selector corresponds to the class names we used in <code>hero-image.html</code>:</p>
+<ol style="list-style-type: decimal">
+<li>Open style.css</li>
+<li>Paste the three style rules below into your css file.</li>
+<li>In the hero image selector, find the <code>background-image:</code> property. Replace file within the url parentheses <code>url()</code> with the path of the image that you’d like to use.</li>
+</ol>
+<div class="tip">
+<p>Find the part of the <code>background-image:</code> property that uses a linear gradient. This is a trick that will add a translucent dark overlay on your image so that your text on top will be easier to read (0 is completely transparent, 1 is completely opaque). If the hero image you chose is already dark enough, then you may not need the overlay, and you can either delete <code>linear-gradient( rgba(0,0,0,.2), rgba(0,0,0,.2) )</code> or change the last numbers to 0.</p>
+</div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb138-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="co">/* -----------HERO IMAGE AT TOP OF PAGE -----------*/</span></a>
+<a class="sourceLine" id="cb138-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb138-4" data-line-number="4"><span class="co">/* LARGE HERO IMAGE AT TOP OF PAGE*/</span></a>
+<a class="sourceLine" id="cb138-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb138-6" data-line-number="6"><span class="fu">.hero-image</span> {</a>
+<a class="sourceLine" id="cb138-7" data-line-number="7">    <span class="kw">position</span>: <span class="dv">relative</span>;</a>
+<a class="sourceLine" id="cb138-8" data-line-number="8">    <span class="kw">margin-bottom</span>: <span class="dv">2em</span>;</a>
+<a class="sourceLine" id="cb138-9" data-line-number="9">    <span class="co">/* liner gradient tints the image darker for readability*/</span></a>
+<a class="sourceLine" id="cb138-10" data-line-number="10">    <span class="kw">background-image</span>: linear-gradient( rgba(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">.2</span>), <span class="fu">rgba</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">.2</span>) ), <span class="fu">url</span>(hero-navy<span class="dv">.</span>jpg); </a>
+<a class="sourceLine" id="cb138-11" data-line-number="11">    <span class="kw">height</span>: <span class="dv">400px</span>;</a>
+<a class="sourceLine" id="cb138-12" data-line-number="12">    <span class="kw">background-size</span>: cover;</a>
+<a class="sourceLine" id="cb138-13" data-line-number="13">    <span class="kw">background-color</span>: #<span class="dv">141</span>c25f2;</a>
+<a class="sourceLine" id="cb138-14" data-line-number="14">    <span class="kw">background-position</span>: <span class="dv">center</span> <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb138-15" data-line-number="15">    <span class="kw">display</span>: flex; <span class="co">/* Change to `display: none` for no hero image */</span></a>
+<a class="sourceLine" id="cb138-16" data-line-number="16">    <span class="kw">justify-content</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb138-17" data-line-number="17">    <span class="kw">align-items</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb138-18" data-line-number="18">}</a>
+<a class="sourceLine" id="cb138-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb138-20" data-line-number="20"><span class="fu">.top-text</span> {</a>
+<a class="sourceLine" id="cb138-21" data-line-number="21">  <span class="kw">position</span>: <span class="dv">relative</span>;</a>
+<a class="sourceLine" id="cb138-22" data-line-number="22">  <span class="kw">font-size</span>: <span class="dv">34px</span>;</a>
+<a class="sourceLine" id="cb138-23" data-line-number="23">  <span class="kw">padding-bottom</span>: <span class="dv">0.5em</span></a>
+<a class="sourceLine" id="cb138-24" data-line-number="24">  text-transform: <span class="dv">uppercase</span>;</a>
+<a class="sourceLine" id="cb138-25" data-line-number="25">  <span class="kw">text-align</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb138-26" data-line-number="26">  <span class="kw">display</span>: <span class="dv">block</span>; <span class="co">/* Change to `display: none` for no top text */</span></a>
+<a class="sourceLine" id="cb138-27" data-line-number="27">  <span class="kw">color</span>: #ffffff72;</a>
+<a class="sourceLine" id="cb138-28" data-line-number="28">}</a>
+<a class="sourceLine" id="cb138-29" data-line-number="29"></a>
+<a class="sourceLine" id="cb138-30" data-line-number="30"><span class="fu">.bottom-text</span> {</a>
+<a class="sourceLine" id="cb138-31" data-line-number="31">  <span class="kw">position</span>: <span class="dv">relative</span>;</a>
+<a class="sourceLine" id="cb138-32" data-line-number="32">  <span class="kw">letter-spacing</span>: <span class="dv">0.065em</span>;</a>
+<a class="sourceLine" id="cb138-33" data-line-number="33">  <span class="kw">line-height</span>: <span class="dv">1em</span>;</a>
+<a class="sourceLine" id="cb138-34" data-line-number="34">  <span class="kw">font-size</span>: <span class="dv">68px</span>;</a>
+<a class="sourceLine" id="cb138-35" data-line-number="35">  <span class="kw">text-transform</span>: <span class="dv">uppercase</span>;</a>
+<a class="sourceLine" id="cb138-36" data-line-number="36">  <span class="kw">text-align</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb138-37" data-line-number="37">  <span class="kw">display</span>: <span class="dv">block</span>; <span class="co">/* Change to `display: none` for no bottom text */</span></a>
+<a class="sourceLine" id="cb138-38" data-line-number="38">  <span class="kw">color</span>: <span class="dv">#ffffff</span>;</a>
+<a class="sourceLine" id="cb138-39" data-line-number="39">  <span class="kw">margin-bottom</span>: <span class="dv">2.5rem</span>;</a>
+<a class="sourceLine" id="cb138-40" data-line-number="40">  <span class="kw">font-weight</span>: <span class="dv">bold</span>;</a>
+<a class="sourceLine" id="cb138-41" data-line-number="41">}</a></code></pre></div>
+<div class="design">
+<p><strong>Why use a background color?</strong> Yes, we did specify a background color <em>and</em> a background image for our .hero-image selector on purpose. Two reasons: (1) If your site ever has trouble loading your image, the background color is a nice stand-in. (2) If you use one of our template hero-images that was created as a pattern on a transparent background (<code>hero-transparent.png</code> – or any hero image that has a transparent background), then the background color you specify in your CSS will be the background color you see. Makes it easy to customize!</p>
+</div>
+<ol style="list-style-type: decimal">
+<li>Build your site and make sure that you like how your hero image looks. Notice that you can choose NOT to show a hero image, or either of the text lines by specifying <code>display: none</code> in the CSS.</li>
+</ol>
+<p>[commit]</p>
+<div class="tip">
+<p>If you don’t like how your hero image is positioned in the container, you can mess around with the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-position">background-position property</a>. Right now we use the keyword “center” to specify its x and y position–but other keywords you can use include: top, bottom, right, and left. You can also set the background position to be a length or a percentage of the container width.</p>
+</div>
+<div class="design">
+<p>We haven’t changed the font for the text that overlays the hero image in this example, but you could always apply a Google Font that you’ve already <a href="#rmd-import-font">imported</a> by adding the CSS property <code>font-family:</code> to the CSS style rules for the <code>.top-text</code> and <code>.bottom-text</code> selectors.</p>
+</div>
+</div>
+<div id="adjust-toc-positioning" class="section level4">
+<h4><span class="header-section-number">20.4.7.5</span> Adjust TOC positioning</h4>
+<p>Adding a hero image in this way makes our floating table of contents do strange things. We’ll need to fix this with the following CSS:</p>
+<pre><code>/*-----------------TOC----------------*/
+
+/* Makes TOC sticky (needed if you used a hero image) */
+
+.row-fluid{
+  display: flex; /* Necessary for sticky TOC*/
+
+}
+
+.tocify {
+  position: -webkit-sticky;
+  position: sticky; 
+  top: 120px; /*Controls where TOC stops when sticky */
+  width: 100% !important;
+}
+</code></pre>
+<p>[commit]</p>
+</div>
+<div id="tweak-for-mobile" class="section level4">
+<h4><span class="header-section-number">20.4.7.6</span> Tweak for mobile</h4>
+<p>But on mobile and other small screens, we don’t want the floating TOC to be there. And we’d probably like to make the overlaid text to either not be displayed (display: none) or just make the text smaller (which is what I’ll demo with the CSS below). Let’s try it. We’ll need to use a media query again:</p>
+<p>The style rules below will only apply for screens that are 767px or smaller:</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb140-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="co">/* NO TOC on mobile */</span></a>
+<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="im">@media</span> <span class="dv">screen</span> and (<span class="kw">max-width</span>: <span class="dv">767px</span>){</a>
+<a class="sourceLine" id="cb140-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb140-5" data-line-number="5">  <span class="fu">.col-xs-12.col-sm-4.col-md-3</span> {</a>
+<a class="sourceLine" id="cb140-6" data-line-number="6">    <span class="kw">display</span>: <span class="dv">none</span>;</a>
+<a class="sourceLine" id="cb140-7" data-line-number="7">  }</a>
+<a class="sourceLine" id="cb140-8" data-line-number="8">  </a>
+<a class="sourceLine" id="cb140-9" data-line-number="9">  <span class="fu">.top-text</span> {</a>
+<a class="sourceLine" id="cb140-10" data-line-number="10">    <span class="kw">font-size</span>: <span class="dv">25px</span>;</a>
+<a class="sourceLine" id="cb140-11" data-line-number="11">  }</a>
+<a class="sourceLine" id="cb140-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb140-13" data-line-number="13">  <span class="fu">.bottom-text</span> {</a>
+<a class="sourceLine" id="cb140-14" data-line-number="14">    <span class="kw">font-size</span>: <span class="dv">40px</span>;</a>
+<a class="sourceLine" id="cb140-15" data-line-number="15">  }</a>
+<a class="sourceLine" id="cb140-16" data-line-number="16">  </a>
+<a class="sourceLine" id="cb140-17" data-line-number="17">  </a>
+<a class="sourceLine" id="cb140-18" data-line-number="18">}</a></code></pre></div>
+</div>
+</div>
+</div>
+<div id="table-of-contents" class="section level2">
+<h2><span class="header-section-number">20.5</span> Table of contents</h2>
+<p>We’ve already started changing TOC styles after having added a hero image. Now we focus on the TOC aesthetics.</p>
+<p>First we will get rid of the TOC border</p>
+<ol style="list-style-type: decimal">
+<li>Find the .tocify selector that we added earlier when we were working on the hero image.</li>
+<li><p>Add <code>border: none;</code> as a new line in this style rule.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb141-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb141-2" data-line-number="2"><span class="fu">.tocify</span> {</a>
+<a class="sourceLine" id="cb141-3" data-line-number="3">  <span class="kw">position</span>: -webkit-sticky;</a>
+<a class="sourceLine" id="cb141-4" data-line-number="4">  <span class="kw">position</span>: sticky; </a>
+<a class="sourceLine" id="cb141-5" data-line-number="5">  <span class="kw">top</span>: <span class="dv">120px</span>; <span class="co">/*Controls where TOC stops when sticky */</span></a>
+<a class="sourceLine" id="cb141-6" data-line-number="6">  <span class="kw">width</span>: <span class="dv">100%</span> <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb141-7" data-line-number="7">  <span class="kw">border</span>: <span class="dv">none</span>;</a>
+<a class="sourceLine" id="cb141-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb141-9" data-line-number="9"></a></code></pre></div></li>
+</ol>
+<p><!-- TODO new screenshot --></p>
+<pre><code>&lt;img src=&quot;images/screenshots/doc-toc-no-border.png&quot; width=&quot;50%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;</code></pre>
+<p>Next we’ll style the links that make up the TOC.</p>
+<ol style="list-style-type: decimal">
+<li><p>Let’s change the color of the links slightly and also increase the font size</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb143-1" data-line-number="1">   <span class="co">/* TOC links */</span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb143-3" data-line-number="3"><span class="fu">.list-group-item</span> {</a>
+<a class="sourceLine" id="cb143-4" data-line-number="4">    <span class="kw">color</span>: <span class="dv">#7b8a8b</span>;</a>
+<a class="sourceLine" id="cb143-5" data-line-number="5">    <span class="kw">font-size</span>: <span class="dv">16px</span>;</a>
+<a class="sourceLine" id="cb143-6" data-line-number="6">}</a></code></pre></div></li>
+<li><p>Change the color and background color of active links, the link that show which section you are actively viewing:</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="fu">.list-group-item.active</span> {</a>
+<a class="sourceLine" id="cb144-2" data-line-number="2">    <span class="kw">color</span>: <span class="dv">#2c3e50</span>;</a>
+<a class="sourceLine" id="cb144-3" data-line-number="3">    <span class="kw">background-color</span>: <span class="dv">white</span>;</a>
+<a class="sourceLine" id="cb144-4" data-line-number="4">    <span class="kw">border</span>: <span class="dv">none</span>;</a>
+<a class="sourceLine" id="cb144-5" data-line-number="5">}</a></code></pre></div></li>
+<li><p>Finally, change what happens when you hover over the regular and active links:</p>
+<div class="sourceCode" id="cb145"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="fu">.list-group-item</span><span class="in">:hover</span>, </a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="fu">.list-group-item.active</span><span class="in">:hover</span> {</a>
+<a class="sourceLine" id="cb145-3" data-line-number="3">    <span class="kw">color</span>: <span class="dv">#131b23</span>;</a>
+<a class="sourceLine" id="cb145-4" data-line-number="4">    <span class="kw">background-color</span>: <span class="dv">white</span>;</a>
+<a class="sourceLine" id="cb145-5" data-line-number="5">}</a></code></pre></div></li>
+</ol>
+<!-- TODO new screenshots -->
+<pre><code>&lt;img src=&quot;images/screenshots/doc-toc-links.png&quot; width=&quot;50%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;</code></pre>
+<p>[commit]</p>
+</div>
+<div id="navigation-bar-styling" class="section level2">
+<h2><span class="header-section-number">20.6</span> Navigation bar styling</h2>
+<p>Finally– we get to tweak the navbar. The navbar, like the TOC, is important because we’ll see it on every page.</p>
+<p>It’s a little annoying to have style the navbar because we have to change the color of the navbar itself, and also the dropdown menu, <em>and</em> also the link buttons for both of these when you hover over them.</p>
+<p>We’ll change the colors to be a dark blue and grey variety with this CSS, including a bit of transparency on the navbar itself (<code>#141c25f2</code> – is a hexcode color with two additional characters that add the transparency).</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb147-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb147-2" data-line-number="2"><span class="co">/*----------------NAVBAR ---------------*/</span></a>
+<a class="sourceLine" id="cb147-3" data-line-number="3"><span class="fu">.navbar-default</span> {</a>
+<a class="sourceLine" id="cb147-4" data-line-number="4">    <span class="kw">background-color</span>: #<span class="dv">141</span>c25f2;</a>
+<a class="sourceLine" id="cb147-5" data-line-number="5">}</a>
+<a class="sourceLine" id="cb147-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb147-7" data-line-number="7"><span class="fu">.navbar-default</span> <span class="fu">.navbar-nav</span>&gt;<span class="fu">.open</span>&gt;a, </a>
+<a class="sourceLine" id="cb147-8" data-line-number="8"><span class="fu">.navbar-default</span> <span class="fu">.navbar-nav</span>&gt;<span class="fu">.active</span>&gt;a, </a>
+<a class="sourceLine" id="cb147-9" data-line-number="9">a<span class="fu">.dropdown-toggle</span><span class="in">:hover</span> {</a>
+<a class="sourceLine" id="cb147-10" data-line-number="10">  <span class="kw">background-color</span>: <span class="dv">#141c25</span> <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb147-11" data-line-number="11">}</a>
+<a class="sourceLine" id="cb147-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb147-13" data-line-number="13"><span class="co">/* Dropdown menu color */</span></a>
+<a class="sourceLine" id="cb147-14" data-line-number="14"><span class="fu">.navbar-default</span> <span class="fu">.dropdown-menu</span> {</a>
+<a class="sourceLine" id="cb147-15" data-line-number="15">  <span class="kw">background-color</span>: <span class="dv">#141c25</span>;</a>
+<a class="sourceLine" id="cb147-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb147-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb147-18" data-line-number="18"><span class="co">/* Dropdown menu hover color */</span></a>
+<a class="sourceLine" id="cb147-19" data-line-number="19">  <span class="fu">.navbar-default</span> <span class="fu">.dropdown-menu</span>&gt;li&gt;a<span class="in">:hover</span> {</a>
+<a class="sourceLine" id="cb147-20" data-line-number="20">    <span class="kw">background-color</span>: #<span class="dv">202831</span>f2;</a>
+<a class="sourceLine" id="cb147-21" data-line-number="21">  }</a>
+<a class="sourceLine" id="cb147-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb147-23" data-line-number="23"><span class="co">/* Navbar Links when hovered*/</span></a>
+<a class="sourceLine" id="cb147-24" data-line-number="24"><span class="fu">.navbar-default</span> <span class="fu">.dropdown-menu</span>&gt;<span class="fu">.active</span>&gt;a</a>
+<a class="sourceLine" id="cb147-25" data-line-number="25"><span class="fu">.navbar-default</span> <span class="fu">.navbar-nav</span>&gt;<span class="fu">.active</span>&gt;a<span class="in">:hover</span>, </a>
+<a class="sourceLine" id="cb147-26" data-line-number="26"><span class="fu">.navbar-default</span> <span class="fu">.navbar-nav</span><span class="in">:hover</span>, </a>
+<a class="sourceLine" id="cb147-27" data-line-number="27"><span class="fu">.navbar-default</span> <span class="fu">.navbar-nav</span>&gt;li&gt;a<span class="in">:hover</span>, </a>
+<a class="sourceLine" id="cb147-28" data-line-number="28">a<span class="fu">.navbar-brand</span><span class="in">:hover</span> {</a>
+<a class="sourceLine" id="cb147-29" data-line-number="29">  <span class="kw">color</span>: #ffffffab <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb147-30" data-line-number="30">  <span class="kw">background-color</span>: <span class="dv">#141c25</span>;</a>
+<a class="sourceLine" id="cb147-31" data-line-number="31">}</a></code></pre></div>
+<p>[commit]</p>
+</div>
+<div id="rmd-q" class="section level2">
+<h2><span class="header-section-number">20.7</span> Questions counter</h2>
+<p>Finally, if you plan on using questions for learners in your site (for example, for labs or homework sets), you might want to make it easier to call out these questions by styling them. Like this:</p>
+<div class="split">
+<div class="split1>
+<p><strong>Before</strong>
+<img src="images/screenshots/doc-exercises-before.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div class="split2>
+<p><strong>After</strong>
+<img src="images/screenshots/doc-exercises-after.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div class="hat">
+<p>This idea and CSS was inspired by Maria Tackett’s STA210 course: <a href="https://github.com/STA210-Sp19/website" class="uri">https://github.com/STA210-Sp19/website</a></p>
+</div>
+<p>The CSS you need is this–it’s a lot, but for most use-cases the only style rule you really need to worry about editing is the second-to-last one, with the <code>content:</code> and <code>color:</code> properties:</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb148-1" data-line-number="1">  <span class="co">/* -----------Question counter ---------*/</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb148-3" data-line-number="3">  body {</a>
+<a class="sourceLine" id="cb148-4" data-line-number="4">    <span class="kw">counter-reset</span>: li;</a>
+<a class="sourceLine" id="cb148-5" data-line-number="5">  }</a>
+<a class="sourceLine" id="cb148-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb148-7" data-line-number="7">  <span class="fu">.question</span> ol {</a>
+<a class="sourceLine" id="cb148-8" data-line-number="8">    <span class="co">/* Remove the default left padding */</span></a>
+<a class="sourceLine" id="cb148-9" data-line-number="9">    <span class="kw">padding-left</span>: <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb148-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb148-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb148-12" data-line-number="12">  <span class="fu">.question</span> ol&gt;li {</a>
+<a class="sourceLine" id="cb148-13" data-line-number="13">    <span class="co">/* Create a positioning context */</span></a>
+<a class="sourceLine" id="cb148-14" data-line-number="14">    <span class="kw">position</span>: <span class="dv">relative</span>;</a>
+<a class="sourceLine" id="cb148-15" data-line-number="15">    <span class="co">/* Disable the normal item numbering */</span></a>
+<a class="sourceLine" id="cb148-16" data-line-number="16">    <span class="kw">list-style</span>: <span class="dv">none</span>;</a>
+<a class="sourceLine" id="cb148-17" data-line-number="17">    <span class="kw">width</span>: <span class="dv">90%</span>;</a>
+<a class="sourceLine" id="cb148-18" data-line-number="18">    <span class="kw">padding-top</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb148-19" data-line-number="19">    <span class="kw">padding-bottom</span>: <span class="dv">10px</span>;</a>
+<a class="sourceLine" id="cb148-20" data-line-number="20">    <span class="kw">padding-right</span>: <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb148-21" data-line-number="21">    <span class="kw">padding-left</span>: <span class="dv">120px</span>;</a>
+<a class="sourceLine" id="cb148-22" data-line-number="22">  }</a>
+<a class="sourceLine" id="cb148-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb148-24" data-line-number="24">  <span class="fu">.question</span> ol&gt;li<span class="in">:before</span>,</a>
+<a class="sourceLine" id="cb148-25" data-line-number="25">  <span class="fu">.question</span> ol&gt;p&gt;li<span class="in">:before</span>{</a>
+<a class="sourceLine" id="cb148-26" data-line-number="26">    <span class="co">/* Use the counter as content */</span></a>
+<a class="sourceLine" id="cb148-27" data-line-number="27">    <span class="kw">content</span>: <span class="st">&quot;Question &quot;</span> <span class="fu">counter</span>(li) <span class="st">&quot;: &quot;</span>;</a>
+<a class="sourceLine" id="cb148-28" data-line-number="28">    <span class="co">/* Increment the counter by 1 */</span></a>
+<a class="sourceLine" id="cb148-29" data-line-number="29">    <span class="kw">counter-increment</span>: li;</a>
+<a class="sourceLine" id="cb148-30" data-line-number="30">    <span class="kw">position</span>: <span class="dv">absolute</span>;</a>
+<a class="sourceLine" id="cb148-31" data-line-number="31">    <span class="kw">color</span>: <span class="dv">#3d85bb</span>;</a>
+<a class="sourceLine" id="cb148-32" data-line-number="32">    <span class="kw">left</span>: <span class="dv">-0.5px</span>;</a>
+<a class="sourceLine" id="cb148-33" data-line-number="33">    <span class="kw">font-weight</span>: <span class="dv">bold</span>;</a>
+<a class="sourceLine" id="cb148-34" data-line-number="34">  }</a>
+<a class="sourceLine" id="cb148-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb148-36" data-line-number="36">  <span class="fu">.question</span> ol ol {</a>
+<a class="sourceLine" id="cb148-37" data-line-number="37">    <span class="kw">counter-reset</span>: subitem;</a>
+<a class="sourceLine" id="cb148-38" data-line-number="38">  }</a></code></pre></div>
+<ul>
+<li>If you want to change the styling to say something other than “Question”, then you modify <code>content: &quot;Question &quot;</code>.</li>
+<li>You can change the color of the called out question, too, with the <code>color: #5ebccf;</code></li>
+</ul>
+<p><strong>How to use the question counter:</strong></p>
+<p>In your .Rmd, you have to enclose your numbered list items that you want to be styled questions with special div tags:</p>
+<pre class=".rmd"><code>&lt;div class=&quot;question&quot;&gt;` 
+
+1. My first question 
+1. My second question
+
+&lt;/div&gt;`</code></pre>
+<p>##Footer</p>
+<p>Let’s also add a footer. You need to:</p>
+<ol style="list-style-type: decimal">
+<li>Make a new HTML file and insert your footer content
+1.5) If you’re going to include images in your footer content (like logos or icons), then add those to your project directory.</li>
+<li>Add it to your _site.yml with the includes: after_body:</li>
+<li>Style the footer elements using CSS</li>
+</ol>
+<p>Here’s how we do this:</p>
+<ol style="list-style-type: decimal">
+<li>Create your HTML file.</li>
+<li>Save it in your project directory. Name it <code>footer.html</code>. You can choose a different name.</li>
+<li>Paste something like this in the file:</li>
+</ol>
+<div class="sourceCode" id="cb150"><pre class="sourceCode footer.html"><code class="sourceCode djangotemplate"><a class="sourceLine" id="cb150-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;</span> </a>
+<a class="sourceLine" id="cb150-3" data-line-number="3">  </a>
+<a class="sourceLine" id="cb150-4" data-line-number="4">  <span class="kw">&lt;hr&gt;</span> </a>
+<a class="sourceLine" id="cb150-5" data-line-number="5">  </a>
+<a class="sourceLine" id="cb150-6" data-line-number="6">  <span class="kw">&lt;p&gt;</span> <span class="co">&lt;!--your custom footer text can go here--&gt;</span> <span class="kw">&lt;/p&gt;</span></a>
+<a class="sourceLine" id="cb150-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb150-8" data-line-number="8">  <span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;rstudio4edu-footer&quot;</span><span class="kw">&gt;</span>This site was created with an <span class="kw">&lt;a</span><span class="ot"> class=</span><span class="st">&quot;rstudio4edu-link&quot;</span><span class="ot"> href=</span><span class="st">&quot;https://rstudio4edu.github.io/rstudio4edu-book/&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;img</span><span class="ot"> class=</span><span class="st">&quot;rstudio4edu-footer-logo&quot;</span><span class="ot"> src=</span><span class="st">&quot;logo-mark-rstudio4edu.png&quot;</span><span class="kw">&gt;</span><span class="dv">&amp;nbsp;</span>rstudio4edu<span class="kw">&lt;/a&gt;</span> template.<span class="kw">&lt;/p&gt;</span></a>
+<a class="sourceLine" id="cb150-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb150-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb150-11" data-line-number="11"><span class="kw">&lt;/div&gt;</span></a></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>I suggest you use the footer to include mention of licensing [say more about this]. It’s a good place to add another
+<p>
+tag with this content, for example:</li>
+</ol>
+<pre><code>
+&lt;div class=&quot;footer&quot;&gt; 
+  
+  &lt;hr&gt; 
+  
+  &lt;p&gt; This content is licensed under the CC-BY license. &lt;/p&gt;
+
+  &lt;p class=&quot;rstudio4edu-footer&quot;&gt;This site was created with an &lt;a class=&quot;rstudio4edu-link&quot; href=&quot;https://rstudio4edu.github.io/rstudio4edu-book/&quot;&gt; &lt;img class=&quot;rstudio4edu-footer-logo&quot; src=&quot;logo-mark-rstudio4edu.png&quot;&gt;&amp;nbsp;rstudio4edu&lt;/a&gt; template.&lt;/p&gt;
+
+
+&lt;/div&gt;
+
+</code></pre>
+<p>What does this do?</p>
+<ul>
+<li>The
+<hr>
+is going to be a little section divider line.</li>
+<li>the div tag with class “footer” is going to be the container that we’ll use to style most of our footer contents later in the CSS.</li>
+<li>Within the div tag, you can put your chunks of footer text inside
+<p>
+tags (for “paragraph”).</li>
+<li>In the example above, we’ve added the rstudio4edu icon and made it linked, so that’s what the <a> tags and <img> tags are for.</li>
+</ul>
+<p>Here’s the CSS we’ll use to style each of the part of our footer:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode style.css"><code class="sourceCode css"><a class="sourceLine" id="cb152-1" data-line-number="1"></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="co">/*------------FOOTER----------*/</span></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="co">/* Divider line above footer */</span></a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="fu">.footer</span> hr{</a>
+<a class="sourceLine" id="cb152-6" data-line-number="6">  <span class="kw">width</span>: <span class="dv">100%</span>;</a>
+<a class="sourceLine" id="cb152-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb152-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb152-9" data-line-number="9"><span class="fu">.footer</span> {</a>
+<a class="sourceLine" id="cb152-10" data-line-number="10">  <span class="kw">font-size</span>: <span class="dv">16px</span>;</a>
+<a class="sourceLine" id="cb152-11" data-line-number="11">  <span class="kw">color</span>: <span class="dv">#808080</span>;</a>
+<a class="sourceLine" id="cb152-12" data-line-number="12">  <span class="kw">text-align</span>: <span class="dv">center</span>;</a>
+<a class="sourceLine" id="cb152-13" data-line-number="13">  <span class="kw">width</span>: <span class="dv">90%</span>;</a>
+<a class="sourceLine" id="cb152-14" data-line-number="14">  <span class="kw">margin</span>: <span class="dv">3rem</span> <span class="dv">auto</span>;</a>
+<a class="sourceLine" id="cb152-15" data-line-number="15">  <span class="kw">font-weight</span>: <span class="dv">300</span>;</a>
+<a class="sourceLine" id="cb152-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb152-17" data-line-number="17"></a>
+<a class="sourceLine" id="cb152-18" data-line-number="18"><span class="fu">.footer.logo</span> {</a>
+<a class="sourceLine" id="cb152-19" data-line-number="19">  <span class="kw">width</span>: <span class="dv">25px</span>;</a>
+<a class="sourceLine" id="cb152-20" data-line-number="20">  <span class="kw">margin</span>: <span class="dv">0px</span> <span class="at">!important</span>;</a>
+<a class="sourceLine" id="cb152-21" data-line-number="21">}</a>
+<a class="sourceLine" id="cb152-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb152-23" data-line-number="23"><span class="fu">.rstudio4edu-footer</span> {</a>
+<a class="sourceLine" id="cb152-24" data-line-number="24">  <span class="kw">font-size</span>: <span class="dv">12px</span>;</a>
+<a class="sourceLine" id="cb152-25" data-line-number="25">  <span class="kw">text-transform</span>: <span class="dv">uppercase</span>;</a>
+<a class="sourceLine" id="cb152-26" data-line-number="26">}</a>
+<a class="sourceLine" id="cb152-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb152-28" data-line-number="28"><span class="fu">.tocify-extend-page</span> {</a>
+<a class="sourceLine" id="cb152-29" data-line-number="29">  <span class="kw">height</span>: <span class="dv">0px</span> <span class="at">!important</span>; <span class="co">/* Gets rid of extra space after footer*/</span></a>
+<a class="sourceLine" id="cb152-30" data-line-number="30">}</a>
+<a class="sourceLine" id="cb152-31" data-line-number="31"></a></code></pre></div>
+</div>
+<div id="add-multiple-css-files" class="section level2">
+<h2><span class="header-section-number">20.8</span> Add multiple CSS files</h2>
+<p>Note that you can have several CSS files, if for example you have one for your organization and another custom file. I’m not going to do that, but just want to let you know that this is an option.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb153-3" data-line-number="3">    <span class="fu">css:</span></a>
+<a class="sourceLine" id="cb153-4" data-line-number="4">    <span class="kw">-</span> org.css</a>
+<a class="sourceLine" id="cb153-5" data-line-number="5">    <span class="kw">-</span> custom.css</a></code></pre></div>
+</div>
+<div id="recap-2" class="section level2">
+<h2><span class="header-section-number">20.9</span> Recap</h2>
+<p>So here are all the ways that we made our site fancy:</p>
+<ul>
+<li>Added Google Fonts</li>
+<li>Customized our links</li>
+<li>Added white space around headers and site sections</li>
+<li>Added a logo</li>
+<li>Added a favicon</li>
+<li>Added a hero image with overlaying text</li>
+<li>Styled the Table of Contents links</li>
+<li>Customized the navbar</li>
+<li>Created specially-styled questions</li>
+<li>Created a footer</li>
+</ul>
+
+</div>
+</div>
+
+
+
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC-BY-NC </a>: You can download them by <a href="shared-illos.zip">clicking here</a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/2.0/"> CC-BY </a> unless noted otherwise.
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rmd-dress.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="intro-distill.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio4edu/rstudio4edu-book/edit/master/cookbook-rmd_fancy.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["https://github.com/rstudio4edu/rstudio4edu-book/raw/master/cookbook-rmd_fancy.Rmd"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Create a data package | rstudio4edu</title>
+  <meta name="description" content="A work-in-progress" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 Create a data package | rstudio4edu" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rstudio4edu.github.io/rstudio4edu-book/" />
+  <meta property="og:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+  <meta property="og:description" content="A work-in-progress" />
+  <meta name="github-repo" content="Chapter 12 Create a data package | rstudio4edu/rstudio4edu-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Create a data package | rstudio4edu" />
+  
+  <meta name="twitter:description" content="A work-in-progress" />
+  <meta name="twitter:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+
+<meta name="author" content="Desirée De Leon" />
+<meta name="author" content="Alison Hill" />
+
+
+<meta name="date" content="2019-09-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="intro-dry.html"/>
+<link rel="next" href="rmd-templates.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/jszip-1.10.16/jszip.min.js"></script>
+<script src="libs/pdfmake-1.10.16/pdfmake.min.js"></script>
+<script src="libs/pdfmake-1.10.16/vfs_fonts.js"></script>
+<link href="libs/dt-ext-buttons-1.10.16/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.16/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.print.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/logo/logo-rstudio4edu.png"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li><a href="index.html#why-rstudio4edu">Why <code>rstudio4edu</code>?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i>Philosophy</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-you"><i class="fa fa-check"></i>Who are you?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-is-in-this-handbook"><i class="fa fa-check"></i>What is in this handbook?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-did-we-leave-out"><i class="fa fa-check"></i>What did we leave out?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-we"><i class="fa fa-check"></i>Who are we?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing"><i class="fa fa-check"></i>Contributing</a></li>
+</ul></li>
+<li class="part"><span><b>Four basic ingredients</b></span></li>
+<li class="chapter" data-level="1" data-path="edu-stack.html"><a href="edu-stack.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
+<li class="chapter" data-level="1.1" data-path="edu-stack.html"><a href="edu-stack.html#capital-r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-ide"><i class="fa fa-check"></i><b>1.2.1</b> The RStudio IDE</a></li>
+<li class="chapter" data-level="1.2.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-proj"><i class="fa fa-check"></i><b>1.2.2</b> RStudio Projects</a></li>
+<li class="chapter" data-level="1.2.3" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.2.3</b> RStudio.cloud</a></li>
+<li class="chapter" data-level="1.2.4" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-pro"><i class="fa fa-check"></i><b>1.2.4</b> Pro Products</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="edu-stack.html"><a href="edu-stack.html#github"><i class="fa fa-check"></i><b>1.3</b> GitHub</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-you"><i class="fa fa-check"></i><b>1.3.1</b> GitHub for you</a></li>
+<li class="chapter" data-level="1.3.2" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-them"><i class="fa fa-check"></i><b>1.3.2</b> GitHub for them</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="edu-stack.html"><a href="edu-stack.html#communication-platform"><i class="fa fa-check"></i><b>1.4</b> Communication platform</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#data-int"><i class="fa fa-check"></i><b>2.1</b> Data from R packages</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#data-github"><i class="fa fa-check"></i><b>2.2</b> Data stored on GitHub</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#data-ext"><i class="fa fa-check"></i><b>2.3</b> Data from other sources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lessons.html"><a href="lessons.html"><i class="fa fa-check"></i><b>3</b> Lessons</a><ul>
+<li class="chapter" data-level="3.1" data-path="lessons.html"><a href="lessons.html#lit-history"><i class="fa fa-check"></i><b>3.1</b> A very brief history</a></li>
+<li class="chapter" data-level="3.2" data-path="lessons.html"><a href="lessons.html#pep-talk"><i class="fa fa-check"></i><b>3.2</b> A very brief pep-talk</a></li>
+<li class="chapter" data-level="3.3" data-path="lessons.html"><a href="lessons.html#lit-make"><i class="fa fa-check"></i><b>3.3</b> Literate lesson-making</a></li>
+<li class="chapter" data-level="3.4" data-path="lessons.html"><a href="lessons.html#make-it-work"><i class="fa fa-check"></i><b>3.4</b> Make it work</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="lessons.html"><a href="lessons.html#make-it-work-for-you"><i class="fa fa-check"></i><b>3.4.1</b> Make it work for you</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lessons.html"><a href="lessons.html#make-it-work-for-them"><i class="fa fa-check"></i><b>3.4.2</b> Make it work for them</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lessons.html"><a href="lessons.html#lit-deliver"><i class="fa fa-check"></i><b>3.5</b> Literate lesson-delivery</a></li>
+<li class="chapter" data-level="3.6" data-path="lessons.html"><a href="lessons.html#lit-share"><i class="fa fa-check"></i><b>3.6</b> Literate lesson-sharing</a></li>
+<li class="chapter" data-level="3.7" data-path="lessons.html"><a href="lessons.html#sample-rmds"><i class="fa fa-check"></i><b>3.7</b> Sample Rmds</a></li>
+<li class="chapter" data-level="3.8" data-path="lessons.html"><a href="lessons.html#sharing"><i class="fa fa-check"></i><b>3.8</b> Sharing</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="lessons.html"><a href="lessons.html#share-source-code"><i class="fa fa-check"></i><b>3.8.1</b> Share source code</a></li>
+<li class="chapter" data-level="3.8.2" data-path="lessons.html"><a href="lessons.html#share-readable-output"><i class="fa fa-check"></i><b>3.8.2</b> Share readable output</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="lessons.html"><a href="lessons.html#lesson-delivery-sharing"><i class="fa fa-check"></i><b>3.9</b> Lesson delivery &amp; sharing</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="lessons.html"><a href="lessons.html#live-coding"><i class="fa fa-check"></i><b>3.9.1</b> Live coding</a></li>
+<li class="chapter" data-level="3.9.2" data-path="lessons.html"><a href="lessons.html#screencast"><i class="fa fa-check"></i><b>3.9.2</b> Screencast</a></li>
+<li class="chapter" data-level="3.9.3" data-path="lessons.html"><a href="lessons.html#online-tutorials"><i class="fa fa-check"></i><b>3.9.3</b> Online tutorials</a></li>
+<li class="chapter" data-level="3.9.4" data-path="lessons.html"><a href="lessons.html#remote-workshops-webinars"><i class="fa fa-check"></i><b>3.9.4</b> Remote workshops &amp; webinars</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="organization.html"><a href="organization.html"><i class="fa fa-check"></i><b>4</b> Organization</a><ul>
+<li class="chapter" data-level="" data-path="organization.html"><a href="organization.html#intro-org"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="4.1" data-path="organization.html"><a href="organization.html#for-courses"><i class="fa fa-check"></i><b>4.1</b> For Courses</a></li>
+<li class="chapter" data-level="4.2" data-path="organization.html"><a href="organization.html#for-workshops"><i class="fa fa-check"></i><b>4.2</b> For Workshops</a></li>
+<li class="chapter" data-level="4.3" data-path="organization.html"><a href="organization.html#for-online-tutorials"><i class="fa fa-check"></i><b>4.3</b> For Online Tutorials</a></li>
+<li class="chapter" data-level="4.4" data-path="organization.html"><a href="organization.html#types-of-r-markdown-collections"><i class="fa fa-check"></i><b>4.4</b> Types of R Markdown collections</a></li>
+<li class="chapter" data-level="4.5" data-path="organization.html"><a href="organization.html#choose-your-collections-wisely"><i class="fa fa-check"></i><b>4.5</b> Choose your collections wisely</a></li>
+<li class="chapter" data-level="4.6" data-path="organization.html"><a href="organization.html#meta"><i class="fa fa-check"></i><b>4.6</b> Meta</a></li>
+<li class="chapter" data-level="4.7" data-path="organization.html"><a href="organization.html#showtime"><i class="fa fa-check"></i><b>4.7</b> Showtime</a></li>
+</ul></li>
+<li class="part"><span><b>Education cookbooks</b></span></li>
+<li class="chapter" data-level="" data-path="how-to-use-the-cookbooks.html"><a href="how-to-use-the-cookbooks.html"><i class="fa fa-check"></i>How to use the cookbooks</a></li>
+<li class="part"><span><b>I Cookbook: R Markdown Lessons</b></span></li>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html#what-are-we-making"><i class="fa fa-check"></i>What are we making?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="make-doc.html"><a href="make-doc.html"><i class="fa fa-check"></i><b>5</b> Make a document</a><ul>
+<li class="chapter" data-level="5.1" data-path="make-doc.html"><a href="make-doc.html#doc-setup"><i class="fa fa-check"></i><b>5.1</b> Getting set up</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="make-doc.html"><a href="make-doc.html#update-packages"><i class="fa fa-check"></i><b>5.1.1</b> Update packages</a></li>
+<li class="chapter" data-level="5.1.2" data-path="make-doc.html"><a href="make-doc.html#doc-proj-first"><i class="fa fa-check"></i><b>5.1.2</b> Make a project</a></li>
+<li class="chapter" data-level="5.1.3" data-path="make-doc.html"><a href="make-doc.html#markdown"><i class="fa fa-check"></i><b>5.1.3</b> Get to know Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="make-doc.html"><a href="make-doc.html#doc-template"><i class="fa fa-check"></i><b>5.2</b> Make a document</a></li>
+<li class="chapter" data-level="5.3" data-path="make-doc.html"><a href="make-doc.html#doc-orient"><i class="fa fa-check"></i><b>5.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="5.4" data-path="make-doc.html"><a href="make-doc.html#doc-push"><i class="fa fa-check"></i><b>5.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="5.5" data-path="make-doc.html"><a href="make-doc.html#doc-knit"><i class="fa fa-check"></i><b>5.5</b> Knit to HTML</a></li>
+<li class="chapter" data-level="5.6" data-path="make-doc.html"><a href="make-doc.html#doc-push2"><i class="fa fa-check"></i><b>5.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="5.7" data-path="make-doc.html"><a href="make-doc.html#doc-alive"><i class="fa fa-check"></i><b>5.7</b> Make a living, breathing document!</a></li>
+<li class="chapter" data-level="5.8" data-path="make-doc.html"><a href="make-doc.html#uplevel-your-workflow"><i class="fa fa-check"></i><b>5.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="doc-yours.html"><a href="doc-yours.html"><i class="fa fa-check"></i><b>6</b> Make it yours</a><ul>
+<li class="chapter" data-level="6.1" data-path="doc-yours.html"><a href="doc-yours.html#doc-code"><i class="fa fa-check"></i><b>6.1</b> Add code</a></li>
+<li class="chapter" data-level="6.2" data-path="doc-yours.html"><a href="doc-yours.html#doc-md"><i class="fa fa-check"></i><b>6.2</b> Embrace Markdown</a></li>
+<li class="chapter" data-level="6.3" data-path="doc-yours.html"><a href="doc-yours.html#doc-headers"><i class="fa fa-check"></i><b>6.3</b> Add structure with headers</a></li>
+<li class="chapter" data-level="6.4" data-path="doc-yours.html"><a href="doc-yours.html#doc-narrative"><i class="fa fa-check"></i><b>6.4</b> Add narrative</a></li>
+<li class="chapter" data-level="6.5" data-path="doc-yours.html"><a href="doc-yours.html#doc-breathe"><i class="fa fa-check"></i><b>6.5</b> Add space</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="doc-care.html"><a href="doc-care.html"><i class="fa fa-check"></i><b>7</b> Caring for your document</a><ul>
+<li class="chapter" data-level="7.1" data-path="doc-care.html"><a href="doc-care.html#live-editing"><i class="fa fa-check"></i><b>7.1</b> Live editing</a></li>
+<li class="chapter" data-level="7.2" data-path="doc-care.html"><a href="doc-care.html#care-code"><i class="fa fa-check"></i><b>7.2</b> Care for your code</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="doc-care.html"><a href="doc-care.html#use-keyboard-shortcuts"><i class="fa fa-check"></i><b>7.2.1</b> Use keyboard shortcuts</a></li>
+<li class="chapter" data-level="7.2.2" data-path="doc-care.html"><a href="doc-care.html#knitr-setup"><i class="fa fa-check"></i><b>7.2.2</b> Add a setup code chunk</a></li>
+<li class="chapter" data-level="7.2.3" data-path="doc-care.html"><a href="doc-care.html#knitr-name"><i class="fa fa-check"></i><b>7.2.3</b> Name your code chunks</a></li>
+<li class="chapter" data-level="7.2.4" data-path="doc-care.html"><a href="doc-care.html#print-pretty-packages"><i class="fa fa-check"></i><b>7.2.4</b> Print pretty packages</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="doc-care.html"><a href="doc-care.html#self-care"><i class="fa fa-check"></i><b>7.3</b> Care for your self</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="doc-care.html"><a href="doc-care.html#doc-here"><i class="fa fa-check"></i><b>7.3.1</b> Use portable file paths</a></li>
+<li class="chapter" data-level="7.3.2" data-path="doc-care.html"><a href="doc-care.html#name-your-files-nicely"><i class="fa fa-check"></i><b>7.3.2</b> Name your files nicely</a></li>
+<li class="chapter" data-level="7.3.3" data-path="doc-care.html"><a href="doc-care.html#add-notes-to-self"><i class="fa fa-check"></i><b>7.3.3</b> Add notes to self</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="design-a-how-to.html"><a href="design-a-how-to.html"><i class="fa fa-check"></i><b>8</b> Design a how-to</a><ul>
+<li class="chapter" data-level="8.1" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-download"><i class="fa fa-check"></i><b>8.1</b> Share the source code</a></li>
+<li class="chapter" data-level="8.2" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-show-data"><i class="fa fa-check"></i><b>8.2</b> Show the data</a></li>
+<li class="chapter" data-level="8.3" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-share-data"><i class="fa fa-check"></i><b>8.3</b> Share the data</a></li>
+<li class="chapter" data-level="8.4" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-folding"><i class="fa fa-check"></i><b>8.4</b> Code Folding</a></li>
+<li class="chapter" data-level="8.5" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-results"><i class="fa fa-check"></i><b>8.5</b> Show code, hide results</a></li>
+<li class="chapter" data-level="8.6" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-plots"><i class="fa fa-check"></i><b>8.6</b> Show code, hide plots</a></li>
+<li class="chapter" data-level="8.7" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-results-hide-code"><i class="fa fa-check"></i><b>8.7</b> Show results, hide code</a></li>
+<li class="chapter" data-level="8.8" data-path="design-a-how-to.html"><a href="design-a-how-to.html#interactively-hideshow-code"><i class="fa fa-check"></i><b>8.8</b> Interactively hide/show code</a></li>
+<li class="chapter" data-level="8.9" data-path="design-a-how-to.html"><a href="design-a-how-to.html#hide-everything"><i class="fa fa-check"></i><b>8.9</b> Hide everything</a></li>
+<li class="chapter" data-level="8.10" data-path="design-a-how-to.html"><a href="design-a-how-to.html#reuse-your-code"><i class="fa fa-check"></i><b>8.10</b> Reuse your code</a></li>
+<li class="chapter" data-level="8.11" data-path="design-a-how-to.html"><a href="design-a-how-to.html#two-plots-side-by-side"><i class="fa fa-check"></i><b>8.11</b> Two plots side-by-side</a></li>
+<li class="chapter" data-level="8.12" data-path="design-a-how-to.html"><a href="design-a-how-to.html#include-verbatim-code-chunks"><i class="fa fa-check"></i><b>8.12</b> Include verbatim code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="doc-dress.html"><a href="doc-dress.html"><i class="fa fa-check"></i><b>9</b> Dress it up!</a><ul>
+<li class="chapter" data-level="9.1" data-path="doc-dress.html"><a href="doc-dress.html#doc-theme"><i class="fa fa-check"></i><b>9.1</b> Use a bootswatch theme</a></li>
+<li class="chapter" data-level="9.2" data-path="doc-dress.html"><a href="doc-dress.html#doc-toc"><i class="fa fa-check"></i><b>9.2</b> Add a floating table of contents</a></li>
+<li class="chapter" data-level="9.3" data-path="doc-dress.html"><a href="doc-dress.html#doc-highlight"><i class="fa fa-check"></i><b>9.3</b> Customize code highlighter</a></li>
+<li class="chapter" data-level="9.4" data-path="doc-dress.html"><a href="doc-dress.html#doc-images"><i class="fa fa-check"></i><b>9.4</b> Add images</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="doc-dress.html"><a href="doc-dress.html#markdown-images"><i class="fa fa-check"></i><b>9.4.1</b> Markdown images</a></li>
+<li class="chapter" data-level="9.4.2" data-path="doc-dress.html"><a href="doc-dress.html#use-knitrinclude_graphics"><i class="fa fa-check"></i><b>9.4.2</b> Use <code>knitr::include_graphics()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="doc-dress.html"><a href="doc-dress.html#section"><i class="fa fa-check"></i><b>9.5</b> </a></li>
+<li class="chapter" data-level="9.6" data-path="doc-dress.html"><a href="doc-dress.html#upgrade-your-output-format"><i class="fa fa-check"></i><b>9.6</b> Upgrade your output format</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="doc-dress.html"><a href="doc-dress.html#bookdownhtml_document2"><i class="fa fa-check"></i><b>9.6.1</b> <code>bookdown::html_document2</code></a></li>
+<li class="chapter" data-level="9.6.2" data-path="doc-dress.html"><a href="doc-dress.html#distilldistill_article"><i class="fa fa-check"></i><b>9.6.2</b> <code>distill::distill_article</code></a></li>
+<li class="chapter" data-level="9.6.3" data-path="doc-dress.html"><a href="doc-dress.html#tuftetufte_html"><i class="fa fa-check"></i><b>9.6.3</b> <code>tufte::tufte_html</code></a></li>
+<li class="chapter" data-level="9.6.4" data-path="doc-dress.html"><a href="doc-dress.html#learnrtutorial"><i class="fa fa-check"></i><b>9.6.4</b> <code>learnr::tutorial</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="doc-fancy.html"><a href="doc-fancy.html"><i class="fa fa-check"></i><b>10</b> Make it fancier</a><ul>
+<li class="chapter" data-level="10.1" data-path="doc-fancy.html"><a href="doc-fancy.html#extra-packages"><i class="fa fa-check"></i><b>10.1</b> Extra packages</a></li>
+<li class="chapter" data-level="10.2" data-path="doc-fancy.html"><a href="doc-fancy.html#use-bootswatch-css"><i class="fa fa-check"></i><b>10.2</b> Use bootswatch CSS</a></li>
+<li class="chapter" data-level="10.3" data-path="doc-fancy.html"><a href="doc-fancy.html#include-or-not"><i class="fa fa-check"></i><b>10.3</b> include or not?</a></li>
+<li class="chapter" data-level="10.4" data-path="doc-fancy.html"><a href="doc-fancy.html#before-you-begin"><i class="fa fa-check"></i><b>10.4</b> Before you begin</a></li>
+<li class="chapter" data-level="10.5" data-path="doc-fancy.html"><a href="doc-fancy.html#include-a-css-file"><i class="fa fa-check"></i><b>10.5</b> Include a css file</a></li>
+<li class="chapter" data-level="10.6" data-path="doc-fancy.html"><a href="doc-fancy.html#branding-and-aesthetics"><i class="fa fa-check"></i><b>10.6</b> Branding and aesthetics</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-font"><i class="fa fa-check"></i><b>10.6.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="10.6.2" data-path="doc-fancy.html"><a href="doc-fancy.html#links"><i class="fa fa-check"></i><b>10.6.2</b> Links</a></li>
+<li class="chapter" data-level="10.6.3" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-logo"><i class="fa fa-check"></i><b>10.6.3</b> Add a logo</a></li>
+<li class="chapter" data-level="10.6.4" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-white-space"><i class="fa fa-check"></i><b>10.6.4</b> White Space</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-custom-toc"><i class="fa fa-check"></i><b>10.7</b> Table of contents (TOC)</a></li>
+<li class="chapter" data-level="10.8" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-q"><i class="fa fa-check"></i><b>10.8</b> Questions counter</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="doc-trouble.html"><a href="doc-trouble.html"><i class="fa fa-check"></i><b>11</b> Trouble-shooting</a></li>
+<li class="part"><span><b>II Cookbook: Packages etc.</b></span></li>
+<li class="chapter" data-level="" data-path="intro-dry.html"><a href="intro-dry.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="12" data-path="data-pkg.html"><a href="data-pkg.html"><i class="fa fa-check"></i><b>12</b> Create a data package</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-pkg.html"><a href="data-pkg.html#is-this-tutorial-for-you"><i class="fa fa-check"></i><b>12.1</b> Is this tutorial for you?</a></li>
+<li class="chapter" data-level="12.2" data-path="data-pkg.html"><a href="data-pkg.html#mental-framework"><i class="fa fa-check"></i><b>12.2</b> Mental Framework</a></li>
+<li class="chapter" data-level="12.3" data-path="data-pkg.html"><a href="data-pkg.html#part-1-getting-set-up"><i class="fa fa-check"></i><b>12.3</b> Part 1: Getting set up</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="data-pkg.html"><a href="data-pkg.html#packages"><i class="fa fa-check"></i><b>12.3.1</b> Packages</a></li>
+<li class="chapter" data-level="12.3.2" data-path="data-pkg.html"><a href="data-pkg.html#two-getting-started-workflows"><i class="fa fa-check"></i><b>12.3.2</b> Two getting-started workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="data-pkg.html"><a href="data-pkg.html#part-2-add-some-clean-data"><i class="fa fa-check"></i><b>12.4</b> Part 2: Add some clean data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="data-pkg.html"><a href="data-pkg.html#with-built-in-data"><i class="fa fa-check"></i><b>12.4.1</b> With built-in data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="data-pkg.html"><a href="data-pkg.html#start-with-your-own-data"><i class="fa fa-check"></i><b>12.4.2</b> Start with your OWN Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="data-pkg.html"><a href="data-pkg.html#part-3-check"><i class="fa fa-check"></i><b>12.5</b> Part 3: Check!</a></li>
+<li class="chapter" data-level="12.6" data-path="data-pkg.html"><a href="data-pkg.html#part-4-document-the-datasets"><i class="fa fa-check"></i><b>12.6</b> Part 4: Document the datasets</a></li>
+<li class="chapter" data-level="12.7" data-path="data-pkg.html"><a href="data-pkg.html#part-5-document-the-package"><i class="fa fa-check"></i><b>12.7</b> Part 5: Document the package</a></li>
+<li class="chapter" data-level="12.8" data-path="data-pkg.html"><a href="data-pkg.html#part-6-build-and-install"><i class="fa fa-check"></i><b>12.8</b> Part 6: Build and Install!</a></li>
+<li class="chapter" data-level="12.9" data-path="data-pkg.html"><a href="data-pkg.html#part-7-deliver"><i class="fa fa-check"></i><b>12.9</b> Part 7: Deliver</a></li>
+<li class="chapter" data-level="12.10" data-path="data-pkg.html"><a href="data-pkg.html#caring-for-your-package"><i class="fa fa-check"></i><b>12.10</b> Caring for your package</a><ul>
+<li class="chapter" data-level="12.10.1" data-path="data-pkg.html"><a href="data-pkg.html#a-review"><i class="fa fa-check"></i><b>12.10.1</b> A review</a></li>
+<li class="chapter" data-level="12.10.2" data-path="data-pkg.html"><a href="data-pkg.html#package-accessories"><i class="fa fa-check"></i><b>12.10.2</b> Package accessories</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="data-pkg.html"><a href="data-pkg.html#tldr"><i class="fa fa-check"></i><b>12.11</b> tldr;</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rmd-templates.html"><a href="rmd-templates.html"><i class="fa fa-check"></i><b>13</b> Create R Markdown templates</a><ul>
+<li class="chapter" data-level="13.1" data-path="rmd-templates.html"><a href="rmd-templates.html#why-do-this"><i class="fa fa-check"></i><b>13.1</b> Why do this?</a></li>
+<li class="chapter" data-level="13.2" data-path="rmd-templates.html"><a href="rmd-templates.html#step-1-create-files-and-folders"><i class="fa fa-check"></i><b>13.2</b> Step 1: Create files and folders</a></li>
+<li class="chapter" data-level="13.3" data-path="rmd-templates.html"><a href="rmd-templates.html#step-2-create-your-template"><i class="fa fa-check"></i><b>13.3</b> Step 2: Create your template</a></li>
+<li class="chapter" data-level="13.4" data-path="rmd-templates.html"><a href="rmd-templates.html#step-3-confirm-that-your-template-is-accessible"><i class="fa fa-check"></i><b>13.4</b> Step 3: Confirm that your template is accessible</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="proj-templates.html"><a href="proj-templates.html"><i class="fa fa-check"></i><b>14</b> Create RStudio project templates</a><ul>
+<li class="chapter" data-level="14.1" data-path="proj-templates.html"><a href="proj-templates.html#why-do-this-1"><i class="fa fa-check"></i><b>14.1</b> Why do this?</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>15</b> Add interactive tutorials</a><ul>
+<li class="chapter" data-level="15.1" data-path="learnr.html"><a href="learnr.html#part-1-including-a-learnr-tutorial"><i class="fa fa-check"></i><b>15.1</b> PART 1: Including a <span>LearnR</span> tutorial</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="learnr.html"><a href="learnr.html#why-do-this-2"><i class="fa fa-check"></i><b>15.1.1</b> Why do this?</a></li>
+<li class="chapter" data-level="15.1.2" data-path="learnr.html"><a href="learnr.html#step-1-create-files-and-directories"><i class="fa fa-check"></i><b>15.1.2</b> Step 1: Create files and directories</a></li>
+<li class="chapter" data-level="15.1.3" data-path="learnr.html"><a href="learnr.html#step-2-customize-your-tutorial"><i class="fa fa-check"></i><b>15.1.3</b> Step 2: Customize your tutorial</a></li>
+<li class="chapter" data-level="15.1.4" data-path="learnr.html"><a href="learnr.html#step-3-add-additional-subdirectory"><i class="fa fa-check"></i><b>15.1.4</b> Step 3: Add additional subdirectory</a></li>
+<li class="chapter" data-level="15.1.5" data-path="learnr.html"><a href="learnr.html#step-4-run-your-tutorial"><i class="fa fa-check"></i><b>15.1.5</b> Step 4: Run your tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="learnr.html"><a href="learnr.html#part-5-final-steps"><i class="fa fa-check"></i><b>15.2</b> PART 5: FINAL STEPS</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="learnr.html"><a href="learnr.html#optionally-document-the-package-as-a-whole"><i class="fa fa-check"></i><b>15.2.1</b> (Optionally) Document the package as a whole</a></li>
+<li class="chapter" data-level="15.2.2" data-path="learnr.html"><a href="learnr.html#create-a-readme.rmd-file"><i class="fa fa-check"></i><b>15.2.2</b> Create a README.Rmd file</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="learnr.html"><a href="learnr.html#troubleshooting"><i class="fa fa-check"></i><b>15.3</b> Troubleshooting</a></li>
+<li class="chapter" data-level="15.4" data-path="learnr.html"><a href="learnr.html#miscellaneous-nice-to-know"><i class="fa fa-check"></i><b>15.4</b> Miscellaneous / Nice to Know</a></li>
+<li class="chapter" data-level="15.5" data-path="learnr.html"><a href="learnr.html#other-community-resources-on-package-making"><i class="fa fa-check"></i><b>15.5</b> Other community resources on package-making:</a></li>
+</ul></li>
+<li class="part"><span><b>III Cookbook: R Markdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#what-are-we-making-1"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#pros-and-cons-of-using-rmd-sites"><i class="fa fa-check"></i>Pros and cons of using Rmd sites</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#is-this-cookbook-for-you"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#other-learning-resources"><i class="fa fa-check"></i>Other learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="make-rmd.html"><a href="make-rmd.html"><i class="fa fa-check"></i><b>16</b> Make a site</a><ul>
+<li class="chapter" data-level="16.1" data-path="make-rmd.html"><a href="make-rmd.html#tldr-1"><i class="fa fa-check"></i><b>16.1</b> tl;dr</a></li>
+<li class="chapter" data-level="16.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-setup"><i class="fa fa-check"></i><b>16.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="make-rmd.html"><a href="make-rmd.html#update-packages-1"><i class="fa fa-check"></i><b>16.2.1</b> Update packages</a></li>
+<li class="chapter" data-level="16.2.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-proj-first"><i class="fa fa-check"></i><b>16.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="16.2.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-skeleton"><i class="fa fa-check"></i><b>16.2.3</b> Make a site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-orientation"><i class="fa fa-check"></i><b>16.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="16.4" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push"><i class="fa fa-check"></i><b>16.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="16.5" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-output"><i class="fa fa-check"></i><b>16.5</b> Change output directory</a></li>
+<li class="chapter" data-level="16.6" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-nojekyll"><i class="fa fa-check"></i><b>16.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="16.7" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-build"><i class="fa fa-check"></i><b>16.7</b> Build your site</a></li>
+<li class="chapter" data-level="16.8" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push2"><i class="fa fa-check"></i><b>16.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="16.9" data-path="make-rmd.html"><a href="make-rmd.html#rmd-living"><i class="fa fa-check"></i><b>16.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="16.10" data-path="make-rmd.html"><a href="make-rmd.html#rmd-uplevel"><i class="fa fa-check"></i><b>16.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmd-yours.html"><a href="rmd-yours.html"><i class="fa fa-check"></i><b>17</b> Make it yours</a><ul>
+<li class="chapter" data-level="17.1" data-path="rmd-yours.html"><a href="rmd-yours.html#add-rmd"><i class="fa fa-check"></i><b>17.1</b> Adding new pages</a></li>
+<li class="chapter" data-level="17.2" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-grow"><i class="fa fa-check"></i><b>17.2</b> Grow your navbar</a></li>
+<li class="chapter" data-level="17.3" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-menu"><i class="fa fa-check"></i><b>17.3</b> Add a dropdown menu</a></li>
+<li class="chapter" data-level="17.4" data-path="rmd-yours.html"><a href="rmd-yours.html#add-your-content"><i class="fa fa-check"></i><b>17.4</b> Add your content</a></li>
+<li class="chapter" data-level="17.5" data-path="rmd-yours.html"><a href="rmd-yours.html#recap"><i class="fa fa-check"></i><b>17.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="rmd-care.html"><a href="rmd-care.html"><i class="fa fa-check"></i><b>18</b> Caring for your site</a><ul>
+<li class="chapter" data-level="18.1" data-path="rmd-care.html"><a href="rmd-care.html#hide-rmd"><i class="fa fa-check"></i><b>18.1</b> Hiding pages</a></li>
+<li class="chapter" data-level="18.2" data-path="rmd-care.html"><a href="rmd-care.html#staying-organized"><i class="fa fa-check"></i><b>18.2</b> Staying organized</a></li>
+<li class="chapter" data-level="18.3" data-path="rmd-care.html"><a href="rmd-care.html#troubleshooting-1"><i class="fa fa-check"></i><b>18.3</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="rmd-dress.html"><a href="rmd-dress.html"><i class="fa fa-check"></i><b>19</b> Dress it up!</a><ul>
+<li class="chapter" data-level="19.1" data-path="rmd-dress.html"><a href="rmd-dress.html#before-you-begin-1"><i class="fa fa-check"></i><b>19.1</b> Before you begin</a></li>
+<li class="chapter" data-level="19.2" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-one-yaml"><i class="fa fa-check"></i><b>19.2</b> One YAML to rule them all</a></li>
+<li class="chapter" data-level="19.3" data-path="rmd-dress.html"><a href="rmd-dress.html#applying-what-you-can-from-a-single-lesson"><i class="fa fa-check"></i><b>19.3</b> Applying what you can from a single lesson</a></li>
+<li class="chapter" data-level="19.4" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-site-theme"><i class="fa fa-check"></i><b>19.4</b> Add a site theme</a></li>
+<li class="chapter" data-level="19.5" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-highlight"><i class="fa fa-check"></i><b>19.5</b> Customize code highlighting</a></li>
+<li class="chapter" data-level="19.6" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-navbar"><i class="fa fa-check"></i><b>19.6</b> Change the navbar color</a></li>
+<li class="chapter" data-level="19.7" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-icons"><i class="fa fa-check"></i><b>19.7</b> Add navbar icons</a></li>
+<li class="chapter" data-level="19.8" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-tidy-menu"><i class="fa fa-check"></i><b>19.8</b> Tidy up the dropdown menu</a></li>
+<li class="chapter" data-level="19.9" data-path="rmd-dress.html"><a href="rmd-dress.html#recap-1"><i class="fa fa-check"></i><b>19.9</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmd-fancy.html"><a href="rmd-fancy.html"><i class="fa fa-check"></i><b>20</b> Make it fancier</a><ul>
+<li class="chapter" data-level="20.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#before-you-begin-2"><i class="fa fa-check"></i><b>20.1</b> Before you begin</a></li>
+<li class="chapter" data-level="20.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#anatomy-of-a-fancy-r-markdown-page"><i class="fa fa-check"></i><b>20.2</b> Anatomy of a fancy R Markdown page</a></li>
+<li class="chapter" data-level="20.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#adding-custom-css-to-your-site"><i class="fa fa-check"></i><b>20.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="20.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#aesthetics-and-branding"><i class="fa fa-check"></i><b>20.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="20.4.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-font"><i class="fa fa-check"></i><b>20.4.1</b> Google fonts</a></li>
+<li class="chapter" data-level="20.4.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#customize-your-links"><i class="fa fa-check"></i><b>20.4.2</b> Customize your links</a></li>
+<li class="chapter" data-level="20.4.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#white-space"><i class="fa fa-check"></i><b>20.4.3</b> White space</a></li>
+<li class="chapter" data-level="20.4.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#logo"><i class="fa fa-check"></i><b>20.4.4</b> Logo</a></li>
+<li class="chapter" data-level="20.4.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-logo"><i class="fa fa-check"></i><b>20.4.5</b> Add a logo</a></li>
+<li class="chapter" data-level="20.4.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-favicon"><i class="fa fa-check"></i><b>20.4.6</b> Add a favicon</a></li>
+<li class="chapter" data-level="20.4.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-hero-image"><i class="fa fa-check"></i><b>20.4.7</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#table-of-contents"><i class="fa fa-check"></i><b>20.5</b> Table of contents</a></li>
+<li class="chapter" data-level="20.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#navigation-bar-styling"><i class="fa fa-check"></i><b>20.6</b> Navigation bar styling</a></li>
+<li class="chapter" data-level="20.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-q"><i class="fa fa-check"></i><b>20.7</b> Questions counter</a></li>
+<li class="chapter" data-level="20.8" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-multiple-css-files"><i class="fa fa-check"></i><b>20.8</b> Add multiple CSS files</a></li>
+<li class="chapter" data-level="20.9" data-path="rmd-fancy.html"><a href="rmd-fancy.html#recap-2"><i class="fa fa-check"></i><b>20.9</b> Recap</a></li>
+</ul></li>
+<li class="part"><span><b>IV Cookbook: Distill sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#what-are-we-making-2"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#distill-vs-r-markdown-site"><i class="fa fa-check"></i>Distill vs R Markdown site</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#is-this-tutorial-for-you-1"><i class="fa fa-check"></i>Is this tutorial for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#other-learning-resources-1"><i class="fa fa-check"></i>Other learning resources</a><ul>
+<li class="chapter" data-level="20.9.1" data-path="intro-distill.html"><a href="intro-distill.html#existing-distill-sites"><i class="fa fa-check"></i><b>20.9.1</b> Existing Distill sites</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="make-distill.html"><a href="make-distill.html"><i class="fa fa-check"></i><b>21</b> Make a Distill site</a><ul>
+<li class="chapter" data-level="21.1" data-path="make-distill.html"><a href="make-distill.html#tldr-2"><i class="fa fa-check"></i><b>21.1</b> tl;dr</a></li>
+<li class="chapter" data-level="21.2" data-path="make-distill.html"><a href="make-distill.html#distill-site-setup"><i class="fa fa-check"></i><b>21.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="make-distill.html"><a href="make-distill.html#packages-1"><i class="fa fa-check"></i><b>21.2.1</b> Packages</a></li>
+<li class="chapter" data-level="21.2.2" data-path="make-distill.html"><a href="make-distill.html#distill-proj-first"><i class="fa fa-check"></i><b>21.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="21.2.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-skeleton"><i class="fa fa-check"></i><b>21.2.3</b> Make a Distill site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-orientation"><i class="fa fa-check"></i><b>21.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="21.4" data-path="make-distill.html"><a href="make-distill.html#distill-push"><i class="fa fa-check"></i><b>21.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="21.5" data-path="make-distill.html"><a href="make-distill.html#distill-site-build"><i class="fa fa-check"></i><b>21.5</b> Build your site</a></li>
+<li class="chapter" data-level="21.6" data-path="make-distill.html"><a href="make-distill.html#distill-push2"><i class="fa fa-check"></i><b>21.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="21.7" data-path="make-distill.html"><a href="make-distill.html#distill-living"><i class="fa fa-check"></i><b>21.7</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="21.8" data-path="make-distill.html"><a href="make-distill.html#distill-uplevel"><i class="fa fa-check"></i><b>21.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="distill-yours.html"><a href="distill-yours.html"><i class="fa fa-check"></i><b>22</b> Make it yours</a><ul>
+<li class="chapter" data-level="22.1" data-path="distill-yours.html"><a href="distill-yours.html#add-distill"><i class="fa fa-check"></i><b>22.1</b> Adding new Distill articles</a></li>
+<li class="chapter" data-level="22.2" data-path="distill-yours.html"><a href="distill-yours.html#distill-grow"><i class="fa fa-check"></i><b>22.2</b> Grow your navbar</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="distill-care.html"><a href="distill-care.html"><i class="fa fa-check"></i><b>23</b> Caring for your Distill site</a><ul>
+<li class="chapter" data-level="23.1" data-path="distill-care.html"><a href="distill-care.html#hide-distill"><i class="fa fa-check"></i><b>23.1</b> Hiding pages</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="distill-care.html"><a href="distill-care.html#switching-from-an-existing-r-markdown-site-to-a-distill-site"><i class="fa fa-check"></i><b>23.1.1</b> Switching from an existing R Markdown site to a Distill site</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="distill-care.html"><a href="distill-care.html#alternatives-and-drawbacks"><i class="fa fa-check"></i><b>23.2</b> Alternatives and drawbacks</a></li>
+<li class="chapter" data-level="23.3" data-path="distill-care.html"><a href="distill-care.html#using-your-distill-site"><i class="fa fa-check"></i><b>23.3</b> Using your Distill site</a></li>
+<li class="chapter" data-level="23.4" data-path="distill-care.html"><a href="distill-care.html#distill-features"><i class="fa fa-check"></i><b>23.4</b> Distill features</a><ul>
+<li class="chapter" data-level="23.4.1" data-path="distill-care.html"><a href="distill-care.html#authors-and-affiliations"><i class="fa fa-check"></i><b>23.4.1</b> Authors and affiliations</a></li>
+<li class="chapter" data-level="23.4.2" data-path="distill-care.html"><a href="distill-care.html#citations"><i class="fa fa-check"></i><b>23.4.2</b> Citations</a></li>
+<li class="chapter" data-level="23.4.3" data-path="distill-care.html"><a href="distill-care.html#hoverable-footnotes"><i class="fa fa-check"></i><b>23.4.3</b> Hoverable footnotes</a></li>
+<li class="chapter" data-level="23.4.4" data-path="distill-care.html"><a href="distill-care.html#asides"><i class="fa fa-check"></i><b>23.4.4</b> Asides</a></li>
+<li class="chapter" data-level="23.4.5" data-path="distill-care.html"><a href="distill-care.html#figure-width"><i class="fa fa-check"></i><b>23.4.5</b> Figure width</a></li>
+<li class="chapter" data-level="23.4.6" data-path="distill-care.html"><a href="distill-care.html#figure-captions-and-cross-references"><i class="fa fa-check"></i><b>23.4.6</b> Figure captions and cross-references</a></li>
+<li class="chapter" data-level="23.4.7" data-path="distill-care.html"><a href="distill-care.html#if-you-like-distill"><i class="fa fa-check"></i><b>23.4.7</b> If you like Distill…</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="distill-dress.html"><a href="distill-dress.html"><i class="fa fa-check"></i><b>24</b> Dress it up!</a><ul>
+<li class="chapter" data-level="24.1" data-path="distill-dress.html"><a href="distill-dress.html#site-sections"><i class="fa fa-check"></i><b>24.1</b> Site sections</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="distill-dress.html"><a href="distill-dress.html#site-footer"><i class="fa fa-check"></i><b>24.1.1</b> Site footer</a></li>
+<li class="chapter" data-level="24.1.2" data-path="distill-dress.html"><a href="distill-dress.html#appendix"><i class="fa fa-check"></i><b>24.1.2</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="distill-dress.html"><a href="distill-dress.html#sharing-1"><i class="fa fa-check"></i><b>24.2</b> Sharing</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="distill-dress.html"><a href="distill-dress.html#reuse-and-licencing"><i class="fa fa-check"></i><b>24.2.1</b> Reuse and licencing</a></li>
+<li class="chapter" data-level="24.2.2" data-path="distill-dress.html"><a href="distill-dress.html#preview-images"><i class="fa fa-check"></i><b>24.2.2</b> Preview images</a></li>
+<li class="chapter" data-level="24.2.3" data-path="distill-dress.html"><a href="distill-dress.html#logo-1"><i class="fa fa-check"></i><b>24.2.3</b> Logo</a></li>
+<li class="chapter" data-level="24.2.4" data-path="distill-dress.html"><a href="distill-dress.html#favicon"><i class="fa fa-check"></i><b>24.2.4</b> Favicon</a></li>
+<li class="chapter" data-level="24.2.5" data-path="distill-dress.html"><a href="distill-dress.html#google-analytics"><i class="fa fa-check"></i><b>24.2.5</b> Google analytics</a></li>
+<li class="chapter" data-level="24.2.6" data-path="distill-dress.html"><a href="distill-dress.html#getting-edits"><i class="fa fa-check"></i><b>24.2.6</b> Getting edits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="distill-fancy.html"><a href="distill-fancy.html"><i class="fa fa-check"></i><b>25</b> Make it fancier</a><ul>
+<li class="chapter" data-level="25.1" data-path="distill-fancy.html"><a href="distill-fancy.html#before-you-begin-3"><i class="fa fa-check"></i><b>25.1</b> Before you begin</a></li>
+<li class="chapter" data-level="25.2" data-path="distill-fancy.html"><a href="distill-fancy.html#anatomy-of-a-fancy-distill-page"><i class="fa fa-check"></i><b>25.2</b> Anatomy of a fancy Distill page</a></li>
+<li class="chapter" data-level="25.3" data-path="distill-fancy.html"><a href="distill-fancy.html#adding-custom-css-to-your-site-1"><i class="fa fa-check"></i><b>25.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="25.4" data-path="distill-fancy.html"><a href="distill-fancy.html#aesthetics-and-branding-1"><i class="fa fa-check"></i><b>25.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="25.4.1" data-path="distill-fancy.html"><a href="distill-fancy.html#google-fonts"><i class="fa fa-check"></i><b>25.4.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="25.4.2" data-path="distill-fancy.html"><a href="distill-fancy.html#larger-logo"><i class="fa fa-check"></i><b>25.4.2</b> Larger logo</a></li>
+</ul></li>
+<li class="chapter" data-level="25.5" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar"><i class="fa fa-check"></i><b>25.5</b> Navbar</a><ul>
+<li class="chapter" data-level="25.5.1" data-path="distill-fancy.html"><a href="distill-fancy.html#more-space-for-the-navbar"><i class="fa fa-check"></i><b>25.5.1</b> More space for the navbar</a></li>
+<li class="chapter" data-level="25.5.2" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar-font-and-text-style"><i class="fa fa-check"></i><b>25.5.2</b> Navbar font and text style</a></li>
+<li class="chapter" data-level="25.5.3" data-path="distill-fancy.html"><a href="distill-fancy.html#transparent-faded-navbar"><i class="fa fa-check"></i><b>25.5.3</b> Transparent, faded navbar</a></li>
+<li class="chapter" data-level="25.5.4" data-path="distill-fancy.html"><a href="distill-fancy.html#animated-hovering"><i class="fa fa-check"></i><b>25.5.4</b> Animated hovering</a></li>
+<li class="chapter" data-level="25.5.5" data-path="distill-fancy.html"><a href="distill-fancy.html#tweak-for-mobile-1"><i class="fa fa-check"></i><b>25.5.5</b> Tweak for mobile</a></li>
+</ul></li>
+<li class="chapter" data-level="25.6" data-path="distill-fancy.html"><a href="distill-fancy.html#appendix-1"><i class="fa fa-check"></i><b>25.6</b> Appendix</a></li>
+<li class="chapter" data-level="25.7" data-path="distill-fancy.html"><a href="distill-fancy.html#footer"><i class="fa fa-check"></i><b>25.7</b> Footer</a><ul>
+<li class="chapter" data-level="25.7.1" data-path="distill-fancy.html"><a href="distill-fancy.html#links-1"><i class="fa fa-check"></i><b>25.7.1</b> Links</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Cookbook: Bookdown book</b></span></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#what-are-we-making-3"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#pros-and-cons-of-using-bookdown-sites"><i class="fa fa-check"></i>Pros and cons of using bookdown sites</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#is-this-cookbook-for-you-1"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#learning-resources"><i class="fa fa-check"></i>Learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="make-book.html"><a href="make-book.html"><i class="fa fa-check"></i><b>26</b> Make a book</a><ul>
+<li class="chapter" data-level="26.1" data-path="make-book.html"><a href="make-book.html#tldr-3"><i class="fa fa-check"></i><b>26.1</b> tl;dr</a></li>
+<li class="chapter" data-level="26.2" data-path="make-book.html"><a href="make-book.html#getting-set-up"><i class="fa fa-check"></i><b>26.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="26.2.1" data-path="make-book.html"><a href="make-book.html#packages-needed"><i class="fa fa-check"></i><b>26.2.1</b> Packages needed</a></li>
+<li class="chapter" data-level="26.2.2" data-path="make-book.html"><a href="make-book.html#book-proj-first"><i class="fa fa-check"></i><b>26.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="26.2.3" data-path="make-book.html"><a href="make-book.html#book-site-skeleton"><i class="fa fa-check"></i><b>26.2.3</b> Make a book skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="make-book.html"><a href="make-book.html#book-site-orientation"><i class="fa fa-check"></i><b>26.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="26.4" data-path="make-book.html"><a href="make-book.html#book-push"><i class="fa fa-check"></i><b>26.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="26.5" data-path="make-book.html"><a href="make-book.html#book-output"><i class="fa fa-check"></i><b>26.5</b> Change output directory</a></li>
+<li class="chapter" data-level="26.6" data-path="make-book.html"><a href="make-book.html#book-nojekyll"><i class="fa fa-check"></i><b>26.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="26.7" data-path="make-book.html"><a href="make-book.html#build-book"><i class="fa fa-check"></i><b>26.7</b> Build your book</a></li>
+<li class="chapter" data-level="26.8" data-path="make-book.html"><a href="make-book.html#book-push2"><i class="fa fa-check"></i><b>26.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="26.9" data-path="make-book.html"><a href="make-book.html#book-living"><i class="fa fa-check"></i><b>26.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="26.10" data-path="make-book.html"><a href="make-book.html#book-uplevel"><i class="fa fa-check"></i><b>26.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="book-yours.html"><a href="book-yours.html"><i class="fa fa-check"></i><b>27</b> Make it yours</a><ul>
+<li class="chapter" data-level="27.1" data-path="book-yours.html"><a href="book-yours.html#book-new-ch"><i class="fa fa-check"></i><b>27.1</b> Creating new chapters</a></li>
+<li class="chapter" data-level="27.2" data-path="book-yours.html"><a href="book-yours.html#book-order"><i class="fa fa-check"></i><b>27.2</b> Putting your chapters in order</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="book-care.html"><a href="book-care.html"><i class="fa fa-check"></i><b>28</b> Caring for your book</a><ul>
+<li class="chapter" data-level="28.1" data-path="book-care.html"><a href="book-care.html#workflow-for-maintenance"><i class="fa fa-check"></i><b>28.1</b> Workflow for maintenance</a></li>
+<li class="chapter" data-level="28.2" data-path="book-care.html"><a href="book-care.html#render-book"><i class="fa fa-check"></i><b>28.2</b> Rendering</a></li>
+<li class="chapter" data-level="28.3" data-path="book-care.html"><a href="book-care.html#use-book"><i class="fa fa-check"></i><b>28.3</b> Using your book</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="book-care.html"><a href="book-care.html#components"><i class="fa fa-check"></i><b>28.3.1</b> Components</a></li>
+<li class="chapter" data-level="28.3.2" data-path="book-care.html"><a href="book-care.html#search"><i class="fa fa-check"></i><b>28.3.2</b> Search</a></li>
+</ul></li>
+<li class="chapter" data-level="28.4" data-path="book-care.html"><a href="book-care.html#hiding-chapters"><i class="fa fa-check"></i><b>28.4</b> Hiding Chapters</a></li>
+<li class="chapter" data-level="28.5" data-path="book-care.html"><a href="book-care.html#book-organized"><i class="fa fa-check"></i><b>28.5</b> Staying organized</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="book-dress.html"><a href="book-dress.html"><i class="fa fa-check"></i><b>29</b> Dress it up!</a><ul>
+<li class="chapter" data-level="29.1" data-path="book-dress.html"><a href="book-dress.html#before-book-dress"><i class="fa fa-check"></i><b>29.1</b> Before you begin</a></li>
+<li class="chapter" data-level="29.2" data-path="book-dress.html"><a href="book-dress.html#organizing"><i class="fa fa-check"></i><b>29.2</b> Organizing</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="book-dress.html"><a href="book-dress.html#collapse-toc-by-subsections"><i class="fa fa-check"></i><b>29.2.1</b> Collapse TOC by (sub)sections</a></li>
+<li class="chapter" data-level="29.2.2" data-path="book-dress.html"><a href="book-dress.html#change-the-chapter-name"><i class="fa fa-check"></i><b>29.2.2</b> Change the chapter name</a></li>
+<li class="chapter" data-level="29.2.3" data-path="book-dress.html"><a href="book-dress.html#section-unnumbering"><i class="fa fa-check"></i><b>29.2.3</b> Section (un)numbering</a></li>
+<li class="chapter" data-level="29.2.4" data-path="book-dress.html"><a href="book-dress.html#book-parts"><i class="fa fa-check"></i><b>29.2.4</b> Group chapters into parts</a></li>
+<li class="chapter" data-level="29.2.5" data-path="book-dress.html"><a href="book-dress.html#book-appendix"><i class="fa fa-check"></i><b>29.2.5</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="book-dress.html"><a href="book-dress.html#aesthetics"><i class="fa fa-check"></i><b>29.3</b> Aesthetics</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="book-dress.html"><a href="book-dress.html#header-and-footer-of-the-toc"><i class="fa fa-check"></i><b>29.3.1</b> Header and footer of the TOC</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="book-dress.html"><a href="book-dress.html#edits-and-source-code"><i class="fa fa-check"></i><b>29.4</b> Edits and source code</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="book-dress.html"><a href="book-dress.html#share-the-source-code"><i class="fa fa-check"></i><b>29.4.1</b> Share the source code</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="book-dress.html"><a href="book-dress.html#polishing-and-sharing"><i class="fa fa-check"></i><b>29.5</b> Polishing and sharing</a><ul>
+<li class="chapter" data-level="29.5.1" data-path="book-dress.html"><a href="book-dress.html#twitter-and-github"><i class="fa fa-check"></i><b>29.5.1</b> Twitter and GitHub</a></li>
+<li class="chapter" data-level="29.5.2" data-path="book-dress.html"><a href="book-dress.html#add-a-favicon-1"><i class="fa fa-check"></i><b>29.5.2</b> Add a favicon</a></li>
+<li class="chapter" data-level="29.5.3" data-path="book-dress.html"><a href="book-dress.html#book-cover-and-description"><i class="fa fa-check"></i><b>29.5.3</b> Book cover and description</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="book-fancy.html"><a href="book-fancy.html"><i class="fa fa-check"></i><b>30</b> Make it fancier</a><ul>
+<li class="chapter" data-level="30.1" data-path="book-fancy.html"><a href="book-fancy.html#before-you-begin-4"><i class="fa fa-check"></i><b>30.1</b> Before you begin</a></li>
+<li class="chapter" data-level="30.2" data-path="book-fancy.html"><a href="book-fancy.html#anatomy-of-a-fancy-book"><i class="fa fa-check"></i><b>30.2</b> Anatomy of a fancy book</a></li>
+<li class="chapter" data-level="30.3" data-path="book-fancy.html"><a href="book-fancy.html#aesthetics-and-branding-2"><i class="fa fa-check"></i><b>30.3</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="30.3.1" data-path="book-fancy.html"><a href="book-fancy.html#align-tool"><i class="fa fa-check"></i><b>30.3.1</b> Align the toolbar line</a></li>
+<li class="chapter" data-level="30.3.2" data-path="book-fancy.html"><a href="book-fancy.html#symmetrical-code-chunks"><i class="fa fa-check"></i><b>30.3.2</b> Symmetrical code chunks</a></li>
+<li class="chapter" data-level="30.3.3" data-path="book-fancy.html"><a href="book-fancy.html#book-font"><i class="fa fa-check"></i><b>30.3.3</b> Google fonts</a></li>
+<li class="chapter" data-level="30.3.4" data-path="book-fancy.html"><a href="book-fancy.html#book-logo"><i class="fa fa-check"></i><b>30.3.4</b> Add a logo</a></li>
+<li class="chapter" data-level="30.3.5" data-path="book-fancy.html"><a href="book-fancy.html#book-link-colors"><i class="fa fa-check"></i><b>30.3.5</b> Custom link colors</a></li>
+<li class="chapter" data-level="30.3.6" data-path="book-fancy.html"><a href="book-fancy.html#book-hero"><i class="fa fa-check"></i><b>30.3.6</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="30.4" data-path="book-fancy.html"><a href="book-fancy.html#usability"><i class="fa fa-check"></i><b>30.4</b> Usability</a><ul>
+<li class="chapter" data-level="30.4.1" data-path="book-fancy.html"><a href="book-fancy.html#custom-div-tips"><i class="fa fa-check"></i><b>30.4.1</b> Custom div tips</a></li>
+<li class="chapter" data-level="30.4.2" data-path="book-fancy.html"><a href="book-fancy.html#book-anchor"><i class="fa fa-check"></i><b>30.4.2</b> Anchor links</a></li>
+<li class="chapter" data-level="30.4.3" data-path="book-fancy.html"><a href="book-fancy.html#copy-to-clipboard"><i class="fa fa-check"></i><b>30.4.3</b> Copy to clipboard</a></li>
+</ul></li>
+<li class="chapter" data-level="30.5" data-path="book-fancy.html"><a href="book-fancy.html#table-of-contents-1"><i class="fa fa-check"></i><b>30.5</b> Table of Contents</a><ul>
+<li class="chapter" data-level="30.5.1" data-path="book-fancy.html"><a href="book-fancy.html#change-toc-background-color"><i class="fa fa-check"></i><b>30.5.1</b> Change TOC background color</a></li>
+<li class="chapter" data-level="30.5.2" data-path="book-fancy.html"><a href="book-fancy.html#style-the-toc-links"><i class="fa fa-check"></i><b>30.5.2</b> Style the TOC links</a></li>
+<li class="chapter" data-level="30.5.3" data-path="book-fancy.html"><a href="book-fancy.html#hierarchy-styling"><i class="fa fa-check"></i><b>30.5.3</b> Hierarchy styling</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Cookbook: Blogdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-blogdown.html"><a href="intro-blogdown.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="31" data-path="make-blogdown.html"><a href="make-blogdown.html"><i class="fa fa-check"></i><b>31</b> Make a site</a></li>
+<li class="chapter" data-level="32" data-path="make-a-site-for-a-workshop.html"><a href="make-a-site-for-a-workshop.html"><i class="fa fa-check"></i><b>32</b> Make a site for a workshop</a></li>
+<li class="chapter" data-level="33" data-path="make-a-site-for-a-course.html"><a href="make-a-site-for-a-course.html"><i class="fa fa-check"></i><b>33</b> Make a site for a course</a></li>
+<li class="chapter" data-level="34" data-path="make-it-fancier-4.html"><a href="make-it-fancier-4.html"><i class="fa fa-check"></i><b>34</b> Make it fancier</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="css-crash.html"><a href="css-crash.html"><i class="fa fa-check"></i><b>A</b> CSS Crash Course</a><ul>
+<li class="chapter" data-level="A.1" data-path="css-crash.html"><a href="css-crash.html#whats-in-a-name"><i class="fa fa-check"></i><b>A.1</b> What’s in a name?</a></li>
+<li class="chapter" data-level="A.2" data-path="css-crash.html"><a href="css-crash.html#how-do-i-change-the-color-of."><i class="fa fa-check"></i><b>A.2</b> How do I change the color of….?</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="backlog.html"><a href="backlog.html"><i class="fa fa-check"></i><b>B</b> Backlog</a></li>
+<li class="chapter" data-level="C" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i><b>C</b> Miscellaneous</a></li>
+<li class="chapter" data-level="D" data-path="spillover-from-distill.html"><a href="spillover-from-distill.html"><i class="fa fa-check"></i><b>D</b> Spillover from distill</a></li>
+<li class="chapter" data-level="E" data-path="teaching-and-learning-with-jupyter-book-review.html"><a href="teaching-and-learning-with-jupyter-book-review.html"><i class="fa fa-check"></i><b>E</b> Teaching and Learning with Jupyter Book Review</a></li>
+<li class="chapter" data-level="F" data-path="rmd-themes.html"><a href="rmd-themes.html"><i class="fa fa-check"></i><b>F</b> R Markdown Themes</a><ul>
+<li class="chapter" data-level="F.0.1" data-path="rmd-themes.html"><a href="rmd-themes.html#default"><i class="fa fa-check"></i><b>F.0.1</b> <code>default</code></a></li>
+<li class="chapter" data-level="F.0.2" data-path="rmd-themes.html"><a href="rmd-themes.html#cerulean"><i class="fa fa-check"></i><b>F.0.2</b> <code>cerulean</code></a></li>
+<li class="chapter" data-level="F.0.3" data-path="rmd-themes.html"><a href="rmd-themes.html#journal"><i class="fa fa-check"></i><b>F.0.3</b> <code>journal</code></a></li>
+<li class="chapter" data-level="F.0.4" data-path="rmd-themes.html"><a href="rmd-themes.html#flatly"><i class="fa fa-check"></i><b>F.0.4</b> <code>flatly</code></a></li>
+<li class="chapter" data-level="F.0.5" data-path="rmd-themes.html"><a href="rmd-themes.html#darkly"><i class="fa fa-check"></i><b>F.0.5</b> <code>darkly</code></a></li>
+<li class="chapter" data-level="F.0.6" data-path="rmd-themes.html"><a href="rmd-themes.html#readable"><i class="fa fa-check"></i><b>F.0.6</b> <code>readable</code></a></li>
+<li class="chapter" data-level="F.0.7" data-path="rmd-themes.html"><a href="rmd-themes.html#spacelab"><i class="fa fa-check"></i><b>F.0.7</b> <code>spacelab</code></a></li>
+<li class="chapter" data-level="F.0.8" data-path="rmd-themes.html"><a href="rmd-themes.html#united"><i class="fa fa-check"></i><b>F.0.8</b> <code>united</code></a></li>
+<li class="chapter" data-level="F.0.9" data-path="rmd-themes.html"><a href="rmd-themes.html#cosmo"><i class="fa fa-check"></i><b>F.0.9</b> <code>cosmo</code></a></li>
+<li class="chapter" data-level="F.0.10" data-path="rmd-themes.html"><a href="rmd-themes.html#lumen"><i class="fa fa-check"></i><b>F.0.10</b> <code>lumen</code></a></li>
+<li class="chapter" data-level="F.0.11" data-path="rmd-themes.html"><a href="rmd-themes.html#paper"><i class="fa fa-check"></i><b>F.0.11</b> <code>paper</code></a></li>
+<li class="chapter" data-level="F.0.12" data-path="rmd-themes.html"><a href="rmd-themes.html#sandstone"><i class="fa fa-check"></i><b>F.0.12</b> <code>sandstone</code></a></li>
+<li class="chapter" data-level="F.0.13" data-path="rmd-themes.html"><a href="rmd-themes.html#simplex"><i class="fa fa-check"></i><b>F.0.13</b> <code>simplex</code></a></li>
+<li class="chapter" data-level="F.0.14" data-path="rmd-themes.html"><a href="rmd-themes.html#yeti"><i class="fa fa-check"></i><b>F.0.14</b> <code>yeti</code></a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="teach-offer.html"><a href="teach-offer.html"><i class="fa fa-check"></i><b>G</b> What should I make</a></li>
+<li class="chapter" data-level="H" data-path="teach-learners.html"><a href="teach-learners.html"><i class="fa fa-check"></i><b>H</b> Teaching learners</a></li>
+<li class="chapter" data-level="I" data-path="teach-day1.html"><a href="teach-day1.html"><i class="fa fa-check"></i><b>I</b> What to do on day 1</a></li>
+<li class="chapter" data-level="J" data-path="licensing-your-content.html"><a href="licensing-your-content.html"><i class="fa fa-check"></i><b>J</b> Licensing your content</a></li>
+<li class="chapter" data-level="K" data-path="remixing-licensed-content.html"><a href="remixing-licensed-content.html"><i class="fa fa-check"></i><b>K</b> Remixing licensed content</a></li>
+<li class="chapter" data-level="L" data-path="community.html"><a href="community.html"><i class="fa fa-check"></i><b>L</b> Community</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rstudio4edu</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <script src="assets/hideOutput.js"></script>
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="images/books.jpg">
+</div>
+<div id="data-pkg" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Create a data package</h1>
+<p>This tutorial is intended for educators who would like to learn to make a data package.</p>
+<center>
+<img src="images/pkg/barebones.jpg" width="350" />
+</center>
+<p><strong>Why do this?</strong></p>
+<p>What if you’d like your students to work with a specific data set? Should you email them an excel or .csv file or upload it onto an oustide learning platform? No! You can include data sets in your package, ready to be summoned with the call of an object name. This saves precious instruction time that might otherwise be wasted and also helps students get to the fun stuff (analysis!) faster.</p>
+<div id="is-this-tutorial-for-you" class="section level2">
+<h2><span class="header-section-number">12.1</span> Is this tutorial for you?</h2>
+<p><strong>Pre-requisites:</strong></p>
+<ul>
+<li>You have a <a href="https://github.com/">GitHub account</a></li>
+<li>You are comfortable with the basics of using R and RStudio</li>
+<li>You understand how R projects work</li>
+<li>You understand the difference between a regular R script and an R Markdown document</li>
+</ul>
+<p><strong>What you’ll learn:</strong></p>
+<ul>
+<li>How to make a package that your students can download and install from GitHub</li>
+<li>How to tidy up an existing dataset and put it in a package</li>
+<li>How to include a raw data set in your package</li>
+</ul>
+</div>
+<div id="mental-framework" class="section level2">
+<h2><span class="header-section-number">12.2</span> Mental Framework</h2>
+<p>What are we going to make here?</p>
+<p>To create a package with data that is ready for our learners, we’re going to make four new folders that will contain (1) our raw data files, (2) any scripts for cleaning up our data, (3) commented documentation of our data, and (4) cleaned up documentation of our data. Finally, we’ll pull it all together when we (5) build all of these things into our package.</p>
+<p>We can think of this process of putting data in a package as kind of like getting a fish ready to be used in a sushi roll at a nice restaurant.</p>
+<center>
+<img src="images/pkg/Sushi-overview.jpg" width="600" />
+</center>
+<p><br />
+</p>
+<p>🎣 <code>data_raw/</code>: this is your fish</p>
+<p>🍣 <code>data/</code>: this is your sushi roll (re: some additional data prep here like wrangling, and final object gets “rolled up” into a nice clean .rda file)</p>
+<p>📝 <code>R/</code>: write up your menu- what is inside of your roll?</p>
+<p>🍱 <code>man/</code>: this is the chef giving you the tableside context for what you’ve ordered and what it pairs well with</p>
+<p>Let’s go through this process!</p>
+</div>
+<div id="part-1-getting-set-up" class="section level2">
+<h2><span class="header-section-number">12.3</span> Part 1: Getting set up</h2>
+<div id="packages" class="section level3">
+<h3><span class="header-section-number">12.3.1</span> Packages</h3>
+<p>Make sure you’ve installed and loaded the following packages:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="co">#install.packages(c(&quot;usethis&quot;, &quot;devtools&quot;, &quot;roxygen2&quot;))</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="kw">library</span>(roxygen2)</a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="kw">library</span>(devtools)</a></code></pre></div>
+<p>You may also want to consider installing and loading <code>here::here()</code>:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="co"># install.packages(&quot;here&quot;)</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="co"># here::here()</span></a></code></pre></div>
+</div>
+<div id="two-getting-started-workflows" class="section level3">
+<h3><span class="header-section-number">12.3.2</span> Two getting-started workflows</h3>
+<p>Our final goal is to create a package that is “downloadable” by your students, which means this package needs to have a GitHub repository so that it can be easily shared. See our tips below for what to name your project repository.</p>
+<div class="tip">
+<p><strong>What’s in a name?</strong> Name your GitHub repository whatever you want to name your data package. It will make things less confusing. As such, the name you choose must:</p>
+<ul>
+<li>Include only letters, numbers, or <code>.</code></li>
+<li>Start with a letter</li>
+<li>Not end with a <code>.</code></li>
+<li>Optionally, consider the naming tips <strong><a href="https://r-pkgs.org/package-structure.html">here</a></strong></li>
+</ul>
+</div>
+<div class="rstudio-tip">
+<p><strong>Where to put this project directory?</strong> Make sure your project directory that we will use to make this package is not nested within any other projects, folders, or repos. It should be its own thing.</p>
+</div>
+<p>We recommend following the tips on <a href="https://happygitwithr.com/new-github-first.html">Happy Git with R</a> and starting in GitHub before switching to RStudio:</p>
+<ol style="list-style-type: decimal">
+<li><p><a href="https://happygitwithr.com/new-github-first.html#make-a-repo-on-github-2"><strong>Create a new repository on GitHub</strong></a> for your work.</p>
+<ul>
+<li>Do <em>not</em> initialize the repo with a <code>.gitignore</code> or a <code>README</code> file (we’ll add these later!).<br />
+<br></li>
+</ul></li>
+<li><p><strong>Copy the repository URL</strong> to your clipboard.</p>
+<ul>
+<li><p>Do this by clicking the green Clone or Download button.</p></li>
+<li><p>Copy the HTTPS clone URL (looks like: <code>https://github.com/{yourname}/{yourrepo}.git</code>).</p></li>
+<li><strong>Or</strong> copy the SSH URL if you chose to set up SSH keys (looks like: <code>git@github.com:{yourname}/{yourrepo}.git</code>).<br />
+<br></li>
+</ul></li>
+<li><p><a href="https://happygitwithr.com/new-github-first.html#new-rstudio-project-via-git-clone">Create a new RStudio Project via git clone</a>. <strong>Open RStudio.</strong></p>
+<ul>
+<li><p>Do this by clicking <em>File</em> &gt; <em>New Project</em> &gt; <em>Version Control</em>&gt; <em>Git</em>.</p></li>
+<li><p>Paste the copied URL.</p></li>
+<li>Be intentional about where you tell RStudio to create this new Project.<br />
+<br></li>
+</ul></li>
+<li><p><strong>Click Create Project.</strong></p></li>
+</ol>
+<div class="tip">
+<p>Follow these instructions from <a href="https://happygitwithr.com/">Happy Git with R</a> to start with a new repo on <a href="https://happygitwithr.com/new-github-first.html#gitlab">GitLab</a> or <a href="https://happygitwithr.com/new-github-first.html#bitbucket">Bitbucket</a>, instead of GitHub.</p>
+</div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">create_package</span>(<span class="kw">getwd</span>())</a></code></pre></div>
+<p>The console output will ask if you’d like to overwrite the pre-existing R project. Select <em>No</em>.</p>
+<center>
+<img src="images/pkg/create_package_ss.png" width="400" />
+</center>
+<p>A second session of RStudio will open – this ession has a <em>Build</em> tab in the pane which also has the tabs <em>Environment</em>, <em>History</em>, etc. This tab is specific for building packages, and we will use it later. You can close the other RStudio instance.</p>
+<center>
+<img src="images/pkg/build_tab.png" width="500" />
+</center>
+<p>It is a good idea to commit to GitHub at this point.</p>
+<p><br />
+Though we don’t recommend starting this way, it is possible to first make a data package project in RStudio and then connect it to GitHub afterwards.</p>
+<ol style="list-style-type: decimal">
+<li>Click <em>File</em> &gt; <em>New Project</em> &gt; <em>New Directory</em></li>
+<li>Scroll down and select <em>R Package</em></li>
+<li>Select a package name (see tip above) and click <em>Create Project</em></li>
+<li>Then, optionally:</li>
+</ol>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_git</span>()</a>
+<a class="sourceLine" id="cb65-2" data-line-number="2">usethis<span class="op">::</span><span class="kw">use_github</span>() <span class="co"># you have to have a PAT setup</span></a></code></pre></div>
+<p><br />
+Regardless of which workflow you choose, your project directory should end up looking like this:</p>
+<center>
+<img src="images/pkg/cp_files.png" width="400" />
+</center>
+<p>We have a few package-specific files set up now– in our sushi analogy, this is like us purchasing an empty restaurant– some infrastructure is there, but there’s nothing in the kitchen yet!</p>
+<center>
+<img src="images/pkg/Sushibuilding.jpg" width="400" />
+</center>
+</div>
+</div>
+<div id="part-2-add-some-clean-data" class="section level2">
+<h2><span class="header-section-number">12.4</span> Part 2: Add some clean data</h2>
+<div id="with-built-in-data" class="section level3">
+<h3><span class="header-section-number">12.4.1</span> With built-in data</h3>
+<p>Let’s say we want our learners to be able use a <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">built-in dataset</a> like <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/anscombe.html"><code>anscombe</code></a>, but we’d like to modify it first. Any clean up <code>.R</code> scripts or miscellaneous files that we use for pre-processing will need a place to live within our package. Where do these files go? In a folder called <code>data-raw/</code>.</p>
+<ol style="list-style-type: decimal">
+<li>Let’s create the <code>data-raw/</code> folder:</li>
+</ol>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_data_raw</span>()</a></code></pre></div>
+<p>[commit]</p>
+<p>The <code>data-raw/</code> folder is like the pantry (?) of our sushi restaurant– we can put anything we want in here, and it won’t directly impact our final package.<br />
+</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Go to <em>File</em> &gt; <em>New File</em> &gt; <em>R Script</em> and read-in any data set you’d like along with any clean up steps. (Alternatively, you could add your clean-up script to the <code>DATASET.R</code> that gets auto-generated inside of the <code>data-raw/</code> folder–but we recommend naming your <code>.R</code> script to be something that corresponds with the name of your dataset.)</li>
+</ol>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">anscombe_set1 &lt;-<span class="st"> </span>anscombe[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>)]</a></code></pre></div>
+<p>This is you bringing in the raw fish (raw data set – <code>anscombe</code>) to the kitchen and getting them ready for consumption!</p>
+<p><br />
+</p>
+<ol start="3" style="list-style-type: decimal">
+<li>At the end of this script, include the following line, replacing <code>anscombe_set1</code> with your own cleaned dataset.</li>
+</ol>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">use_data</span>(anscombe_set1, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Run this script and save this <code>.R</code> script inside <code>data-raw/</code>. The outcome should be a cleaned up <code>.rda</code> data file in a new folder called <code>data/</code>.</li>
+</ol>
+<p>[commit]</p>
+<p>[SCREENSHOT]</p>
+<p>This <code>.rda</code> file is your (data) sushi roll! It’s cleaned and ready to be accessed via your package!</p>
+<p><br />
+5. To confirm this, load your package locally by going to the <em>Build</em> pane &gt; Click <em>More</em> &gt; <em>Load All</em>.</p>
+<center>
+<img src="images/pkg/load_all.png" width="400" />
+</center>
+<p>This is the same as running <code>devtools::load_all()</code> in the console.</p>
+<p>If everything worked, you should be able to call your cleaned data set successfully!</p>
+<pre><code>&gt; anscombe_set1
+   x1    y1
+1  10  8.04
+2   8  6.95
+3  13  7.58
+4   9  8.81
+5  11  8.33
+6  14  9.96
+7   6  7.24
+8   4  4.26
+9  12 10.84
+10  7  4.82
+11  5  5.68</code></pre>
+<p>🎉 Nice! With these steps, you’ve managed to go from raw fish to the packaged-up sushi roll! Wait..but what if you want to catch your OWN fish?? 🎣 We hear you– using your own data is important as an educator so you can tailor the data to your lesson content –<strong>can you put your own data files in a package? YES!</strong> Let’s go fishing!</p>
+</div>
+<div id="start-with-your-own-data" class="section level3">
+<h3><span class="header-section-number">12.4.2</span> Start with your OWN Data</h3>
+<p>Let’s show you how to save your own <code>.csv</code> to the <code>data-raw/</code> folder. As an example, we’ll be using a <code>shrimp.csv</code> containing <a href="https://www.pnas.org/content/114/7/1512/tab-figures-data">data on seafood prices</a>.</p>
+<p><br />
+1. Save your raw <code>.csv</code> file to your <code>data-raw/</code> folder. (Remember, this folder is our pantry.) 🐟</p>
+<p><br />
+2. Make a new <code>.R</code> script (again, manually saving to the <code>data-raw/ folder</code>) and name the <code>.R</code> script something like <code>&lt;your-data&gt;_load.R</code>.</p>
+<p><br />
+3. In this script, read in your raw <code>.csv</code> file and do any data tidying and cleaning [analogy: fish chopping block?] if you need to.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" data-line-number="1"><span class="co"># shrimp_load.R</span></a>
+<a class="sourceLine" id="cb70-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb70-3" data-line-number="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb70-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb70-5" data-line-number="5">shrimp_raw &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(<span class="st">&quot;data-raw/shrimp.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb70-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb70-7" data-line-number="7"><span class="co"># Add any tidying steps to this script if necessary</span></a>
+<a class="sourceLine" id="cb70-8" data-line-number="8">shrimp &lt;-<span class="st"> </span>shrimp_raw[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>),]</a>
+<a class="sourceLine" id="cb70-9" data-line-number="9"><span class="kw">colnames</span>(shrimp) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Year&quot;</span>, <span class="st">&quot;Month&quot;</span>, shrimp_raw[<span class="dv">1</span>,<span class="dv">3</span><span class="op">:</span><span class="dv">10</span>])</a>
+<a class="sourceLine" id="cb70-10" data-line-number="10">shrimp &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">type_convert</span>(shrimp)</a></code></pre></div>
+<div class="tip">
+<p>Forget about specifying paths– use <code>here::here()</code>. For example:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" data-line-number="1">shrimp &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_csv</span>(here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data-raw&quot;</span>, <span class="st">&quot;shrimp.csv&quot;</span>))</a></code></pre></div>
+</div>
+<p>The <code>data-raw/</code> folder gets ignored when we <em>Build</em> our package, so you can use whatever packages you’d like to clean and tidy up your data (e.g. <code>tidyverse</code>, as I’ve used above) – it doesn’t affect any of the dependencies for your package because scripts in this folder only get run by you manually.</p>
+<div class="tip">
+<p><strong>Note</strong>: It’s always a good idea to start with the most unprocessed, messy version of the data <code>.csv</code> in the <code>data-raw/</code> folder along with scripts to clean it up so that your workflow is reproducible.</p>
+</div>
+<p><br />
+</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Once you’ve got your dataset the way you want it within <code>&lt;your-data&gt;_load.R</code>, run <code>usethis::use_data()</code> as the last line in the script to export the data as an <code>.rda</code> file to the <code>data/</code> folder 🍣.</li>
+</ol>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="co"># shrimp_load.R</span></a>
+<a class="sourceLine" id="cb72-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb72-3" data-line-number="3">usethis<span class="op">::</span><span class="kw">use_data</span>(shrimp, <span class="dt">overwrite =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="tip">
+<p><strong>FYI</strong>: The reason .rda (al<code>so c</code>alled .RData) <code>.RData</code>are use in packaged data sets is because this type of data file format is much faster to read in than <code>.csv</code> files.</p>
+</div>
+<p><br />
+5. Trust but verify that your data set made it in your package by loading the package (<em>Build</em> pane &gt; Click <em>More</em> &gt; <em>Load All</em> or in the console using <code>devtools::load_all()</code>). And then call your dataset!</p>
+<pre><code>&gt; shrimp
+# A tibble: 243 x 10
+    Year Month `0-15` `15-20` `20-25` `25-30` `30-40` `40-50` `50-67` Pieces
+   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+ 1  1990     1   5.76    4.53    3.86    3.51    3.19    2.84    2.54   1.91
+ 2  1990     2   5.96    4.60    3.90    3.66    3.36    2.93    2.66   1.99
+ 3  1990     3   6.34    4.75    4.17    3.87    3.56    3.41    3.18   2.46
+ 4  1990     4   6.06    4.90    4.27    3.97    3.70    3.20    2.91   1.78
+ 5  1990     5   5.83    4.83    4.46    4.04    3.64    2.96    2.17   1.19
+ 6  1990     6   5.82    4.79    4.38    3.88    3.27    2.71    2.24   1.45
+ 7  1990     7   5.92    4.99    4.36    3.54    2.88    2.51    2.17   1.65
+ 8  1990     8   5.56    4.85    4.27    3.50    2.93    2.45    2.14   1.60
+ 9  1990     9   5.91    5.00    4.42    3.76    3.14    2.66    2.34   1.75
+10  1990    10   6.31    5.30    4.67    4.18    3.45    2.97    2.66   1.96
+# … with 233 more rows</code></pre>
+<p>🎉 It works!</p>
+</div>
+</div>
+<div id="part-3-check" class="section level2">
+<h2><span class="header-section-number">12.5</span> Part 3: Check!</h2>
+<p>Now we can check and see whether there are any issues with our package.</p>
+<p><br />
+6. In the RStudio <em>Build</em> pane &gt; click <em>Check</em> (or in the console, run <code>devtools::check(document=FALSE)</code>)</p>
+<pre><code>── R CMD check results ────────────────────────────────────── testpackage 0.0.0.9000 ────
+Duration: 7.2s
+
+❯ checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    What license it uses
+  Standardizable: FALSE
+
+❯ checking for missing documentation entries ... WARNING
+  Undocumented code objects:
+    ‘anscombe_set1’ ‘shrimp’
+  Undocumented data sets:
+    ‘anscombe_set1’ ‘shrimp’
+  All user-level objects in a package should have documentation entries.
+  See chapter ‘Writing R documentation files’ in the ‘Writing R
+  Extensions’ manual.
+
+❯ checking data for ASCII and uncompressed saves ... WARNING
+    Warning: package needs dependence on R (&gt;= 2.10)
+
+0 errors ✔ | 3 warnings ✖ | 0 notes ✔</code></pre>
+<p>This spits back a lot of output, including some warnings! But don’t feel overwhelmed. This is okay and is only happening because we have not documented anything in our package yet (our sushi 🍣 is made, but the menu 📝 is not!) –and in fact, if we wanted to, we could still use this package despite the warnings and commit/push to GitHub as is.</p>
+<p>You should document your data sets anyway because it will save you time and help your learners if they’re able to use <code>?dataset</code> to see all get information about what’s inside.</p>
+</div>
+<div id="part-4-document-the-datasets" class="section level2">
+<h2><span class="header-section-number">12.6</span> Part 4: Document the datasets</h2>
+<p>We’ll go through an example of documenting our <code>shrimp</code> dataset, but you can (and should) do this for any data set in your package.</p>
+<p><br />
+7. In the console, run <code>usethis::use_r()</code> with your data set name in quotes, which will generate a new <code>.R</code> script that lives in an <code>R/</code> folder.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_r</span>(<span class="st">&quot;shrimp&quot;</span>)</a></code></pre></div>
+<p><br />
+8. In this new <code>.R</code> script, type the name of your dataset in quotes. Immediately above this, manually (<em>yes, manually</em>) copy and paste-in specially-formatted comments called Roxygen comments (use our example below). These strange-looking comments will eventually become our documentation.</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="co">#&#39; Data of nominal brown shrimp prices by size </span></a>
+<a class="sourceLine" id="cb76-2" data-line-number="2"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb76-3" data-line-number="3"><span class="co">#&#39; Shrimp are classified by size, 0-15 shrimp per pound, 15-20 shrimp per pound, etc. A smaller number per pound indicates larger shrimp. Nominal prices are total monthly value of brown shrimp andings within size class divided by total monthly landings within the size class. </span></a>
+<a class="sourceLine" id="cb76-4" data-line-number="4"><span class="co">#&#39;</span></a>
+<a class="sourceLine" id="cb76-5" data-line-number="5"><span class="co">#&#39; @format A tibble with 243 rows and 10 variables:</span></a>
+<a class="sourceLine" id="cb76-6" data-line-number="6"><span class="co">#&#39; \describe{</span></a>
+<a class="sourceLine" id="cb76-7" data-line-number="7"><span class="co">#&#39;   \item{Year}{dbl Year price was recorded}</span></a>
+<a class="sourceLine" id="cb76-8" data-line-number="8"><span class="co">#&#39;   \item{Month}{dbl Month price was recorded. Ranges from 1-12 for January - December} </span></a>
+<a class="sourceLine" id="cb76-9" data-line-number="9"><span class="co">#&#39;   \item{`0-15`}{dbl denoting monthly price for the 0-15/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-10" data-line-number="10"><span class="co">#&#39;   \item{`15-20`}{dbl denoting monthly price for the 15-20/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-11" data-line-number="11"><span class="co">#&#39;   \item{`20-25`}{dbl denoting monthly price for the 20-25/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-12" data-line-number="12"><span class="co">#&#39;   \item{`25-30`}{dbl denoting monthly price for the 25-30/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-13" data-line-number="13"><span class="co">#&#39;   \item{`30-40`}{dbl denoting monthly price for the 30-40/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-14" data-line-number="14"><span class="co">#&#39;   \item{`40-50`}{dbl denoting monthly price for the 40-50/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-15" data-line-number="15"><span class="co">#&#39;   \item{`50-67`}{dbl denoting monthly price for the 50-67/lb. size class}</span></a>
+<a class="sourceLine" id="cb76-16" data-line-number="16"><span class="co">#&#39;   \item{Pieces}{dbl denoting monthly price of pieces of shrimp totalling a pound}</span></a>
+<a class="sourceLine" id="cb76-17" data-line-number="17"><span class="co">#&#39; }</span></a>
+<a class="sourceLine" id="cb76-18" data-line-number="18"><span class="co">#&#39; @source \url{https://www.pnas.org/content/114/7/1512/tab-figures-data}</span></a>
+<a class="sourceLine" id="cb76-19" data-line-number="19"><span class="st">&quot;shrimp&quot;</span></a></code></pre></div>
+<p>[commit]</p>
+<p>Modify the descriptions to match your dataset. This is you drafting the 📝 menu for your sushi.</p>
+<ul>
+<li><code>@format</code> describes the dataset basics, including a description of what each of the variables are.</li>
+<li><code>@source</code> should describe where you got this data. Most of the time this is a url, but not nessarily.o</li>
+</ul>
+<div class="tip">
+<p><strong>Note:</strong> To read more about Roxygen comments, check out <a href="images/pkg/https://r-pkgs.org/man.html">6.3 Roxygen Comments, R Packages</a>.</p>
+</div>
+<p><br />
+9. Our 📝 menu is drafted but not yet accessible by the package. In the console, run <code>devtools::document()</code> to make the Roxygen comments “concrete”.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>()</a></code></pre></div>
+<p>This generates a <code>.Rd</code> file, that makes our documentation accessible to the package. Our official documentation lives inside a newly-generated <code>man/</code> folder. (Think Chef providing a tableside reading of the menu.)</p>
+<p><br />
+10. Try using pulling up your documentation. Call <code>?shrimp</code>, substituting the name of your data set.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1">?shrimp</a></code></pre></div>
+<center>
+<img src="shrimp_doc.png" width="400" />
+</center>
+<p>If everything looks good, then you’re done documenting this dataset! 🎉 If not, keep editing the Roxygen-style comments in the <code>.R</code> script and <code>document()</code> again until you’re satisfied.</p>
+<p>Now repeat the steps in this section for any other dataset in your package!</p>
+</div>
+<div id="part-5-document-the-package" class="section level2">
+<h2><span class="header-section-number">12.7</span> Part 5: Document the package</h2>
+<ol start="11" style="list-style-type: decimal">
+<li>Now, we’ll open up and edit the <code>DESCRIPTION</code> file to fill in the author (your) info and other descriptive info about the package.</li>
+</ol>
+<pre><code>Package: testpackage
+Title: Data Package With Shrimp Price Data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = &quot;Desirée&quot;,
+           family = &quot;De Leon&quot;,
+           role = c(&quot;aut&quot;, &quot;cre&quot;),
+           email = &quot;desiree@rstudio.com&quot;,
+           comment = c(ORCID = &quot;https://orcid.org/0000-1111-2222-3333&quot;))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+</code></pre>
+<ul>
+<li><p>You can add your ORCID ID, to the <code>DESCRIPTION</code>, which serves as your authorship fingerprint for creating onlinls. If you don’t have one, you can quickly sign up for a free one <a href="https://orcid.org/">here</a>.</p></li>
+<li><p>In the License field, we recommend using the MIT license for a package, which you can do by literally typing “MIT + file LICENSE” followed by creating a new text file called “LICENSE” (it has to be named this exactly) in your root project directory with two lines of code for the year and your name. Like so:</p></li>
+</ul>
+<pre><code># LICENSE
+
+YEAR: 2019
+COPYRIGHT HOLDER: Desirée De Leon</code></pre>
+<div class="tip">
+<p><strong>FYI</strong>: To learn more about licensing and why it’s important, check out this <a href="https://kbroman.org/pkg_primer/pages/licenses.html">resource</a>.</p>
+</div>
+<p><br />
+12. Now that all datasets and the <code>DESCRIPTION</code> file have been documented. We can check again for any package warnings. Click <em>Build</em> &gt; <em>Check</em> (or in the console, <code>devtools::check(document=FALSE)</code>). This time things should be all-clear!</p>
+<p>I happened to get one warning that looked like this:</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="op">&gt;</span><span class="st"> </span>checking data <span class="cf">for</span> ASCII and uncompressed saves ... WARNING</a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">    Warning<span class="op">:</span><span class="st"> </span>package needs dependence on <span class="kw">R</span> (<span class="op">&gt;=</span><span class="st"> </span><span class="fl">2.10</span>)</a></code></pre></div>
+<p>This means I needed to specify a minimum version of R, which I can do in my DESCRIPTION file, which I edited once more to look like this:</p>
+<pre><code>Package: testpackage
+Title: Data Package With Shrimp Price Data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = &quot;Desirée&quot;,
+           family = &quot;De Leon&quot;,
+           role = c(&quot;aut&quot;, &quot;cre&quot;),
+           email = &quot;desiree@rstudio.com&quot;,
+           comment = c(ORCID = &quot;https://orcid.org/0000-1111-2222-3333&quot;))
+Description: What the package does (one paragraph).
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (&gt;= 2.10)
+LazyData: true
+RoxygenNote: 6.1.1
+</code></pre>
+<p><br />
+* Run <em>Build</em> &gt; <em>Check</em> one last time – NOW it’s all clear*!</p>
+<div class="tip">
+<p>If you’re still getting <em>Warnings</em>, check <a href="https://r-pkgs.org/r-cmd-check.html">here</a> for some troubleshooting tips. For example, you might get a warning related to your package needing dependence on other packages. You can fix this by running the line below to automatically install any missing or outdated dependencies.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install_deps</span>(<span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+</div>
+<p><br />
+13. ALMOST THERE! We should also create <a href="https://r-pkgs.org/man.html#man-packages">documentation for the package overall</a>, which is the documentation that we get when we use <code>?&lt;package-name&gt;</code>. We add package-level documentation :</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_package_doc</span>()</a></code></pre></div>
+<p>This creates <em>one last</em> (hang in there) <em>.R</em> script, carrying the same name as your package. It lives inside the <code>R/</code> folder, nextdoor to the Roxygen-commented scripts for each of your datasets.</p>
+<ul>
+<li>Open this newest <code>.R</code> script, and while this script is open, run the following <code>usethis</code> code in the console.</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1">usethis<span class="op">::</span><span class="kw">use_tibble</span>()</a></code></pre></div>
+<p>This will make it so that datasets in your package will print out as clean tibbles, instead of dataframes. Your script should look something like this:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="co">#&#39; @keywords internal</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="st">&quot;_PACKAGE&quot;</span></a>
+<a class="sourceLine" id="cb86-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="co"># The following block is used by usethis to automatically manage</span></a>
+<a class="sourceLine" id="cb86-5" data-line-number="5"><span class="co"># roxygen namespace tags. Modify with care!</span></a>
+<a class="sourceLine" id="cb86-6" data-line-number="6"><span class="co">## usethis namespace: start</span></a>
+<a class="sourceLine" id="cb86-7" data-line-number="7"><span class="co">#&#39; @importFrom tibble tibble</span></a>
+<a class="sourceLine" id="cb86-8" data-line-number="8"><span class="co">## usethis namespace: end</span></a>
+<a class="sourceLine" id="cb86-9" data-line-number="9"><span class="ot">NULL</span></a></code></pre></div>
+<ul>
+<li>Run <code>document()</code> to make this “concrete”, followed by one last <em>Build</em> &gt; <em>Check</em>.</li>
+</ul>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">document</span>()</a></code></pre></div>
+<ul>
+<li>Now you can call <code>?testpackage</code>, replacing with your own package name.</li>
+</ul>
+<p>[SCREENSHOT]</p>
+</div>
+<div id="part-6-build-and-install" class="section level2">
+<h2><span class="header-section-number">12.8</span> Part 6: Build and Install!</h2>
+<center>
+<img src="images/pkg/Build.jpg" width="350" />
+</center>
+<p>Finally (FINALLY!!) all the pieces of our package are now in place, and it’s time to install it.</p>
+<p><br />
+14. Go to <em>Build</em> &gt; <em>Install and Restart</em> to make the package “official”. Or in the console run:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<p>To celebrate 🎉, let’s print out our nice tibble 🦐 <code>shrimp</code>:</p>
+<pre><code>&gt; testpackage::shrimp
+# A tibble: 243 x 10
+   Year  Month `0-15`      `15-20`     `20-25`     `25-30`     `30-40`     `40-50`     `50-67`     Pieces     
+   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;      
+ 1 1990  1     5.759555465 4.527945872 3.858928071 3.514200832 3.192596609 2.841849966 2.54415628  1.910168236
+ 2 1990  2     5.962003847 4.601218856 3.90400544  3.660123275 3.359026722 2.925337664 2.661750431 1.992272943
+ 3 1990  3     6.341150505 4.753105387 4.170154143 3.870107021 3.556246121 3.414308628 3.179252479 2.457202073
+ 4 1990  4     6.058025577 4.904859873 4.26679422  3.969849673 3.703260885 3.204955068 2.913211903 1.776717746
+ 5 1990  5     5.827911652 4.830152374 4.464854478 4.041919716 3.637094201 2.961828687 2.17059349  1.188236536
+ 6 1990  6     5.818761292 4.788106337 4.382883567 3.879214266 3.270806964 2.712393632 2.239497802 1.450032245
+ 7 1990  7     5.923164993 4.987179487 4.356993267 3.540394871 2.882228712 2.512950583 2.17032006  1.648464142
+ 8 1990  8     5.563856926 4.854975559 4.266385694 3.4965833   2.934561646 2.452177137 2.136210905 1.598242815
+ 9 1990  9     5.912565621 4.998191859 4.416478291 3.758592484 3.140213747 2.660816111 2.337113624 1.745624186
+10 1990  10    6.311225952 5.296802562 4.672483114 4.183780113 3.446375802 2.966602596 2.662274751 1.958313571
+# … with 233 more rows
+&gt; </code></pre>
+<p>🦐🎉</p>
+<p><br />
+15. <strong>Push everything to GitHub!!</strong></p>
+</div>
+<div id="part-7-deliver" class="section level2">
+<h2><span class="header-section-number">12.9</span> Part 7: Deliver</h2>
+<p>Anyone can now install your package with the following code, substituting the field in quotes with your own GitHub username and package name:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="co"># install.packages(&quot;remotes&quot;)</span></a>
+<a class="sourceLine" id="cb90-2" data-line-number="2">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;rstudio4edu/testpackage&quot;</span>)</a></code></pre></div>
+</div>
+<div id="caring-for-your-package" class="section level2">
+<h2><span class="header-section-number">12.10</span> Caring for your package</h2>
+<div id="a-review" class="section level3">
+<h3><span class="header-section-number">12.10.1</span> A review</h3>
+<p>Here’s a review of all the data package steps we covered:</p>
+<p><img src="images/pkg/datapackagemap.jpg" /></p>
+<p>[^ADD SUSHI TO THE ABOVE IMAGE]</p>
+<p>If you wanted to later to and edit one of your datasets, here’s what that workflow would look like:</p>
+<ol style="list-style-type: decimal">
+<li>Go into <code>data-raw/</code> and edit your <code>.csv</code> and the corresponding <code>dataset_load.R</code> script for in the <code>data-raw/</code> folder.</li>
+<li>After you’ve made your changes, make sure you re-run <code>usethis::use_data(&lt;your-dataset&gt;, overwrite = TRUE)</code>.</li>
+<li>If your changes affect the variables you’ve used, then don’t forget to update the corresponding Roxygen-commented <code>.R</code> script that lives inside the <code>R/</code> folder. Run <code>document()</code> to put those changes into effect.</li>
+<li>Run a <em>Check</em> for good measure with <code>devtools::check(document=FALSE)</code> and finally…</li>
+<li>Go to <em>Build</em> &gt; <em>Install and Restart</em>.</li>
+<li>When your learners re-install the package from GitHub, they’ll have all your updates!</li>
+</ol>
+</div>
+<div id="package-accessories" class="section level3">
+<h3><span class="header-section-number">12.10.2</span> Package accessories</h3>
+<p>We don’t cover it here, but you should know that you can also add a <a href="https://r-pkgs.org/whole-game.html#use_readme_rmd">README</a>, and also <a href="https://r-pkgs.org/r.html">R functions</a> to your package. You can read more about those things in the <a href="https://r-pkgs.org/">R Packages</a> book.</p>
+</div>
+</div>
+<div id="tldr" class="section level2">
+<h2><span class="header-section-number">12.11</span> tldr;</h2>
+<p>Here’s how you put custom data in a package:</p>
+<ol style="list-style-type: decimal">
+<li>In a GitHub-connected RStudio project, run <code>create_package(getwd())</code></li>
+<li><code>usethis::use_data_raw()</code> makes <code>data-raw/</code>. In here, put your <code>.csv</code> and a manually-created <code>dataset_load.R</code> script.</li>
+<li>In <code>dataset_load.R</code>, read in the <code>.csv</code> and do data-clean up.</li>
+<li>Also in <code>dataset_load.R</code>, run <code>usethis::use_data(&lt;your-dataset&gt;, overwrite = TRUE)</code> to export an <code>.rda</code> to <code>data/</code>.</li>
+<li>Run <code>usethis::use_r(&quot;&lt;your-dataset&gt;&quot;)</code>. Manually insert Roxygen comments.</li>
+<li>Edit <code>DESCRIPTION</code>. Include a <code>LICENSE</code> file.</li>
+<li>Run <code>usethis::use_package_doc()</code> to document the whole package.</li>
+<li>Keep the package-level <code>.R</code> script open and run <code>usethis::use_tibble()</code> for data as tibbles.</li>
+<li>Run <code>devtools::document()</code> to make all documentation concrete.</li>
+<li>Check your package with <code>devtools::check(document=FALSE)</code>.</li>
+<li>Go to <em>Build</em> &gt; <em>Install and Restart</em> !</li>
+<li>Push to GitHub and have folks install with <code>remotes::install_github(&quot;&lt;your-repo&gt;/&lt;your package&gt;&quot;)</code>.</li>
+</ol>
+<p><strong>Congratulations</strong>, you’ve made a package with documented data! If you’d like to create a worksheet-like templates to also put in your package, continue with the next section.</p>
+
+</div>
+</div>
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC-BY-NC </a>: You can download them by <a href="shared-illos.zip">clicking here</a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/2.0/"> CC-BY </a> unless noted otherwise.
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro-dry.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rmd-templates.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio4edu/rstudio4edu-book/edit/master/cookbook-pkg_data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["https://github.com/rstudio4edu/rstudio4edu-book/raw/master/cookbook-pkg_data.Rmd"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

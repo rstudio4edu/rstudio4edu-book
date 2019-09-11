@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Design a how-to | rstudio4edu</title>
+  <meta name="description" content="A work-in-progress" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Design a how-to | rstudio4edu" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rstudio4edu.github.io/rstudio4edu-book/" />
+  <meta property="og:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+  <meta property="og:description" content="A work-in-progress" />
+  <meta name="github-repo" content="Chapter 8 Design a how-to | rstudio4edu/rstudio4edu-book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Design a how-to | rstudio4edu" />
+  
+  <meta name="twitter:description" content="A work-in-progress" />
+  <meta name="twitter:image" content="https://rstudio4edu.github.io/rstudio4edu-book/images/logo/logo-rstudio4edu.png" />
+
+<meta name="author" content="Desirée De Leon" />
+<meta name="author" content="Alison Hill" />
+
+
+<meta name="date" content="2019-09-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" type="image/x-icon" />
+<link rel="prev" href="doc-care.html"/>
+<link rel="next" href="doc-dress.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.8/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<script src="libs/jszip-1.10.16/jszip.min.js"></script>
+<script src="libs/pdfmake-1.10.16/pdfmake.min.js"></script>
+<script src="libs/pdfmake-1.10.16/vfs_fonts.js"></script>
+<link href="libs/dt-ext-buttons-1.10.16/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-buttons-1.10.16/js/dataTables.buttons.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.flash.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.html5.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.colVis.min.js"></script>
+<script src="libs/dt-ext-buttons-1.10.16/js/buttons.print.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="./"><img src="images/logo/logo-rstudio4edu.png"></a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li><a href="index.html#why-rstudio4edu">Why <code>rstudio4edu</code>?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i>Philosophy</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-you"><i class="fa fa-check"></i>Who are you?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-is-in-this-handbook"><i class="fa fa-check"></i>What is in this handbook?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#what-did-we-leave-out"><i class="fa fa-check"></i>What did we leave out?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#who-are-we"><i class="fa fa-check"></i>Who are we?</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#contributing"><i class="fa fa-check"></i>Contributing</a></li>
+</ul></li>
+<li class="part"><span><b>Four basic ingredients</b></span></li>
+<li class="chapter" data-level="1" data-path="edu-stack.html"><a href="edu-stack.html"><i class="fa fa-check"></i><b>1</b> Infrastructure</a><ul>
+<li class="chapter" data-level="1.1" data-path="edu-stack.html"><a href="edu-stack.html#capital-r"><i class="fa fa-check"></i><b>1.1</b> R</a></li>
+<li class="chapter" data-level="1.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio"><i class="fa fa-check"></i><b>1.2</b> RStudio</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-ide"><i class="fa fa-check"></i><b>1.2.1</b> The RStudio IDE</a></li>
+<li class="chapter" data-level="1.2.2" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-proj"><i class="fa fa-check"></i><b>1.2.2</b> RStudio Projects</a></li>
+<li class="chapter" data-level="1.2.3" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-cloud"><i class="fa fa-check"></i><b>1.2.3</b> RStudio.cloud</a></li>
+<li class="chapter" data-level="1.2.4" data-path="edu-stack.html"><a href="edu-stack.html#rstudio-pro"><i class="fa fa-check"></i><b>1.2.4</b> Pro Products</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="edu-stack.html"><a href="edu-stack.html#github"><i class="fa fa-check"></i><b>1.3</b> GitHub</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-you"><i class="fa fa-check"></i><b>1.3.1</b> GitHub for you</a></li>
+<li class="chapter" data-level="1.3.2" data-path="edu-stack.html"><a href="edu-stack.html#gh-for-them"><i class="fa fa-check"></i><b>1.3.2</b> GitHub for them</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="edu-stack.html"><a href="edu-stack.html#communication-platform"><i class="fa fa-check"></i><b>1.4</b> Communication platform</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>2</b> Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="data.html"><a href="data.html#data-int"><i class="fa fa-check"></i><b>2.1</b> Data from R packages</a></li>
+<li class="chapter" data-level="2.2" data-path="data.html"><a href="data.html#data-github"><i class="fa fa-check"></i><b>2.2</b> Data stored on GitHub</a></li>
+<li class="chapter" data-level="2.3" data-path="data.html"><a href="data.html#data-ext"><i class="fa fa-check"></i><b>2.3</b> Data from other sources</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lessons.html"><a href="lessons.html"><i class="fa fa-check"></i><b>3</b> Lessons</a><ul>
+<li class="chapter" data-level="3.1" data-path="lessons.html"><a href="lessons.html#lit-history"><i class="fa fa-check"></i><b>3.1</b> A very brief history</a></li>
+<li class="chapter" data-level="3.2" data-path="lessons.html"><a href="lessons.html#pep-talk"><i class="fa fa-check"></i><b>3.2</b> A very brief pep-talk</a></li>
+<li class="chapter" data-level="3.3" data-path="lessons.html"><a href="lessons.html#lit-make"><i class="fa fa-check"></i><b>3.3</b> Literate lesson-making</a></li>
+<li class="chapter" data-level="3.4" data-path="lessons.html"><a href="lessons.html#make-it-work"><i class="fa fa-check"></i><b>3.4</b> Make it work</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="lessons.html"><a href="lessons.html#make-it-work-for-you"><i class="fa fa-check"></i><b>3.4.1</b> Make it work for you</a></li>
+<li class="chapter" data-level="3.4.2" data-path="lessons.html"><a href="lessons.html#make-it-work-for-them"><i class="fa fa-check"></i><b>3.4.2</b> Make it work for them</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="lessons.html"><a href="lessons.html#lit-deliver"><i class="fa fa-check"></i><b>3.5</b> Literate lesson-delivery</a></li>
+<li class="chapter" data-level="3.6" data-path="lessons.html"><a href="lessons.html#lit-share"><i class="fa fa-check"></i><b>3.6</b> Literate lesson-sharing</a></li>
+<li class="chapter" data-level="3.7" data-path="lessons.html"><a href="lessons.html#sample-rmds"><i class="fa fa-check"></i><b>3.7</b> Sample Rmds</a></li>
+<li class="chapter" data-level="3.8" data-path="lessons.html"><a href="lessons.html#sharing"><i class="fa fa-check"></i><b>3.8</b> Sharing</a><ul>
+<li class="chapter" data-level="3.8.1" data-path="lessons.html"><a href="lessons.html#share-source-code"><i class="fa fa-check"></i><b>3.8.1</b> Share source code</a></li>
+<li class="chapter" data-level="3.8.2" data-path="lessons.html"><a href="lessons.html#share-readable-output"><i class="fa fa-check"></i><b>3.8.2</b> Share readable output</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="lessons.html"><a href="lessons.html#lesson-delivery-sharing"><i class="fa fa-check"></i><b>3.9</b> Lesson delivery &amp; sharing</a><ul>
+<li class="chapter" data-level="3.9.1" data-path="lessons.html"><a href="lessons.html#live-coding"><i class="fa fa-check"></i><b>3.9.1</b> Live coding</a></li>
+<li class="chapter" data-level="3.9.2" data-path="lessons.html"><a href="lessons.html#screencast"><i class="fa fa-check"></i><b>3.9.2</b> Screencast</a></li>
+<li class="chapter" data-level="3.9.3" data-path="lessons.html"><a href="lessons.html#online-tutorials"><i class="fa fa-check"></i><b>3.9.3</b> Online tutorials</a></li>
+<li class="chapter" data-level="3.9.4" data-path="lessons.html"><a href="lessons.html#remote-workshops-webinars"><i class="fa fa-check"></i><b>3.9.4</b> Remote workshops &amp; webinars</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="organization.html"><a href="organization.html"><i class="fa fa-check"></i><b>4</b> Organization</a><ul>
+<li class="chapter" data-level="" data-path="organization.html"><a href="organization.html#intro-org"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="4.1" data-path="organization.html"><a href="organization.html#for-courses"><i class="fa fa-check"></i><b>4.1</b> For Courses</a></li>
+<li class="chapter" data-level="4.2" data-path="organization.html"><a href="organization.html#for-workshops"><i class="fa fa-check"></i><b>4.2</b> For Workshops</a></li>
+<li class="chapter" data-level="4.3" data-path="organization.html"><a href="organization.html#for-online-tutorials"><i class="fa fa-check"></i><b>4.3</b> For Online Tutorials</a></li>
+<li class="chapter" data-level="4.4" data-path="organization.html"><a href="organization.html#types-of-r-markdown-collections"><i class="fa fa-check"></i><b>4.4</b> Types of R Markdown collections</a></li>
+<li class="chapter" data-level="4.5" data-path="organization.html"><a href="organization.html#choose-your-collections-wisely"><i class="fa fa-check"></i><b>4.5</b> Choose your collections wisely</a></li>
+<li class="chapter" data-level="4.6" data-path="organization.html"><a href="organization.html#meta"><i class="fa fa-check"></i><b>4.6</b> Meta</a></li>
+<li class="chapter" data-level="4.7" data-path="organization.html"><a href="organization.html#showtime"><i class="fa fa-check"></i><b>4.7</b> Showtime</a></li>
+</ul></li>
+<li class="part"><span><b>Education cookbooks</b></span></li>
+<li class="chapter" data-level="" data-path="how-to-use-the-cookbooks.html"><a href="how-to-use-the-cookbooks.html"><i class="fa fa-check"></i>How to use the cookbooks</a></li>
+<li class="part"><span><b>I Cookbook: R Markdown Lessons</b></span></li>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-doc.html"><a href="intro-doc.html#what-are-we-making"><i class="fa fa-check"></i>What are we making?</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="make-doc.html"><a href="make-doc.html"><i class="fa fa-check"></i><b>5</b> Make a document</a><ul>
+<li class="chapter" data-level="5.1" data-path="make-doc.html"><a href="make-doc.html#doc-setup"><i class="fa fa-check"></i><b>5.1</b> Getting set up</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="make-doc.html"><a href="make-doc.html#update-packages"><i class="fa fa-check"></i><b>5.1.1</b> Update packages</a></li>
+<li class="chapter" data-level="5.1.2" data-path="make-doc.html"><a href="make-doc.html#doc-proj-first"><i class="fa fa-check"></i><b>5.1.2</b> Make a project</a></li>
+<li class="chapter" data-level="5.1.3" data-path="make-doc.html"><a href="make-doc.html#markdown"><i class="fa fa-check"></i><b>5.1.3</b> Get to know Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="make-doc.html"><a href="make-doc.html#doc-template"><i class="fa fa-check"></i><b>5.2</b> Make a document</a></li>
+<li class="chapter" data-level="5.3" data-path="make-doc.html"><a href="make-doc.html#doc-orient"><i class="fa fa-check"></i><b>5.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="5.4" data-path="make-doc.html"><a href="make-doc.html#doc-push"><i class="fa fa-check"></i><b>5.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="5.5" data-path="make-doc.html"><a href="make-doc.html#doc-knit"><i class="fa fa-check"></i><b>5.5</b> Knit to HTML</a></li>
+<li class="chapter" data-level="5.6" data-path="make-doc.html"><a href="make-doc.html#doc-push2"><i class="fa fa-check"></i><b>5.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="5.7" data-path="make-doc.html"><a href="make-doc.html#doc-alive"><i class="fa fa-check"></i><b>5.7</b> Make a living, breathing document!</a></li>
+<li class="chapter" data-level="5.8" data-path="make-doc.html"><a href="make-doc.html#uplevel-your-workflow"><i class="fa fa-check"></i><b>5.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="doc-yours.html"><a href="doc-yours.html"><i class="fa fa-check"></i><b>6</b> Make it yours</a><ul>
+<li class="chapter" data-level="6.1" data-path="doc-yours.html"><a href="doc-yours.html#doc-code"><i class="fa fa-check"></i><b>6.1</b> Add code</a></li>
+<li class="chapter" data-level="6.2" data-path="doc-yours.html"><a href="doc-yours.html#doc-md"><i class="fa fa-check"></i><b>6.2</b> Embrace Markdown</a></li>
+<li class="chapter" data-level="6.3" data-path="doc-yours.html"><a href="doc-yours.html#doc-headers"><i class="fa fa-check"></i><b>6.3</b> Add structure with headers</a></li>
+<li class="chapter" data-level="6.4" data-path="doc-yours.html"><a href="doc-yours.html#doc-narrative"><i class="fa fa-check"></i><b>6.4</b> Add narrative</a></li>
+<li class="chapter" data-level="6.5" data-path="doc-yours.html"><a href="doc-yours.html#doc-breathe"><i class="fa fa-check"></i><b>6.5</b> Add space</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="doc-care.html"><a href="doc-care.html"><i class="fa fa-check"></i><b>7</b> Caring for your document</a><ul>
+<li class="chapter" data-level="7.1" data-path="doc-care.html"><a href="doc-care.html#live-editing"><i class="fa fa-check"></i><b>7.1</b> Live editing</a></li>
+<li class="chapter" data-level="7.2" data-path="doc-care.html"><a href="doc-care.html#care-code"><i class="fa fa-check"></i><b>7.2</b> Care for your code</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="doc-care.html"><a href="doc-care.html#use-keyboard-shortcuts"><i class="fa fa-check"></i><b>7.2.1</b> Use keyboard shortcuts</a></li>
+<li class="chapter" data-level="7.2.2" data-path="doc-care.html"><a href="doc-care.html#knitr-setup"><i class="fa fa-check"></i><b>7.2.2</b> Add a setup code chunk</a></li>
+<li class="chapter" data-level="7.2.3" data-path="doc-care.html"><a href="doc-care.html#knitr-name"><i class="fa fa-check"></i><b>7.2.3</b> Name your code chunks</a></li>
+<li class="chapter" data-level="7.2.4" data-path="doc-care.html"><a href="doc-care.html#print-pretty-packages"><i class="fa fa-check"></i><b>7.2.4</b> Print pretty packages</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="doc-care.html"><a href="doc-care.html#self-care"><i class="fa fa-check"></i><b>7.3</b> Care for your self</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="doc-care.html"><a href="doc-care.html#doc-here"><i class="fa fa-check"></i><b>7.3.1</b> Use portable file paths</a></li>
+<li class="chapter" data-level="7.3.2" data-path="doc-care.html"><a href="doc-care.html#name-your-files-nicely"><i class="fa fa-check"></i><b>7.3.2</b> Name your files nicely</a></li>
+<li class="chapter" data-level="7.3.3" data-path="doc-care.html"><a href="doc-care.html#add-notes-to-self"><i class="fa fa-check"></i><b>7.3.3</b> Add notes to self</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="design-a-how-to.html"><a href="design-a-how-to.html"><i class="fa fa-check"></i><b>8</b> Design a how-to</a><ul>
+<li class="chapter" data-level="8.1" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-download"><i class="fa fa-check"></i><b>8.1</b> Share the source code</a></li>
+<li class="chapter" data-level="8.2" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-show-data"><i class="fa fa-check"></i><b>8.2</b> Show the data</a></li>
+<li class="chapter" data-level="8.3" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-share-data"><i class="fa fa-check"></i><b>8.3</b> Share the data</a></li>
+<li class="chapter" data-level="8.4" data-path="design-a-how-to.html"><a href="design-a-how-to.html#rmd-code-folding"><i class="fa fa-check"></i><b>8.4</b> Code Folding</a></li>
+<li class="chapter" data-level="8.5" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-results"><i class="fa fa-check"></i><b>8.5</b> Show code, hide results</a></li>
+<li class="chapter" data-level="8.6" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-code-hide-plots"><i class="fa fa-check"></i><b>8.6</b> Show code, hide plots</a></li>
+<li class="chapter" data-level="8.7" data-path="design-a-how-to.html"><a href="design-a-how-to.html#show-results-hide-code"><i class="fa fa-check"></i><b>8.7</b> Show results, hide code</a></li>
+<li class="chapter" data-level="8.8" data-path="design-a-how-to.html"><a href="design-a-how-to.html#interactively-hideshow-code"><i class="fa fa-check"></i><b>8.8</b> Interactively hide/show code</a></li>
+<li class="chapter" data-level="8.9" data-path="design-a-how-to.html"><a href="design-a-how-to.html#hide-everything"><i class="fa fa-check"></i><b>8.9</b> Hide everything</a></li>
+<li class="chapter" data-level="8.10" data-path="design-a-how-to.html"><a href="design-a-how-to.html#reuse-your-code"><i class="fa fa-check"></i><b>8.10</b> Reuse your code</a></li>
+<li class="chapter" data-level="8.11" data-path="design-a-how-to.html"><a href="design-a-how-to.html#two-plots-side-by-side"><i class="fa fa-check"></i><b>8.11</b> Two plots side-by-side</a></li>
+<li class="chapter" data-level="8.12" data-path="design-a-how-to.html"><a href="design-a-how-to.html#include-verbatim-code-chunks"><i class="fa fa-check"></i><b>8.12</b> Include verbatim code chunks</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="doc-dress.html"><a href="doc-dress.html"><i class="fa fa-check"></i><b>9</b> Dress it up!</a><ul>
+<li class="chapter" data-level="9.1" data-path="doc-dress.html"><a href="doc-dress.html#doc-theme"><i class="fa fa-check"></i><b>9.1</b> Use a bootswatch theme</a></li>
+<li class="chapter" data-level="9.2" data-path="doc-dress.html"><a href="doc-dress.html#doc-toc"><i class="fa fa-check"></i><b>9.2</b> Add a floating table of contents</a></li>
+<li class="chapter" data-level="9.3" data-path="doc-dress.html"><a href="doc-dress.html#doc-highlight"><i class="fa fa-check"></i><b>9.3</b> Customize code highlighter</a></li>
+<li class="chapter" data-level="9.4" data-path="doc-dress.html"><a href="doc-dress.html#doc-images"><i class="fa fa-check"></i><b>9.4</b> Add images</a><ul>
+<li class="chapter" data-level="9.4.1" data-path="doc-dress.html"><a href="doc-dress.html#markdown-images"><i class="fa fa-check"></i><b>9.4.1</b> Markdown images</a></li>
+<li class="chapter" data-level="9.4.2" data-path="doc-dress.html"><a href="doc-dress.html#use-knitrinclude_graphics"><i class="fa fa-check"></i><b>9.4.2</b> Use <code>knitr::include_graphics()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="doc-dress.html"><a href="doc-dress.html#section"><i class="fa fa-check"></i><b>9.5</b> </a></li>
+<li class="chapter" data-level="9.6" data-path="doc-dress.html"><a href="doc-dress.html#upgrade-your-output-format"><i class="fa fa-check"></i><b>9.6</b> Upgrade your output format</a><ul>
+<li class="chapter" data-level="9.6.1" data-path="doc-dress.html"><a href="doc-dress.html#bookdownhtml_document2"><i class="fa fa-check"></i><b>9.6.1</b> <code>bookdown::html_document2</code></a></li>
+<li class="chapter" data-level="9.6.2" data-path="doc-dress.html"><a href="doc-dress.html#distilldistill_article"><i class="fa fa-check"></i><b>9.6.2</b> <code>distill::distill_article</code></a></li>
+<li class="chapter" data-level="9.6.3" data-path="doc-dress.html"><a href="doc-dress.html#tuftetufte_html"><i class="fa fa-check"></i><b>9.6.3</b> <code>tufte::tufte_html</code></a></li>
+<li class="chapter" data-level="9.6.4" data-path="doc-dress.html"><a href="doc-dress.html#learnrtutorial"><i class="fa fa-check"></i><b>9.6.4</b> <code>learnr::tutorial</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="doc-fancy.html"><a href="doc-fancy.html"><i class="fa fa-check"></i><b>10</b> Make it fancier</a><ul>
+<li class="chapter" data-level="10.1" data-path="doc-fancy.html"><a href="doc-fancy.html#extra-packages"><i class="fa fa-check"></i><b>10.1</b> Extra packages</a></li>
+<li class="chapter" data-level="10.2" data-path="doc-fancy.html"><a href="doc-fancy.html#use-bootswatch-css"><i class="fa fa-check"></i><b>10.2</b> Use bootswatch CSS</a></li>
+<li class="chapter" data-level="10.3" data-path="doc-fancy.html"><a href="doc-fancy.html#include-or-not"><i class="fa fa-check"></i><b>10.3</b> include or not?</a></li>
+<li class="chapter" data-level="10.4" data-path="doc-fancy.html"><a href="doc-fancy.html#before-you-begin"><i class="fa fa-check"></i><b>10.4</b> Before you begin</a></li>
+<li class="chapter" data-level="10.5" data-path="doc-fancy.html"><a href="doc-fancy.html#include-a-css-file"><i class="fa fa-check"></i><b>10.5</b> Include a css file</a></li>
+<li class="chapter" data-level="10.6" data-path="doc-fancy.html"><a href="doc-fancy.html#branding-and-aesthetics"><i class="fa fa-check"></i><b>10.6</b> Branding and aesthetics</a><ul>
+<li class="chapter" data-level="10.6.1" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-font"><i class="fa fa-check"></i><b>10.6.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="10.6.2" data-path="doc-fancy.html"><a href="doc-fancy.html#links"><i class="fa fa-check"></i><b>10.6.2</b> Links</a></li>
+<li class="chapter" data-level="10.6.3" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-logo"><i class="fa fa-check"></i><b>10.6.3</b> Add a logo</a></li>
+<li class="chapter" data-level="10.6.4" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-white-space"><i class="fa fa-check"></i><b>10.6.4</b> White Space</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-custom-toc"><i class="fa fa-check"></i><b>10.7</b> Table of contents (TOC)</a></li>
+<li class="chapter" data-level="10.8" data-path="doc-fancy.html"><a href="doc-fancy.html#doc-q"><i class="fa fa-check"></i><b>10.8</b> Questions counter</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="doc-trouble.html"><a href="doc-trouble.html"><i class="fa fa-check"></i><b>11</b> Trouble-shooting</a></li>
+<li class="part"><span><b>II Cookbook: Packages etc.</b></span></li>
+<li class="chapter" data-level="" data-path="intro-dry.html"><a href="intro-dry.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="12" data-path="data-pkg.html"><a href="data-pkg.html"><i class="fa fa-check"></i><b>12</b> Create a data package</a><ul>
+<li class="chapter" data-level="12.1" data-path="data-pkg.html"><a href="data-pkg.html#is-this-tutorial-for-you"><i class="fa fa-check"></i><b>12.1</b> Is this tutorial for you?</a></li>
+<li class="chapter" data-level="12.2" data-path="data-pkg.html"><a href="data-pkg.html#mental-framework"><i class="fa fa-check"></i><b>12.2</b> Mental Framework</a></li>
+<li class="chapter" data-level="12.3" data-path="data-pkg.html"><a href="data-pkg.html#part-1-getting-set-up"><i class="fa fa-check"></i><b>12.3</b> Part 1: Getting set up</a><ul>
+<li class="chapter" data-level="12.3.1" data-path="data-pkg.html"><a href="data-pkg.html#packages"><i class="fa fa-check"></i><b>12.3.1</b> Packages</a></li>
+<li class="chapter" data-level="12.3.2" data-path="data-pkg.html"><a href="data-pkg.html#two-getting-started-workflows"><i class="fa fa-check"></i><b>12.3.2</b> Two getting-started workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="data-pkg.html"><a href="data-pkg.html#part-2-add-some-clean-data"><i class="fa fa-check"></i><b>12.4</b> Part 2: Add some clean data</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="data-pkg.html"><a href="data-pkg.html#with-built-in-data"><i class="fa fa-check"></i><b>12.4.1</b> With built-in data</a></li>
+<li class="chapter" data-level="12.4.2" data-path="data-pkg.html"><a href="data-pkg.html#start-with-your-own-data"><i class="fa fa-check"></i><b>12.4.2</b> Start with your OWN Data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="data-pkg.html"><a href="data-pkg.html#part-3-check"><i class="fa fa-check"></i><b>12.5</b> Part 3: Check!</a></li>
+<li class="chapter" data-level="12.6" data-path="data-pkg.html"><a href="data-pkg.html#part-4-document-the-datasets"><i class="fa fa-check"></i><b>12.6</b> Part 4: Document the datasets</a></li>
+<li class="chapter" data-level="12.7" data-path="data-pkg.html"><a href="data-pkg.html#part-5-document-the-package"><i class="fa fa-check"></i><b>12.7</b> Part 5: Document the package</a></li>
+<li class="chapter" data-level="12.8" data-path="data-pkg.html"><a href="data-pkg.html#part-6-build-and-install"><i class="fa fa-check"></i><b>12.8</b> Part 6: Build and Install!</a></li>
+<li class="chapter" data-level="12.9" data-path="data-pkg.html"><a href="data-pkg.html#part-7-deliver"><i class="fa fa-check"></i><b>12.9</b> Part 7: Deliver</a></li>
+<li class="chapter" data-level="12.10" data-path="data-pkg.html"><a href="data-pkg.html#caring-for-your-package"><i class="fa fa-check"></i><b>12.10</b> Caring for your package</a><ul>
+<li class="chapter" data-level="12.10.1" data-path="data-pkg.html"><a href="data-pkg.html#a-review"><i class="fa fa-check"></i><b>12.10.1</b> A review</a></li>
+<li class="chapter" data-level="12.10.2" data-path="data-pkg.html"><a href="data-pkg.html#package-accessories"><i class="fa fa-check"></i><b>12.10.2</b> Package accessories</a></li>
+</ul></li>
+<li class="chapter" data-level="12.11" data-path="data-pkg.html"><a href="data-pkg.html#tldr"><i class="fa fa-check"></i><b>12.11</b> tldr;</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="rmd-templates.html"><a href="rmd-templates.html"><i class="fa fa-check"></i><b>13</b> Create R Markdown templates</a><ul>
+<li class="chapter" data-level="13.1" data-path="rmd-templates.html"><a href="rmd-templates.html#why-do-this"><i class="fa fa-check"></i><b>13.1</b> Why do this?</a></li>
+<li class="chapter" data-level="13.2" data-path="rmd-templates.html"><a href="rmd-templates.html#step-1-create-files-and-folders"><i class="fa fa-check"></i><b>13.2</b> Step 1: Create files and folders</a></li>
+<li class="chapter" data-level="13.3" data-path="rmd-templates.html"><a href="rmd-templates.html#step-2-create-your-template"><i class="fa fa-check"></i><b>13.3</b> Step 2: Create your template</a></li>
+<li class="chapter" data-level="13.4" data-path="rmd-templates.html"><a href="rmd-templates.html#step-3-confirm-that-your-template-is-accessible"><i class="fa fa-check"></i><b>13.4</b> Step 3: Confirm that your template is accessible</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="proj-templates.html"><a href="proj-templates.html"><i class="fa fa-check"></i><b>14</b> Create RStudio project templates</a><ul>
+<li class="chapter" data-level="14.1" data-path="proj-templates.html"><a href="proj-templates.html#why-do-this-1"><i class="fa fa-check"></i><b>14.1</b> Why do this?</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="learnr.html"><a href="learnr.html"><i class="fa fa-check"></i><b>15</b> Add interactive tutorials</a><ul>
+<li class="chapter" data-level="15.1" data-path="learnr.html"><a href="learnr.html#part-1-including-a-learnr-tutorial"><i class="fa fa-check"></i><b>15.1</b> PART 1: Including a <span>LearnR</span> tutorial</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="learnr.html"><a href="learnr.html#why-do-this-2"><i class="fa fa-check"></i><b>15.1.1</b> Why do this?</a></li>
+<li class="chapter" data-level="15.1.2" data-path="learnr.html"><a href="learnr.html#step-1-create-files-and-directories"><i class="fa fa-check"></i><b>15.1.2</b> Step 1: Create files and directories</a></li>
+<li class="chapter" data-level="15.1.3" data-path="learnr.html"><a href="learnr.html#step-2-customize-your-tutorial"><i class="fa fa-check"></i><b>15.1.3</b> Step 2: Customize your tutorial</a></li>
+<li class="chapter" data-level="15.1.4" data-path="learnr.html"><a href="learnr.html#step-3-add-additional-subdirectory"><i class="fa fa-check"></i><b>15.1.4</b> Step 3: Add additional subdirectory</a></li>
+<li class="chapter" data-level="15.1.5" data-path="learnr.html"><a href="learnr.html#step-4-run-your-tutorial"><i class="fa fa-check"></i><b>15.1.5</b> Step 4: Run your tutorial</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="learnr.html"><a href="learnr.html#part-5-final-steps"><i class="fa fa-check"></i><b>15.2</b> PART 5: FINAL STEPS</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="learnr.html"><a href="learnr.html#optionally-document-the-package-as-a-whole"><i class="fa fa-check"></i><b>15.2.1</b> (Optionally) Document the package as a whole</a></li>
+<li class="chapter" data-level="15.2.2" data-path="learnr.html"><a href="learnr.html#create-a-readme.rmd-file"><i class="fa fa-check"></i><b>15.2.2</b> Create a README.Rmd file</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="learnr.html"><a href="learnr.html#troubleshooting"><i class="fa fa-check"></i><b>15.3</b> Troubleshooting</a></li>
+<li class="chapter" data-level="15.4" data-path="learnr.html"><a href="learnr.html#miscellaneous-nice-to-know"><i class="fa fa-check"></i><b>15.4</b> Miscellaneous / Nice to Know</a></li>
+<li class="chapter" data-level="15.5" data-path="learnr.html"><a href="learnr.html#other-community-resources-on-package-making"><i class="fa fa-check"></i><b>15.5</b> Other community resources on package-making:</a></li>
+</ul></li>
+<li class="part"><span><b>III Cookbook: R Markdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#what-are-we-making-1"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#pros-and-cons-of-using-rmd-sites"><i class="fa fa-check"></i>Pros and cons of using Rmd sites</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#is-this-cookbook-for-you"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-rmd.html"><a href="intro-rmd.html#other-learning-resources"><i class="fa fa-check"></i>Other learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="make-rmd.html"><a href="make-rmd.html"><i class="fa fa-check"></i><b>16</b> Make a site</a><ul>
+<li class="chapter" data-level="16.1" data-path="make-rmd.html"><a href="make-rmd.html#tldr-1"><i class="fa fa-check"></i><b>16.1</b> tl;dr</a></li>
+<li class="chapter" data-level="16.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-setup"><i class="fa fa-check"></i><b>16.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="make-rmd.html"><a href="make-rmd.html#update-packages-1"><i class="fa fa-check"></i><b>16.2.1</b> Update packages</a></li>
+<li class="chapter" data-level="16.2.2" data-path="make-rmd.html"><a href="make-rmd.html#rmd-proj-first"><i class="fa fa-check"></i><b>16.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="16.2.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-skeleton"><i class="fa fa-check"></i><b>16.2.3</b> Make a site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-orientation"><i class="fa fa-check"></i><b>16.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="16.4" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push"><i class="fa fa-check"></i><b>16.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="16.5" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-output"><i class="fa fa-check"></i><b>16.5</b> Change output directory</a></li>
+<li class="chapter" data-level="16.6" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-nojekyll"><i class="fa fa-check"></i><b>16.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="16.7" data-path="make-rmd.html"><a href="make-rmd.html#rmd-site-build"><i class="fa fa-check"></i><b>16.7</b> Build your site</a></li>
+<li class="chapter" data-level="16.8" data-path="make-rmd.html"><a href="make-rmd.html#rmd-push2"><i class="fa fa-check"></i><b>16.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="16.9" data-path="make-rmd.html"><a href="make-rmd.html#rmd-living"><i class="fa fa-check"></i><b>16.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="16.10" data-path="make-rmd.html"><a href="make-rmd.html#rmd-uplevel"><i class="fa fa-check"></i><b>16.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="rmd-yours.html"><a href="rmd-yours.html"><i class="fa fa-check"></i><b>17</b> Make it yours</a><ul>
+<li class="chapter" data-level="17.1" data-path="rmd-yours.html"><a href="rmd-yours.html#add-rmd"><i class="fa fa-check"></i><b>17.1</b> Adding new pages</a></li>
+<li class="chapter" data-level="17.2" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-grow"><i class="fa fa-check"></i><b>17.2</b> Grow your navbar</a></li>
+<li class="chapter" data-level="17.3" data-path="rmd-yours.html"><a href="rmd-yours.html#rmd-menu"><i class="fa fa-check"></i><b>17.3</b> Add a dropdown menu</a></li>
+<li class="chapter" data-level="17.4" data-path="rmd-yours.html"><a href="rmd-yours.html#add-your-content"><i class="fa fa-check"></i><b>17.4</b> Add your content</a></li>
+<li class="chapter" data-level="17.5" data-path="rmd-yours.html"><a href="rmd-yours.html#recap"><i class="fa fa-check"></i><b>17.5</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="rmd-care.html"><a href="rmd-care.html"><i class="fa fa-check"></i><b>18</b> Caring for your site</a><ul>
+<li class="chapter" data-level="18.1" data-path="rmd-care.html"><a href="rmd-care.html#hide-rmd"><i class="fa fa-check"></i><b>18.1</b> Hiding pages</a></li>
+<li class="chapter" data-level="18.2" data-path="rmd-care.html"><a href="rmd-care.html#staying-organized"><i class="fa fa-check"></i><b>18.2</b> Staying organized</a></li>
+<li class="chapter" data-level="18.3" data-path="rmd-care.html"><a href="rmd-care.html#troubleshooting-1"><i class="fa fa-check"></i><b>18.3</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="rmd-dress.html"><a href="rmd-dress.html"><i class="fa fa-check"></i><b>19</b> Dress it up!</a><ul>
+<li class="chapter" data-level="19.1" data-path="rmd-dress.html"><a href="rmd-dress.html#before-you-begin-1"><i class="fa fa-check"></i><b>19.1</b> Before you begin</a></li>
+<li class="chapter" data-level="19.2" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-one-yaml"><i class="fa fa-check"></i><b>19.2</b> One YAML to rule them all</a></li>
+<li class="chapter" data-level="19.3" data-path="rmd-dress.html"><a href="rmd-dress.html#applying-what-you-can-from-a-single-lesson"><i class="fa fa-check"></i><b>19.3</b> Applying what you can from a single lesson</a></li>
+<li class="chapter" data-level="19.4" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-site-theme"><i class="fa fa-check"></i><b>19.4</b> Add a site theme</a></li>
+<li class="chapter" data-level="19.5" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-highlight"><i class="fa fa-check"></i><b>19.5</b> Customize code highlighting</a></li>
+<li class="chapter" data-level="19.6" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-navbar"><i class="fa fa-check"></i><b>19.6</b> Change the navbar color</a></li>
+<li class="chapter" data-level="19.7" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-icons"><i class="fa fa-check"></i><b>19.7</b> Add navbar icons</a></li>
+<li class="chapter" data-level="19.8" data-path="rmd-dress.html"><a href="rmd-dress.html#rmd-tidy-menu"><i class="fa fa-check"></i><b>19.8</b> Tidy up the dropdown menu</a></li>
+<li class="chapter" data-level="19.9" data-path="rmd-dress.html"><a href="rmd-dress.html#recap-1"><i class="fa fa-check"></i><b>19.9</b> Recap</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="rmd-fancy.html"><a href="rmd-fancy.html"><i class="fa fa-check"></i><b>20</b> Make it fancier</a><ul>
+<li class="chapter" data-level="20.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#before-you-begin-2"><i class="fa fa-check"></i><b>20.1</b> Before you begin</a></li>
+<li class="chapter" data-level="20.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#anatomy-of-a-fancy-r-markdown-page"><i class="fa fa-check"></i><b>20.2</b> Anatomy of a fancy R Markdown page</a></li>
+<li class="chapter" data-level="20.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#adding-custom-css-to-your-site"><i class="fa fa-check"></i><b>20.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="20.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#aesthetics-and-branding"><i class="fa fa-check"></i><b>20.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="20.4.1" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-font"><i class="fa fa-check"></i><b>20.4.1</b> Google fonts</a></li>
+<li class="chapter" data-level="20.4.2" data-path="rmd-fancy.html"><a href="rmd-fancy.html#customize-your-links"><i class="fa fa-check"></i><b>20.4.2</b> Customize your links</a></li>
+<li class="chapter" data-level="20.4.3" data-path="rmd-fancy.html"><a href="rmd-fancy.html#white-space"><i class="fa fa-check"></i><b>20.4.3</b> White space</a></li>
+<li class="chapter" data-level="20.4.4" data-path="rmd-fancy.html"><a href="rmd-fancy.html#logo"><i class="fa fa-check"></i><b>20.4.4</b> Logo</a></li>
+<li class="chapter" data-level="20.4.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-logo"><i class="fa fa-check"></i><b>20.4.5</b> Add a logo</a></li>
+<li class="chapter" data-level="20.4.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-favicon"><i class="fa fa-check"></i><b>20.4.6</b> Add a favicon</a></li>
+<li class="chapter" data-level="20.4.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-a-hero-image"><i class="fa fa-check"></i><b>20.4.7</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="20.5" data-path="rmd-fancy.html"><a href="rmd-fancy.html#table-of-contents"><i class="fa fa-check"></i><b>20.5</b> Table of contents</a></li>
+<li class="chapter" data-level="20.6" data-path="rmd-fancy.html"><a href="rmd-fancy.html#navigation-bar-styling"><i class="fa fa-check"></i><b>20.6</b> Navigation bar styling</a></li>
+<li class="chapter" data-level="20.7" data-path="rmd-fancy.html"><a href="rmd-fancy.html#rmd-q"><i class="fa fa-check"></i><b>20.7</b> Questions counter</a></li>
+<li class="chapter" data-level="20.8" data-path="rmd-fancy.html"><a href="rmd-fancy.html#add-multiple-css-files"><i class="fa fa-check"></i><b>20.8</b> Add multiple CSS files</a></li>
+<li class="chapter" data-level="20.9" data-path="rmd-fancy.html"><a href="rmd-fancy.html#recap-2"><i class="fa fa-check"></i><b>20.9</b> Recap</a></li>
+</ul></li>
+<li class="part"><span><b>IV Cookbook: Distill sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#what-are-we-making-2"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#distill-vs-r-markdown-site"><i class="fa fa-check"></i>Distill vs R Markdown site</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#is-this-tutorial-for-you-1"><i class="fa fa-check"></i>Is this tutorial for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-distill.html"><a href="intro-distill.html#other-learning-resources-1"><i class="fa fa-check"></i>Other learning resources</a><ul>
+<li class="chapter" data-level="20.9.1" data-path="intro-distill.html"><a href="intro-distill.html#existing-distill-sites"><i class="fa fa-check"></i><b>20.9.1</b> Existing Distill sites</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="make-distill.html"><a href="make-distill.html"><i class="fa fa-check"></i><b>21</b> Make a Distill site</a><ul>
+<li class="chapter" data-level="21.1" data-path="make-distill.html"><a href="make-distill.html#tldr-2"><i class="fa fa-check"></i><b>21.1</b> tl;dr</a></li>
+<li class="chapter" data-level="21.2" data-path="make-distill.html"><a href="make-distill.html#distill-site-setup"><i class="fa fa-check"></i><b>21.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="21.2.1" data-path="make-distill.html"><a href="make-distill.html#packages-1"><i class="fa fa-check"></i><b>21.2.1</b> Packages</a></li>
+<li class="chapter" data-level="21.2.2" data-path="make-distill.html"><a href="make-distill.html#distill-proj-first"><i class="fa fa-check"></i><b>21.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="21.2.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-skeleton"><i class="fa fa-check"></i><b>21.2.3</b> Make a Distill site skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="make-distill.html"><a href="make-distill.html#distill-site-orientation"><i class="fa fa-check"></i><b>21.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="21.4" data-path="make-distill.html"><a href="make-distill.html#distill-push"><i class="fa fa-check"></i><b>21.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="21.5" data-path="make-distill.html"><a href="make-distill.html#distill-site-build"><i class="fa fa-check"></i><b>21.5</b> Build your site</a></li>
+<li class="chapter" data-level="21.6" data-path="make-distill.html"><a href="make-distill.html#distill-push2"><i class="fa fa-check"></i><b>21.6</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="21.7" data-path="make-distill.html"><a href="make-distill.html#distill-living"><i class="fa fa-check"></i><b>21.7</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="21.8" data-path="make-distill.html"><a href="make-distill.html#distill-uplevel"><i class="fa fa-check"></i><b>21.8</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="distill-yours.html"><a href="distill-yours.html"><i class="fa fa-check"></i><b>22</b> Make it yours</a><ul>
+<li class="chapter" data-level="22.1" data-path="distill-yours.html"><a href="distill-yours.html#add-distill"><i class="fa fa-check"></i><b>22.1</b> Adding new Distill articles</a></li>
+<li class="chapter" data-level="22.2" data-path="distill-yours.html"><a href="distill-yours.html#distill-grow"><i class="fa fa-check"></i><b>22.2</b> Grow your navbar</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="distill-care.html"><a href="distill-care.html"><i class="fa fa-check"></i><b>23</b> Caring for your Distill site</a><ul>
+<li class="chapter" data-level="23.1" data-path="distill-care.html"><a href="distill-care.html#hide-distill"><i class="fa fa-check"></i><b>23.1</b> Hiding pages</a><ul>
+<li class="chapter" data-level="23.1.1" data-path="distill-care.html"><a href="distill-care.html#switching-from-an-existing-r-markdown-site-to-a-distill-site"><i class="fa fa-check"></i><b>23.1.1</b> Switching from an existing R Markdown site to a Distill site</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="distill-care.html"><a href="distill-care.html#alternatives-and-drawbacks"><i class="fa fa-check"></i><b>23.2</b> Alternatives and drawbacks</a></li>
+<li class="chapter" data-level="23.3" data-path="distill-care.html"><a href="distill-care.html#using-your-distill-site"><i class="fa fa-check"></i><b>23.3</b> Using your Distill site</a></li>
+<li class="chapter" data-level="23.4" data-path="distill-care.html"><a href="distill-care.html#distill-features"><i class="fa fa-check"></i><b>23.4</b> Distill features</a><ul>
+<li class="chapter" data-level="23.4.1" data-path="distill-care.html"><a href="distill-care.html#authors-and-affiliations"><i class="fa fa-check"></i><b>23.4.1</b> Authors and affiliations</a></li>
+<li class="chapter" data-level="23.4.2" data-path="distill-care.html"><a href="distill-care.html#citations"><i class="fa fa-check"></i><b>23.4.2</b> Citations</a></li>
+<li class="chapter" data-level="23.4.3" data-path="distill-care.html"><a href="distill-care.html#hoverable-footnotes"><i class="fa fa-check"></i><b>23.4.3</b> Hoverable footnotes</a></li>
+<li class="chapter" data-level="23.4.4" data-path="distill-care.html"><a href="distill-care.html#asides"><i class="fa fa-check"></i><b>23.4.4</b> Asides</a></li>
+<li class="chapter" data-level="23.4.5" data-path="distill-care.html"><a href="distill-care.html#figure-width"><i class="fa fa-check"></i><b>23.4.5</b> Figure width</a></li>
+<li class="chapter" data-level="23.4.6" data-path="distill-care.html"><a href="distill-care.html#figure-captions-and-cross-references"><i class="fa fa-check"></i><b>23.4.6</b> Figure captions and cross-references</a></li>
+<li class="chapter" data-level="23.4.7" data-path="distill-care.html"><a href="distill-care.html#if-you-like-distill"><i class="fa fa-check"></i><b>23.4.7</b> If you like Distill…</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="distill-dress.html"><a href="distill-dress.html"><i class="fa fa-check"></i><b>24</b> Dress it up!</a><ul>
+<li class="chapter" data-level="24.1" data-path="distill-dress.html"><a href="distill-dress.html#site-sections"><i class="fa fa-check"></i><b>24.1</b> Site sections</a><ul>
+<li class="chapter" data-level="24.1.1" data-path="distill-dress.html"><a href="distill-dress.html#site-footer"><i class="fa fa-check"></i><b>24.1.1</b> Site footer</a></li>
+<li class="chapter" data-level="24.1.2" data-path="distill-dress.html"><a href="distill-dress.html#appendix"><i class="fa fa-check"></i><b>24.1.2</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="distill-dress.html"><a href="distill-dress.html#sharing-1"><i class="fa fa-check"></i><b>24.2</b> Sharing</a><ul>
+<li class="chapter" data-level="24.2.1" data-path="distill-dress.html"><a href="distill-dress.html#reuse-and-licencing"><i class="fa fa-check"></i><b>24.2.1</b> Reuse and licencing</a></li>
+<li class="chapter" data-level="24.2.2" data-path="distill-dress.html"><a href="distill-dress.html#preview-images"><i class="fa fa-check"></i><b>24.2.2</b> Preview images</a></li>
+<li class="chapter" data-level="24.2.3" data-path="distill-dress.html"><a href="distill-dress.html#logo-1"><i class="fa fa-check"></i><b>24.2.3</b> Logo</a></li>
+<li class="chapter" data-level="24.2.4" data-path="distill-dress.html"><a href="distill-dress.html#favicon"><i class="fa fa-check"></i><b>24.2.4</b> Favicon</a></li>
+<li class="chapter" data-level="24.2.5" data-path="distill-dress.html"><a href="distill-dress.html#google-analytics"><i class="fa fa-check"></i><b>24.2.5</b> Google analytics</a></li>
+<li class="chapter" data-level="24.2.6" data-path="distill-dress.html"><a href="distill-dress.html#getting-edits"><i class="fa fa-check"></i><b>24.2.6</b> Getting edits</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="distill-fancy.html"><a href="distill-fancy.html"><i class="fa fa-check"></i><b>25</b> Make it fancier</a><ul>
+<li class="chapter" data-level="25.1" data-path="distill-fancy.html"><a href="distill-fancy.html#before-you-begin-3"><i class="fa fa-check"></i><b>25.1</b> Before you begin</a></li>
+<li class="chapter" data-level="25.2" data-path="distill-fancy.html"><a href="distill-fancy.html#anatomy-of-a-fancy-distill-page"><i class="fa fa-check"></i><b>25.2</b> Anatomy of a fancy Distill page</a></li>
+<li class="chapter" data-level="25.3" data-path="distill-fancy.html"><a href="distill-fancy.html#adding-custom-css-to-your-site-1"><i class="fa fa-check"></i><b>25.3</b> Adding custom CSS to your site</a></li>
+<li class="chapter" data-level="25.4" data-path="distill-fancy.html"><a href="distill-fancy.html#aesthetics-and-branding-1"><i class="fa fa-check"></i><b>25.4</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="25.4.1" data-path="distill-fancy.html"><a href="distill-fancy.html#google-fonts"><i class="fa fa-check"></i><b>25.4.1</b> Google Fonts</a></li>
+<li class="chapter" data-level="25.4.2" data-path="distill-fancy.html"><a href="distill-fancy.html#larger-logo"><i class="fa fa-check"></i><b>25.4.2</b> Larger logo</a></li>
+</ul></li>
+<li class="chapter" data-level="25.5" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar"><i class="fa fa-check"></i><b>25.5</b> Navbar</a><ul>
+<li class="chapter" data-level="25.5.1" data-path="distill-fancy.html"><a href="distill-fancy.html#more-space-for-the-navbar"><i class="fa fa-check"></i><b>25.5.1</b> More space for the navbar</a></li>
+<li class="chapter" data-level="25.5.2" data-path="distill-fancy.html"><a href="distill-fancy.html#navbar-font-and-text-style"><i class="fa fa-check"></i><b>25.5.2</b> Navbar font and text style</a></li>
+<li class="chapter" data-level="25.5.3" data-path="distill-fancy.html"><a href="distill-fancy.html#transparent-faded-navbar"><i class="fa fa-check"></i><b>25.5.3</b> Transparent, faded navbar</a></li>
+<li class="chapter" data-level="25.5.4" data-path="distill-fancy.html"><a href="distill-fancy.html#animated-hovering"><i class="fa fa-check"></i><b>25.5.4</b> Animated hovering</a></li>
+<li class="chapter" data-level="25.5.5" data-path="distill-fancy.html"><a href="distill-fancy.html#tweak-for-mobile-1"><i class="fa fa-check"></i><b>25.5.5</b> Tweak for mobile</a></li>
+</ul></li>
+<li class="chapter" data-level="25.6" data-path="distill-fancy.html"><a href="distill-fancy.html#appendix-1"><i class="fa fa-check"></i><b>25.6</b> Appendix</a></li>
+<li class="chapter" data-level="25.7" data-path="distill-fancy.html"><a href="distill-fancy.html#footer"><i class="fa fa-check"></i><b>25.7</b> Footer</a><ul>
+<li class="chapter" data-level="25.7.1" data-path="distill-fancy.html"><a href="distill-fancy.html#links-1"><i class="fa fa-check"></i><b>25.7.1</b> Links</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Cookbook: Bookdown book</b></span></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html"><i class="fa fa-check"></i>Introduction</a><ul>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#what-are-we-making-3"><i class="fa fa-check"></i>What are we making?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#pros-and-cons-of-using-bookdown-sites"><i class="fa fa-check"></i>Pros and cons of using bookdown sites</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#is-this-cookbook-for-you-1"><i class="fa fa-check"></i>Is this cookbook for you?</a></li>
+<li class="chapter" data-level="" data-path="intro-bookdown.html"><a href="intro-bookdown.html#learning-resources"><i class="fa fa-check"></i>Learning resources</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="make-book.html"><a href="make-book.html"><i class="fa fa-check"></i><b>26</b> Make a book</a><ul>
+<li class="chapter" data-level="26.1" data-path="make-book.html"><a href="make-book.html#tldr-3"><i class="fa fa-check"></i><b>26.1</b> tl;dr</a></li>
+<li class="chapter" data-level="26.2" data-path="make-book.html"><a href="make-book.html#getting-set-up"><i class="fa fa-check"></i><b>26.2</b> Getting set up</a><ul>
+<li class="chapter" data-level="26.2.1" data-path="make-book.html"><a href="make-book.html#packages-needed"><i class="fa fa-check"></i><b>26.2.1</b> Packages needed</a></li>
+<li class="chapter" data-level="26.2.2" data-path="make-book.html"><a href="make-book.html#book-proj-first"><i class="fa fa-check"></i><b>26.2.2</b> Make a project</a></li>
+<li class="chapter" data-level="26.2.3" data-path="make-book.html"><a href="make-book.html#book-site-skeleton"><i class="fa fa-check"></i><b>26.2.3</b> Make a book skeleton</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="make-book.html"><a href="make-book.html#book-site-orientation"><i class="fa fa-check"></i><b>26.3</b> A mini-orientation</a></li>
+<li class="chapter" data-level="26.4" data-path="make-book.html"><a href="make-book.html#book-push"><i class="fa fa-check"></i><b>26.4</b> Push to GitHub</a></li>
+<li class="chapter" data-level="26.5" data-path="make-book.html"><a href="make-book.html#book-output"><i class="fa fa-check"></i><b>26.5</b> Change output directory</a></li>
+<li class="chapter" data-level="26.6" data-path="make-book.html"><a href="make-book.html#book-nojekyll"><i class="fa fa-check"></i><b>26.6</b> Turn off Jekyll</a></li>
+<li class="chapter" data-level="26.7" data-path="make-book.html"><a href="make-book.html#build-book"><i class="fa fa-check"></i><b>26.7</b> Build your book</a></li>
+<li class="chapter" data-level="26.8" data-path="make-book.html"><a href="make-book.html#book-push2"><i class="fa fa-check"></i><b>26.8</b> Push to GitHub (again)</a></li>
+<li class="chapter" data-level="26.9" data-path="make-book.html"><a href="make-book.html#book-living"><i class="fa fa-check"></i><b>26.9</b> Make a living, breathing site!</a></li>
+<li class="chapter" data-level="26.10" data-path="make-book.html"><a href="make-book.html#book-uplevel"><i class="fa fa-check"></i><b>26.10</b> Uplevel your workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="book-yours.html"><a href="book-yours.html"><i class="fa fa-check"></i><b>27</b> Make it yours</a><ul>
+<li class="chapter" data-level="27.1" data-path="book-yours.html"><a href="book-yours.html#book-new-ch"><i class="fa fa-check"></i><b>27.1</b> Creating new chapters</a></li>
+<li class="chapter" data-level="27.2" data-path="book-yours.html"><a href="book-yours.html#book-order"><i class="fa fa-check"></i><b>27.2</b> Putting your chapters in order</a></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="book-care.html"><a href="book-care.html"><i class="fa fa-check"></i><b>28</b> Caring for your book</a><ul>
+<li class="chapter" data-level="28.1" data-path="book-care.html"><a href="book-care.html#workflow-for-maintenance"><i class="fa fa-check"></i><b>28.1</b> Workflow for maintenance</a></li>
+<li class="chapter" data-level="28.2" data-path="book-care.html"><a href="book-care.html#render-book"><i class="fa fa-check"></i><b>28.2</b> Rendering</a></li>
+<li class="chapter" data-level="28.3" data-path="book-care.html"><a href="book-care.html#use-book"><i class="fa fa-check"></i><b>28.3</b> Using your book</a><ul>
+<li class="chapter" data-level="28.3.1" data-path="book-care.html"><a href="book-care.html#components"><i class="fa fa-check"></i><b>28.3.1</b> Components</a></li>
+<li class="chapter" data-level="28.3.2" data-path="book-care.html"><a href="book-care.html#search"><i class="fa fa-check"></i><b>28.3.2</b> Search</a></li>
+</ul></li>
+<li class="chapter" data-level="28.4" data-path="book-care.html"><a href="book-care.html#hiding-chapters"><i class="fa fa-check"></i><b>28.4</b> Hiding Chapters</a></li>
+<li class="chapter" data-level="28.5" data-path="book-care.html"><a href="book-care.html#book-organized"><i class="fa fa-check"></i><b>28.5</b> Staying organized</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="book-dress.html"><a href="book-dress.html"><i class="fa fa-check"></i><b>29</b> Dress it up!</a><ul>
+<li class="chapter" data-level="29.1" data-path="book-dress.html"><a href="book-dress.html#before-book-dress"><i class="fa fa-check"></i><b>29.1</b> Before you begin</a></li>
+<li class="chapter" data-level="29.2" data-path="book-dress.html"><a href="book-dress.html#organizing"><i class="fa fa-check"></i><b>29.2</b> Organizing</a><ul>
+<li class="chapter" data-level="29.2.1" data-path="book-dress.html"><a href="book-dress.html#collapse-toc-by-subsections"><i class="fa fa-check"></i><b>29.2.1</b> Collapse TOC by (sub)sections</a></li>
+<li class="chapter" data-level="29.2.2" data-path="book-dress.html"><a href="book-dress.html#change-the-chapter-name"><i class="fa fa-check"></i><b>29.2.2</b> Change the chapter name</a></li>
+<li class="chapter" data-level="29.2.3" data-path="book-dress.html"><a href="book-dress.html#section-unnumbering"><i class="fa fa-check"></i><b>29.2.3</b> Section (un)numbering</a></li>
+<li class="chapter" data-level="29.2.4" data-path="book-dress.html"><a href="book-dress.html#book-parts"><i class="fa fa-check"></i><b>29.2.4</b> Group chapters into parts</a></li>
+<li class="chapter" data-level="29.2.5" data-path="book-dress.html"><a href="book-dress.html#book-appendix"><i class="fa fa-check"></i><b>29.2.5</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="29.3" data-path="book-dress.html"><a href="book-dress.html#aesthetics"><i class="fa fa-check"></i><b>29.3</b> Aesthetics</a><ul>
+<li class="chapter" data-level="29.3.1" data-path="book-dress.html"><a href="book-dress.html#header-and-footer-of-the-toc"><i class="fa fa-check"></i><b>29.3.1</b> Header and footer of the TOC</a></li>
+</ul></li>
+<li class="chapter" data-level="29.4" data-path="book-dress.html"><a href="book-dress.html#edits-and-source-code"><i class="fa fa-check"></i><b>29.4</b> Edits and source code</a><ul>
+<li class="chapter" data-level="29.4.1" data-path="book-dress.html"><a href="book-dress.html#share-the-source-code"><i class="fa fa-check"></i><b>29.4.1</b> Share the source code</a></li>
+</ul></li>
+<li class="chapter" data-level="29.5" data-path="book-dress.html"><a href="book-dress.html#polishing-and-sharing"><i class="fa fa-check"></i><b>29.5</b> Polishing and sharing</a><ul>
+<li class="chapter" data-level="29.5.1" data-path="book-dress.html"><a href="book-dress.html#twitter-and-github"><i class="fa fa-check"></i><b>29.5.1</b> Twitter and GitHub</a></li>
+<li class="chapter" data-level="29.5.2" data-path="book-dress.html"><a href="book-dress.html#add-a-favicon-1"><i class="fa fa-check"></i><b>29.5.2</b> Add a favicon</a></li>
+<li class="chapter" data-level="29.5.3" data-path="book-dress.html"><a href="book-dress.html#book-cover-and-description"><i class="fa fa-check"></i><b>29.5.3</b> Book cover and description</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="book-fancy.html"><a href="book-fancy.html"><i class="fa fa-check"></i><b>30</b> Make it fancier</a><ul>
+<li class="chapter" data-level="30.1" data-path="book-fancy.html"><a href="book-fancy.html#before-you-begin-4"><i class="fa fa-check"></i><b>30.1</b> Before you begin</a></li>
+<li class="chapter" data-level="30.2" data-path="book-fancy.html"><a href="book-fancy.html#anatomy-of-a-fancy-book"><i class="fa fa-check"></i><b>30.2</b> Anatomy of a fancy book</a></li>
+<li class="chapter" data-level="30.3" data-path="book-fancy.html"><a href="book-fancy.html#aesthetics-and-branding-2"><i class="fa fa-check"></i><b>30.3</b> Aesthetics and branding</a><ul>
+<li class="chapter" data-level="30.3.1" data-path="book-fancy.html"><a href="book-fancy.html#align-tool"><i class="fa fa-check"></i><b>30.3.1</b> Align the toolbar line</a></li>
+<li class="chapter" data-level="30.3.2" data-path="book-fancy.html"><a href="book-fancy.html#symmetrical-code-chunks"><i class="fa fa-check"></i><b>30.3.2</b> Symmetrical code chunks</a></li>
+<li class="chapter" data-level="30.3.3" data-path="book-fancy.html"><a href="book-fancy.html#book-font"><i class="fa fa-check"></i><b>30.3.3</b> Google fonts</a></li>
+<li class="chapter" data-level="30.3.4" data-path="book-fancy.html"><a href="book-fancy.html#book-logo"><i class="fa fa-check"></i><b>30.3.4</b> Add a logo</a></li>
+<li class="chapter" data-level="30.3.5" data-path="book-fancy.html"><a href="book-fancy.html#book-link-colors"><i class="fa fa-check"></i><b>30.3.5</b> Custom link colors</a></li>
+<li class="chapter" data-level="30.3.6" data-path="book-fancy.html"><a href="book-fancy.html#book-hero"><i class="fa fa-check"></i><b>30.3.6</b> Add a hero image</a></li>
+</ul></li>
+<li class="chapter" data-level="30.4" data-path="book-fancy.html"><a href="book-fancy.html#usability"><i class="fa fa-check"></i><b>30.4</b> Usability</a><ul>
+<li class="chapter" data-level="30.4.1" data-path="book-fancy.html"><a href="book-fancy.html#custom-div-tips"><i class="fa fa-check"></i><b>30.4.1</b> Custom div tips</a></li>
+<li class="chapter" data-level="30.4.2" data-path="book-fancy.html"><a href="book-fancy.html#book-anchor"><i class="fa fa-check"></i><b>30.4.2</b> Anchor links</a></li>
+<li class="chapter" data-level="30.4.3" data-path="book-fancy.html"><a href="book-fancy.html#copy-to-clipboard"><i class="fa fa-check"></i><b>30.4.3</b> Copy to clipboard</a></li>
+</ul></li>
+<li class="chapter" data-level="30.5" data-path="book-fancy.html"><a href="book-fancy.html#table-of-contents-1"><i class="fa fa-check"></i><b>30.5</b> Table of Contents</a><ul>
+<li class="chapter" data-level="30.5.1" data-path="book-fancy.html"><a href="book-fancy.html#change-toc-background-color"><i class="fa fa-check"></i><b>30.5.1</b> Change TOC background color</a></li>
+<li class="chapter" data-level="30.5.2" data-path="book-fancy.html"><a href="book-fancy.html#style-the-toc-links"><i class="fa fa-check"></i><b>30.5.2</b> Style the TOC links</a></li>
+<li class="chapter" data-level="30.5.3" data-path="book-fancy.html"><a href="book-fancy.html#hierarchy-styling"><i class="fa fa-check"></i><b>30.5.3</b> Hierarchy styling</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Cookbook: Blogdown sites</b></span></li>
+<li class="chapter" data-level="" data-path="intro-blogdown.html"><a href="intro-blogdown.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="31" data-path="make-blogdown.html"><a href="make-blogdown.html"><i class="fa fa-check"></i><b>31</b> Make a site</a></li>
+<li class="chapter" data-level="32" data-path="make-a-site-for-a-workshop.html"><a href="make-a-site-for-a-workshop.html"><i class="fa fa-check"></i><b>32</b> Make a site for a workshop</a></li>
+<li class="chapter" data-level="33" data-path="make-a-site-for-a-course.html"><a href="make-a-site-for-a-course.html"><i class="fa fa-check"></i><b>33</b> Make a site for a course</a></li>
+<li class="chapter" data-level="34" data-path="make-it-fancier-4.html"><a href="make-it-fancier-4.html"><i class="fa fa-check"></i><b>34</b> Make it fancier</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="css-crash.html"><a href="css-crash.html"><i class="fa fa-check"></i><b>A</b> CSS Crash Course</a><ul>
+<li class="chapter" data-level="A.1" data-path="css-crash.html"><a href="css-crash.html#whats-in-a-name"><i class="fa fa-check"></i><b>A.1</b> What’s in a name?</a></li>
+<li class="chapter" data-level="A.2" data-path="css-crash.html"><a href="css-crash.html#how-do-i-change-the-color-of."><i class="fa fa-check"></i><b>A.2</b> How do I change the color of….?</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="backlog.html"><a href="backlog.html"><i class="fa fa-check"></i><b>B</b> Backlog</a></li>
+<li class="chapter" data-level="C" data-path="miscellaneous.html"><a href="miscellaneous.html"><i class="fa fa-check"></i><b>C</b> Miscellaneous</a></li>
+<li class="chapter" data-level="D" data-path="spillover-from-distill.html"><a href="spillover-from-distill.html"><i class="fa fa-check"></i><b>D</b> Spillover from distill</a></li>
+<li class="chapter" data-level="E" data-path="teaching-and-learning-with-jupyter-book-review.html"><a href="teaching-and-learning-with-jupyter-book-review.html"><i class="fa fa-check"></i><b>E</b> Teaching and Learning with Jupyter Book Review</a></li>
+<li class="chapter" data-level="F" data-path="rmd-themes.html"><a href="rmd-themes.html"><i class="fa fa-check"></i><b>F</b> R Markdown Themes</a><ul>
+<li class="chapter" data-level="F.0.1" data-path="rmd-themes.html"><a href="rmd-themes.html#default"><i class="fa fa-check"></i><b>F.0.1</b> <code>default</code></a></li>
+<li class="chapter" data-level="F.0.2" data-path="rmd-themes.html"><a href="rmd-themes.html#cerulean"><i class="fa fa-check"></i><b>F.0.2</b> <code>cerulean</code></a></li>
+<li class="chapter" data-level="F.0.3" data-path="rmd-themes.html"><a href="rmd-themes.html#journal"><i class="fa fa-check"></i><b>F.0.3</b> <code>journal</code></a></li>
+<li class="chapter" data-level="F.0.4" data-path="rmd-themes.html"><a href="rmd-themes.html#flatly"><i class="fa fa-check"></i><b>F.0.4</b> <code>flatly</code></a></li>
+<li class="chapter" data-level="F.0.5" data-path="rmd-themes.html"><a href="rmd-themes.html#darkly"><i class="fa fa-check"></i><b>F.0.5</b> <code>darkly</code></a></li>
+<li class="chapter" data-level="F.0.6" data-path="rmd-themes.html"><a href="rmd-themes.html#readable"><i class="fa fa-check"></i><b>F.0.6</b> <code>readable</code></a></li>
+<li class="chapter" data-level="F.0.7" data-path="rmd-themes.html"><a href="rmd-themes.html#spacelab"><i class="fa fa-check"></i><b>F.0.7</b> <code>spacelab</code></a></li>
+<li class="chapter" data-level="F.0.8" data-path="rmd-themes.html"><a href="rmd-themes.html#united"><i class="fa fa-check"></i><b>F.0.8</b> <code>united</code></a></li>
+<li class="chapter" data-level="F.0.9" data-path="rmd-themes.html"><a href="rmd-themes.html#cosmo"><i class="fa fa-check"></i><b>F.0.9</b> <code>cosmo</code></a></li>
+<li class="chapter" data-level="F.0.10" data-path="rmd-themes.html"><a href="rmd-themes.html#lumen"><i class="fa fa-check"></i><b>F.0.10</b> <code>lumen</code></a></li>
+<li class="chapter" data-level="F.0.11" data-path="rmd-themes.html"><a href="rmd-themes.html#paper"><i class="fa fa-check"></i><b>F.0.11</b> <code>paper</code></a></li>
+<li class="chapter" data-level="F.0.12" data-path="rmd-themes.html"><a href="rmd-themes.html#sandstone"><i class="fa fa-check"></i><b>F.0.12</b> <code>sandstone</code></a></li>
+<li class="chapter" data-level="F.0.13" data-path="rmd-themes.html"><a href="rmd-themes.html#simplex"><i class="fa fa-check"></i><b>F.0.13</b> <code>simplex</code></a></li>
+<li class="chapter" data-level="F.0.14" data-path="rmd-themes.html"><a href="rmd-themes.html#yeti"><i class="fa fa-check"></i><b>F.0.14</b> <code>yeti</code></a></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="teach-offer.html"><a href="teach-offer.html"><i class="fa fa-check"></i><b>G</b> What should I make</a></li>
+<li class="chapter" data-level="H" data-path="teach-learners.html"><a href="teach-learners.html"><i class="fa fa-check"></i><b>H</b> Teaching learners</a></li>
+<li class="chapter" data-level="I" data-path="teach-day1.html"><a href="teach-day1.html"><i class="fa fa-check"></i><b>I</b> What to do on day 1</a></li>
+<li class="chapter" data-level="J" data-path="licensing-your-content.html"><a href="licensing-your-content.html"><i class="fa fa-check"></i><b>J</b> Licensing your content</a></li>
+<li class="chapter" data-level="K" data-path="remixing-licensed-content.html"><a href="remixing-licensed-content.html"><i class="fa fa-check"></i><b>K</b> Remixing licensed content</a></li>
+<li class="chapter" data-level="L" data-path="community.html"><a href="community.html"><i class="fa fa-check"></i><b>L</b> Community</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio4edu/rstudio4edu-book" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">rstudio4edu</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <script src="assets/hideOutput.js"></script>
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="images/books.jpg">
+</div>
+<div id="design-a-how-to" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Design a how-to</h1>
+<p>We define a “how-to” as a step-by-step recipe for a specific problem; light on narrative and teaching “why”. R Markdown is a great tool for this kind of lesson, and we recommend (surprise!) HTML output with the following options.</p>
+<div id="rmd-code-download" class="section level2">
+<h2><span class="header-section-number">8.1</span> Share the source code</h2>
+<p>You can also make it easy for others to download the raw R Markdown file that produced the page on the your site that they’re viewing.</p>
+<ul>
+<li><strong>Add <code>code_download: true</code></strong> underneath <code>html_document:</code>. This particular YAML option is one that you might consider only applying to <code>.Rmd</code> files where it’s relevant (in which case, you would include in the <code>.Rmd</code>’s YAML and not the <code>_site.yml</code>.)</li>
+</ul>
+<div class="side-by-side">
+<div class="side1">
+<div class="sourceCode" id="cb25"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="fu">name:</span><span class="at"> YUM-101</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="fu">output:</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">    <span class="fu">toc:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">    <span class="fu">toc_float:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">    <span class="fu">code_download:</span><span class="at"> true</span></a>
+<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="ot">---</span></a></code></pre></div>
+</div>
+<div class="side2">
+<p><img src="images/rmd_custom/code_download.png" /></p>
+</div>
+</div>
+</div>
+<div id="rmd-show-data" class="section level2">
+<h2><span class="header-section-number">8.2</span> Show the data</h2>
+<p>DT</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">library</span>(DT)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">datatable</span>(iris)</a></code></pre></div>
+<div id="htmlwidget-a058c8421f01e20f7bdf" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a058c8421f01e20f7bdf">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="rmd-share-data" class="section level2">
+<h2><span class="header-section-number">8.3</span> Share the data</h2>
+<p>For a how-to that involves some local data file that you need to share, it is nice to create an easy way for learners to download that data to a place on their computer.</p>
+<ol style="list-style-type: decimal">
+<li><p><code>xfun::embed_file()</code> <a href="https://yihui.name/en/2018/07/embed-file/">link</a></p></li>
+<li><p>DT buttons <a href="https://rstudio.github.io/DT/003-tabletools-buttons.html">link</a></p></li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">library</span>(DT)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">datatable</span>(iris, </a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">  <span class="dt">extensions =</span> <span class="st">&#39;Buttons&#39;</span>, <span class="dt">options =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">    <span class="dt">dom =</span> <span class="st">&#39;Bfrtip&#39;</span>,</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">    <span class="dt">buttons =</span> </a>
+<a class="sourceLine" id="cb27-6" data-line-number="6">      <span class="kw">list</span>(<span class="st">&#39;copy&#39;</span>, <span class="st">&#39;print&#39;</span>, <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">        <span class="dt">extend =</span> <span class="st">&#39;collection&#39;</span>,</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">        <span class="dt">buttons =</span> <span class="kw">c</span>(<span class="st">&#39;csv&#39;</span>, <span class="st">&#39;excel&#39;</span>, <span class="st">&#39;pdf&#39;</span>),</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9">        <span class="dt">text =</span> <span class="st">&#39;Download&#39;</span></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">      ))</a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">  )</a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">)</a></code></pre></div>
+<div id="htmlwidget-f9b42b98b2d5b74aaa98" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f9b42b98b2d5b74aaa98">{"x":{"filter":"none","extensions":["Buttons"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70","71","72","73","74","75","76","77","78","79","80","81","82","83","84","85","86","87","88","89","90","91","92","93","94","95","96","97","98","99","100","101","102","103","104","105","106","107","108","109","110","111","112","113","114","115","116","117","118","119","120","121","122","123","124","125","126","127","128","129","130","131","132","133","134","135","136","137","138","139","140","141","142","143","144","145","146","147","148","149","150"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9,5.4,4.8,4.8,4.3,5.8,5.7,5.4,5.1,5.7,5.1,5.4,5.1,4.6,5.1,4.8,5,5,5.2,5.2,4.7,4.8,5.4,5.2,5.5,4.9,5,5.5,4.9,4.4,5.1,5,4.5,4.4,5,5.1,4.8,5.1,4.6,5.3,5,7,6.4,6.9,5.5,6.5,5.7,6.3,4.9,6.6,5.2,5,5.9,6,6.1,5.6,6.7,5.6,5.8,6.2,5.6,5.9,6.1,6.3,6.1,6.4,6.6,6.8,6.7,6,5.7,5.5,5.5,5.8,6,5.4,6,6.7,6.3,5.6,5.5,5.5,6.1,5.8,5,5.6,5.7,5.7,6.2,5.1,5.7,6.3,5.8,7.1,6.3,6.5,7.6,4.9,7.3,6.7,7.2,6.5,6.4,6.8,5.7,5.8,6.4,6.5,7.7,7.7,6,6.9,5.6,7.7,6.3,6.7,7.2,6.2,6.1,6.4,7.2,7.4,7.9,6.4,6.3,6.1,7.7,6.3,6.4,6,6.9,6.7,6.9,5.8,6.8,6.7,6.7,6.3,6.5,6.2,5.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1,3.7,3.4,3,3,4,4.4,3.9,3.5,3.8,3.8,3.4,3.7,3.6,3.3,3.4,3,3.4,3.5,3.4,3.2,3.1,3.4,4.1,4.2,3.1,3.2,3.5,3.6,3,3.4,3.5,2.3,3.2,3.5,3.8,3,3.8,3.2,3.7,3.3,3.2,3.2,3.1,2.3,2.8,2.8,3.3,2.4,2.9,2.7,2,3,2.2,2.9,2.9,3.1,3,2.7,2.2,2.5,3.2,2.8,2.5,2.8,2.9,3,2.8,3,2.9,2.6,2.4,2.4,2.7,2.7,3,3.4,3.1,2.3,3,2.5,2.6,3,2.6,2.3,2.7,3,2.9,2.9,2.5,2.8,3.3,2.7,3,2.9,3,3,2.5,2.9,2.5,3.6,3.2,2.7,3,2.5,2.8,3.2,3,3.8,2.6,2.2,3.2,2.8,2.8,2.7,3.3,3.2,2.8,3,2.8,3,2.8,3.8,2.8,2.8,2.6,3,3.4,3.1,3,3.1,3.1,3.1,2.7,3.2,3.3,3,2.5,3,3.4,3],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5,1.5,1.6,1.4,1.1,1.2,1.5,1.3,1.4,1.7,1.5,1.7,1.5,1,1.7,1.9,1.6,1.6,1.5,1.4,1.6,1.6,1.5,1.5,1.4,1.5,1.2,1.3,1.4,1.3,1.5,1.3,1.3,1.3,1.6,1.9,1.4,1.6,1.4,1.5,1.4,4.7,4.5,4.9,4,4.6,4.5,4.7,3.3,4.6,3.9,3.5,4.2,4,4.7,3.6,4.4,4.5,4.1,4.5,3.9,4.8,4,4.9,4.7,4.3,4.4,4.8,5,4.5,3.5,3.8,3.7,3.9,5.1,4.5,4.5,4.7,4.4,4.1,4,4.4,4.6,4,3.3,4.2,4.2,4.2,4.3,3,4.1,6,5.1,5.9,5.6,5.8,6.6,4.5,6.3,5.8,6.1,5.1,5.3,5.5,5,5.1,5.3,5.5,6.7,6.9,5,5.7,4.9,6.7,4.9,5.7,6,4.8,4.9,5.6,5.8,6.1,6.4,5.6,5.1,5.6,6.1,5.6,5.5,4.8,5.4,5.6,5.1,5.1,5.9,5.7,5.2,5,5.2,5.4,5.1],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1,0.2,0.2,0.1,0.1,0.2,0.4,0.4,0.3,0.3,0.3,0.2,0.4,0.2,0.5,0.2,0.2,0.4,0.2,0.2,0.2,0.2,0.4,0.1,0.2,0.2,0.2,0.2,0.1,0.2,0.2,0.3,0.3,0.2,0.6,0.4,0.3,0.2,0.2,0.2,0.2,1.4,1.5,1.5,1.3,1.5,1.3,1.6,1,1.3,1.4,1,1.5,1,1.4,1.3,1.4,1.5,1,1.5,1.1,1.8,1.3,1.5,1.2,1.3,1.4,1.4,1.7,1.5,1,1.1,1,1.2,1.6,1.5,1.6,1.5,1.3,1.3,1.3,1.2,1.4,1.2,1,1.3,1.2,1.3,1.3,1.1,1.3,2.5,1.9,2.1,1.8,2.2,2.1,1.7,1.8,1.8,2.5,2,1.9,2.1,2,2.4,2.3,1.8,2.2,2.3,1.5,2.3,2,2,1.8,2.1,1.8,1.8,1.8,2.1,1.6,1.9,2,2.2,1.5,1.4,2.3,2.4,1.8,1.8,2.1,2.4,2.3,1.9,2.3,2.5,2.3,1.9,2,2.3,1.8],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","versicolor","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica","virginica"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Bfrtip","buttons":["copy","print",{"extend":"collection","buttons":["csv","excel","pdf"],"text":"Download"}],"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="rmd-code-folding" class="section level2">
+<h2><span class="header-section-number">8.4</span> Code Folding</h2>
+<p>If you have a lot of code chunks, and you want to option for them to expand or fold with a click then:</p>
+<ul>
+<li><strong>Add <code>code_folding:</code></strong> as an option underneath <code>html_document:</code>. The options are either <code>show</code> or <code>hide</code>, depending on whether or not you want code chunks to be expanded by default.</li>
+</ul>
+<div class="side-by-side">
+<div class="side1">
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">output_dir<span class="op">:</span><span class="st"> &quot;docs&quot;</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">output<span class="op">:</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="st">  </span>html_document<span class="op">:</span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">    </span>code_folding<span class="op">:</span><span class="st"> </span>show</a></code></pre></div>
+</div>
+<div class="side2">
+<p><img src="images/rmd_custom/code_folding.png" /></p>
+</div>
+</div>
+</div>
+<div id="show-code-hide-results" class="section level2">
+<h2><span class="header-section-number">8.5</span> Show code, hide results</h2>
+<p>The default global chunk option is <code>echo=TRUE</code>, which means that by default all code in code chunks is printed in the output. But sometimes you may want to suppress the output for pedagogical reasons on individual code chunks. You <em>could</em> set <code>eval = FALSE</code> as a global chunk option, but this would mean that all the code chunks will not get evaluated at all. Thus, you could have errors in your code that learners could stumble upon. Instead, we suggest setting <code>results='hide'</code> as a global chunk option to ensure that when you knit, you’ll run into the same errors your learners will <em>before</em> they do.</p>
+<pre><code>```{r, results=&#39;hide&#39;}
+library(tidyverse)
+glimpse(starwars)
+```</code></pre>
+</div>
+<div id="show-code-hide-plots" class="section level2">
+<h2><span class="header-section-number">8.6</span> Show code, hide plots</h2>
+<p>If your code produces plots, though, <code>results='hide'</code> will not suppress the plot. To suppress printing a plot, you’ll need to use <code>fig.show='hide'</code>.</p>
+<pre><code>```{r, results=&#39;hide&#39;, fig.show=&#39;hide&#39;}
+library(tidyverse)
+glimpse(starwars)
+ggplot(starwars, aes(x = height)) +
+  geom_histogram(colour = &quot;white&quot;, fill = &quot;#3fb5bd&quot;) +
+  theme_minimal()
+```</code></pre>
+</div>
+<div id="show-results-hide-code" class="section level2">
+<h2><span class="header-section-number">8.7</span> Show results, hide code</h2>
+<p>Sometimes you may want to shield your learners from all the code and just focus their attention on the output, whether it is printed or it produced a plot. This requires a single switch to <code>echo=FALSE</code> to “mute” the code from being output.</p>
+<pre><code>```{r, echo=FALSE}
+library(tidyverse)
+glimpse(starwars)
+```</code></pre>
+<p>This is all the learner sees:</p>
+<pre><code>## Observations: 87
+## Variables: 13
+## $ name       &lt;chr&gt; &quot;Luke Skywalker&quot;, &quot;C-3PO&quot;, &quot;R2-D2&quot;, &quot;Darth Vader&quot;, &quot;L…
+## $ height     &lt;int&gt; 172, 167, 96, 202, 150, 178, 165, 97, 183, 182, 188, …
+## $ mass       &lt;dbl&gt; 77.0, 75.0, 32.0, 136.0, 49.0, 120.0, 75.0, 32.0, 84.…
+## $ hair_color &lt;chr&gt; &quot;blond&quot;, NA, NA, &quot;none&quot;, &quot;brown&quot;, &quot;brown, grey&quot;, &quot;bro…
+## $ skin_color &lt;chr&gt; &quot;fair&quot;, &quot;gold&quot;, &quot;white, blue&quot;, &quot;white&quot;, &quot;light&quot;, &quot;lig…
+## $ eye_color  &lt;chr&gt; &quot;blue&quot;, &quot;yellow&quot;, &quot;red&quot;, &quot;yellow&quot;, &quot;brown&quot;, &quot;blue&quot;, &quot;…
+## $ birth_year &lt;dbl&gt; 19.0, 112.0, 33.0, 41.9, 19.0, 52.0, 47.0, NA, 24.0, …
+## $ gender     &lt;chr&gt; &quot;male&quot;, NA, NA, &quot;male&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, N…
+## $ homeworld  &lt;chr&gt; &quot;Tatooine&quot;, &quot;Tatooine&quot;, &quot;Naboo&quot;, &quot;Tatooine&quot;, &quot;Alderaa…
+## $ species    &lt;chr&gt; &quot;Human&quot;, &quot;Droid&quot;, &quot;Droid&quot;, &quot;Human&quot;, &quot;Human&quot;, &quot;Human&quot;,…
+## $ films      &lt;list&gt; [&lt;&quot;Revenge of the Sith&quot;, &quot;Return of the Jedi&quot;, &quot;The …
+## $ vehicles   &lt;list&gt; [&lt;&quot;Snowspeeder&quot;, &quot;Imperial Speeder Bike&quot;&gt;, &lt;&gt;, &lt;&gt;, &lt;…
+## $ starships  &lt;list&gt; [&lt;&quot;X-wing&quot;, &quot;Imperial shuttle&quot;&gt;, &lt;&gt;, &lt;&gt;, &quot;TIE Advanc…</code></pre>
+</div>
+<div id="interactively-hideshow-code" class="section level2">
+<h2><span class="header-section-number">8.8</span> Interactively hide/show code</h2>
+<p>whole document</p>
+</div>
+<div id="hide-everything" class="section level2">
+<h2><span class="header-section-number">8.9</span> Hide everything</h2>
+<p>Useful for you as you develop a lesson sometimes to save your code but hide the code and all output from learners. You can achieve the same thing with the combination of <code>echo=FALSE, results='hide', fig.show='hide'</code>. But the easier way is to use the <code>include</code> chunk option, which is by default set to TRUE.</p>
+<pre><code>```{r, include=FALSE}
+library(tidyverse)
+glimpse(starwars)
+```</code></pre>
+</div>
+<div id="reuse-your-code" class="section level2">
+<h2><span class="header-section-number">8.10</span> Reuse your code</h2>
+<p>Once you embrace code chunk options, you may often find yourself copying and pasting code chunks so that you can use different options on the same code chunk. Like maybe you want the code to appear once, but you</p>
+<p>Special use case: plot first, code second</p>
+<pre><code>Chunk 1: {r plot-first, echo = FALSE}
+Chunk 2: {r ref.label = &#39;plot-first&#39;, eval = FALSE}</code></pre>
+</div>
+<div id="two-plots-side-by-side" class="section level2">
+<h2><span class="header-section-number">8.11</span> Two plots side-by-side</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="kw">factor</span>(cyl), <span class="dt">fill =</span> <span class="kw">factor</span>(vs))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="kw">position_dodge</span>(<span class="dt">preserve =</span> <span class="st">&quot;total&quot;</span>))</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="kw">ggplot</span>(mtcars, <span class="kw">aes</span>(<span class="kw">factor</span>(cyl), <span class="dt">fill =</span> <span class="kw">factor</span>(vs))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">position =</span> <span class="kw">position_dodge2</span>(<span class="dt">preserve =</span> <span class="st">&quot;total&quot;</span>))</a></code></pre></div>
+<p><img src="cookbook-doc_care_files/figure-html/dodge-st-1.png" width="50%" style="display: block; margin: auto;" /><img src="cookbook-doc_care_files/figure-html/dodge-st-2.png" width="50%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="include-verbatim-code-chunks" class="section level2">
+<h2><span class="header-section-number">8.12</span> Include verbatim code chunks</h2>
+<p>You may have noticed that the code chunk output, even when <code>echo=TRUE</code>, does not show the actual code chunk options that you see in your .Rmd file. In order to print the full code chunk, you’ll need to</p>
+<ul>
+<li><p><a href="https://yihui.name/en/2017/11/knitr-verbatim-code-chunk/">verbatim code chunks</a></p></li>
+<li><code>knitr</code> <a href="https://yihui.name/knitr/demo/reference/">ref.label</a> to reuse code chunks</li>
+<li>the <code>fig.path</code> thing: <a href="https://yihui.name/knitr/options/#plots" class="uri">https://yihui.name/knitr/options/#plots</a> (see also: name your code chunks!)</li>
+<li>making sure that your package warnings/messages don’t print!</li>
+<li>how to control numbers of digits that print</li>
+<li><p>control significance stars</p></li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">options</span>(</a>
+<a class="sourceLine" id="cb36-2" data-line-number="2">  <span class="dt">show.signif.stars =</span> <span class="ot">FALSE</span>,     </a>
+<a class="sourceLine" id="cb36-3" data-line-number="3">  <span class="dt">digits =</span> <span class="dv">2</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  )</a></code></pre></div>
+
+</div>
+</div>
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC-BY-NC </a>: You can download them by <a href="shared-illos.zip">clicking here</a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/2.0/"> CC-BY </a> unless noted otherwise.
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="doc-care.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="doc-dress.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio4edu/rstudio4edu-book/edit/master/cookbook-doc_care.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["https://github.com/rstudio4edu/rstudio4edu-book/raw/master/cookbook-doc_care.Rmd"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
