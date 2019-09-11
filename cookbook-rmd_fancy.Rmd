@@ -19,7 +19,7 @@ You'll get the most out of this chapter if you read through the [CSS crash cours
 
 ## Before you begin
 
-I'm making a few assumptions that by this point you have already updated your R Markdown site with your own content in the [Make it yours](#rmd-yours) section and added whatever built-in options
+I'm making a few assumptions that by this point you have already updated your R Markdown site with your own content in the [Make it yours](#rmd-yours) section and added whatever built-in options you wanted.
 
 For the demo that follows, I'll keep using the RMD site skeleton with a few additions. I've added a few things to the site skeleton, aside from what we've walked through in the previous chapters, so that the following examples make more sense. It is okay that your content does not match up exactly with mine.
 
